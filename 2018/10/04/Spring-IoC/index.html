@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/dlh1234okok.github.io/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/dlh1234okok.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/dlh1234okok.github.io/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/dlh1234okok.github.io/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/dlh1234okok.github.io/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/dlh1234okok.github.io/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/dlh1234okok.github.io/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/dlh1234okok.github.io/atom.xml" title="这夜景" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="一、Spring框架概念 　　spring 是众多开源 java 项目中的一员，基于分层的 javaEE 应用一站式轻量级开源框架，主要核心是 Ioc(控制反转/依赖注入) 与 Aop(面向切面)两大技术，实现项目在开发过程中的轻松解耦， 提高项目的开发效率。 　　在项目中引入spring的好处： 　　　　&amp;middot;降低组件之间的耦合度，实现软件各层之间的解耦 　　　　&amp;middot;可以使">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring-IoC">
+<meta property="og:url" content="http://www.dlhblog.online/2018/10/04/Spring-IoC/index.html">
+<meta property="og:site_name" content="这夜景">
+<meta property="og:description" content="一、Spring框架概念 　　spring 是众多开源 java 项目中的一员，基于分层的 javaEE 应用一站式轻量级开源框架，主要核心是 Ioc(控制反转/依赖注入) 与 Aop(面向切面)两大技术，实现项目在开发过程中的轻松解耦， 提高项目的开发效率。 　　在项目中引入spring的好处： 　　　　&amp;middot;降低组件之间的耦合度，实现软件各层之间的解耦 　　　　&amp;middot;可以使">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://images.cnblogs.com/OutliningIndicators/ContractedBlock.gif">
+<meta property="og:image" content="http://images.cnblogs.com/OutliningIndicators/ExpandedBlockStart.gif">
+<meta property="og:image" content="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180926001244753-1555408954.png">
+<meta property="og:image" content="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180926222331040-1197348543.png">
+<meta property="og:image" content="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180926222026490-1674063880.png">
+<meta property="og:image" content="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180926222204794-1170574293.png">
+<meta property="og:image" content="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180926225827577-549846355.png">
+<meta property="og:image" content="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180926230338589-548459749.png">
+<meta property="og:image" content="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180926230514633-1030558018.png">
+<meta property="og:image" content="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180926230547141-476319273.png">
+<meta property="og:image" content="http://images.cnblogs.com/OutliningIndicators/ContractedBlock.gif">
+<meta property="og:image" content="http://images.cnblogs.com/OutliningIndicators/ExpandedBlockStart.gif">
+<meta property="og:updated_time" content="2018-10-04T10:37:50.857Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Spring-IoC">
+<meta name="twitter:description" content="一、Spring框架概念 　　spring 是众多开源 java 项目中的一员，基于分层的 javaEE 应用一站式轻量级开源框架，主要核心是 Ioc(控制反转/依赖注入) 与 Aop(面向切面)两大技术，实现项目在开发过程中的轻松解耦， 提高项目的开发效率。 　　在项目中引入spring的好处： 　　　　&amp;middot;降低组件之间的耦合度，实现软件各层之间的解耦 　　　　&amp;middot;可以使">
+<meta name="twitter:image" content="http://images.cnblogs.com/OutliningIndicators/ContractedBlock.gif">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/dlh1234okok.github.io/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.dlhblog.online/2018/10/04/Spring-IoC/"/>
+
+
+
+
+
+  <title>Spring-IoC | 这夜景</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/dlh1234okok.github.io/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">这夜景</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">blog</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/dlh1234okok.github.io/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/dlh1234okok.github.io/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/dlh1234okok.github.io/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/dlh1234okok.github.io/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            日程表
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/dlh1234okok.github.io/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/dlh1234okok.github.io/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.dlhblog.online/dlh1234okok.github.io/2018/10/04/Spring-IoC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="li-hong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://pg0l2q23d.bkt.clouddn.com/background.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="这夜景">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Spring-IoC</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-04T18:37:06+08:00">
+                2018-10-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/dlh1234okok.github.io/categories/Spring/" itemprop="url" rel="index">
+                    <span itemprop="name">Spring</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/dlh1234okok.github.io/2018/10/04/Spring-IoC/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/dlh1234okok.github.io/2018/10/04/Spring-IoC/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+		  
+		  
+			<span class="post-meta-divider">|</span>
+			<span id="busuanzi_value_page_pv"></span>次阅读
+			
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.4k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  10
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>一、Spring框架概念</p>
+<p>　　spring 是众多开源 java 项目中的一员，基于分层的 javaEE 应用一站式轻量级开源框架，<strong>主要核心是 Ioc(控制反转/依赖注入) 与 Aop(面向切面)</strong>两大技术，实现项目在开发过程中的轻松解耦， 提高项目的开发效率。</p>
+<p>　　在项目中引入spring的好处：</p>
+<p>　　　　&middot;<strong>降低组件之间的耦合度，实现软件各层之间的解耦</strong></p>
+<p>　　　　&middot;可以使用容器提供的众多服务，如：事务管理服务、消息服务等</p>
+<p>　　　　&middot;当使用容器管理事务时，开发人员就不需要手工控制事务，也不需要处理复杂的事务传播</p>
+<p>　　　　&middot;容器提供<strong>单例模式</strong>支持，开发人员不再需要自己编写实现代码</p>
+<p>　　　　&middot;容器提供了<strong>AOP技术</strong>，利用它很容易实现如权限拦截、运行期监控等功能</p>
+<p>&nbsp;</p>
+<p>二、Spring源码架构</p>
+<p>　　1、核心容器:spring-beans 和 spring-core 模块是 Spring 框架的核心模块，包含<strong>控制反转（Inversion of Control, IoC）</strong>和<strong>依赖注入（Dependency Injection, DI）</strong> ,核心容器提供 Spring 框架的基本功能。<strong>核心容器的主要组件是 BeanFactory， 工厂模式的实现</strong>。 BeanFactory 使用控制反转（IOC） 思想将应用程序的配置和依赖性规范与实际的应用程序代码分开。</p>
+<p>　　2、Spring 上下文 Spring Context： Spring 上下文是一个配置文件，向 Spring 框架提供上下文信息。 Spring 上下文包括企业服务，例如 JNDI、 EJB、电子邮件、国际化、校验和调度功能。</p>
+<p>　　3、Spring-Expression 模块是统一表达式语言（unified EL）的扩展模块，可以查询、管理运行中的对象，同时也方便的可以调用对象方法、操作数组、集合等。它的语法类似于传统 EL，但提供了额外的功能，最出色的要数函数调用和简单字符串的模板函数。</p>
+<p>　　4、Spring-AOP： spring-aop 是 Spring 的另一个核心模块, 在 Spring中，他是以 JVM 的动态代理技术为基础，然后设计出了一系列的Aop 横切实现，比如前置通知、返回通知、异常通知等。 通过其配置管理特性， Spring AOP 模块直接将面向切面的编程功能集成到了 Spring 框架中。所以，可以很容易地使 Spring 框架管理的任何对象支持 AOP。</p>
+<p>　　……</p>
+<p>&nbsp;三、Spring容器工厂的简单实现</p>
+<div class="cnblogs_code" onclick="cnblogs_code_show('d3557752-cf53-42e8-a780-27471aa422e1')"><img src="http://images.cnblogs.com/OutliningIndicators/ContractedBlock.gif" alt=""><img src="http://images.cnblogs.com/OutliningIndicators/ExpandedBlockStart.gif" alt=""><br><div id="cnblogs_code_open_d3557752-cf53-42e8-a780-27471aa422e1" class="cnblogs_code_hide"><br><pre><span style="color: #0000ff;">package</span><span style="color: #000000;"> com.shsxt.factory;<br><br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> org.dom4j.Document;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> org.dom4j.DocumentException;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> org.dom4j.Element;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> org.dom4j.XPath;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> org.dom4j.io.SAXReader;<br><br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> java.lang.reflect.Method;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> java.net.URL;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.ArrayList;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.HashMap;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.List;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.Map;<br><br></span><span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span> Factory_01 <span style="color: #0000ff;">implements</span><span style="color: #000000;"> Factory {<br>​    </span><span style="color: #008000;">//</span><span style="color: #008000;"> Map集合用来存放id和class</span><br>​    Map&lt;String, Object&gt; map = <span style="color: #0000ff;">new</span> HashMap&lt;&gt;<span style="color: #000000;">();<br>​    List</span>&lt;Bean&gt; beans = <span style="color: #0000ff;">new</span> ArrayList&lt;&gt;<span style="color: #000000;">();<br><br>    </span><span style="color: #008000;">//</span><span style="color: #008000;"> 实例化工厂对象时就完成以下操作</span><br>    <span style="color: #0000ff;">public</span><span style="color: #000000;"> Factory_01(String fileName) {<br>        </span><span style="color: #008000;">//</span><span style="color: #008000;"> xml解析</span><br>        <span style="color: #0000ff;">this</span><span style="color: #000000;">.pathXml(fileName);<br>        </span><span style="color: #008000;">//</span><span style="color: #008000;"> 实例化对象</span><br>        <span style="color: #0000ff;">this</span><span style="color: #000000;">.instanceBean();<br>        </span><span style="color: #008000;">//</span><span style="color: #008000;"> 属性赋值</span><br>        <span style="color: #0000ff;">this</span><span style="color: #000000;">.setProperty();<br>    }<br><br>    </span><span style="color: #008000;">//</span><span style="color: #008000;"> 属性赋值</span><br>    <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> setProperty() {<br>        </span><span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br>            </span><span style="color: #0000ff;">if</span>(<span style="color: #0000ff;">null</span>!=beans &amp;&amp; beans.size()&gt;0<span style="color: #000000;">){<br>                </span><span style="color: #0000ff;">for</span><span style="color: #000000;">(Bean bean:beans){<br>                    List</span>&lt;Property&gt; properties=<span style="color: #000000;">bean.getProperties();<br>                    </span><span style="color: #0000ff;">if</span>(<span style="color: #0000ff;">null</span>!=properties &amp;&amp; properties.size()&gt;0<span style="color: #000000;">){<br>                        </span><span style="color: #0000ff;">for</span><span style="color: #000000;">(Property property:properties){<br>                            </span><span style="color: #008000;">//</span><span style="color: #008000;"> 得到property的id和ref</span><br>                            String id=<span style="color: #000000;">property.getId();<br>                            String ref</span>=<span style="color: #000000;">property.getRef();<br>                            </span><span style="color: #008000;">//</span><span style="color: #008000;"> set方法中首字母大写</span><br>                            id=id.toUpperCase().charAt(0)+id.substring(1<span style="color: #000000;">);<br>                            </span><span style="color: #008000;">//</span><span style="color: #008000;"> 获取到当前class</span><br>                            Class clz=<span style="color: #000000;">map.get(bean.getId()).getClass();<br>                            </span><span style="color: #008000;">//</span><span style="color: #008000;"> 找到set方法</span><br>                            Method method=clz.getDeclaredMethod(“set”+<span style="color: #000000;">id,map.get(ref).getClass());<br>                            method.invoke(map.get(bean.getId()),map.get(ref));<br>                        }<br>                    }<br>                }<br>            }<br>        } </span><span style="color: #0000ff;">catch</span><span style="color: #000000;"> (Exception e) {<br>            e.printStackTrace();<br>        }<br>    }<br><br>    </span><span style="color: #008000;">//</span><span style="color: #008000;"> 实例化</span><br>    <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> instanceBean() {<br>        </span><span style="color: #0000ff;">if</span> (<span style="color: #0000ff;">null</span> != beans &amp;&amp; beans.size() &gt; 0<span style="color: #000000;">) {<br>            </span><span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br>                </span><span style="color: #0000ff;">for</span><span style="color: #000000;"> (Bean bean : beans) {<br>                    </span><span style="color: #008000;">//</span><span style="color: #008000;"> 放到map集合中，通过key找到value，实例化该对象</span><br><span style="color: #000000;">                    map.put(bean.getId(), Class.forName(bean.getClz()).newInstance());<br>​                }<br>​            } </span><span style="color: #0000ff;">catch</span><span style="color: #000000;"> (ClassNotFoundException e) {<br>​                e.printStackTrace();<br>​            } </span><span style="color: #0000ff;">catch</span><span style="color: #000000;"> (IllegalAccessException e) {<br>​                e.printStackTrace();<br>​            } </span><span style="color: #0000ff;">catch</span><span style="color: #000000;"> (InstantiationException e) {<br>​                e.printStackTrace();<br>​            }<br><br>        }<br>    }<br><br>    </span><span style="color: #008000;">/*<em></em></span><span style="color: #008000;">
+      xml解析<br>     <em>
+     </em> </span><span style="color: #808080;">@param</span><span style="color: #008000;"> fileName xml文件名<br>     </span><span style="color: #008000;">*/</span><br>    <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> pathXml(String fileName) {<br>        </span><span style="color: #008000;">//</span><span style="color: #008000;"> 获取xml文件</span><br>        URL url = <span style="color: #0000ff;">this</span><span style="color: #000000;">.getClass().getClassLoader().getResource(fileName);<br>        </span><span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br>            </span><span style="color: #0000ff;">if</span> (<span style="color: #0000ff;">null</span> !=<span style="color: #000000;"> url) {<br>                </span><span style="color: #008000;">//</span><span style="color: #008000;"> 获取解析器</span><br>                SAXReader saxReader = <span style="color: #0000ff;">new</span><span style="color: #000000;"> SAXReader();<br>                </span><span style="color: #008000;">//</span><span style="color: #008000;"> 解析xml文件，返回document对象</span><br>                Document document =<span style="color: #000000;"> saxReader.read(url);<br>                </span><span style="color: #008000;">//</span><span style="color: #008000;"> 获取xpath对象</span><br>                XPath xPath = document.createXPath(“beans/bean”<span style="color: #000000;">);<br>                </span><span style="color: #008000;">//</span><span style="color: #008000;"> 查询选择的节点，返回的是list集合</span><br>                List&lt;Element&gt; elements =<span style="color: #000000;"> xPath.selectNodes(document);<br>                </span><span style="color: #008000;">//</span><span style="color: #008000;"> 为空判断</span><br>                <span style="color: #0000ff;">if</span> (<span style="color: #0000ff;">null</span> != elements &amp;&amp; elements.size() &gt; 0<span style="color: #000000;">) {<br>                    </span><span style="color: #0000ff;">for</span><span style="color: #000000;"> (Element element : elements) {<br>                        </span><span style="color: #008000;">//</span><span style="color: #008000;"> 获取property</span><br>                        xPath = document.createXPath(“property”<span style="color: #000000;">);<br>                        </span><span style="color: #008000;">//</span><span style="color: #008000;"> 查询选择的节点</span><br>                        List&lt;Element&gt; subElements =<span style="color: #000000;"> xPath.selectNodes(element);<br>                        </span><span style="color: #008000;">//</span><span style="color: #008000;"> 为空判断</span><br>                        List&lt;Property&gt; properties = <span style="color: #0000ff;">null</span><span style="color: #000000;">;<br>                        </span><span style="color: #008000;">//</span><span style="color: #008000;"> 实例化Bean</span><br>                        Bean bean = <span style="color: #0000ff;">new</span> Bean(element.attributeValue(“id”), element.attributeValue(“class”<span style="color: #000000;">));<br>                        </span><span style="color: #0000ff;">if</span> (<span style="color: #0000ff;">null</span> != subElements &amp;&amp; subElements.size() &gt; 0<span style="color: #000000;">) {<br>                            properties </span>= <span style="color: #0000ff;">new</span> ArrayList&lt;&gt;<span style="color: #000000;">();<br>                            </span><span style="color: #0000ff;">for</span><span style="color: #000000;"> (Element subElement : subElements) {<br>                                </span><span style="color: #008000;">//</span><span style="color: #008000;"> 实例化Property</span><br>                                Property property = <span style="color: #0000ff;">new</span> Property(subElement.attributeValue(“id”), subElement.attributeValue(“ref”<span style="color: #000000;">));<br>                                </span><span style="color: #008000;">//</span><span style="color: #008000;"> 将对象放到集合中</span><br><span style="color: #000000;">                                properties.add(property);<br>​                            }<br>​                            bean.setProperties(properties);<br>​                        }<br>​                        beans.add(bean);<br>​                    }<br>​                }<br>​            }<br>​        } </span><span style="color: #0000ff;">catch</span><span style="color: #000000;"> (DocumentException e) {<br>​            e.printStackTrace();<br>​        }<br>​    }<br><br>    @Override<br>    </span><span style="color: #0000ff;">public</span><span style="color: #000000;"> Object getObj(String name) {<br>        </span><span style="color: #008000;">//</span><span style="color: #008000;"> 通过id返回class</span><br>        <span style="color: #0000ff;">return</span><span style="color: #000000;"> map.get(name);<br>    }<br>}</span></pre><br></div><br><span class="cnblogs_code_collapse">View Code</span></div>
+
+<p>&nbsp;</p>
+<p>四、Spring多文件的加载情况</p>
+<p>　　1、ClassPathXmlApplicationContext类的构造器参数是一个可变长参数</p>
+<p>　　　　　　可同时配置多个xml文件</p>
+<p>　　2、import标签，将自配置文件导入总配置</p>
+<p>　　　　<img src="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180926001244753-1555408954.png" alt=""></p>
+<p>&nbsp;</p>
+<p>四、Spring Ioc实例化bean的三种方式</p>
+<p>　　<strong>1、构造器的方式实例化bean对象</strong></p>
+<p>　　　　通过默认构造器实例化bean对象，<strong>默认空构造器必须存在</strong></p>
+<p><img src="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180926222331040-1197348543.png" alt=""></p>
+<p>&nbsp;</p>
+<p>　　2、静态工厂方式实例化bean</p>
+<p>　　　　要有工厂类和静态工厂方法</p>
+<p>　　　　　　通过反射调用静态工厂的静态方法，将该静态方法的返回值作为bean的实例，可以统一管理各个bean的创建</p>
+<p><img src="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180926222026490-1674063880.png" alt=""></p>
+<p>&nbsp;</p>
+<p>&nbsp;　　3、实例化工厂方式实例化bean</p>
+<p>　　　　工厂类和实例化方法</p>
+<p>　　　　　　工厂方法为非静态，需要配置工厂bean，并在bean中配置factory-bean和factory-method属性</p>
+<p>　　　　　　1) 可用于集成其他框架的bean创建管理方法&nbsp; 2)能够使bean和factory的角色互换</p>
+<p><img src="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180926222204794-1170574293.png" alt=""></p>
+<p>&nbsp;</p>
+<p>五、Spring 依赖注入</p>
+<p>　　在面向接口编程中，依赖接口可以动态传入多种实现</p>
+<p>　　<strong>1、set注入</strong></p>
+<p>　　　　<strong>property标签，属性的set方法（不会出现循环引用问题）</strong></p>
+<p>　　　　<img src="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180926225827577-549846355.png" alt=""></p>
+<p>　　　　name：属性名称；ref：bean对象的引用；value：给属性直接赋值（List，Set，Map，properties）</p>
+<p>　　<strong>2、构造器注入</strong></p>
+<p><strong>　　　　constructor-arg标签，带参构造器（会出现循环引用问题，彼此互相依赖对方导致bean无法实例化）</strong></p>
+<p>　　　　<img src="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180926230338589-548459749.png" alt=""></p>
+<p>　　　　name：属性名称；ref：bean对象id的引用；index：属性的索引</p>
+<p>&nbsp;</p>
+<p>　　3、静态工厂注入</p>
+<p>　　　　<img src="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180926230514633-1030558018.png" alt=""></p>
+<p>&nbsp;</p>
+<p>　　4、实例化工厂注入</p>
+<p>　　　　<img src="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180926230547141-476319273.png" alt=""></p>
+<p>&nbsp;</p>
+<p><strong>六、注解方式注入bean</strong></p>
+<p>　　xml配置：加入context命名空间和xsd地址</p>
+<p>　　添加&lt;context:annotation-config/&gt;配置</p>
+<p>&nbsp;</p>
+<p>　　@Resource （属于J2EE）</p>
+<p>　　@Autowired （Spring）</p>
+<p>　　常用于属性字段或set方法上</p>
+<p>　　区别：</p>
+<p>　　　　　@Autowired 默认按bean的类型匹配，和@Qualifier配合使用可以修改按名称匹配</p>
+<p>　　　　　@Resource 默认按名称进行装配，可以通过name属性指定，如果没有指定name属性，当注解写在字段上时，默认取字段名进行匹配注入，如果注解写在set方法上默认取属性名进行装配。当找不到与名称匹配的bean时才按照类型进行装配（当name属性指定，只会按照名称装配）</p>
+<p>&nbsp;</p>
+<p>注解方式注入的简单模拟：</p>
+<div class="cnblogs_code" onclick="cnblogs_code_show('5fabd213-5573-4e35-8424-e5dcfb9fd37f')"><img src="http://images.cnblogs.com/OutliningIndicators/ContractedBlock.gif" alt=""><img src="http://images.cnblogs.com/OutliningIndicators/ExpandedBlockStart.gif" alt=""><br><div id="cnblogs_code_open_5fabd213-5573-4e35-8424-e5dcfb9fd37f" class="cnblogs_code_hide"><br><pre><span style="color: #0000ff;">package</span><span style="color: #000000;"> com.shsxt02;<br><br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> com.shsxt.annotaioms.Component;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> com.shsxt.annotaioms.Component02;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> com.shsxt02.controller.UserController;<br><br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> java.io.File;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> java.lang.reflect.Field;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> java.net.URL;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.ArrayList;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.HashMap;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.List;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.Map;<br><br></span><span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> Test {<br><br>    </span><span style="color: #0000ff;">private</span> <span style="color: #0000ff;">static</span> List&lt;String&gt;  clz=<span style="color: #0000ff;">new</span> ArrayList&lt;&gt;<span style="color: #000000;">();<br>    </span><span style="color: #0000ff;">private</span> <span style="color: #0000ff;">static</span>  Map&lt;String,Object&gt; map=<span style="color: #0000ff;">new</span> HashMap&lt;&gt;<span style="color: #000000;">();<br><br>    </span><span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> main(String[] args){<br>        String pkg</span>=”com.shsxt02”<span style="color: #000000;">;<br>        </span><span style="color: #008000;">//</span><span style="color: #008000;"> 获取标记注解的类</span><br><span style="color: #000000;">        getClZ(pkg);<br>​        </span><span style="color: #008000;">//</span><span style="color: #008000;"> 实例化这些类</span><br><span style="color: #000000;">        instanceClz();<br>​        </span><span style="color: #008000;">//</span><span style="color: #008000;"> 属性赋值</span><br><span style="color: #000000;">        property();<br>​        UserController userController</span>= (UserController) map.get(“userController”<span style="color: #000000;">);<br>​        userController.test();<br>​    }<br><br>    </span><span style="color: #0000ff;">private</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> property() {<br>        </span><span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br>            </span><span style="color: #0000ff;">if</span> (<span style="color: #0000ff;">null</span>!=<span style="color: #000000;">map){<br>                </span><span style="color: #0000ff;">for</span><span style="color: #000000;">(Map.Entry entry:map.entrySet()){<br>                    Field[] fields</span>=<span style="color: #000000;">entry.getValue().getClass().getDeclaredFields();<br>                    </span><span style="color: #0000ff;">if</span> (<span style="color: #0000ff;">null</span>!=<span style="color: #000000;">fields){<br>                        </span><span style="color: #0000ff;">for</span><span style="color: #000000;">(Field field:fields){<br>                            Component02 component02</span>=field.getAnnotation(Component02.<span style="color: #0000ff;">class</span><span style="color: #000000;">);<br>                            </span><span style="color: #0000ff;">if</span> (<span style="color: #0000ff;">null</span>!=<span style="color: #000000;">component02){<br>                                field.setAccessible(</span><span style="color: #0000ff;">true</span><span style="color: #000000;">);<br>                                field.set(entry.getValue(),map.get(component02.value()));<br>                            }<br>                        }<br>                    }<br>                }<br>            }<br>        } </span><span style="color: #0000ff;">catch</span><span style="color: #000000;"> (IllegalAccessException e) {<br>            e.printStackTrace();<br>        }<br>    }<br><br>    </span><span style="color: #0000ff;">private</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> instanceClz() {<br>        </span><span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br>            </span><span style="color: #0000ff;">if</span> (<span style="color: #0000ff;">null</span>!=clz &amp;&amp; clz.size()&gt;0<span style="color: #000000;">){<br>                </span><span style="color: #0000ff;">for</span><span style="color: #000000;">(String cls:clz){<br>                    </span><span style="color: #008000;">//</span><span style="color: #008000;">System.out.println(str);</span><br>                    cls=cls.replace(“.class”,””<span style="color: #000000;">);<br>                    </span><span style="color: #008000;">//</span><span style="color: #008000;">System.out.println(cls);</span><br>                    Component component=Class.forName(cls).getAnnotation(Component.<span style="color: #0000ff;">class</span><span style="color: #000000;">);<br>                    </span><span style="color: #0000ff;">if</span> (<span style="color: #0000ff;">null</span>!=<span style="color: #000000;">component){<br>                        </span><span style="color: #008000;">//</span><span style="color: #008000;">System.out.println(cls);</span><br>                        String id=<span style="color: #000000;"> getId(cls);<br>                        Object obj</span>=<span style="color: #000000;">Class.forName(cls).newInstance();<br>                        map.put(id,obj);<br>                    }<br>                }<br>            }<br>        } </span><span style="color: #0000ff;">catch</span><span style="color: #000000;"> (ClassNotFoundException e) {<br>            e.printStackTrace();<br>        } </span><span style="color: #0000ff;">catch</span><span style="color: #000000;"> (IllegalAccessException e) {<br>            e.printStackTrace();<br>        } </span><span style="color: #0000ff;">catch</span><span style="color: #000000;"> (InstantiationException e) {<br>            e.printStackTrace();<br>        }<br>    }<br><br>    </span><span style="color: #0000ff;">private</span> <span style="color: #0000ff;">static</span><span style="color: #000000;"> String getId(String cls) {<br>        cls</span>=cls.substring(cls.lastIndexOf(“.”)+1<span style="color: #000000;">);<br>        cls</span>= cls.toLowerCase().charAt(0)+cls.substring(1<span style="color: #000000;">);<br>        </span><span style="color: #0000ff;">return</span><span style="color: #000000;"> cls;<br>    }<br><br>    </span><span style="color: #0000ff;">private</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> getClZ(String pkg) {<br>        </span><span style="color: #008000;">//</span><span style="color: #008000;"> 获取url</span><br>        URL url=<span style="color: #000000;">Thread.currentThread().getContextClassLoader().getResource(repStr(pkg));<br>        String urlPath</span>=<span style="color: #000000;">url.getFile();<br>        </span><span style="color: #008000;">//</span><span style="color: #008000;">System.out.println(urlPath);</span><br>        String[] subFileStrs=<span style="color: #0000ff;">new</span><span style="color: #000000;"> File(urlPath).list();<br>        </span><span style="color: #0000ff;">for</span><span style="color: #000000;">(String str:subFileStrs){<br>            String subFilePath</span>=urlPath+”/“+<span style="color: #000000;">str;<br>            </span><span style="color: #008000;">//</span><span style="color: #008000;">System.out.println(subFilePath);</span><br>            File subFile=<span style="color: #0000ff;">new</span><span style="color: #000000;"> File(subFilePath);<br>            </span><span style="color: #0000ff;">if</span><span style="color: #000000;"> (subFile.isDirectory()){<br>                </span><span style="color: #008000;">//</span><span style="color: #008000;">System.out.println(pkg+”.”+subFile.getName());</span><br>                getClZ(pkg+”.”+<span style="color: #000000;">subFile.getName());<br>            }</span><span style="color: #0000ff;">else</span><span style="color: #000000;">{<br>                clz.add(pkg</span>+”.”+<span style="color: #000000;">subFile.getName());<br>            }<br>        }<br>    }<br><br>    </span><span style="color: #0000ff;">private</span> <span style="color: #0000ff;">static</span><span style="color: #000000;"> String repStr(String str){<br>        str</span>=str.replace(“.”,”/“<span style="color: #000000;">);<br>        </span><span style="color: #0000ff;">return</span><span style="color: #000000;"> str;<br>    }<br>}</span></pre><br></div><br><span class="cnblogs_code_collapse">View Code</span></div>
+
+<p>&nbsp;</p>
+<p><strong>七、Spring IOC 容器自动扫描管理bean</strong></p>
+<p>　　xml配置&lt;context:component-scan base-package=””/&gt;</p>
+<p>　　建议的注解</p>
+<p>　　　　Dao层：@Repository</p>
+<p>　　　　Service层：@Service</p>
+<p>　　　　控制层：@Controller</p>
+<p>　　　　不明确：@Component</p>
+<p>&nbsp;</p>
+<p>八、Bean的作用域问题(scope)</p>
+<p>　　1、singleton作用域（单例，默认）</p>
+<p>　　　　lazy-init 懒加载 默认为false</p>
+<p>　　　　　　如果等于true时，spring容器启动的时候不会去实例化这个bean，而是在程序调用时才会去实例化</p>
+<p>　　　　　　<strong>在启动情况下实例化所有singleton的bean对象并缓存与容器中单例的好处：</strong></p>
+<p>　　　　　　　　<strong>1、提前发现潜在的配置问题</strong></p>
+<p><strong>　　　　　　　　2、bean对象存在于缓存中，使用时不用再实例化bean，提高执行性能</strong></p>
+<p>　　　　　　无状态对象适合做单例bean对象（无可变的成员变量）</p>
+<p>&nbsp;</p>
+<p>　　2、prototype作用域（原型）</p>
+<p>　　　　每次向Spring容器请求获取Bean都返回一个全新的Bean，相对于&ldquo;singleton&rdquo;来说就是不缓存Bean。IOC不会维护该对象</p>
+<p>&nbsp;</p>
+<p>　　3、Web应用中的作用域（request、session、globalsession）</p>
+<p>　　　　request作用域：每一次请求</p>
+<p>　　　　session：当前会话</p>
+<p>　　　　globlasession：同session（Portlet环境）</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>我就试试~</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://pg0l2q23d.bkt.clouddn.com/mm_facetoface_collect_qrcode_1538620279859.png" alt="li-hong 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+	<div>
+		
+			<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">
+            -------------本文结束
+            <i class="fa fa-paw"></i>
+            感谢您的阅读-------------
+        </div>
+    
+</div>
+
+
+
+		
+	</div>
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/dlh1234okok.github.io/2018/10/04/Spring-AOP/" rel="next" title="Spring-AOP">
+                <i class="fa fa-chevron-left"></i> Spring-AOP
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div onclick="showGitment()" id="gitment-display-button">显示 Gitment 评论</div>
+        <div id="gitment-container" style="display:none"></div>
+      
+    </div>
+
+  
+  
+  
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://pg0l2q23d.bkt.clouddn.com/background.jpg"
+                alt="li-hong" />
+            
+              <p class="site-author-name" itemprop="name">li-hong</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/dlh1234okok.github.io/archives/">
+              
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/dlh1234okok.github.io/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/dlh1234okok.github.io/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">li-hong</span>
+
+  
+</div>
+
+
+
+<div>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv" style='display:none'>
+    总访问量 <span id="busuanzi_value_site_pv"></span> 次
+    <span class="post-meta-divider">|</span>
+</span>
+<span id="busuanzi_container_site_uv" style='display:none'>
+    有<span id="busuanzi_value_site_uv"></span>人看过我的博客啦
+</span>
+</div>
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站只有7.6k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/dlh1234okok.github.io/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/dlh1234okok.github.io/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/dlh1234okok.github.io/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/dlh1234okok.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/dlh1234okok.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/dlh1234okok.github.io/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/dlh1234okok.github.io/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/dlh1234okok.github.io/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/dlh1234okok.github.io/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/dlh1234okok.github.io/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/dlh1234okok.github.io/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/dlh1234okok.github.io/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/dlh1234okok.github.io/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+   
+   
+   
+   
+   <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+   <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+   
+       <script type="text/javascript">
+           function ShowGitment(){
+               document.getElementById("gitment-display-button").style.display = "none";
+               document.getElementById("gitment-container").style.display = "block";
+               var gitment = new Gitment({
+                   id: document.location.href, 
+                   owner: '',
+                   repo: '',
+                   oauth: {
+                       client_id: '',
+                       client_secret: '',
+                   }});
+               gitment.render('gitment-container');
+           }
+       </script>
+   
+
+
+
+
+
+
+   
+   
+   
+   
+   <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+   <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+   
+       <script type="text/javascript">
+           function ShowGitment(){
+               document.getElementById("gitment-display-button").style.display = "none";
+               document.getElementById("gitment-container").style.display = "block";
+               var gitment = new Gitment({
+                   id: document.location.href, 
+                   owner: '',
+                   repo: '',
+                   oauth: {
+                       client_id: '',
+                       client_secret: '',
+                   }});
+               gitment.render('gitment-container');
+           }
+       </script>
+   
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/dlh1234okok.github.io/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
