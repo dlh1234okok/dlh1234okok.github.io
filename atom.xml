@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>这夜景</title>
   
-  <subtitle>生活不苟且</subtitle>
+  <subtitle>blog</subtitle>
   <link href="/dlh1234okok.github.io/atom.xml" rel="self"/>
   
   <link href="http://www.dlhblog.online/"/>
@@ -10,7 +10,7 @@
   <id>http://www.dlhblog.online/</id>
   
   <author>
-    <name>lihong</name>
+    <name>li-hong</name>
     
   </author>
   
