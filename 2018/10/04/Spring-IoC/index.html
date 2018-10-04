@@ -88,8 +88,6 @@
 <meta property="og:site_name" content="这夜景">
 <meta property="og:description" content="一、Spring框架概念 　　spring 是众多开源 java 项目中的一员，基于分层的 javaEE 应用一站式轻量级开源框架，主要核心是 Ioc(控制反转/依赖注入) 与 Aop(面向切面)两大技术，实现项目在开发过程中的轻松解耦， 提高项目的开发效率。 　　在项目中引入spring的好处： 　　　　&amp;middot;降低组件之间的耦合度，实现软件各层之间的解耦 　　　　&amp;middot;可以使">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://images.cnblogs.com/OutliningIndicators/ContractedBlock.gif">
-<meta property="og:image" content="http://images.cnblogs.com/OutliningIndicators/ExpandedBlockStart.gif">
 <meta property="og:image" content="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180926001244753-1555408954.png">
 <meta property="og:image" content="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180926222331040-1197348543.png">
 <meta property="og:image" content="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180926222026490-1674063880.png">
@@ -98,13 +96,11 @@
 <meta property="og:image" content="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180926230338589-548459749.png">
 <meta property="og:image" content="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180926230514633-1030558018.png">
 <meta property="og:image" content="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180926230547141-476319273.png">
-<meta property="og:image" content="http://images.cnblogs.com/OutliningIndicators/ContractedBlock.gif">
-<meta property="og:image" content="http://images.cnblogs.com/OutliningIndicators/ExpandedBlockStart.gif">
-<meta property="og:updated_time" content="2018-10-04T10:37:50.857Z">
+<meta property="og:updated_time" content="2018-10-04T10:43:10.306Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring-IoC">
 <meta name="twitter:description" content="一、Spring框架概念 　　spring 是众多开源 java 项目中的一员，基于分层的 javaEE 应用一站式轻量级开源框架，主要核心是 Ioc(控制反转/依赖注入) 与 Aop(面向切面)两大技术，实现项目在开发过程中的轻松解耦， 提高项目的开发效率。 　　在项目中引入spring的好处： 　　　　&amp;middot;降低组件之间的耦合度，实现软件各层之间的解耦 　　　　&amp;middot;可以使">
-<meta name="twitter:image" content="http://images.cnblogs.com/OutliningIndicators/ContractedBlock.gif">
+<meta name="twitter:image" content="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180926001244753-1555408954.png">
 
 
 
@@ -419,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2.4k
+                  5.1k
                 </span>
               
 
@@ -435,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  10
+                  27
                 </span>
               
             </div>
@@ -472,10 +468,98 @@
 <p>　　4、Spring-AOP： spring-aop 是 Spring 的另一个核心模块, 在 Spring中，他是以 JVM 的动态代理技术为基础，然后设计出了一系列的Aop 横切实现，比如前置通知、返回通知、异常通知等。 通过其配置管理特性， Spring AOP 模块直接将面向切面的编程功能集成到了 Spring 框架中。所以，可以很容易地使 Spring 框架管理的任何对象支持 AOP。</p>
 <p>　　……</p>
 <p>&nbsp;三、Spring容器工厂的简单实现</p>
-<div class="cnblogs_code" onclick="cnblogs_code_show('d3557752-cf53-42e8-a780-27471aa422e1')"><img src="http://images.cnblogs.com/OutliningIndicators/ContractedBlock.gif" alt=""><img src="http://images.cnblogs.com/OutliningIndicators/ExpandedBlockStart.gif" alt=""><br><div id="cnblogs_code_open_d3557752-cf53-42e8-a780-27471aa422e1" class="cnblogs_code_hide"><br><pre><span style="color: #0000ff;">package</span><span style="color: #000000;"> com.shsxt.factory;<br><br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> org.dom4j.Document;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> org.dom4j.DocumentException;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> org.dom4j.Element;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> org.dom4j.XPath;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> org.dom4j.io.SAXReader;<br><br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> java.lang.reflect.Method;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> java.net.URL;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.ArrayList;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.HashMap;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.List;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.Map;<br><br></span><span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span> Factory_01 <span style="color: #0000ff;">implements</span><span style="color: #000000;"> Factory {<br>​    </span><span style="color: #008000;">//</span><span style="color: #008000;"> Map集合用来存放id和class</span><br>​    Map&lt;String, Object&gt; map = <span style="color: #0000ff;">new</span> HashMap&lt;&gt;<span style="color: #000000;">();<br>​    List</span>&lt;Bean&gt; beans = <span style="color: #0000ff;">new</span> ArrayList&lt;&gt;<span style="color: #000000;">();<br><br>    </span><span style="color: #008000;">//</span><span style="color: #008000;"> 实例化工厂对象时就完成以下操作</span><br>    <span style="color: #0000ff;">public</span><span style="color: #000000;"> Factory_01(String fileName) {<br>        </span><span style="color: #008000;">//</span><span style="color: #008000;"> xml解析</span><br>        <span style="color: #0000ff;">this</span><span style="color: #000000;">.pathXml(fileName);<br>        </span><span style="color: #008000;">//</span><span style="color: #008000;"> 实例化对象</span><br>        <span style="color: #0000ff;">this</span><span style="color: #000000;">.instanceBean();<br>        </span><span style="color: #008000;">//</span><span style="color: #008000;"> 属性赋值</span><br>        <span style="color: #0000ff;">this</span><span style="color: #000000;">.setProperty();<br>    }<br><br>    </span><span style="color: #008000;">//</span><span style="color: #008000;"> 属性赋值</span><br>    <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> setProperty() {<br>        </span><span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br>            </span><span style="color: #0000ff;">if</span>(<span style="color: #0000ff;">null</span>!=beans &amp;&amp; beans.size()&gt;0<span style="color: #000000;">){<br>                </span><span style="color: #0000ff;">for</span><span style="color: #000000;">(Bean bean:beans){<br>                    List</span>&lt;Property&gt; properties=<span style="color: #000000;">bean.getProperties();<br>                    </span><span style="color: #0000ff;">if</span>(<span style="color: #0000ff;">null</span>!=properties &amp;&amp; properties.size()&gt;0<span style="color: #000000;">){<br>                        </span><span style="color: #0000ff;">for</span><span style="color: #000000;">(Property property:properties){<br>                            </span><span style="color: #008000;">//</span><span style="color: #008000;"> 得到property的id和ref</span><br>                            String id=<span style="color: #000000;">property.getId();<br>                            String ref</span>=<span style="color: #000000;">property.getRef();<br>                            </span><span style="color: #008000;">//</span><span style="color: #008000;"> set方法中首字母大写</span><br>                            id=id.toUpperCase().charAt(0)+id.substring(1<span style="color: #000000;">);<br>                            </span><span style="color: #008000;">//</span><span style="color: #008000;"> 获取到当前class</span><br>                            Class clz=<span style="color: #000000;">map.get(bean.getId()).getClass();<br>                            </span><span style="color: #008000;">//</span><span style="color: #008000;"> 找到set方法</span><br>                            Method method=clz.getDeclaredMethod(“set”+<span style="color: #000000;">id,map.get(ref).getClass());<br>                            method.invoke(map.get(bean.getId()),map.get(ref));<br>                        }<br>                    }<br>                }<br>            }<br>        } </span><span style="color: #0000ff;">catch</span><span style="color: #000000;"> (Exception e) {<br>            e.printStackTrace();<br>        }<br>    }<br><br>    </span><span style="color: #008000;">//</span><span style="color: #008000;"> 实例化</span><br>    <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> instanceBean() {<br>        </span><span style="color: #0000ff;">if</span> (<span style="color: #0000ff;">null</span> != beans &amp;&amp; beans.size() &gt; 0<span style="color: #000000;">) {<br>            </span><span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br>                </span><span style="color: #0000ff;">for</span><span style="color: #000000;"> (Bean bean : beans) {<br>                    </span><span style="color: #008000;">//</span><span style="color: #008000;"> 放到map集合中，通过key找到value，实例化该对象</span><br><span style="color: #000000;">                    map.put(bean.getId(), Class.forName(bean.getClz()).newInstance());<br>​                }<br>​            } </span><span style="color: #0000ff;">catch</span><span style="color: #000000;"> (ClassNotFoundException e) {<br>​                e.printStackTrace();<br>​            } </span><span style="color: #0000ff;">catch</span><span style="color: #000000;"> (IllegalAccessException e) {<br>​                e.printStackTrace();<br>​            } </span><span style="color: #0000ff;">catch</span><span style="color: #000000;"> (InstantiationException e) {<br>​                e.printStackTrace();<br>​            }<br><br>        }<br>    }<br><br>    </span><span style="color: #008000;">/*<em></em></span><span style="color: #008000;">
-      xml解析<br>     <em>
-     </em> </span><span style="color: #808080;">@param</span><span style="color: #008000;"> fileName xml文件名<br>     </span><span style="color: #008000;">*/</span><br>    <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> pathXml(String fileName) {<br>        </span><span style="color: #008000;">//</span><span style="color: #008000;"> 获取xml文件</span><br>        URL url = <span style="color: #0000ff;">this</span><span style="color: #000000;">.getClass().getClassLoader().getResource(fileName);<br>        </span><span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br>            </span><span style="color: #0000ff;">if</span> (<span style="color: #0000ff;">null</span> !=<span style="color: #000000;"> url) {<br>                </span><span style="color: #008000;">//</span><span style="color: #008000;"> 获取解析器</span><br>                SAXReader saxReader = <span style="color: #0000ff;">new</span><span style="color: #000000;"> SAXReader();<br>                </span><span style="color: #008000;">//</span><span style="color: #008000;"> 解析xml文件，返回document对象</span><br>                Document document =<span style="color: #000000;"> saxReader.read(url);<br>                </span><span style="color: #008000;">//</span><span style="color: #008000;"> 获取xpath对象</span><br>                XPath xPath = document.createXPath(“beans/bean”<span style="color: #000000;">);<br>                </span><span style="color: #008000;">//</span><span style="color: #008000;"> 查询选择的节点，返回的是list集合</span><br>                List&lt;Element&gt; elements =<span style="color: #000000;"> xPath.selectNodes(document);<br>                </span><span style="color: #008000;">//</span><span style="color: #008000;"> 为空判断</span><br>                <span style="color: #0000ff;">if</span> (<span style="color: #0000ff;">null</span> != elements &amp;&amp; elements.size() &gt; 0<span style="color: #000000;">) {<br>                    </span><span style="color: #0000ff;">for</span><span style="color: #000000;"> (Element element : elements) {<br>                        </span><span style="color: #008000;">//</span><span style="color: #008000;"> 获取property</span><br>                        xPath = document.createXPath(“property”<span style="color: #000000;">);<br>                        </span><span style="color: #008000;">//</span><span style="color: #008000;"> 查询选择的节点</span><br>                        List&lt;Element&gt; subElements =<span style="color: #000000;"> xPath.selectNodes(element);<br>                        </span><span style="color: #008000;">//</span><span style="color: #008000;"> 为空判断</span><br>                        List&lt;Property&gt; properties = <span style="color: #0000ff;">null</span><span style="color: #000000;">;<br>                        </span><span style="color: #008000;">//</span><span style="color: #008000;"> 实例化Bean</span><br>                        Bean bean = <span style="color: #0000ff;">new</span> Bean(element.attributeValue(“id”), element.attributeValue(“class”<span style="color: #000000;">));<br>                        </span><span style="color: #0000ff;">if</span> (<span style="color: #0000ff;">null</span> != subElements &amp;&amp; subElements.size() &gt; 0<span style="color: #000000;">) {<br>                            properties </span>= <span style="color: #0000ff;">new</span> ArrayList&lt;&gt;<span style="color: #000000;">();<br>                            </span><span style="color: #0000ff;">for</span><span style="color: #000000;"> (Element subElement : subElements) {<br>                                </span><span style="color: #008000;">//</span><span style="color: #008000;"> 实例化Property</span><br>                                Property property = <span style="color: #0000ff;">new</span> Property(subElement.attributeValue(“id”), subElement.attributeValue(“ref”<span style="color: #000000;">));<br>                                </span><span style="color: #008000;">//</span><span style="color: #008000;"> 将对象放到集合中</span><br><span style="color: #000000;">                                properties.add(property);<br>​                            }<br>​                            bean.setProperties(properties);<br>​                        }<br>​                        beans.add(bean);<br>​                    }<br>​                }<br>​            }<br>​        } </span><span style="color: #0000ff;">catch</span><span style="color: #000000;"> (DocumentException e) {<br>​            e.printStackTrace();<br>​        }<br>​    }<br><br>    @Override<br>    </span><span style="color: #0000ff;">public</span><span style="color: #000000;"> Object getObj(String name) {<br>        </span><span style="color: #008000;">//</span><span style="color: #008000;"> 通过id返回class</span><br>        <span style="color: #0000ff;">return</span><span style="color: #000000;"> map.get(name);<br>    }<br>}</span></pre><br></div><br><span class="cnblogs_code_collapse">View Code</span></div>
+<p><span style="color: #0000ff;">import</span><span style="color: #000000;"> org.dom4j.Document;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> org.dom4j.DocumentException;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> org.dom4j.Element;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> org.dom4j.XPath;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> org.dom4j.io.SAXReader;</span></p>
+<p><span style="color: #0000ff;">import</span><span style="color: #000000;"> java.lang.reflect.Method;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> java.net.URL;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.ArrayList;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.HashMap;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.List;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.Map;</span></p>
+<p><span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span> Factory_01 <span style="color: #0000ff;">implements</span><span style="color: #000000;"> Factory {<br>​    </span><span style="color: #008000;">//</span><span style="color: #008000;"> Map集合用来存放id和class</span><br>​    Map&lt;String, Object&gt; map = <span style="color: #0000ff;">new</span> HashMap&lt;&gt;<span style="color: #000000;">();<br>​    List</span>&lt;Bean&gt; beans = <span style="color: #0000ff;">new</span> ArrayList&lt;&gt;<span style="color: #000000;">();</span></p>
+<pre><code>&lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt;//&lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt; 实例化工厂对象时就完成以下操作&lt;/span&gt;
+&lt;span style=&quot;color: #0000ff;&quot;&gt;public&lt;/span&gt;&lt;span style=&quot;color: #000000;&quot;&gt; Factory_01(String fileName) {
+    &lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt;//&lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt; xml解析&lt;/span&gt;
+    &lt;span style=&quot;color: #0000ff;&quot;&gt;this&lt;/span&gt;&lt;span style=&quot;color: #000000;&quot;&gt;.pathXml(fileName);
+    &lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt;//&lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt; 实例化对象&lt;/span&gt;
+    &lt;span style=&quot;color: #0000ff;&quot;&gt;this&lt;/span&gt;&lt;span style=&quot;color: #000000;&quot;&gt;.instanceBean();
+    &lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt;//&lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt; 属性赋值&lt;/span&gt;
+    &lt;span style=&quot;color: #0000ff;&quot;&gt;this&lt;/span&gt;&lt;span style=&quot;color: #000000;&quot;&gt;.setProperty();
+}
 
+&lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt;//&lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt; 属性赋值&lt;/span&gt;
+&lt;span style=&quot;color: #0000ff;&quot;&gt;private&lt;/span&gt; &lt;span style=&quot;color: #0000ff;&quot;&gt;void&lt;/span&gt;&lt;span style=&quot;color: #000000;&quot;&gt; setProperty() {
+    &lt;/span&gt;&lt;span style=&quot;color: #0000ff;&quot;&gt;try&lt;/span&gt;&lt;span style=&quot;color: #000000;&quot;&gt; {
+        &lt;/span&gt;&lt;span style=&quot;color: #0000ff;&quot;&gt;if&lt;/span&gt;(&lt;span style=&quot;color: #0000ff;&quot;&gt;null&lt;/span&gt;!=beans &amp;amp;&amp;amp; beans.size()&amp;gt;0&lt;span style=&quot;color: #000000;&quot;&gt;){
+            &lt;/span&gt;&lt;span style=&quot;color: #0000ff;&quot;&gt;for&lt;/span&gt;&lt;span style=&quot;color: #000000;&quot;&gt;(Bean bean:beans){
+                List&lt;/span&gt;&amp;lt;Property&amp;gt; properties=&lt;span style=&quot;color: #000000;&quot;&gt;bean.getProperties();
+                &lt;/span&gt;&lt;span style=&quot;color: #0000ff;&quot;&gt;if&lt;/span&gt;(&lt;span style=&quot;color: #0000ff;&quot;&gt;null&lt;/span&gt;!=properties &amp;amp;&amp;amp; properties.size()&amp;gt;0&lt;span style=&quot;color: #000000;&quot;&gt;){
+                    &lt;/span&gt;&lt;span style=&quot;color: #0000ff;&quot;&gt;for&lt;/span&gt;&lt;span style=&quot;color: #000000;&quot;&gt;(Property property:properties){
+                        &lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt;//&lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt; 得到property的id和ref&lt;/span&gt;
+                        String id=&lt;span style=&quot;color: #000000;&quot;&gt;property.getId();
+                        String ref&lt;/span&gt;=&lt;span style=&quot;color: #000000;&quot;&gt;property.getRef();
+                        &lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt;//&lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt; set方法中首字母大写&lt;/span&gt;
+                        id=id.toUpperCase().charAt(0)+id.substring(1&lt;span style=&quot;color: #000000;&quot;&gt;);
+                        &lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt;//&lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt; 获取到当前class&lt;/span&gt;
+                        Class clz=&lt;span style=&quot;color: #000000;&quot;&gt;map.get(bean.getId()).getClass();
+                        &lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt;//&lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt; 找到set方法&lt;/span&gt;
+                        Method method=clz.getDeclaredMethod(&quot;set&quot;+&lt;span style=&quot;color: #000000;&quot;&gt;id,map.get(ref).getClass());
+                        method.invoke(map.get(bean.getId()),map.get(ref));
+                    }
+                }
+            }
+        }
+    } &lt;/span&gt;&lt;span style=&quot;color: #0000ff;&quot;&gt;catch&lt;/span&gt;&lt;span style=&quot;color: #000000;&quot;&gt; (Exception e) {
+        e.printStackTrace();
+    }
+}
+
+&lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt;//&lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt; 实例化&lt;/span&gt;
+&lt;span style=&quot;color: #0000ff;&quot;&gt;private&lt;/span&gt; &lt;span style=&quot;color: #0000ff;&quot;&gt;void&lt;/span&gt;&lt;span style=&quot;color: #000000;&quot;&gt; instanceBean() {
+    &lt;/span&gt;&lt;span style=&quot;color: #0000ff;&quot;&gt;if&lt;/span&gt; (&lt;span style=&quot;color: #0000ff;&quot;&gt;null&lt;/span&gt; != beans &amp;amp;&amp;amp; beans.size() &amp;gt; 0&lt;span style=&quot;color: #000000;&quot;&gt;) {
+        &lt;/span&gt;&lt;span style=&quot;color: #0000ff;&quot;&gt;try&lt;/span&gt;&lt;span style=&quot;color: #000000;&quot;&gt; {
+            &lt;/span&gt;&lt;span style=&quot;color: #0000ff;&quot;&gt;for&lt;/span&gt;&lt;span style=&quot;color: #000000;&quot;&gt; (Bean bean : beans) {
+                &lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt;//&lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt; 放到map集合中，通过key找到value，实例化该对象&lt;/span&gt;
+</code></pre><p><span style="color: #000000;">                    map.put(bean.getId(), Class.forName(bean.getClz()).newInstance());<br>​                }<br>​            } </span><span style="color: #0000ff;">catch</span><span style="color: #000000;"> (ClassNotFoundException e) {<br>​                e.printStackTrace();<br>​            } </span><span style="color: #0000ff;">catch</span><span style="color: #000000;"> (IllegalAccessException e) {<br>​                e.printStackTrace();<br>​            } </span><span style="color: #0000ff;">catch</span><span style="color: #000000;"> (InstantiationException e) {<br>​                e.printStackTrace();<br>​            }</span></p>
+<pre><code>    }
+}
+
+&lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt;/**&lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt;
+ * xml解析
+ *
+ * &lt;/span&gt;&lt;span style=&quot;color: #808080;&quot;&gt;@param&lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt; fileName xml文件名
+ &lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt;*/&lt;/span&gt;
+&lt;span style=&quot;color: #0000ff;&quot;&gt;private&lt;/span&gt; &lt;span style=&quot;color: #0000ff;&quot;&gt;void&lt;/span&gt;&lt;span style=&quot;color: #000000;&quot;&gt; pathXml(String fileName) {
+    &lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt;//&lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt; 获取xml文件&lt;/span&gt;
+    URL url = &lt;span style=&quot;color: #0000ff;&quot;&gt;this&lt;/span&gt;&lt;span style=&quot;color: #000000;&quot;&gt;.getClass().getClassLoader().getResource(fileName);
+    &lt;/span&gt;&lt;span style=&quot;color: #0000ff;&quot;&gt;try&lt;/span&gt;&lt;span style=&quot;color: #000000;&quot;&gt; {
+        &lt;/span&gt;&lt;span style=&quot;color: #0000ff;&quot;&gt;if&lt;/span&gt; (&lt;span style=&quot;color: #0000ff;&quot;&gt;null&lt;/span&gt; !=&lt;span style=&quot;color: #000000;&quot;&gt; url) {
+            &lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt;//&lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt; 获取解析器&lt;/span&gt;
+            SAXReader saxReader = &lt;span style=&quot;color: #0000ff;&quot;&gt;new&lt;/span&gt;&lt;span style=&quot;color: #000000;&quot;&gt; SAXReader();
+            &lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt;//&lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt; 解析xml文件，返回document对象&lt;/span&gt;
+            Document document =&lt;span style=&quot;color: #000000;&quot;&gt; saxReader.read(url);
+            &lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt;//&lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt; 获取xpath对象&lt;/span&gt;
+            XPath xPath = document.createXPath(&quot;beans/bean&quot;&lt;span style=&quot;color: #000000;&quot;&gt;);
+            &lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt;//&lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt; 查询选择的节点，返回的是list集合&lt;/span&gt;
+            List&amp;lt;Element&amp;gt; elements =&lt;span style=&quot;color: #000000;&quot;&gt; xPath.selectNodes(document);
+            &lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt;//&lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt; 为空判断&lt;/span&gt;
+            &lt;span style=&quot;color: #0000ff;&quot;&gt;if&lt;/span&gt; (&lt;span style=&quot;color: #0000ff;&quot;&gt;null&lt;/span&gt; != elements &amp;amp;&amp;amp; elements.size() &amp;gt; 0&lt;span style=&quot;color: #000000;&quot;&gt;) {
+                &lt;/span&gt;&lt;span style=&quot;color: #0000ff;&quot;&gt;for&lt;/span&gt;&lt;span style=&quot;color: #000000;&quot;&gt; (Element element : elements) {
+                    &lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt;//&lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt; 获取property&lt;/span&gt;
+                    xPath = document.createXPath(&quot;property&quot;&lt;span style=&quot;color: #000000;&quot;&gt;);
+                    &lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt;//&lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt; 查询选择的节点&lt;/span&gt;
+                    List&amp;lt;Element&amp;gt; subElements =&lt;span style=&quot;color: #000000;&quot;&gt; xPath.selectNodes(element);
+                    &lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt;//&lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt; 为空判断&lt;/span&gt;
+                    List&amp;lt;Property&amp;gt; properties = &lt;span style=&quot;color: #0000ff;&quot;&gt;null&lt;/span&gt;&lt;span style=&quot;color: #000000;&quot;&gt;;
+                    &lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt;//&lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt; 实例化Bean&lt;/span&gt;
+                    Bean bean = &lt;span style=&quot;color: #0000ff;&quot;&gt;new&lt;/span&gt; Bean(element.attributeValue(&quot;id&quot;), element.attributeValue(&quot;class&quot;&lt;span style=&quot;color: #000000;&quot;&gt;));
+                    &lt;/span&gt;&lt;span style=&quot;color: #0000ff;&quot;&gt;if&lt;/span&gt; (&lt;span style=&quot;color: #0000ff;&quot;&gt;null&lt;/span&gt; != subElements &amp;amp;&amp;amp; subElements.size() &amp;gt; 0&lt;span style=&quot;color: #000000;&quot;&gt;) {
+                        properties &lt;/span&gt;= &lt;span style=&quot;color: #0000ff;&quot;&gt;new&lt;/span&gt; ArrayList&amp;lt;&amp;gt;&lt;span style=&quot;color: #000000;&quot;&gt;();
+                        &lt;/span&gt;&lt;span style=&quot;color: #0000ff;&quot;&gt;for&lt;/span&gt;&lt;span style=&quot;color: #000000;&quot;&gt; (Element subElement : subElements) {
+                            &lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt;//&lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt; 实例化Property&lt;/span&gt;
+                            Property property = &lt;span style=&quot;color: #0000ff;&quot;&gt;new&lt;/span&gt; Property(subElement.attributeValue(&quot;id&quot;), subElement.attributeValue(&quot;ref&quot;&lt;span style=&quot;color: #000000;&quot;&gt;));
+                            &lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt;//&lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt; 将对象放到集合中&lt;/span&gt;
+</code></pre><p><span style="color: #000000;">                                properties.add(property);<br>​                            }<br>​                            bean.setProperties(properties);<br>​                        }<br>​                        beans.add(bean);<br>​                    }<br>​                }<br>​            }<br>​        } </span><span style="color: #0000ff;">catch</span><span style="color: #000000;"> (DocumentException e) {<br>​            e.printStackTrace();<br>​        }<br>​    }</span></p>
+<pre><code>@Override
+&lt;/span&gt;&lt;span style=&quot;color: #0000ff;&quot;&gt;public&lt;/span&gt;&lt;span style=&quot;color: #000000;&quot;&gt; Object getObj(String name) {
+    &lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt;//&lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt; 通过id返回class&lt;/span&gt;
+    &lt;span style=&quot;color: #0000ff;&quot;&gt;return&lt;/span&gt;&lt;span style=&quot;color: #000000;&quot;&gt; map.get(name);
+}
+</code></pre><p>}<br><br><span class="cnblogs_code_collapse">View Code</span></p>
 <p>&nbsp;</p>
 <p>四、Spring多文件的加载情况</p>
 <p>　　1、ClassPathXmlApplicationContext类的构造器参数是一个可变长参数</p>
@@ -528,8 +612,92 @@
 <p>　　　　　@Resource 默认按名称进行装配，可以通过name属性指定，如果没有指定name属性，当注解写在字段上时，默认取字段名进行匹配注入，如果注解写在set方法上默认取属性名进行装配。当找不到与名称匹配的bean时才按照类型进行装配（当name属性指定，只会按照名称装配）</p>
 <p>&nbsp;</p>
 <p>注解方式注入的简单模拟：</p>
-<div class="cnblogs_code" onclick="cnblogs_code_show('5fabd213-5573-4e35-8424-e5dcfb9fd37f')"><img src="http://images.cnblogs.com/OutliningIndicators/ContractedBlock.gif" alt=""><img src="http://images.cnblogs.com/OutliningIndicators/ExpandedBlockStart.gif" alt=""><br><div id="cnblogs_code_open_5fabd213-5573-4e35-8424-e5dcfb9fd37f" class="cnblogs_code_hide"><br><pre><span style="color: #0000ff;">package</span><span style="color: #000000;"> com.shsxt02;<br><br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> com.shsxt.annotaioms.Component;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> com.shsxt.annotaioms.Component02;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> com.shsxt02.controller.UserController;<br><br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> java.io.File;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> java.lang.reflect.Field;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> java.net.URL;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.ArrayList;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.HashMap;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.List;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.Map;<br><br></span><span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> Test {<br><br>    </span><span style="color: #0000ff;">private</span> <span style="color: #0000ff;">static</span> List&lt;String&gt;  clz=<span style="color: #0000ff;">new</span> ArrayList&lt;&gt;<span style="color: #000000;">();<br>    </span><span style="color: #0000ff;">private</span> <span style="color: #0000ff;">static</span>  Map&lt;String,Object&gt; map=<span style="color: #0000ff;">new</span> HashMap&lt;&gt;<span style="color: #000000;">();<br><br>    </span><span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> main(String[] args){<br>        String pkg</span>=”com.shsxt02”<span style="color: #000000;">;<br>        </span><span style="color: #008000;">//</span><span style="color: #008000;"> 获取标记注解的类</span><br><span style="color: #000000;">        getClZ(pkg);<br>​        </span><span style="color: #008000;">//</span><span style="color: #008000;"> 实例化这些类</span><br><span style="color: #000000;">        instanceClz();<br>​        </span><span style="color: #008000;">//</span><span style="color: #008000;"> 属性赋值</span><br><span style="color: #000000;">        property();<br>​        UserController userController</span>= (UserController) map.get(“userController”<span style="color: #000000;">);<br>​        userController.test();<br>​    }<br><br>    </span><span style="color: #0000ff;">private</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> property() {<br>        </span><span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br>            </span><span style="color: #0000ff;">if</span> (<span style="color: #0000ff;">null</span>!=<span style="color: #000000;">map){<br>                </span><span style="color: #0000ff;">for</span><span style="color: #000000;">(Map.Entry entry:map.entrySet()){<br>                    Field[] fields</span>=<span style="color: #000000;">entry.getValue().getClass().getDeclaredFields();<br>                    </span><span style="color: #0000ff;">if</span> (<span style="color: #0000ff;">null</span>!=<span style="color: #000000;">fields){<br>                        </span><span style="color: #0000ff;">for</span><span style="color: #000000;">(Field field:fields){<br>                            Component02 component02</span>=field.getAnnotation(Component02.<span style="color: #0000ff;">class</span><span style="color: #000000;">);<br>                            </span><span style="color: #0000ff;">if</span> (<span style="color: #0000ff;">null</span>!=<span style="color: #000000;">component02){<br>                                field.setAccessible(</span><span style="color: #0000ff;">true</span><span style="color: #000000;">);<br>                                field.set(entry.getValue(),map.get(component02.value()));<br>                            }<br>                        }<br>                    }<br>                }<br>            }<br>        } </span><span style="color: #0000ff;">catch</span><span style="color: #000000;"> (IllegalAccessException e) {<br>            e.printStackTrace();<br>        }<br>    }<br><br>    </span><span style="color: #0000ff;">private</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> instanceClz() {<br>        </span><span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br>            </span><span style="color: #0000ff;">if</span> (<span style="color: #0000ff;">null</span>!=clz &amp;&amp; clz.size()&gt;0<span style="color: #000000;">){<br>                </span><span style="color: #0000ff;">for</span><span style="color: #000000;">(String cls:clz){<br>                    </span><span style="color: #008000;">//</span><span style="color: #008000;">System.out.println(str);</span><br>                    cls=cls.replace(“.class”,””<span style="color: #000000;">);<br>                    </span><span style="color: #008000;">//</span><span style="color: #008000;">System.out.println(cls);</span><br>                    Component component=Class.forName(cls).getAnnotation(Component.<span style="color: #0000ff;">class</span><span style="color: #000000;">);<br>                    </span><span style="color: #0000ff;">if</span> (<span style="color: #0000ff;">null</span>!=<span style="color: #000000;">component){<br>                        </span><span style="color: #008000;">//</span><span style="color: #008000;">System.out.println(cls);</span><br>                        String id=<span style="color: #000000;"> getId(cls);<br>                        Object obj</span>=<span style="color: #000000;">Class.forName(cls).newInstance();<br>                        map.put(id,obj);<br>                    }<br>                }<br>            }<br>        } </span><span style="color: #0000ff;">catch</span><span style="color: #000000;"> (ClassNotFoundException e) {<br>            e.printStackTrace();<br>        } </span><span style="color: #0000ff;">catch</span><span style="color: #000000;"> (IllegalAccessException e) {<br>            e.printStackTrace();<br>        } </span><span style="color: #0000ff;">catch</span><span style="color: #000000;"> (InstantiationException e) {<br>            e.printStackTrace();<br>        }<br>    }<br><br>    </span><span style="color: #0000ff;">private</span> <span style="color: #0000ff;">static</span><span style="color: #000000;"> String getId(String cls) {<br>        cls</span>=cls.substring(cls.lastIndexOf(“.”)+1<span style="color: #000000;">);<br>        cls</span>= cls.toLowerCase().charAt(0)+cls.substring(1<span style="color: #000000;">);<br>        </span><span style="color: #0000ff;">return</span><span style="color: #000000;"> cls;<br>    }<br><br>    </span><span style="color: #0000ff;">private</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> getClZ(String pkg) {<br>        </span><span style="color: #008000;">//</span><span style="color: #008000;"> 获取url</span><br>        URL url=<span style="color: #000000;">Thread.currentThread().getContextClassLoader().getResource(repStr(pkg));<br>        String urlPath</span>=<span style="color: #000000;">url.getFile();<br>        </span><span style="color: #008000;">//</span><span style="color: #008000;">System.out.println(urlPath);</span><br>        String[] subFileStrs=<span style="color: #0000ff;">new</span><span style="color: #000000;"> File(urlPath).list();<br>        </span><span style="color: #0000ff;">for</span><span style="color: #000000;">(String str:subFileStrs){<br>            String subFilePath</span>=urlPath+”/“+<span style="color: #000000;">str;<br>            </span><span style="color: #008000;">//</span><span style="color: #008000;">System.out.println(subFilePath);</span><br>            File subFile=<span style="color: #0000ff;">new</span><span style="color: #000000;"> File(subFilePath);<br>            </span><span style="color: #0000ff;">if</span><span style="color: #000000;"> (subFile.isDirectory()){<br>                </span><span style="color: #008000;">//</span><span style="color: #008000;">System.out.println(pkg+”.”+subFile.getName());</span><br>                getClZ(pkg+”.”+<span style="color: #000000;">subFile.getName());<br>            }</span><span style="color: #0000ff;">else</span><span style="color: #000000;">{<br>                clz.add(pkg</span>+”.”+<span style="color: #000000;">subFile.getName());<br>            }<br>        }<br>    }<br><br>    </span><span style="color: #0000ff;">private</span> <span style="color: #0000ff;">static</span><span style="color: #000000;"> String repStr(String str){<br>        str</span>=str.replace(“.”,”/“<span style="color: #000000;">);<br>        </span><span style="color: #0000ff;">return</span><span style="color: #000000;"> str;<br>    }<br>}</span></pre><br></div><br><span class="cnblogs_code_collapse">View Code</span></div>
+<p><span style="color: #0000ff;">import</span><span style="color: #000000;"> com.shsxt.annotaioms.Component;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> com.shsxt.annotaioms.Component02;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> com.shsxt02.controller.UserController;</span></p>
+<p><span style="color: #0000ff;">import</span><span style="color: #000000;"> java.io.File;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> java.lang.reflect.Field;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> java.net.URL;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.ArrayList;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.HashMap;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.List;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.Map;</span></p>
+<p><span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> Test {</span></p>
+<pre><code>&lt;/span&gt;&lt;span style=&quot;color: #0000ff;&quot;&gt;private&lt;/span&gt; &lt;span style=&quot;color: #0000ff;&quot;&gt;static&lt;/span&gt; List&amp;lt;String&amp;gt;  clz=&lt;span style=&quot;color: #0000ff;&quot;&gt;new&lt;/span&gt; ArrayList&amp;lt;&amp;gt;&lt;span style=&quot;color: #000000;&quot;&gt;();
+&lt;/span&gt;&lt;span style=&quot;color: #0000ff;&quot;&gt;private&lt;/span&gt; &lt;span style=&quot;color: #0000ff;&quot;&gt;static&lt;/span&gt;  Map&amp;lt;String,Object&amp;gt; map=&lt;span style=&quot;color: #0000ff;&quot;&gt;new&lt;/span&gt; HashMap&amp;lt;&amp;gt;&lt;span style=&quot;color: #000000;&quot;&gt;();
 
+&lt;/span&gt;&lt;span style=&quot;color: #0000ff;&quot;&gt;public&lt;/span&gt; &lt;span style=&quot;color: #0000ff;&quot;&gt;static&lt;/span&gt; &lt;span style=&quot;color: #0000ff;&quot;&gt;void&lt;/span&gt;&lt;span style=&quot;color: #000000;&quot;&gt; main(String[] args){
+    String pkg&lt;/span&gt;=&quot;com.shsxt02&quot;&lt;span style=&quot;color: #000000;&quot;&gt;;
+    &lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt;//&lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt; 获取标记注解的类&lt;/span&gt;
+</code></pre><p><span style="color: #000000;">        getClZ(pkg);<br>​        </span><span style="color: #008000;">//</span><span style="color: #008000;"> 实例化这些类</span><br><span style="color: #000000;">        instanceClz();<br>​        </span><span style="color: #008000;">//</span><span style="color: #008000;"> 属性赋值</span><br><span style="color: #000000;">        property();<br>​        UserController userController</span>= (UserController) map.get(“userController”<span style="color: #000000;">);<br>​        userController.test();<br>​    }</span></p>
+<pre><code>&lt;/span&gt;&lt;span style=&quot;color: #0000ff;&quot;&gt;private&lt;/span&gt; &lt;span style=&quot;color: #0000ff;&quot;&gt;static&lt;/span&gt; &lt;span style=&quot;color: #0000ff;&quot;&gt;void&lt;/span&gt;&lt;span style=&quot;color: #000000;&quot;&gt; property() {
+    &lt;/span&gt;&lt;span style=&quot;color: #0000ff;&quot;&gt;try&lt;/span&gt;&lt;span style=&quot;color: #000000;&quot;&gt; {
+        &lt;/span&gt;&lt;span style=&quot;color: #0000ff;&quot;&gt;if&lt;/span&gt; (&lt;span style=&quot;color: #0000ff;&quot;&gt;null&lt;/span&gt;!=&lt;span style=&quot;color: #000000;&quot;&gt;map){
+            &lt;/span&gt;&lt;span style=&quot;color: #0000ff;&quot;&gt;for&lt;/span&gt;&lt;span style=&quot;color: #000000;&quot;&gt;(Map.Entry entry:map.entrySet()){
+                Field[] fields&lt;/span&gt;=&lt;span style=&quot;color: #000000;&quot;&gt;entry.getValue().getClass().getDeclaredFields();
+                &lt;/span&gt;&lt;span style=&quot;color: #0000ff;&quot;&gt;if&lt;/span&gt; (&lt;span style=&quot;color: #0000ff;&quot;&gt;null&lt;/span&gt;!=&lt;span style=&quot;color: #000000;&quot;&gt;fields){
+                    &lt;/span&gt;&lt;span style=&quot;color: #0000ff;&quot;&gt;for&lt;/span&gt;&lt;span style=&quot;color: #000000;&quot;&gt;(Field field:fields){
+                        Component02 component02&lt;/span&gt;=field.getAnnotation(Component02.&lt;span style=&quot;color: #0000ff;&quot;&gt;class&lt;/span&gt;&lt;span style=&quot;color: #000000;&quot;&gt;);
+                        &lt;/span&gt;&lt;span style=&quot;color: #0000ff;&quot;&gt;if&lt;/span&gt; (&lt;span style=&quot;color: #0000ff;&quot;&gt;null&lt;/span&gt;!=&lt;span style=&quot;color: #000000;&quot;&gt;component02){
+                            field.setAccessible(&lt;/span&gt;&lt;span style=&quot;color: #0000ff;&quot;&gt;true&lt;/span&gt;&lt;span style=&quot;color: #000000;&quot;&gt;);
+                            field.set(entry.getValue(),map.get(component02.value()));
+                        }
+                    }
+                }
+            }
+        }
+    } &lt;/span&gt;&lt;span style=&quot;color: #0000ff;&quot;&gt;catch&lt;/span&gt;&lt;span style=&quot;color: #000000;&quot;&gt; (IllegalAccessException e) {
+        e.printStackTrace();
+    }
+}
+
+&lt;/span&gt;&lt;span style=&quot;color: #0000ff;&quot;&gt;private&lt;/span&gt; &lt;span style=&quot;color: #0000ff;&quot;&gt;static&lt;/span&gt; &lt;span style=&quot;color: #0000ff;&quot;&gt;void&lt;/span&gt;&lt;span style=&quot;color: #000000;&quot;&gt; instanceClz() {
+    &lt;/span&gt;&lt;span style=&quot;color: #0000ff;&quot;&gt;try&lt;/span&gt;&lt;span style=&quot;color: #000000;&quot;&gt; {
+        &lt;/span&gt;&lt;span style=&quot;color: #0000ff;&quot;&gt;if&lt;/span&gt; (&lt;span style=&quot;color: #0000ff;&quot;&gt;null&lt;/span&gt;!=clz &amp;amp;&amp;amp; clz.size()&amp;gt;0&lt;span style=&quot;color: #000000;&quot;&gt;){
+            &lt;/span&gt;&lt;span style=&quot;color: #0000ff;&quot;&gt;for&lt;/span&gt;&lt;span style=&quot;color: #000000;&quot;&gt;(String cls:clz){
+                &lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt;//&lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt;System.out.println(str);&lt;/span&gt;
+                cls=cls.replace(&quot;.class&quot;,&quot;&quot;&lt;span style=&quot;color: #000000;&quot;&gt;);
+                &lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt;//&lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt;System.out.println(cls);&lt;/span&gt;
+                Component component=Class.forName(cls).getAnnotation(Component.&lt;span style=&quot;color: #0000ff;&quot;&gt;class&lt;/span&gt;&lt;span style=&quot;color: #000000;&quot;&gt;);
+                &lt;/span&gt;&lt;span style=&quot;color: #0000ff;&quot;&gt;if&lt;/span&gt; (&lt;span style=&quot;color: #0000ff;&quot;&gt;null&lt;/span&gt;!=&lt;span style=&quot;color: #000000;&quot;&gt;component){
+                    &lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt;//&lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt;System.out.println(cls);&lt;/span&gt;
+                    String id=&lt;span style=&quot;color: #000000;&quot;&gt; getId(cls);
+                    Object obj&lt;/span&gt;=&lt;span style=&quot;color: #000000;&quot;&gt;Class.forName(cls).newInstance();
+                    map.put(id,obj);
+                }
+            }
+        }
+    } &lt;/span&gt;&lt;span style=&quot;color: #0000ff;&quot;&gt;catch&lt;/span&gt;&lt;span style=&quot;color: #000000;&quot;&gt; (ClassNotFoundException e) {
+        e.printStackTrace();
+    } &lt;/span&gt;&lt;span style=&quot;color: #0000ff;&quot;&gt;catch&lt;/span&gt;&lt;span style=&quot;color: #000000;&quot;&gt; (IllegalAccessException e) {
+        e.printStackTrace();
+    } &lt;/span&gt;&lt;span style=&quot;color: #0000ff;&quot;&gt;catch&lt;/span&gt;&lt;span style=&quot;color: #000000;&quot;&gt; (InstantiationException e) {
+        e.printStackTrace();
+    }
+}
+
+&lt;/span&gt;&lt;span style=&quot;color: #0000ff;&quot;&gt;private&lt;/span&gt; &lt;span style=&quot;color: #0000ff;&quot;&gt;static&lt;/span&gt;&lt;span style=&quot;color: #000000;&quot;&gt; String getId(String cls) {
+    cls&lt;/span&gt;=cls.substring(cls.lastIndexOf(&quot;.&quot;)+1&lt;span style=&quot;color: #000000;&quot;&gt;);
+    cls&lt;/span&gt;= cls.toLowerCase().charAt(0)+cls.substring(1&lt;span style=&quot;color: #000000;&quot;&gt;);
+    &lt;/span&gt;&lt;span style=&quot;color: #0000ff;&quot;&gt;return&lt;/span&gt;&lt;span style=&quot;color: #000000;&quot;&gt; cls;
+}
+
+&lt;/span&gt;&lt;span style=&quot;color: #0000ff;&quot;&gt;private&lt;/span&gt; &lt;span style=&quot;color: #0000ff;&quot;&gt;static&lt;/span&gt; &lt;span style=&quot;color: #0000ff;&quot;&gt;void&lt;/span&gt;&lt;span style=&quot;color: #000000;&quot;&gt; getClZ(String pkg) {
+    &lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt;//&lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt; 获取url&lt;/span&gt;
+    URL url=&lt;span style=&quot;color: #000000;&quot;&gt;Thread.currentThread().getContextClassLoader().getResource(repStr(pkg));
+    String urlPath&lt;/span&gt;=&lt;span style=&quot;color: #000000;&quot;&gt;url.getFile();
+    &lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt;//&lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt;System.out.println(urlPath);&lt;/span&gt;
+    String[] subFileStrs=&lt;span style=&quot;color: #0000ff;&quot;&gt;new&lt;/span&gt;&lt;span style=&quot;color: #000000;&quot;&gt; File(urlPath).list();
+    &lt;/span&gt;&lt;span style=&quot;color: #0000ff;&quot;&gt;for&lt;/span&gt;&lt;span style=&quot;color: #000000;&quot;&gt;(String str:subFileStrs){
+        String subFilePath&lt;/span&gt;=urlPath+&quot;/&quot;+&lt;span style=&quot;color: #000000;&quot;&gt;str;
+        &lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt;//&lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt;System.out.println(subFilePath);&lt;/span&gt;
+        File subFile=&lt;span style=&quot;color: #0000ff;&quot;&gt;new&lt;/span&gt;&lt;span style=&quot;color: #000000;&quot;&gt; File(subFilePath);
+        &lt;/span&gt;&lt;span style=&quot;color: #0000ff;&quot;&gt;if&lt;/span&gt;&lt;span style=&quot;color: #000000;&quot;&gt; (subFile.isDirectory()){
+            &lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt;//&lt;/span&gt;&lt;span style=&quot;color: #008000;&quot;&gt;System.out.println(pkg+&quot;.&quot;+subFile.getName());&lt;/span&gt;
+            getClZ(pkg+&quot;.&quot;+&lt;span style=&quot;color: #000000;&quot;&gt;subFile.getName());
+        }&lt;/span&gt;&lt;span style=&quot;color: #0000ff;&quot;&gt;else&lt;/span&gt;&lt;span style=&quot;color: #000000;&quot;&gt;{
+            clz.add(pkg&lt;/span&gt;+&quot;.&quot;+&lt;span style=&quot;color: #000000;&quot;&gt;subFile.getName());
+        }
+    }
+}
+
+&lt;/span&gt;&lt;span style=&quot;color: #0000ff;&quot;&gt;private&lt;/span&gt; &lt;span style=&quot;color: #0000ff;&quot;&gt;static&lt;/span&gt;&lt;span style=&quot;color: #000000;&quot;&gt; String repStr(String str){
+    str&lt;/span&gt;=str.replace(&quot;.&quot;,&quot;/&quot;&lt;span style=&quot;color: #000000;&quot;&gt;);
+    &lt;/span&gt;&lt;span style=&quot;color: #0000ff;&quot;&gt;return&lt;/span&gt;&lt;span style=&quot;color: #000000;&quot;&gt; str;
+}
+</code></pre><p>}<br></p>
 <p>&nbsp;</p>
 <p><strong>七、Spring IOC 容器自动扫描管理bean</strong></p>
 <p>　　xml配置&lt;context:component-scan base-package=””/&gt;</p>
@@ -629,6 +797,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/dlh1234okok.github.io/2018/10/04/JS原生Ajax/" rel="prev" title="JS原生Ajax">
+                JS原生Ajax <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -709,7 +881,7 @@
               
                 <a href="/dlh1234okok.github.io/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -720,7 +892,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/dlh1234okok.github.io/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -791,7 +963,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站只有7.6k字</span>
+  <span class="post-count">博客全站只有14.1k字</span>
 </div>
         
 
