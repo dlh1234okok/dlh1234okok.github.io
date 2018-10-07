@@ -81,21 +81,19 @@
 
 
 
-<meta name="description" content="一、代理模式 　　1、代理模式的设计原则： 　　　　&amp;middot;代理类与委托类具有相似的行为 　　　　&amp;middot;代理类增强委托类的行为 　　2、代理模式实现的三要素： 　　　　代理角色、目标角色、共同行为 　　　　实现行为接口，持有目标对象的引用 &amp;nbsp; 　　3、静态代理和动态代理 　　　　1）静态代理 　　　　　　特点：程序运行前制作代理角色 　　　　　　　　　代理目标角色单一">
+<meta name="description" content="一、webSocket是什么 ​    webSocket是html5推出的一种新协议，和HTTP协议基本没有关系，但是为了兼容现有浏览器的握手规范，需要通过HTTP协议完成一部分握手，也可以说是HTTP协议的补充，两者之间有交集，但不是全部，可以用以下这张图理解HTTP和webSocket的关系  二、为什么需要webSocket ​    HTTP协议是无状态（协议对事务处理没有记忆能力），无">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Spring-AOP">
-<meta property="og:url" content="http://www.dlhblog.online/2018/10/04/Spring-AOP/index.html">
+<meta property="og:title" content="webSocket学习(1)">
+<meta property="og:url" content="http://www.dlhblog.online/2018/10/07/webSocket学习-1/index.html">
 <meta property="og:site_name" content="这夜景">
-<meta property="og:description" content="一、代理模式 　　1、代理模式的设计原则： 　　　　&amp;middot;代理类与委托类具有相似的行为 　　　　&amp;middot;代理类增强委托类的行为 　　2、代理模式实现的三要素： 　　　　代理角色、目标角色、共同行为 　　　　实现行为接口，持有目标对象的引用 &amp;nbsp; 　　3、静态代理和动态代理 　　　　1）静态代理 　　　　　　特点：程序运行前制作代理角色 　　　　　　　　　代理目标角色单一">
+<meta property="og:description" content="一、webSocket是什么 ​    webSocket是html5推出的一种新协议，和HTTP协议基本没有关系，但是为了兼容现有浏览器的握手规范，需要通过HTTP协议完成一部分握手，也可以说是HTTP协议的补充，两者之间有交集，但不是全部，可以用以下这张图理解HTTP和webSocket的关系  二、为什么需要webSocket ​    HTTP协议是无状态（协议对事务处理没有记忆能力），无">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180927225839932-957057191.png">
-<meta property="og:image" content="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180927230801472-134081809.png">
-<meta property="og:image" content="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180927231105496-1122978415.png">
-<meta property="og:updated_time" content="2018-10-04T10:36:29.911Z">
+<meta property="og:image" content="http://pg0l2q23d.bkt.clouddn.com/webSocket%E5%92%8CHTTP%E5%85%B3%E7%B3%BB.jpg">
+<meta property="og:updated_time" content="2018-10-07T08:48:34.249Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Spring-AOP">
-<meta name="twitter:description" content="一、代理模式 　　1、代理模式的设计原则： 　　　　&amp;middot;代理类与委托类具有相似的行为 　　　　&amp;middot;代理类增强委托类的行为 　　2、代理模式实现的三要素： 　　　　代理角色、目标角色、共同行为 　　　　实现行为接口，持有目标对象的引用 &amp;nbsp; 　　3、静态代理和动态代理 　　　　1）静态代理 　　　　　　特点：程序运行前制作代理角色 　　　　　　　　　代理目标角色单一">
-<meta name="twitter:image" content="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180927225839932-957057191.png">
+<meta name="twitter:title" content="webSocket学习(1)">
+<meta name="twitter:description" content="一、webSocket是什么 ​    webSocket是html5推出的一种新协议，和HTTP协议基本没有关系，但是为了兼容现有浏览器的握手规范，需要通过HTTP协议完成一部分握手，也可以说是HTTP协议的补充，两者之间有交集，但不是全部，可以用以下这张图理解HTTP和webSocket的关系  二、为什么需要webSocket ​    HTTP协议是无状态（协议对事务处理没有记忆能力），无">
+<meta name="twitter:image" content="http://pg0l2q23d.bkt.clouddn.com/webSocket%E5%92%8CHTTP%E5%85%B3%E7%B3%BB.jpg">
 
 
 
@@ -125,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://www.dlhblog.online/2018/10/04/Spring-AOP/"/>
+  <link rel="canonical" href="http://www.dlhblog.online/2018/10/07/webSocket学习-1/"/>
 
 
 
 
 
-  <title>Spring-AOP | 这夜景</title>
+  <title>webSocket学习(1) | 这夜景</title>
   
 
 
@@ -312,7 +310,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.dlhblog.online/dlh1234okok.github.io/2018/10/04/Spring-AOP/">
+    <link itemprop="mainEntityOfPage" href="http://www.dlhblog.online/dlh1234okok.github.io/2018/10/07/webSocket学习-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="li-hong">
@@ -329,7 +327,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Spring-AOP</h1>
+          <h1 class="post-title" itemprop="name headline">webSocket学习(1)</h1>
         
 
         <div class="post-meta">
@@ -341,8 +339,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-04T18:35:51+08:00">
-                2018-10-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-07T16:02:04+08:00">
+                2018-10-07
               </time>
             
 
@@ -364,8 +362,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/dlh1234okok.github.io/categories/Spring/" itemprop="url" rel="index">
-                    <span itemprop="name">Spring</span>
+                  <a href="/dlh1234okok.github.io/categories/webSocket/" itemprop="url" rel="index">
+                    <span itemprop="name">webSocket</span>
                   </a>
                 </span>
 
@@ -382,8 +380,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/dlh1234okok.github.io/2018/10/04/Spring-AOP/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/dlh1234okok.github.io/2018/10/04/Spring-AOP/" itemprop="commentsCount"></span>
+                <a href="/dlh1234okok.github.io/2018/10/07/webSocket学习-1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/dlh1234okok.github.io/2018/10/07/webSocket学习-1/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -410,7 +408,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  774
+                  1.1k
                 </span>
               
 
@@ -426,7 +424,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  4
                 </span>
               
             </div>
@@ -447,61 +445,24 @@
       
 
       
-        <p>一、代理模式</p>
-<p>　　1、<strong>代理模式的设计原则：</strong></p>
-<p>　　　　&middot;代理类与委托类具有相似的行为</p>
-<p>　　　　&middot;代理类增强委托类的行为</p>
-<p>　　<strong>2、代理模式实现的三要素：</strong></p>
-<p>　　　　代理角色、目标角色、共同行为</p>
-<p>　　　　实现行为接口，持有目标对象的引用</p>
-<p>&nbsp;</p>
-<p>　　3、静态代理和动态代理</p>
-<p>　　　　1）静态代理</p>
-<p>　　　　　　特点：程序运行前制作代理角色</p>
-<p>　　　　　　　　　代理目标角色单一</p>
-<p>　　　　　　　　　代理类数量无法控制</p>
-<p>　　　　2）动态代理</p>
-<p>　　　　　　程序运行期动态创建代理角色</p>
-<p>　　　　　　&middot;JDK动态代理，回调方式实现</p>
-<p>　　　　　　&middot;cglib动态代理，继承方式实现</p>
-<p>　　　　　<strong>区别：</strong></p>
-<p>　　　　　　　　JDK动态代理：委托类必须要有接口，制作过程较快，执行慢</p>
-<p>　　　　　　　　Cglib动态代理：委托类可以没有接口，继承的思维来实现相似性，制作代理过程比较慢，执行快</p>
-<p>&nbsp;</p>
-<p>二、AOP（面相切面编程）</p>
-<p>　　<strong>AOP的两种实现机制是JDK动态代理和cglib动态代理</strong></p>
-<p>　　　　AOP主要应用于日志记录，性能统计，安全控制，事务处理额等方面，<strong>实现公共行为的重复使用</strong></p>
-<p><strong>　　　　降低模块之间的耦合度，提高业务代码的聚合度（高内聚低耦合）</strong></p>
-<p><strong>　　　　提高代码的复用性</strong></p>
-<p><strong>　　　　提高系统的扩展性</strong></p>
-<p><strong>　　Aop基本概念</strong></p>
-<p>　　　　Joinpoint（连接点）：spring中指被拦截到的每一个方法</p>
-<p>　　　　Pointcut（切入点）：规定拦截哪些方法，对那些方法进行处理</p>
-<p>　　　　Advice（通知）：拦截到每一个连接点后要做的操作</p>
-<p>　　　　　　前置通知、返回通知、最终通知、异常通知、环绕通知</p>
-<p>　　　　Aspect（切面）：切入点与通知的结合</p>
-<p>　　　　Target（目标对象）：被代理的目标对象</p>
-<p>　　　　Weave（织入）</p>
-<p>　　　　Introduction（引入）</p>
-<p>&nbsp;</p>
-<p><strong>三、AOP注解实现</strong></p>
-<p>　　1、XML：引入命名空间，开启aop代理环境</p>
-<p>　　　　<img src="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180927225839932-957057191.png" alt=""></p>
-<p>　　2、Maven项目引入Aspect坐标</p>
-<p>　　3、创建切面类　　@Aspect定义切面类</p>
-<p>　　4、声明方法为切入点　　@Pointcut 匹配规则定义　execution</p>
-<p>　　5、创建通知方法</p>
-<div class="cnblogs_code"><br><pre><span style="color: #0000ff;">package</span><span style="color: #000000;"> com.shsxt02.proxy;<br><br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> org.aspectj.lang.ProceedingJoinPoint;<br></span><span style="color: #0000ff;">import</span> org.aspectj.lang.annotation.<em><span style="color: #000000;">;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> org.springframework.stereotype.Component;<br><br>@Aspect<br>@Component<br></span><span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> LogCut {<br><br>    @Pointcut(</span>“execution(</em> com.shsxt02.service..<em>.</em>(..))”<span style="color: #000000;">)<br>    </span><span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> cut() {<br>    }<br><br>    @After(value </span>= “cut()”<span style="color: #000000;">)<br>    </span><span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> before(){<br>        System.out.println(</span>“前置通知，目标方法执行前执行…”<span style="color: #000000;">);<br>    }<br><br>    @AfterReturning(value </span>= “cut()”<span style="color: #000000;">)<br>    </span><span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> afterReturn(){<br>        System.out.println(</span>“返回通知，方法正常结束后执行…”<span style="color: #000000;">);<br>    }<br><br>    @After(value </span>= “cut()”<span style="color: #000000;">)<br>    </span><span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> after(){<br>        System.out.println(</span>“最终通知，方法是否发生异常均会执行…”<span style="color: #000000;">);<br>    }<br><br>    @AfterThrowing(value </span>= “cut()”,throwing = “e”<span style="color: #000000;">)<br>    </span><span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> afterThrow(Exception e){<br>        System.out.println(</span>“异常通知，异常时执行…”+<span style="color: #000000;">e);<br>    }<br><br>    </span><span style="color: #008000;">//</span><span style="color: #008000;"> 环绕通知</span><br>    @Around(value = “cut()”<span style="color: #000000;">)<br>    </span><span style="color: #0000ff;">public</span> Object around(ProceedingJoinPoint  pjp) <span style="color: #0000ff;">throws</span><span style="color: #000000;"> Throwable {<br>        Object result</span>=<span style="color: #0000ff;">null</span><span style="color: #000000;">;<br>        System.out.println(</span>“环绕前置…”<span style="color: #000000;">);<br>        System.out.println(</span>“环绕通知…”<span style="color: #000000;">);<br>        System.out.println(</span>“方法签名”+<span style="color: #000000;">pjp.getSignature());<br>        System.out.println(</span>“目标对象”+<span style="color: #000000;">pjp.getTarget());<br>        System.out.println(</span>“种类”+<span style="color: #000000;">pjp.getKind());<br>        Object[] objects</span>=<span style="color: #000000;">pjp.getArgs();<br>        </span><span style="color: #0000ff;">for</span><span style="color: #000000;">(Object o:objects){<br>            System.out.println(</span>“参数”+<span style="color: #000000;">o);<br>        }<br>        result</span>= pjp.proceed(); <span style="color: #008000;">//</span><span style="color: #008000;"> 返回的目标对象</span><br>        System.out.println(“环绕后置…”<span style="color: #000000;">);<br>        </span><span style="color: #0000ff;">return</span><span style="color: #000000;"> result;<br>    }<br>}</span></pre><br></div>
-
-<p>&nbsp;</p>
-<p><strong>四、AOP XML配置实现</strong></p>
-<p><strong>　　<img src="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180927230801472-134081809.png" alt=""></strong></p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>五、AOP拦截注释</p>
-<p>　　<img src="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180927231105496-1122978415.png" alt=""></p>
-<p>&nbsp;</p>
-<p><strong>如果目标角色实现了接口，AOP有代理，返回的是代理对象，需要通过接口接收。</strong></p>
+        <p>一、webSocket是什么</p>
+<p>​    webSocket是html5推出的一种新协议，和HTTP协议基本没有关系，但是为了兼容现有浏览器的握手规范，需要通过HTTP协议完成一部分握手，也可以说是HTTP协议的补充，两者之间有交集，但不是全部，可以用以下这张图理解HTTP和webSocket的关系</p>
+<p><img src="http://pg0l2q23d.bkt.clouddn.com/webSocket%E5%92%8CHTTP%E5%85%B3%E7%B3%BB.jpg" alt="webSocket和HTTP关系"></p>
+<p>二、为什么需要webSocket</p>
+<p>​    HTTP协议是<strong>无状态</strong>（协议对事务处理没有记忆能力），<strong>无连接</strong>（一次请求即断开连接），<strong>单向的应用层协议</strong>（只能由客户端请求服务器，服务器无法主动向客户端发送消息）。</p>
+<p>​    在这种单向请求的特点在服务器状态持续发生变化时客户端想要获知就很麻烦，（可以使用Ajax的<strong>轮询</strong>或者<strong>长轮询</strong>实现），但是轮询效率低并且十分耗费资源（因为要持续不断的打开连接）</p>
+<p>​    在这种情况下，webSocket应运而生了，<strong>webSocket只需要建立一次连接就可以保持连接</strong>，进行持久通信，而且客户端和服务端都可以通过连接发送数据到另一方。</p>
+<p>​    在需要实时通信的需求下使用webSocket最好不过了</p>
+<p>对于webSocket的介绍就到这里，贴一篇关于webSocket原理的文章参考</p>
+<p><a href="https://www.cnblogs.com/fuqiang88/p/5956363.html" target="_blank" rel="noopener"></a></p>
+<p>三、通过Java实现webSocket通信的简易聊天室</p>
+<p>js代码（客户端）</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">%@</span> <span class="attr">page</span> <span class="attr">contentType</span>=<span class="string">"text/html;charset=UTF-8"</span> <span class="attr">language</span>=<span class="string">"java"</span> %&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>主页<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">id</span>=<span class="string">"userMsg"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">"send()"</span>&gt;</span>发送消息<span class="tag">&lt;/<span class="name">button</span>&gt;</span><span class="tag">&lt;/<span class="name">br</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">"closeWebSocket()"</span>&gt;</span>关闭连接<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">"clearMsg()"</span>&gt;</span>清屏<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"msg"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"per"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"statics/jquery-3.3.1.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">%String</span> <span class="attr">nick</span> = <span class="string">request.getParameter(</span>"<span class="attr">nick</span>");%&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="comment">// 页面加载完毕没有登录则跳转到登录页面</span></span></span><br><span class="line"><span class="javascript">    $(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> nick = <span class="xml"><span class="tag">&lt;<span class="name">%=nick%</span>&gt;</span>;</span></span></span><br><span class="line"><span class="javascript">        <span class="keyword">if</span> (nick==<span class="literal">null</span>)&#123;</span></span><br><span class="line"><span class="javascript">            <span class="built_in">window</span>.location.href=<span class="string">"login.jsp"</span>;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    &#125;);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> webSocket = <span class="literal">null</span>;</span></span><br><span class="line"><span class="javascript">    <span class="comment">// 判断浏览器是否支持webSocket</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">if</span> (<span class="string">"WebSocket"</span> <span class="keyword">in</span> <span class="built_in">window</span>)&#123;</span></span><br><span class="line"><span class="javascript">        webSocket = <span class="keyword">new</span> WebSocket(<span class="string">"ws://192.168.1.139:8080/chat"</span>);</span></span><br><span class="line"><span class="javascript">    &#125;<span class="keyword">else</span>&#123;</span></span><br><span class="line"><span class="javascript">        alert(<span class="string">"浏览器不支持webSocket"</span>)</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="javascript">    <span class="comment">// 连接发生错误的回调方法</span></span></span><br><span class="line"><span class="javascript">    webSocket.onerror = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        setMsg(<span class="string">"发生错误"</span>)</span></span><br><span class="line"><span class="undefined">    &#125;;</span></span><br><span class="line"><span class="javascript">    <span class="comment">// 建立连接后要做的事情</span></span></span><br><span class="line"><span class="javascript">    webSocket.onopen = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="undefined">        addUser();</span></span><br><span class="line"><span class="undefined">    &#125;;</span></span><br><span class="line"><span class="javascript">    <span class="comment">// 服务器发送过来的消息</span></span></span><br><span class="line"><span class="javascript">    webSocket.onmessage = <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span></span><br><span class="line"><span class="undefined">        setMsg(event.data);</span></span><br><span class="line"><span class="undefined">    &#125;;</span></span><br><span class="line"><span class="javascript">    <span class="comment">// 关闭连接</span></span></span><br><span class="line"><span class="javascript">    webSocket.onclose = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="undefined">        subUser();</span></span><br><span class="line"><span class="undefined">    &#125;;</span></span><br><span class="line"><span class="javascript">    <span class="comment">// 当浏览器关闭时关闭连接，防止后台报错</span></span></span><br><span class="line"><span class="javascript">    <span class="built_in">window</span>.onbeforeunload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="undefined">        closeWebSocket();</span></span><br><span class="line"><span class="undefined">    &#125;;</span></span><br><span class="line"><span class="javascript">    <span class="comment">// 将信息显示在页面</span></span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">setMsg</span>(<span class="params">msg</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">        $(<span class="string">'#msg'</span>).append(msg+<span class="string">"&lt;/br&gt;"</span>);</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">addUser</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        webSocket.send(<span class="string">'&lt;%=nick%&gt;'</span>+<span class="string">"加入聊天室"</span>);</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">subUser</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        webSocket.send(<span class="string">'&lt;%=nick%&gt;'</span>+<span class="string">"离开聊天室"</span>);</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="javascript">    <span class="comment">// 关闭webSocket连接</span></span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">closeWebSocket</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="undefined">        webSocket.close();</span></span><br><span class="line"><span class="javascript">        <span class="built_in">window</span>.location.href=<span class="string">"login.jsp"</span>;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="javascript">    <span class="comment">// 发送消息</span></span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">send</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> userMsg= $(<span class="string">'#userMsg'</span>).val();</span></span><br><span class="line"><span class="javascript">        webSocket.send(<span class="string">'&lt;%=nick%&gt;'</span>+<span class="string">"说："</span>+userMsg);</span></span><br><span class="line"><span class="javascript">        $(<span class="string">'#userMsg'</span>).val(<span class="string">""</span>);</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">clearMsg</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        $(<span class="string">'#msg'</span>).empty();</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>java代码（服务端）</p>
+<p>​    在编写代码之前需要引入javaee标准</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>javax<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>javaee-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">version</span>&gt;</span>7.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.shsxt.websocket;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.websocket.*;</span><br><span class="line"><span class="keyword">import</span> javax.websocket.server.ServerEndpoint;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.CopyOnWriteArraySet;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 建立一个webSocket的端点，要和js代码中对应</span></span><br><span class="line"><span class="meta">@ServerEndpoint</span>(<span class="string">"/chat"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ChatServer</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 与客户端之间连接的会话，通过session向和客户端发送消息</span></span><br><span class="line">    <span class="keyword">private</span> Session session;</span><br><span class="line">    <span class="comment">// concurrent包线程安全的set，用来存放chatServer对象</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> CopyOnWriteArraySet&lt;ChatServer&gt; set = <span class="keyword">new</span> CopyOnWriteArraySet&lt;&gt;();</span><br><span class="line">    <span class="comment">// 用来计算当前在线人数</span></span><br><span class="line">    <span class="keyword">private</span> Integer onlineNum = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 建立连接后要做的事情</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@OnOpen</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onOpen</span><span class="params">(Session session)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.session = session;</span><br><span class="line">        set.add(<span class="keyword">this</span>); <span class="comment">//将当前登录对象放入集合</span></span><br><span class="line">        System.out.println(<span class="string">"webSocket连接已经建立.."</span>);</span><br><span class="line">        addOnline();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 从客户端收到的消息</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@OnMessage</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onMessage</span><span class="params">(String msg,Session session)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.session = session;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">for</span> (ChatServer chats:set)&#123;</span><br><span class="line">                chats.session.getBasicRemote().sendText(msg);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 断开连接</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@OnClose</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClose</span><span class="params">(Session session)</span></span>&#123;</span><br><span class="line">        set.remove(<span class="keyword">this</span>);</span><br><span class="line">        System.out.println(<span class="string">"断开连接..."</span>);</span><br><span class="line">        subOnline();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 发生异常调用</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@OnError</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">(Throwable e)</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"发生异常..."</span>);</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">addOnline</span><span class="params">()</span></span>&#123;</span><br><span class="line">        onlineNum++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">subOnline</span><span class="params">()</span></span>&#123;</span><br><span class="line">        onlineNum--;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 获取在线人数</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> Integer <span class="title">getOnline</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> onlineNum;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>以上内容大部分源于网络</p>
 
       
     </div>
@@ -566,8 +527,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/dlh1234okok.github.io/2018/10/04/Spring-定时器和邮件发送/" rel="next" title="Spring-定时器和邮件发送">
-                <i class="fa fa-chevron-left"></i> Spring-定时器和邮件发送
+              <a href="/dlh1234okok.github.io/2018/10/04/JS原生Ajax/" rel="next" title="JS原生Ajax">
+                <i class="fa fa-chevron-left"></i> JS原生Ajax
               </a>
             
           </div>
@@ -576,8 +537,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/dlh1234okok.github.io/2018/10/04/Spring-IoC/" rel="prev" title="Spring-IoC">
-                Spring-IoC <i class="fa fa-chevron-right"></i>
+              <a href="/dlh1234okok.github.io/2018/10/07/Ajax轮询和长轮询/" rel="prev" title="Ajax轮询和长轮询">
+                Ajax轮询和长轮询 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
