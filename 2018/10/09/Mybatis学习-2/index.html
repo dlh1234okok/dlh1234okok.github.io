@@ -81,26 +81,17 @@
 
 
 
-<meta name="description" content="一、XMLHTTPRequest　　Ajax技术核心是XMLHTTPRequest对象（简称XHR），是由微软首先引入的一个特性，其他浏览器提供商后来都提供了相同的实现。在XHR出现之前，Ajax式的通信必须借助一些手段来实现，大多数是使用隐藏的框架或内嵌框架。　　Ajax，是Asynchronout JavaScript+XML的简写。这种技术能够向服务器请求额外的数据而无需卸载/刷新页面，会带">
+<meta name="description" content="一、增删改查 ​    需要进行增删改查操作时，需要在映射文件中配置不同的标签，有常用参数parameterType，resultType等。除了查询操作时需要配置返回结果类型（resultType）标签，其他三种操作都不需要添加。 ​    参数类型（parameterType）有：基本数据类型,字符串,map,java bean,list等 ​    返回结果类型（resultType）有：基">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JS原生Ajax">
-<meta property="og:url" content="http://www.dlhblog.online/2018/10/04/JS原生Ajax/index.html">
+<meta property="og:title" content="Mybatis学习(2)-CRUD操作..">
+<meta property="og:url" content="http://www.dlhblog.online/2018/10/09/Mybatis学习-2/index.html">
 <meta property="og:site_name" content="这夜景">
-<meta property="og:description" content="一、XMLHTTPRequest　　Ajax技术核心是XMLHTTPRequest对象（简称XHR），是由微软首先引入的一个特性，其他浏览器提供商后来都提供了相同的实现。在XHR出现之前，Ajax式的通信必须借助一些手段来实现，大多数是使用隐藏的框架或内嵌框架。　　Ajax，是Asynchronout JavaScript+XML的简写。这种技术能够向服务器请求额外的数据而无需卸载/刷新页面，会带">
+<meta property="og:description" content="一、增删改查 ​    需要进行增删改查操作时，需要在映射文件中配置不同的标签，有常用参数parameterType，resultType等。除了查询操作时需要配置返回结果类型（resultType）标签，其他三种操作都不需要添加。 ​    参数类型（parameterType）有：基本数据类型,字符串,map,java bean,list等 ​    返回结果类型（resultType）有：基">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180905003920647-1826035439.png">
-<meta property="og:image" content="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180905004456221-1111928088.png">
-<meta property="og:image" content="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180905004653948-1534573078.png">
-<meta property="og:image" content="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180905004847155-333519007.png">
-<meta property="og:image" content="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180905005202926-990213462.png">
-<meta property="og:image" content="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180905005318012-2003994204.png">
-<meta property="og:image" content="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180905005923385-1376951188.png">
-<meta property="og:image" content="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180905010106749-1235012049.png">
-<meta property="og:updated_time" content="2018-10-04T10:52:16.708Z">
+<meta property="og:updated_time" content="2018-10-09T12:18:11.076Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JS原生Ajax">
-<meta name="twitter:description" content="一、XMLHTTPRequest　　Ajax技术核心是XMLHTTPRequest对象（简称XHR），是由微软首先引入的一个特性，其他浏览器提供商后来都提供了相同的实现。在XHR出现之前，Ajax式的通信必须借助一些手段来实现，大多数是使用隐藏的框架或内嵌框架。　　Ajax，是Asynchronout JavaScript+XML的简写。这种技术能够向服务器请求额外的数据而无需卸载/刷新页面，会带">
-<meta name="twitter:image" content="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180905003920647-1826035439.png">
+<meta name="twitter:title" content="Mybatis学习(2)-CRUD操作..">
+<meta name="twitter:description" content="一、增删改查 ​    需要进行增删改查操作时，需要在映射文件中配置不同的标签，有常用参数parameterType，resultType等。除了查询操作时需要配置返回结果类型（resultType）标签，其他三种操作都不需要添加。 ​    参数类型（parameterType）有：基本数据类型,字符串,map,java bean,list等 ​    返回结果类型（resultType）有：基">
 
 
 
@@ -130,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://www.dlhblog.online/2018/10/04/JS原生Ajax/"/>
+  <link rel="canonical" href="http://www.dlhblog.online/2018/10/09/Mybatis学习-2/"/>
 
 
 
 
 
-  <title>JS原生Ajax | 这夜景</title>
+  <title>Mybatis学习(2)-CRUD操作.. | 这夜景</title>
   
 
 
@@ -317,7 +308,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.dlhblog.online/dlh1234okok.github.io/2018/10/04/JS原生Ajax/">
+    <link itemprop="mainEntityOfPage" href="http://www.dlhblog.online/dlh1234okok.github.io/2018/10/09/Mybatis学习-2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="li-hong">
@@ -334,7 +325,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JS原生Ajax</h1>
+          <h1 class="post-title" itemprop="name headline">Mybatis学习(2)-CRUD操作..</h1>
         
 
         <div class="post-meta">
@@ -346,8 +337,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-04T18:45:25+08:00">
-                2018-10-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-09T18:41:48+08:00">
+                2018-10-09
               </time>
             
 
@@ -369,8 +360,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/dlh1234okok.github.io/categories/JavaWeb/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaWeb</span>
+                  <a href="/dlh1234okok.github.io/categories/Mybatis/" itemprop="url" rel="index">
+                    <span itemprop="name">Mybatis</span>
                   </a>
                 </span>
 
@@ -387,8 +378,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/dlh1234okok.github.io/2018/10/04/JS原生Ajax/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/dlh1234okok.github.io/2018/10/04/JS原生Ajax/" itemprop="commentsCount"></span>
+                <a href="/dlh1234okok.github.io/2018/10/09/Mybatis学习-2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/dlh1234okok.github.io/2018/10/09/Mybatis学习-2/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -415,7 +406,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1k
+                  1.4k
                 </span>
               
 
@@ -431,7 +422,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4
+                  6
                 </span>
               
             </div>
@@ -452,7 +443,66 @@
       
 
       
-        <item><br><br>一、XMLHTTPRequest<br><br>　　Ajax技术核心是XMLHTTPRequest对象（简称XHR），是由微软首先引入的一个特性，其他浏览器提供商后来都提供了相同的实现。在XHR出现之前，Ajax式的通信必须借助一些手段来实现，大多数是使用隐藏的框架或内嵌框架。<br><br>　　Ajax，是Asynchronout JavaScript+XML的简写。这种技术能够向服务器请求额外的数据而无需卸载/刷新页面，会带来更好的用户体验。<br><br>　　1、支持原生XHR对象的浏览器创建XHR对象可以直接实例化XMLHTTPRequest。<br><br>　　　　<img src="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180905003920647-1826035439.png" alt=""><br><br>　　2、在使用XHR对象时，先必须调用<strong>open()</strong>方法，它接收三个参数：要发送的请求类型（get/post）、请求的URL和表示是否异步(async)。open()方法并不会真正发送请求，而只是启动一个请求以备发送。<br><br>　　3、通过<strong>send()</strong>方法进行发送请求，send()方法接受一个参数，作为请求主体发送的数据。如果不需要必须填null。执行send()方法后请求就会发送到服务器上。<br><br>　　4、请求发送到服务端收到响应后，响应的数据会自动填充XHR对象的属性，一共有四个属性：<br><br>　　　　<img src="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180905004456221-1111928088.png" alt=""><br><br>&nbsp;<br><br>　　5、接受响应之后，第一步检查status属性，以确定响应已经成功返回，有如下的状态代码：<br><br>　　　　<img src="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180905004653948-1534573078.png" alt=""><br><br>　　6、判断http状态值以确定响应是否成功返回<br><br>　　　　<img src="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180905004847155-333519007.png" alt=""><br><br>　　7、当使用异步调用的时候，检测<strong>readyState</strong>属性，每当readyState属性改变时，触发<strong>readyStatechange</strong>事件。这个属性共有五个值：<br><br>　　　　<img src="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180905005202926-990213462.png" alt=""><br><br>　　　　<img src="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180905005318012-2003994204.png" alt=""><br><br>&nbsp;<br><br>&nbsp;二、GET与POST<br><br>　　1、GET请求<br><br>　　　　通过URL后的问号给服务器传递键值对数据，服务器接收到返回响应数据。特殊字符传参产生的问题可以使用<strong>encodeURIComponent()</strong>进行编码处理，中文字符的返回及传参，可以将页面保存和设置为utf-8即可，AJAX返回的数据为UTF-8。<br><br>　　2、POST请求<br><br>　　　　通过发送POST请求的数据，不会跟在URL后面，而是通过send()方法向服务器提交数据<br><br>　　　　　　<img src="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180905005923385-1376951188.png" alt=""><br><br>&nbsp;<br><br>　　　　向服务器发送POST请求由于解析机制的原因，需要进行特别的处理。因为POST请求和Web表单提交是不同的的，需要使用XHR来模仿表单提交。<br><br>　　　　　　<img src="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180905010106749-1235012049.png" alt=""><br><br>　　　　从性能上来讲POST请求比GET请求消耗更多一些，用相同数据比较，GET请求最多比POST请求快两倍<br><br>&nbsp;<br><br>三、封装Ajax<br><br><div class="cnblogs_code"><br><pre>&lt;script type=”text/javascript”&gt;<br><span style="color: #0000ff;">var</span> obj=<span style="color: #000000;">{<br>    url:</span>“user”<span style="color: #000000;">,<br>    method:</span>“post”<span style="color: #000000;">,<br>    data:{name:</span>“zs”,age:18<span style="color: #000000;">},<br>    async:</span><span style="color: #0000ff;">true</span><span style="color: #000000;">,<br>    success:</span><span style="color: #0000ff;">function</span><span style="color: #000000;">(result){<br>        console.log(result);<br>        console.log(JSON.parse(result))<br>    },<br>    error:</span><span style="color: #0000ff;">function</span><span style="color: #000000;">(result){<br>        console.log(result);<br>    }<br>}<br>ajax(obj)<br><br></span><span style="color: #0000ff;">function</span><span style="color: #000000;"> ajax(obj){<br>​    </span><span style="color: #008000;">//</span><span style="color: #008000;">得到XMLHTTPRequest对象</span><br>​    <span style="color: #0000ff;">var</span> xhr=<span style="color: #0000ff;">new</span><span style="color: #000000;"> XMLHttpRequest();<br>​    </span><span style="color: #008000;">//</span><span style="color: #008000;">将参数格式化</span><br>​    obj.data=<span style="color: #000000;">params(obj.data);<br>​    </span><span style="color: #008000;">//</span><span style="color: #008000;">判断请求方式</span><br>​    <span style="color: #0000ff;">if</span>(obj.method.toUpperCase()==”GET”<span style="color: #000000;">){<br>​        obj.url</span>+=(obj.url.indexOf(“?”)==-1)?”?”+obj.data:”&amp;”+<span style="color: #000000;">obj.data;<br>​        </span><span style="color: #008000;">//</span><span style="color: #008000;">open()方法：请求方式/请求路径/是否异步</span><br><span style="color: #000000;">        xhr.open(obj.method,obj.url,obj.async);<br>​        </span><span style="color: #008000;">//</span><span style="color: #008000;">发送请求</span><br>​        xhr.send(<span style="color: #0000ff;">null</span><span style="color: #000000;">);<br>​    }</span><span style="color: #0000ff;">else</span>{ <span style="color: #008000;">//</span><span style="color: #008000;"> POST请求</span><br><span style="color: #000000;">        xhr.open(obj.method,obj.url,obj.async);<br>​        </span><span style="color: #008000;">//</span><span style="color: #008000;">模拟表单提交</span><br>​        xhr.setRequestHeader(“Content-Type”,”application/x-www-form-urlencode”<span style="color: #000000;">);<br>​        </span><span style="color: #008000;">//</span><span style="color: #008000;">发送请求</span><br><span style="color: #000000;">        xhr.send(obj.data);<br>​    }<br>​    </span><span style="color: #008000;">//</span><span style="color: #008000;">判断是否是异步请求</span><br>​    <span style="color: #0000ff;">if</span>(obj.async){ <span style="color: #008000;">//</span><span style="color: #008000;">异步请求</span><br>​        <span style="color: #008000;">//</span><span style="color: #008000;">判断响应是否完全响应</span><br>​        xhr.onreadystatechange=<span style="color: #0000ff;">function</span><span style="color: #000000;">(){<br>​            </span><span style="color: #0000ff;">if</span>(xhr.readyState==4<span style="color: #000000;">){<br>​                callback();<br>​            }<br>​        }<br>​    }</span><span style="color: #0000ff;">else</span><span style="color: #000000;">{<br>​        callback();<br>​    }<br><br>    </span><span style="color: #008000;">//</span><span style="color: #008000;">回调函数</span><br>    <span style="color: #0000ff;">function</span><span style="color: #000000;"> callback(){<br>        </span><span style="color: #0000ff;">if</span>(xhr.status==200<span style="color: #000000;">){<br>            </span><span style="color: #008000;">//</span><span style="color: #008000;">回调函数</span><br><span style="color: #000000;">            obj.success(xhr.responseText);<br>​        }</span><span style="color: #0000ff;">else</span><span style="color: #000000;">{<br>​            obj.error(</span>“请求失败！错误状态码”+xhr.status+”,错误原因”+<span style="color: #000000;">xhr.statusText);<br>​        }<br>​    }<br>}<br></span><span style="color: #008000;">/<em></em></span><span style="color: #008000;"><br> <em> 将json格式的字符串转换成普通的参数拼接<br>    </em></span><span style="color: #008000;">/</span><br>    <span style="color: #0000ff;">function</span><span style="color: #000000;"> params(data){<br>    </span><span style="color: #0000ff;">var</span> arr=<span style="color: #000000;">[];<br>    </span><span style="color: #0000ff;">if</span>(data!=<span style="color: #0000ff;">null</span> &amp;&amp; data !=””<span style="color: #000000;">){<br>    ​    </span><span style="color: #0000ff;">for</span>(<span style="color: #0000ff;">var</span> d <span style="color: #0000ff;">in</span><span style="color: #000000;"> data){<br>    ​        console.log(d</span>+” “+<span style="color: #000000;">data[d]);<br>    ​        </span><span style="color: #0000ff;">var</span> name=<span style="color: #000000;">encodeURIComponent(d);<br>    ​        </span><span style="color: #0000ff;">var</span> value=<span style="color: #000000;">encodeURIComponent(data[d]);<br><br>            arr.push(name</span>+”=”+<span style="color: #000000;">value);<br>        }<br>        </span><span style="color: #0000ff;">var</span> param=arr.join(“&amp;”<span style="color: #000000;">);<br>        </span><span style="color: #0000ff;">return</span><span style="color: #000000;"> param;<br>    }<br>    </span><span style="color: #0000ff;">return</span> <span style="color: #0000ff;">null</span><span style="color: #000000;">;<br>    }<br>    </span>&lt;/script&gt;</pre><br>    </div><br><br>&nbsp;<br><br>　　&nbsp;同步：<br><br>　　　　提交请求–&gt;等待服务器处理–&gt;处理完毕返回这个期间客户端浏览器不能干的事，当前只能做一件事。<br><br>　　异步：<br><br>　　　　请求通过事件触发–&gt;服务器处理（这时浏览器仍然可以做其他事情）–&gt;处理完毕。可以同时做多件事情<br><br>&nbsp;<br><br>四、JQuery封装的AJax<br><br>　　$.ajax(){}<br><br>　　$.get(){}<br><br>　　$.getJson(){}<br><br>　　$.post(){}<br></item>
+        <p><strong>一、增删改查</strong></p>
+<p>​    需要进行增删改查操作时，需要在映射文件中配置不同的标签，有常用参数parameterType，resultType等。除了查询操作时需要配置返回结果类型（resultType）标签，其他三种操作都不需要添加。</p>
+<p>​    参数类型（parameterType）有：基本数据类型,字符串,map,java bean,list等</p>
+<p>​    返回结果类型（resultType）有：基本数据类型,字符串,map,java bean,list等</p>
+<p>1、查询操作（select）</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;select id="queryMapById" parameterType="int" resultType="map"&gt;</span><br><span class="line">   <span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">user</span> <span class="keyword">where</span> userId=#&#123;userId&#125;</span><br><span class="line">&lt;/<span class="keyword">select</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>2、添加操作（insert）</p>
+<p>（1）添加不返回主键</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--添加不返回主键--&gt;</span><br><span class="line">    &lt;insert id="addUser" parameterType="user"&gt;</span><br><span class="line">        <span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">user</span> (userName, userPwd, userNick) <span class="keyword">values</span> (#&#123;userName&#125;,#&#123;userPwd&#125;,#&#123;userNick&#125;)</span><br><span class="line">    &lt;/<span class="keyword">insert</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>（2）添加返回主键（这里使用的是mysql）</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--添加返回主键1--&gt;</span><br><span class="line">    &lt;insert id="addUserHasKey" parameterType="user"&gt;</span><br><span class="line">        &lt;selectKey keyProperty="userId" order="AFTER" resultType="int"&gt;</span><br><span class="line">            <span class="keyword">select</span> <span class="keyword">LAST_INSERT_ID</span>() <span class="keyword">as</span> <span class="keyword">id</span></span><br><span class="line">        &lt;/selectKey&gt;</span><br><span class="line">        <span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">user</span> (userName, userPwd, userNick) <span class="keyword">values</span> (#&#123;userName&#125;,#&#123;userPwd&#125;,#&#123;userNick&#125;)</span><br><span class="line">    &lt;/<span class="keyword">insert</span>&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--添加返回主键2 推荐--&gt;</span><br><span class="line">    &lt;insert id="addUserHasKey2" parameterType="user" useGeneratedKeys="true" keyProperty="userId"&gt;</span><br><span class="line">        <span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">user</span> (userName, userPwd, userNick) <span class="keyword">values</span> (#&#123;userName&#125;,#&#123;userPwd&#125;,#&#123;userNick&#125;)</span><br><span class="line">    &lt;/<span class="keyword">insert</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>​    useGeneratedKeys:使用自动生成key</p>
+<p>​    keyProperty:数据库中主键的名字</p>
+<p>​    <strong>注意：mapper接口返回的依然是受影响的行数，但是主键已经赋值到实体类对象的id中了</strong></p>
+<p>（3）批量添加</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--批量添加--&gt;</span><br><span class="line">    &lt;insert id="addUserBatch" parameterType="list"&gt;</span><br><span class="line">        <span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">user</span> (userName, userPwd, userNick) <span class="keyword">values</span></span><br><span class="line">        &lt;foreach collection=<span class="string">"list"</span> item=<span class="string">"item"</span> separator=<span class="string">","</span>&gt;</span><br><span class="line">         (#&#123;item.userName&#125;,#&#123;item.userPwd&#125;,#&#123;item.userNick&#125;)</span><br><span class="line">        &lt;/foreach&gt;</span><br><span class="line">    &lt;/<span class="keyword">insert</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>3、删除操作（delete）</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--删除--&gt;</span><br><span class="line">    &lt;delete id="deleteUser" parameterType="int"&gt;</span><br><span class="line">        <span class="keyword">delete</span> <span class="keyword">from</span> <span class="keyword">user</span> <span class="keyword">where</span> userId=#&#123;userId&#125;</span><br><span class="line">    &lt;/<span class="keyword">delete</span>&gt;</span><br><span class="line">    &lt;!<span class="comment">--批量删除--&gt;</span></span><br><span class="line">    &lt;<span class="keyword">delete</span> <span class="keyword">id</span>=<span class="string">"deleteUserBatch"</span> parameterType=<span class="string">"list"</span>&gt;</span><br><span class="line">        <span class="keyword">delete</span> <span class="keyword">from</span> <span class="keyword">user</span> <span class="keyword">where</span> userId <span class="keyword">in</span>(</span><br><span class="line">          &lt;foreach collection=<span class="string">"list"</span> item=<span class="string">"item"</span> separator=<span class="string">","</span>&gt;</span><br><span class="line">              #&#123;item&#125;</span><br><span class="line">          &lt;/foreach&gt;</span><br><span class="line">        )</span><br><span class="line">    &lt;/<span class="keyword">delete</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>4、更新操作（update）</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--更新--&gt;</span><br><span class="line">    &lt;update id="updateUser" parameterType="user"&gt;</span><br><span class="line">        <span class="keyword">update</span> <span class="keyword">user</span> <span class="keyword">set</span> userPwd=#&#123;userPwd&#125; <span class="keyword">where</span> userId=#&#123;userId&#125;</span><br><span class="line">    &lt;/<span class="keyword">update</span>&gt;</span><br><span class="line">    &lt;!<span class="comment">--批量更新--&gt;</span></span><br><span class="line">    &lt;<span class="keyword">update</span> <span class="keyword">id</span>=<span class="string">"updateUserBatch"</span> parameterType=<span class="string">"int"</span>&gt;</span><br><span class="line">        <span class="keyword">update</span> <span class="keyword">user</span> <span class="keyword">set</span> userPwd=<span class="string">"8888"</span> <span class="keyword">where</span> userId <span class="keyword">in</span> (</span><br><span class="line">          &lt;foreach collection=<span class="string">"array"</span> item=<span class="string">"item"</span> separator=<span class="string">","</span>&gt;</span><br><span class="line">              #&#123;item&#125;</span><br><span class="line">          &lt;/foreach&gt;</span><br><span class="line">        )</span><br><span class="line">    &lt;/<span class="keyword">update</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>二、使用sql片段</p>
+<p>​    发现在编写sql时，有很多重复的语句或者语段，为了复用这些语句，可以编写sql语句段</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--sql片段--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">sql</span> <span class="attr">id</span>=<span class="string">"base"</span>&gt;</span></span><br><span class="line">        user (userName, userPwd, userNick)</span><br><span class="line">    <span class="tag">&lt;/<span class="name">sql</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>然后可以在需要使用这段语句的地方使用“include”引用，如：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--添加返回主键2--&gt;</span><br><span class="line">    &lt;insert id="addUserHasKey2" parameterType="user" useGeneratedKeys="true" keyProperty="userId"&gt;</span><br><span class="line">        <span class="keyword">insert</span> <span class="keyword">into</span> &lt;<span class="keyword">include</span> refid=<span class="string">"base"</span>/&gt; <span class="keyword">values</span> (#&#123;userName&#125;,#&#123;userPwd&#125;,#&#123;userNick&#125;)</span><br><span class="line">    &lt;/<span class="keyword">insert</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>三、#{}和${}的区别</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">user</span> <span class="keyword">where</span> <span class="keyword">name</span> = #&#123;<span class="keyword">name</span>&#125;; </span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">user</span> <span class="keyword">where</span> <span class="keyword">name</span> = <span class="string">'$&#123;name&#125;'</span>;</span><br></pre></td></tr></table></figure>
+<p>#{}在动态解析时，会解析成一个参数占位符?，所以解析之后的语句是：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">user</span> <span class="keyword">where</span> <span class="keyword">name</span> = ?;</span><br></pre></td></tr></table></figure>
+<p>${}在动态解析时，会将我们填充的参数当做字符串的形式填充到语句中，结果是：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">user</span> <span class="keyword">where</span> <span class="keyword">name</span> = <span class="string">"zhangsan"</span>;</span><br></pre></td></tr></table></figure>
+<p><strong>#{}能够很大程度防止sql注入，而${}不能；${}方式一般用于插入一个不改变的字符串，比如order by ${type}，或是在传入表名时。一般我们尽量使用#{}的方式</strong>。</p>
+<p>四、resultMap</p>
+<p>​    当数据库中字段名和对应java bean中的变量名不同时，总是需要在sql语句中使用as取别名来将查询出来的字段名转换为和java bean中的相同。此时使用<strong>resultMap可以将数据库中查询出来的结果自动映射成java bean</strong>。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">id</span>=<span class="string">"resMap"</span> <span class="attr">type</span>=<span class="string">"user"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span> <span class="attr">column</span>=<span class="string">"userId"</span> <span class="attr">property</span>=<span class="string">"userId"</span>/&gt;</span> <span class="comment">&lt;!--主键--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"userName"</span> <span class="attr">property</span>=<span class="string">"userName"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"userPwd"</span> <span class="attr">property</span>=<span class="string">"userPwd"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"userNick"</span> <span class="attr">property</span>=<span class="string">"userNick"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>​    type：java bean的别名</p>
+<p>​    column：数据库中的字段名</p>
+<p>​    property：java bean中的变量名</p>
+<p>因为我在数据库中的字段名和java中的变量名取的是相同的，所以写的也一样，这里只做一个演示</p>
+<p>将resultType替换resultMap，值和id对应</p>
+<p>五、mapper接口代理</p>
+<p>​    遵循mybatis开发规范，mybatis框架可以自动生成mapper接口对象</p>
+<p>​    <strong>1、mapper.xml中namespace等于接口类全限定名</strong></p>
+<p>​    <strong>2、mapper.java接口中方法名必须与mapper.xml中statement id一致</strong></p>
+<p>​    <strong>3、接口中输入参数类型必须与parameterType参数类型一致</strong></p>
+<p>​    <strong>4、接口中方法的返回值类型必须与映射文件中对应返回值类型一致</strong></p>
+<p>​    <strong>非集成环境：接口名与映射文件名称一致，映射文件与接口处于同一个包中</strong></p>
+<p>此时可以通过getMapper()方法传入接口的class对象返回接口的对象，所以测试代码可以这么写：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test01</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    InputStream is = Resources.getResourceAsStream(<span class="string">"mybatis.xml"</span>);</span><br><span class="line">    SqlSessionFactory sessionFactory = <span class="keyword">new</span> SqlSessionFactoryBuilder().build(is);</span><br><span class="line">    SqlSession sqlSession = sessionFactory.openSession();</span><br><span class="line">    UserMapper userMapper = sqlSession.getMapper(UserMapper.class);</span><br><span class="line">    System.out.println(userMapper.queryMapById(<span class="number">1</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>六、动态sql</p>
+<p>mybatis的强大特性就是它的动态sql，动态sql顾名思义就是随着传入的参数动态产生不同的sql。</p>
+<p><strong>1、if条件判断</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;select id="queryUsersByName" parameterType="string" resultType="user"&gt;</span><br><span class="line">        <span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">user</span> <span class="keyword">where</span> <span class="number">1</span>=<span class="number">1</span></span><br><span class="line">        &lt;<span class="keyword">if</span> <span class="keyword">test</span>=<span class="string">"null!=userName and ''!=userName"</span>&gt;</span><br><span class="line">            <span class="keyword">and</span> userName <span class="keyword">like</span> <span class="keyword">concat</span>(<span class="string">'%'</span>,#&#123;userName&#125;,<span class="string">'%'</span>)</span><br><span class="line">        &lt;/<span class="keyword">if</span>&gt;</span><br><span class="line">    &lt;/<span class="keyword">select</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>​    当使用动态sql时，为了防止sql语句结构不当，所以加上where 1=1。在段代码中只有当if中的条件成立时，才会拼接上其中的代码。</p>
+<p><strong>2、choose when otherwise</strong></p>
+<p>​    这个类似于java中的switch-case-default</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;select id="queryUserByNick" parameterType="string" resultType="user"&gt;</span><br><span class="line">        <span class="keyword">select</span> userId</span><br><span class="line">         &lt;<span class="keyword">choose</span>&gt;</span><br><span class="line">             &lt;<span class="keyword">when</span> <span class="keyword">test</span>=<span class="string">"null!=userNick and ''!=userNick"</span>&gt;</span><br><span class="line">                 ,userName,userNick</span><br><span class="line">             &lt;/<span class="keyword">when</span>&gt;</span><br><span class="line">             &lt;otherwise&gt;</span><br><span class="line">                 ,userPwd</span><br><span class="line">             &lt;/otherwise&gt;</span><br><span class="line">         &lt;/<span class="keyword">choose</span>&gt;</span><br><span class="line">         <span class="keyword">from</span> <span class="keyword">user</span> <span class="keyword">where</span> <span class="number">1</span>=<span class="number">1</span></span><br><span class="line">    &lt;/<span class="keyword">select</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>…</p>
+
       
     </div>
     
@@ -516,8 +566,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/dlh1234okok.github.io/2018/10/04/Spring-IoC/" rel="next" title="Spring-IoC">
-                <i class="fa fa-chevron-left"></i> Spring-IoC
+              <a href="/dlh1234okok.github.io/2018/10/09/Mybatis学习-1/" rel="next" title="Mybatis学习(1)-搭建和简单查询">
+                <i class="fa fa-chevron-left"></i> Mybatis学习(1)-搭建和简单查询
               </a>
             
           </div>
@@ -525,10 +575,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/dlh1234okok.github.io/2018/10/07/webSocket学习-1/" rel="prev" title="webSocket学习(1)">
-                webSocket学习(1) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
