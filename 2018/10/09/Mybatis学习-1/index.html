@@ -81,19 +81,19 @@
 
 
 
-<meta name="description" content="一、简介 ​    mybatis框架是一个基于java的持久层框架。持久层就是将数据存到持久化设备上（如数据库、硬盘等），它对于jdbc和持久层的操作做了简化，将sql和代码分离。 ​    mybatis不是一个完全的orm（对象关系映射）框架，和hibernate（对象关系映射框架）相比，它还需要自己编写sql语句，但是在某些业务逻辑多变的场景下，它可以由自己编写sql语句就显得更加灵活。">
+<meta name="description" content="一、简介​    mybatis框架是一个基于java的持久层框架。持久层就是将数据存到持久化设备上（如数据库、硬盘等），它对于jdbc和持久层的操作做了简化，将sql和代码分离。 ​    mybatis不是一个完全的orm（对象关系映射）框架，和hibernate（对象关系映射框架）相比，它还需要自己编写sql语句，但是在某些业务逻辑多变的场景下，它可以由自己编写sql语句就显得更加灵活。 二">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mybatis学习(1)-搭建和简单查询">
 <meta property="og:url" content="http://www.dlhblog.online/2018/10/09/Mybatis学习-1/index.html">
 <meta property="og:site_name" content="这夜景">
-<meta property="og:description" content="一、简介 ​    mybatis框架是一个基于java的持久层框架。持久层就是将数据存到持久化设备上（如数据库、硬盘等），它对于jdbc和持久层的操作做了简化，将sql和代码分离。 ​    mybatis不是一个完全的orm（对象关系映射）框架，和hibernate（对象关系映射框架）相比，它还需要自己编写sql语句，但是在某些业务逻辑多变的场景下，它可以由自己编写sql语句就显得更加灵活。">
+<meta property="og:description" content="一、简介​    mybatis框架是一个基于java的持久层框架。持久层就是将数据存到持久化设备上（如数据库、硬盘等），它对于jdbc和持久层的操作做了简化，将sql和代码分离。 ​    mybatis不是一个完全的orm（对象关系映射）框架，和hibernate（对象关系映射框架）相比，它还需要自己编写sql语句，但是在某些业务逻辑多变的场景下，它可以由自己编写sql语句就显得更加灵活。 二">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://pg0l2q23d.bkt.clouddn.com/mybatis%E9%85%8D%E7%BD%AE%E5%88%AB%E5%90%8D.bmp">
 <meta property="og:image" content="http://pg0l2q23d.bkt.clouddn.com/mybatis%E6%9F%A5%E8%AF%A2%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C.bmp">
-<meta property="og:updated_time" content="2018-10-09T11:47:25.795Z">
+<meta property="og:updated_time" content="2018-10-09T12:23:00.227Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mybatis学习(1)-搭建和简单查询">
-<meta name="twitter:description" content="一、简介 ​    mybatis框架是一个基于java的持久层框架。持久层就是将数据存到持久化设备上（如数据库、硬盘等），它对于jdbc和持久层的操作做了简化，将sql和代码分离。 ​    mybatis不是一个完全的orm（对象关系映射）框架，和hibernate（对象关系映射框架）相比，它还需要自己编写sql语句，但是在某些业务逻辑多变的场景下，它可以由自己编写sql语句就显得更加灵活。">
+<meta name="twitter:description" content="一、简介​    mybatis框架是一个基于java的持久层框架。持久层就是将数据存到持久化设备上（如数据库、硬盘等），它对于jdbc和持久层的操作做了简化，将sql和代码分离。 ​    mybatis不是一个完全的orm（对象关系映射）框架，和hibernate（对象关系映射框架）相比，它还需要自己编写sql语句，但是在某些业务逻辑多变的场景下，它可以由自己编写sql语句就显得更加灵活。 二">
 <meta name="twitter:image" content="http://pg0l2q23d.bkt.clouddn.com/mybatis%E9%85%8D%E7%BD%AE%E5%88%AB%E5%90%8D.bmp">
 
 
@@ -446,11 +446,9 @@
       
 
       
-        <p>一、简介</p>
-<p>​    mybatis框架是一个基于java的持久层框架。持久层就是将数据存到持久化设备上（如数据库、硬盘等），它对于jdbc和持久层的操作做了简化，将sql和代码分离。</p>
+        <h1 id="一、简介"><a href="#一、简介" class="headerlink" title="一、简介"></a>一、简介</h1><p>​    mybatis框架是一个基于java的持久层框架。持久层就是将数据存到持久化设备上（如数据库、硬盘等），它对于jdbc和持久层的操作做了简化，将sql和代码分离。</p>
 <p>​    mybatis不是一个完全的orm（对象关系映射）框架，和hibernate（对象关系映射框架）相比，它还需要自己编写sql语句，但是在某些业务逻辑多变的场景下，它可以由自己编写sql语句就显得更加灵活。</p>
-<p>二、环境搭建</p>
-<p>1、maven项目 导入依赖</p>
+<h1 id="二、环境搭建"><a href="#二、环境搭建" class="headerlink" title="二、环境搭建"></a>二、环境搭建</h1><p>1、maven项目 导入依赖</p>
 <p>​    mybatis核心依赖</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.4.6<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>​    mysql驱动</p>
@@ -481,8 +479,7 @@
 <p>​    基本配置就基本完成了，接下来就是调用了，从这里可以看出，mybatis环境中需要配置输入参数类型，输出参数类型和sql语句就可以完成数据库操作。</p>
 <p>​    那我们知道数据库中一部分字段的类型和java中是不同的，比如数据库中的varchar，在java中是String，它是用什么转换的呢—-&gt;<strong>typeHandler类型处理器，在预处理语句中设置一个参数或者获取一个参数时，类型处理器都会将获取到的值以合适的方式转换为java类型</strong></p>
 <p>​    </p>
-<p>三、调用，实现一个查询</p>
-<p>其中主要过程</p>
+<h1 id="三、调用，实现一个查询"><a href="#三、调用，实现一个查询" class="headerlink" title="三、调用，实现一个查询"></a>三、调用，实现一个查询</h1><p>其中主要过程</p>
 <p>（1）读取资源文件</p>
 <p>（2）创建sqlsession工厂</p>
 <p>（3）由sqlsession工厂打开/创建session</p>
@@ -661,8 +658,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -724,6 +730,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、简介"><span class="nav-number">1.</span> <span class="nav-text">一、简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、环境搭建"><span class="nav-number">2.</span> <span class="nav-text">二、环境搭建</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、调用，实现一个查询"><span class="nav-number">3.</span> <span class="nav-text">三、调用，实现一个查询</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
