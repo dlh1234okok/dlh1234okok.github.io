@@ -88,7 +88,7 @@
 <meta property="og:site_name" content="这夜景">
 <meta property="og:description" content="增删改查​    需要进行增删改查操作时，需要在映射文件中配置不同的标签，有常用参数parameterType，resultType等。除了查询操作时需要配置返回结果类型（resultType）标签，其他三种操作都不需要添加。 ​    参数类型（parameterType）有：基本数据类型,字符串,map,java bean,list等 ​    返回结果类型（resultType）有：基本数据">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-09T12:28:08.808Z">
+<meta property="og:updated_time" content="2018-10-09T12:38:29.820Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mybatis学习(2)-CRUD操作..">
 <meta name="twitter:description" content="增删改查​    需要进行增删改查操作时，需要在映射文件中配置不同的标签，有常用参数parameterType，resultType等。除了查询操作时需要配置返回结果类型（resultType）标签，其他三种操作都不需要添加。 ​    参数类型（parameterType）有：基本数据类型,字符串,map,java bean,list等 ​    返回结果类型（resultType）有：基本数据">
@@ -485,6 +485,8 @@
 <p>此时可以通过getMapper()方法传入接口的class对象返回接口的对象，所以测试代码可以这么写：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test01</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    InputStream is = Resources.getResourceAsStream(<span class="string">"mybatis.xml"</span>);</span><br><span class="line">    SqlSessionFactory sessionFactory = <span class="keyword">new</span> SqlSessionFactoryBuilder().build(is);</span><br><span class="line">    SqlSession sqlSession = sessionFactory.openSession();</span><br><span class="line">    UserMapper userMapper = sqlSession.getMapper(UserMapper.class);</span><br><span class="line">    System.out.println(userMapper.queryMapById(<span class="number">1</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="动态sql"><a href="#动态sql" class="headerlink" title="动态sql"></a>动态sql</h1><p>mybatis的强大特性就是它的动态sql，动态sql顾名思义就是随着传入的参数动态产生不同的sql。</p>
+<p>使用动态sql时需要在接口方法参数中设置@param指定参数才能将参数传入if等条件中：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> List&lt;User&gt; <span class="title">queryUsersByName</span><span class="params">(@Param(<span class="string">"userName"</span>)</span> String userName)</span>;</span><br></pre></td></tr></table></figure>
 <p><strong>1、if条件判断</strong></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;select id="queryUsersByName" parameterType="string" resultType="user"&gt;</span><br><span class="line">        <span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">user</span> <span class="keyword">where</span> <span class="number">1</span>=<span class="number">1</span></span><br><span class="line">        &lt;<span class="keyword">if</span> <span class="keyword">test</span>=<span class="string">"null!=userName and ''!=userName"</span>&gt;</span><br><span class="line">            <span class="keyword">and</span> userName <span class="keyword">like</span> <span class="keyword">concat</span>(<span class="string">'%'</span>,#&#123;userName&#125;,<span class="string">'%'</span>)</span><br><span class="line">        &lt;/<span class="keyword">if</span>&gt;</span><br><span class="line">    &lt;/<span class="keyword">select</span>&gt;</span><br></pre></td></tr></table></figure>
 <p>​    当使用动态sql时，为了防止sql语句结构不当，所以加上where 1=1。在段代码中只有当if中的条件成立时，才会拼接上其中的代码。</p>
@@ -777,7 +779,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站只有15.6k字</span>
+  <span class="post-count">博客全站只有15.7k字</span>
 </div>
         
 
