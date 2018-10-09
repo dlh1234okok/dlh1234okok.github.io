@@ -81,19 +81,20 @@
 
 
 
-<meta name="description" content="一、基本命令 　　date：查看当前日期 　　pwd：查看当前位置 　　cd：目录切换 　　ls|ll：查看当前目录文件与文件夹 　　mkdir+目录名：创建文件夹（可创建多个） 　　rm -rf +目录：删除文件夹（可删除多个） 　　mv 原始目录&amp;nbsp; 修改后目录&amp;nbsp; 文件移动/重命名 　　vim 文件名：创建或打开文件 　　　　i，编辑状态；esc退出编辑状态 　　　&amp;nbsp">
+<meta name="description" content="一、简介 ​    mybatis框架是一个基于java的持久层框架。持久层就是将数据存到持久化设备上（如数据库、硬盘等），它对于jdbc和持久层的操作做了简化，将sql和代码分离。 ​    mybatis不是一个完全的orm（对象关系映射）框架，和hibernate（对象关系映射框架）相比，它还需要自己编写sql语句，但是在某些业务逻辑多变的场景下，它可以由自己编写sql语句就显得更加灵活。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux基本命令和项目发布">
-<meta property="og:url" content="http://www.dlhblog.online/2018/10/04/Linux基本命令和项目发布/index.html">
+<meta property="og:title" content="Mybatis学习(1)-搭建和简单查询">
+<meta property="og:url" content="http://www.dlhblog.online/2018/10/09/Mybatis学习-1/index.html">
 <meta property="og:site_name" content="这夜景">
-<meta property="og:description" content="一、基本命令 　　date：查看当前日期 　　pwd：查看当前位置 　　cd：目录切换 　　ls|ll：查看当前目录文件与文件夹 　　mkdir+目录名：创建文件夹（可创建多个） 　　rm -rf +目录：删除文件夹（可删除多个） 　　mv 原始目录&amp;nbsp; 修改后目录&amp;nbsp; 文件移动/重命名 　　vim 文件名：创建或打开文件 　　　　i，编辑状态；esc退出编辑状态 　　　&amp;nbsp">
+<meta property="og:description" content="一、简介 ​    mybatis框架是一个基于java的持久层框架。持久层就是将数据存到持久化设备上（如数据库、硬盘等），它对于jdbc和持久层的操作做了简化，将sql和代码分离。 ​    mybatis不是一个完全的orm（对象关系映射）框架，和hibernate（对象关系映射框架）相比，它还需要自己编写sql语句，但是在某些业务逻辑多变的场景下，它可以由自己编写sql语句就显得更加灵活。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://img2018.cnblogs.com/blog/1467494/201810/1467494-20181002120729944-1483516378.png">
-<meta property="og:updated_time" content="2018-10-04T10:29:39.768Z">
+<meta property="og:image" content="http://pg0l2q23d.bkt.clouddn.com/mybatis%E9%85%8D%E7%BD%AE%E5%88%AB%E5%90%8D.bmp">
+<meta property="og:image" content="g:/mybatis查询运行结果.bmp">
+<meta property="og:updated_time" content="2018-10-09T07:32:03.559Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Linux基本命令和项目发布">
-<meta name="twitter:description" content="一、基本命令 　　date：查看当前日期 　　pwd：查看当前位置 　　cd：目录切换 　　ls|ll：查看当前目录文件与文件夹 　　mkdir+目录名：创建文件夹（可创建多个） 　　rm -rf +目录：删除文件夹（可删除多个） 　　mv 原始目录&amp;nbsp; 修改后目录&amp;nbsp; 文件移动/重命名 　　vim 文件名：创建或打开文件 　　　　i，编辑状态；esc退出编辑状态 　　　&amp;nbsp">
-<meta name="twitter:image" content="https://img2018.cnblogs.com/blog/1467494/201810/1467494-20181002120729944-1483516378.png">
+<meta name="twitter:title" content="Mybatis学习(1)-搭建和简单查询">
+<meta name="twitter:description" content="一、简介 ​    mybatis框架是一个基于java的持久层框架。持久层就是将数据存到持久化设备上（如数据库、硬盘等），它对于jdbc和持久层的操作做了简化，将sql和代码分离。 ​    mybatis不是一个完全的orm（对象关系映射）框架，和hibernate（对象关系映射框架）相比，它还需要自己编写sql语句，但是在某些业务逻辑多变的场景下，它可以由自己编写sql语句就显得更加灵活。">
+<meta name="twitter:image" content="http://pg0l2q23d.bkt.clouddn.com/mybatis%E9%85%8D%E7%BD%AE%E5%88%AB%E5%90%8D.bmp">
 
 
 
@@ -123,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://www.dlhblog.online/2018/10/04/Linux基本命令和项目发布/"/>
+  <link rel="canonical" href="http://www.dlhblog.online/2018/10/09/Mybatis学习-1/"/>
 
 
 
 
 
-  <title>Linux基本命令和项目发布 | 这夜景</title>
+  <title>Mybatis学习(1)-搭建和简单查询 | 这夜景</title>
   
 
 
@@ -310,7 +311,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.dlhblog.online/dlh1234okok.github.io/2018/10/04/Linux基本命令和项目发布/">
+    <link itemprop="mainEntityOfPage" href="http://www.dlhblog.online/dlh1234okok.github.io/2018/10/09/Mybatis学习-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="li-hong">
@@ -327,7 +328,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Linux基本命令和项目发布</h1>
+          <h1 class="post-title" itemprop="name headline">Mybatis学习(1)-搭建和简单查询</h1>
         
 
         <div class="post-meta">
@@ -339,8 +340,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-04T18:28:02+08:00">
-                2018-10-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-09T11:47:15+08:00">
+                2018-10-09
               </time>
             
 
@@ -362,8 +363,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/dlh1234okok.github.io/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
+                  <a href="/dlh1234okok.github.io/categories/Mybatis/" itemprop="url" rel="index">
+                    <span itemprop="name">Mybatis</span>
                   </a>
                 </span>
 
@@ -380,8 +381,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/dlh1234okok.github.io/2018/10/04/Linux基本命令和项目发布/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/dlh1234okok.github.io/2018/10/04/Linux基本命令和项目发布/" itemprop="commentsCount"></span>
+                <a href="/dlh1234okok.github.io/2018/10/09/Mybatis学习-1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/dlh1234okok.github.io/2018/10/09/Mybatis学习-1/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -408,7 +409,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  761
+                  1.4k
                 </span>
               
 
@@ -424,7 +425,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  6
                 </span>
               
             </div>
@@ -445,85 +446,53 @@
       
 
       
-        <p>一、基本命令</p>
-<p>　　date：查看当前日期</p>
-<p>　　pwd：查看当前位置</p>
-<p>　　cd：目录切换</p>
-<p>　　ls|ll：查看当前目录文件与文件夹</p>
-<p>　　mkdir+目录名：创建文件夹（可创建多个）</p>
-<p>　　rm -rf +目录：删除文件夹（可删除多个）</p>
-<p>　　mv 原始目录&nbsp; 修改后目录&nbsp; 文件移动/重命名</p>
-<p>　　vim 文件名：创建或打开文件</p>
-<p>　　　　i，编辑状态；esc退出编辑状态</p>
-<p>　　　&nbsp; &nbsp;：wq&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;写入并退出，：q&nbsp; &nbsp; 退出</p>
-<p>　　cp 源文件地址&nbsp; 目标文件目录：文件copy</p>
-<p>　　cp -r 源文件夹目录&nbsp; 目标文件夹目录：文件夹copy</p>
-<p>&nbsp;</p>
-<p><strong>二、项目发布到Linux配置</strong></p>
-<p>　　1、静态ip配置步骤</p>
-<p>　　　　1.选择桥接模式</p>
-<p>　　　　2.启动后修改网卡文件</p>
-<p>　　　　　　vi&nbsp; /etc/sysconfig/network-scripts/ifcfg-eth0&nbsp; 修改ip地址</p>
-<p>　　　　　　<img src="https://img2018.cnblogs.com/blog/1467494/201810/1467494-20181002120729944-1483516378.png" alt=""></p>
-<p>　　　　　　执行测试</p>
-<p>　　　　　　　　ping 192.168.1.1</p>
-<p>　　　　　　　　ping 192.168.1.188</p>
-<p>　　　　　　　　ping ***.com</p>
-<p>&nbsp;</p>
-<p>　　2、连接终端(我使用了xshell)</p>
-<p>&nbsp;</p>
-<p>　　3、安装jdk</p>
-<p>　　　　yum list|grep jdk&nbsp; &nbsp;查找jdk相关软件</p>
-<p>　　　　yum install jdk.xxx&nbsp; &nbsp; 安装指定版本jdk</p>
-<p>　　4、安装tomcat</p>
-<p>　　　　wget+tomcat下载地址</p>
-<p>　　　　./startup.sh&nbsp; &nbsp;在bin目录下执行启动脚本</p>
-<p>　　　　关闭tomcat：</p>
-<p>　　　　　　./shutdown.sh&nbsp; 执行脚本关闭</p>
-<p>　　　　　　ps -ef|grep tomcat 查找tomcat相关进程</p>
-<p>　　　　　　kill -9&nbsp; 进程号&nbsp; 关闭相关进程</p>
-<p>　　5、防火墙设置</p>
-<p>　　　　service iptables status&nbsp; &nbsp;查看防火墙状态</p>
-<p>　　　　service iptables stop&nbsp; &nbsp;关闭防火墙</p>
-<p>&nbsp;　　　　测试..外部输入ip访问tomcat主页</p>
-<p>&nbsp;</p>
-<p>　　6、mysql安装和配置</p>
-<p>　　　　查看mysql安装历史　　rpm -qa | grep mysql</p>
-<p>　　　　卸载mysql　　yum -y remove <strong><em>mysql</em></strong></p>
-<p>　　　　安装mysql</p>
-<p>　　　　　　yum -y install mysql-server mysql mysql-devel</p>
-<p>&nbsp;</p>
-<p>　　　　启动服务</p>
-<p>　　　　　　service mysqld start　　启动</p>
-<p>　　　　　　service mysqld stop　　停止</p>
-<p>　　　　　　service mysqld restart　　重启</p>
-<p>&nbsp;</p>
-<p>　　　　创建管理员</p>
-<p>　　　　　　mysqladmin&nbsp; -u&nbsp; root&nbsp; &nbsp;password&nbsp; ***</p>
-<p>　　　　执行登录</p>
-<p>　　　　　　mysql&nbsp; -uroot&nbsp; &nbsp;-p***</p>
-<p>　　　　授权</p>
-<p>　　　　　　grant all privileges on <em>.</em> to ‘用户名‘@’%’ identified by ‘密码串’ with grant option;</p>
-<p>　　　　　　FLUSH&nbsp; &nbsp;PRIVILEGES;</p>
-<p>&nbsp;</p>
-<p>&nbsp;　　　　使用sqlyog | navicat 进行连接</p>
-<p>&nbsp;</p>
-<p>　　7、将打包好的war包放到tomcat/webapp目录下，启动tomcat（项目名为站点名）</p>
-<p>&nbsp;</p>
-<p><strong>三、idea Maven项目打包</strong></p>
-<p>　　本地环境&nbsp; dev</p>
-<p>　　测试环境&nbsp; test</p>
-<p>　　生产环境&nbsp; product</p>
-<p>&nbsp;</p>
-<p>　　配置打包标签</p>
-<div class="cnblogs_code"><br><pre><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">profiles</span><span style="color: #0000ff;">&gt;</span><br>        <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">profile</span><span style="color: #0000ff;">&gt;</span><br>            <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">id</span><span style="color: #0000ff;">&gt;</span>dev<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">id</span><span style="color: #0000ff;">&gt;</span><br>            <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">properties</span><span style="color: #0000ff;">&gt;</span><br>                <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">env</span><span style="color: #0000ff;">&gt;</span>dev<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">env</span><span style="color: #0000ff;">&gt;</span><br>            <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">properties</span><span style="color: #0000ff;">&gt;</span><br>            <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">activation</span><span style="color: #0000ff;">&gt;</span><br>                <span style="color: #008000;">&lt;!–</span><span style="color: #008000;"><br>                   默认运行开发环境<br>                </span><span style="color: #008000;">–&gt;</span><br>                <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">activeByDefault</span><span style="color: #0000ff;">&gt;</span>true<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">activeByDefault</span><span style="color: #0000ff;">&gt;</span><br>            <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">activation</span><span style="color: #0000ff;">&gt;</span><br>        <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">profile</span><span style="color: #0000ff;">&gt;</span><br>        <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">profile</span><span style="color: #0000ff;">&gt;</span><br>            <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">id</span><span style="color: #0000ff;">&gt;</span>test<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">id</span><span style="color: #0000ff;">&gt;</span><br>            <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">properties</span><span style="color: #0000ff;">&gt;</span><br>                <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">env</span><span style="color: #0000ff;">&gt;</span>test<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">env</span><span style="color: #0000ff;">&gt;</span><br>            <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">properties</span><span style="color: #0000ff;">&gt;</span><br>        <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">profile</span><span style="color: #0000ff;">&gt;</span><br>        <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">profile</span><span style="color: #0000ff;">&gt;</span><br>            <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">id</span><span style="color: #0000ff;">&gt;</span>product<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">id</span><span style="color: #0000ff;">&gt;</span><br>            <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">properties</span><span style="color: #0000ff;">&gt;</span><br>                <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">env</span><span style="color: #0000ff;">&gt;</span>product<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">env</span><span style="color: #0000ff;">&gt;</span><br>            <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">properties</span><span style="color: #0000ff;">&gt;</span><br>        <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">profile</span><span style="color: #0000ff;">&gt;</span><br>    <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">profiles</span><span style="color: #0000ff;">&gt;</span></pre><br></div>
-
-<p>　　指定资源文件</p>
-<div class="cnblogs_code"><br><pre><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">resources</span><span style="color: #0000ff;">&gt;</span><br>            <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">resource</span><span style="color: #0000ff;">&gt;</span><br>                <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">directory</span><span style="color: #0000ff;">&gt;</span>src/main/resources/${env}<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">directory</span><span style="color: #0000ff;">&gt;</span><br>            <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">resource</span><span style="color: #0000ff;">&gt;</span><br>            <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">resource</span><span style="color: #0000ff;">&gt;</span><br>                <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">directory</span><span style="color: #0000ff;">&gt;</span>src/main/java<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">directory</span><span style="color: #0000ff;">&gt;</span><br>                <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">includes</span><span style="color: #0000ff;">&gt;</span><br>                    <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">include</span><span style="color: #0000ff;">&gt;</span><strong>/*.xml<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">include</span><span style="color: #0000ff;">&gt;</span><br>                    <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">include</span><span style="color: #0000ff;">&gt;</span></strong>/<em>.properties<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">include</span><span style="color: #0000ff;">&gt;</span><br>                    <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">include</span><span style="color: #0000ff;">&gt;</span>**/</em>.tld<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">include</span><span style="color: #0000ff;">&gt;</span><br>                <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">includes</span><span style="color: #0000ff;">&gt;</span><br>                <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">filtering</span><span style="color: #0000ff;">&gt;</span>false<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">filtering</span><span style="color: #0000ff;">&gt;</span><br>            <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">resource</span><span style="color: #0000ff;">&gt;</span><br>        <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">resources</span><span style="color: #0000ff;">&gt;</span></pre><br></div>
-
-<p>　　打包命令配置</p>
-<p>　　clean&nbsp; compile package -Dmaven.test.skip=true -Ptest|dev|product</p>
-<p>　　清理编译文件，打包跳过测试文件　test/dev/product 包</p>
+        <p>一、简介</p>
+<p>​    mybatis框架是一个基于java的持久层框架。持久层就是将数据存到持久化设备上（如数据库、硬盘等），它对于jdbc和持久层的操作做了简化，将sql和代码分离。</p>
+<p>​    mybatis不是一个完全的orm（对象关系映射）框架，和hibernate（对象关系映射框架）相比，它还需要自己编写sql语句，但是在某些业务逻辑多变的场景下，它可以由自己编写sql语句就显得更加灵活。</p>
+<p>二、环境搭建</p>
+<p>1、maven项目 导入依赖</p>
+<p>​    mybatis核心依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.4.6<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>​    mysql驱动</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.1.38<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>​    log4j依赖（可以输出操作过程，更容易在出错时找到问题）</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>log4j<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>log4j<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.17<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>2、添加mybatis配置文件</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;</span><br><span class="line"><span class="meta">&lt;!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"</span></span><br><span class="line"><span class="meta">        "http://mybatis.org/dtd/mybatis-3-config.dtd"&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 注册属性文件 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">properties</span> <span class="attr">resource</span>=<span class="string">"jdbc.properties"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">typeAliases</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--配置实体类别名：包扫描 默认别名是类名--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">package</span> <span class="attr">name</span>=<span class="string">"com.shsxt.po"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">typeAliases</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 配置MyBatis运行环境 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">environments</span> <span class="attr">default</span>=<span class="string">"development"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">environment</span> <span class="attr">id</span>=<span class="string">"development"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">transactionManager</span> <span class="attr">type</span>=<span class="string">"JDBC"</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">dataSource</span> <span class="attr">type</span>=<span class="string">"POOLED"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"driver"</span> <span class="attr">value</span>=<span class="string">"$&#123;driver&#125;"</span>/&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"url"</span> <span class="attr">value</span>=<span class="string">"$&#123;url&#125;"</span>/&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">value</span>=<span class="string">"$&#123;user&#125;"</span>/&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">value</span>=<span class="string">"$&#123;password&#125;"</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">dataSource</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">environment</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 在这里可以配置另一个环境 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">environments</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 注册映射文件 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mappers</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">package</span> <span class="attr">name</span>=<span class="string">"com.shsxt.mapper"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">mappers</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>​    在配置时可以配置多个运行环境，默认运行标签指定的默认环境（上面为development环境），在需要切换环境时，可以在创建session工厂时指定，如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlSessionFactory = <span class="keyword">new</span> SqlSessionFactoryBuilder().build(is,<span class="string">"test"</span>);</span><br></pre></td></tr></table></figure>
+<p>3、配置映射文件（sql代码所在）</p>
+<p>​    配置映射文件的方式有三种：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mappers</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--包扫描--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">package</span> <span class="attr">name</span>=<span class="string">"com.shsxt.mapper"</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--配置xml--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">mapper</span> <span class="attr">resource</span>=<span class="string">"com.shsxt.mapper.UserMapper"</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--配置接口--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">mapper</span> <span class="attr">class</span>=<span class="string">"com.shsxt.mapper.UserMapper"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">mappers</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>​    <strong>一个实体类对应一个映射文件</strong>，所以当业务复杂有多个实体类时，包扫描的配置方式较为方便，而配置xml和配置接口都需要配置多个mapper标签。</p>
+<p>创建一个xml文件作为映射文件，在java目录</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;</span><br><span class="line"><span class="meta">&lt;!DOCTYPE mapper</span></span><br><span class="line"><span class="meta">        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"</span></span><br><span class="line"><span class="meta">        "http://mybatis.org/dtd/mybatis-3-mapper.dtd"&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">"com.shsxt.mapper.UserMapper"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--数字--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"queryUserByName"</span> <span class="attr">parameterType</span>=<span class="string">"string"</span> <span class="attr">resultType</span>=<span class="string">"user"</span>&gt;</span></span><br><span class="line">        select * from user where userName like concat('%',#&#123;userName&#125;,'%')</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>namespace</strong>：指明命名空间，可以和接口对应，后面调用crud操作的时候需要</p>
+<p><strong>parameterType</strong>：指明输入参数类型（int,string,map,java bean,list..）</p>
+<p><strong>resultType</strong>：指明输出数据类型（基本数据类型,string,map,java bean,list）</p>
+<p>​    <strong>在这里输出类型如果为List的话，只需要指明list中泛型的类型</strong></p>
+<p>​    ·当输出类型为javabean类型时，需要写类所在的完整路径com.xxx.xxx.xx；为了书写方便，也可以指定它的别名，如上面一般。指定别名有三种方式：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">typeAliases</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--配置实体类别名：包扫描 默认别名是类名--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">package</span> <span class="attr">name</span>=<span class="string">"com.shsxt.po"</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--typeAlias标签指定路径--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">typeAlias</span> <span class="attr">type</span>=<span class="string">"com.shsxt.po.User"</span> <span class="attr">alias</span>=<span class="string">"user"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">typeAliases</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>​    还可以把typeAlias中的alias标签以注解的方式写在javabean类的上面</p>
+<p>​    <img src="http://pg0l2q23d.bkt.clouddn.com/mybatis%E9%85%8D%E7%BD%AE%E5%88%AB%E5%90%8D.bmp" alt=""></p>
+<p>和原生jdbc不同的是，原生jdbc的占位符’?’，在这里用#{传入参数的名字}</p>
+<p>​    基本配置就基本完成了，接下来就是调用了，从这里可以看出，mybatis环境中需要配置输入参数类型，输出参数类型和sql语句就可以完成数据库操作。</p>
+<p>​    那我们知道数据库中一部分字段的类型和java中是不同的，比如数据库中的varchar，在java中是String，它是用什么转换的呢—-&gt;<strong>typeHandler类型处理器，在预处理语句中设置一个参数或者获取一个参数时，类型处理器都会将获取到的值以合适的方式转换为java类型</strong></p>
+<p>​    </p>
+<p>三、调用，实现一个查询</p>
+<p>其中主要过程</p>
+<p>（1）读取资源文件</p>
+<p>（2）创建sqlsession工厂</p>
+<p>（3）由sqlsession工厂打开/创建session</p>
+<p>（4）通过session操作数据库</p>
+<p>（5）处理结果</p>
+<p>（6）关闭sqlsession</p>
+<p>我在这里将映射文件对应了一个接口，实现了这个接口并且做了一些封装</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserMapperImpl</span> <span class="keyword">implements</span> <span class="title">UserMapper</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> SqlSessionFactory sqlSessionFactory;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> SqlSession sqlSession;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">UserMapperImpl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">UserMapperImpl</span><span class="params">(SqlSessionFactory sqlSessionFactory)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.sqlSessionFactory = sqlSessionFactory;</span><br><span class="line">        sqlSession = sqlSessionFactory.openSession();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;User&gt; <span class="title">queryUserByName</span><span class="params">(String userName)</span> </span>&#123;</span><br><span class="line">        List&lt;User&gt; users = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            users = sqlSession.selectList(<span class="string">"com.shsxt.mapper.UserMapper.queryUserByName"</span>, userName);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (sqlSession != <span class="keyword">null</span>) &#123;</span><br><span class="line">                sqlSession.close();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> users;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>单元测试代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test01</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> SqlSessionFactory sqlSessionFactory;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> UserMapper userMapper;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Before</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">before</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        InputStream is = Resources.getResourceAsStream(<span class="string">"mybatis.xml"</span>);</span><br><span class="line">        sqlSessionFactory = <span class="keyword">new</span> SqlSessionFactoryBuilder().build(is);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test01</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        userMapper = <span class="keyword">new</span> UserMapperImpl(sqlSessionFactory);</span><br><span class="line">        List&lt;User&gt; users = userMapper.queryUserByName(<span class="string">"z"</span>);</span><br><span class="line">        <span class="keyword">for</span> (User user : users) System.out.println(user);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果<img src="G:\mybatis查询运行结果.bmp" alt=""></p>
+<p>因为使用了log4j日志采集，可以看到我们编写的sql还有查询到的总数量</p>
 
       
     </div>
@@ -588,8 +557,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/dlh1234okok.github.io/2018/10/04/使用poi读取Excel和写出Excel/" rel="next" title="使用poi读取Excel和写出Excel">
-                <i class="fa fa-chevron-left"></i> 使用poi读取Excel和写出Excel
+              <a href="/dlh1234okok.github.io/2018/10/07/Ajax轮询和长轮询/" rel="next" title="Ajax轮询和长轮询">
+                <i class="fa fa-chevron-left"></i> Ajax轮询和长轮询
               </a>
             
           </div>
@@ -597,10 +566,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/dlh1234okok.github.io/2018/10/04/Spring-整合JDBC-事务-远程方法调用RMI/" rel="prev" title="Spring-整合JDBC-事务-远程方法调用RMI">
-                Spring-整合JDBC-事务-远程方法调用RMI <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
