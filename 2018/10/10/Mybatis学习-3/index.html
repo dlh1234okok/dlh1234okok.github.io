@@ -81,20 +81,17 @@
 
 
 
-<meta name="description" content="一、定时器的实现（task） 　　1、在XML配置文件中引入约束 　　　　xmlns:task=”http://www.springframework.org/schema/task&amp;quot; 　　　　http://www.springframework.org/schema/task 　　　　http://www.springframework.org/schema/task/spring-t">
+<meta name="description" content="简介​    数据库大类分为关系型数据库和非关系型数据库，关系型数据库有Mysql、Oracle、Sql Server等，非关系型数据库有MongoDB、Redis等。 ​    关系型数据库中的映射关系主要有： ​    一对一：比如一个人对应一个身份证号码 ​    一对多（多对一）：父亲对孩子，一个父亲可以多个孩子，而一个孩子只会有一个父亲 ​    多对多：一个学生可以选择多门课程，而一门">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Spring-定时器和邮件发送">
-<meta property="og:url" content="http://www.dlhblog.online/2018/10/04/Spring-定时器和邮件发送/index.html">
+<meta property="og:title" content="Mybatis学习(3)-映射关系处理">
+<meta property="og:url" content="http://www.dlhblog.online/2018/10/10/Mybatis学习-3/index.html">
 <meta property="og:site_name" content="这夜景">
-<meta property="og:description" content="一、定时器的实现（task） 　　1、在XML配置文件中引入约束 　　　　xmlns:task=”http://www.springframework.org/schema/task&amp;quot; 　　　　http://www.springframework.org/schema/task 　　　　http://www.springframework.org/schema/task/spring-t">
+<meta property="og:description" content="简介​    数据库大类分为关系型数据库和非关系型数据库，关系型数据库有Mysql、Oracle、Sql Server等，非关系型数据库有MongoDB、Redis等。 ​    关系型数据库中的映射关系主要有： ​    一对一：比如一个人对应一个身份证号码 ​    一对多（多对一）：父亲对孩子，一个父亲可以多个孩子，而一个孩子只会有一个父亲 ​    多对多：一个学生可以选择多门课程，而一门">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180928213640447-1543672220.png">
-<meta property="og:image" content="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180928213956638-382258084.png">
-<meta property="og:updated_time" content="2018-10-04T10:33:58.177Z">
+<meta property="og:updated_time" content="2018-10-10T12:04:36.978Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Spring-定时器和邮件发送">
-<meta name="twitter:description" content="一、定时器的实现（task） 　　1、在XML配置文件中引入约束 　　　　xmlns:task=”http://www.springframework.org/schema/task&amp;quot; 　　　　http://www.springframework.org/schema/task 　　　　http://www.springframework.org/schema/task/spring-t">
-<meta name="twitter:image" content="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180928213640447-1543672220.png">
+<meta name="twitter:title" content="Mybatis学习(3)-映射关系处理">
+<meta name="twitter:description" content="简介​    数据库大类分为关系型数据库和非关系型数据库，关系型数据库有Mysql、Oracle、Sql Server等，非关系型数据库有MongoDB、Redis等。 ​    关系型数据库中的映射关系主要有： ​    一对一：比如一个人对应一个身份证号码 ​    一对多（多对一）：父亲对孩子，一个父亲可以多个孩子，而一个孩子只会有一个父亲 ​    多对多：一个学生可以选择多门课程，而一门">
 
 
 
@@ -124,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://www.dlhblog.online/2018/10/04/Spring-定时器和邮件发送/"/>
+  <link rel="canonical" href="http://www.dlhblog.online/2018/10/10/Mybatis学习-3/"/>
 
 
 
 
 
-  <title>Spring-定时器和邮件发送 | 这夜景</title>
+  <title>Mybatis学习(3)-映射关系处理 | 这夜景</title>
   
 
 
@@ -311,7 +308,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.dlhblog.online/dlh1234okok.github.io/2018/10/04/Spring-定时器和邮件发送/">
+    <link itemprop="mainEntityOfPage" href="http://www.dlhblog.online/dlh1234okok.github.io/2018/10/10/Mybatis学习-3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="li-hong">
@@ -328,7 +325,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Spring-定时器和邮件发送</h1>
+          <h1 class="post-title" itemprop="name headline">Mybatis学习(3)-映射关系处理</h1>
         
 
         <div class="post-meta">
@@ -340,8 +337,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-04T18:33:08+08:00">
-                2018-10-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-10T19:10:03+08:00">
+                2018-10-10
               </time>
             
 
@@ -363,8 +360,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/dlh1234okok.github.io/categories/Spring/" itemprop="url" rel="index">
-                    <span itemprop="name">Spring</span>
+                  <a href="/dlh1234okok.github.io/categories/Mybatis/" itemprop="url" rel="index">
+                    <span itemprop="name">Mybatis</span>
                   </a>
                 </span>
 
@@ -381,8 +378,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/dlh1234okok.github.io/2018/10/04/Spring-定时器和邮件发送/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/dlh1234okok.github.io/2018/10/04/Spring-定时器和邮件发送/" itemprop="commentsCount"></span>
+                <a href="/dlh1234okok.github.io/2018/10/10/Mybatis学习-3/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/dlh1234okok.github.io/2018/10/10/Mybatis学习-3/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -409,7 +406,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  842
+                  766
                 </span>
               
 
@@ -425,7 +422,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4
+                  3
                 </span>
               
             </div>
@@ -446,32 +443,27 @@
       
 
       
-        <p><strong>一、定时器的实现（task）</strong></p>
-<p>　　1、在XML配置文件中引入约束</p>
-<p>　　　　xmlns:task=”<a href="http://www.springframework.org/schema/task&quot;" target="_blank" rel="noopener">http://www.springframework.org/schema/task&quot;</a></p>
-<p>　　　　<a href="http://www.springframework.org/schema/task" target="_blank" rel="noopener">http://www.springframework.org/schema/task</a></p>
-<p>　　　　<a href="http://www.springframework.org/schema/task/spring-task.xsd" target="_blank" rel="noopener">http://www.springframework.org/schema/task/spring-task.xsd</a></p>
-<p>　　2、编写定时器类，和方法</p>
-<p><img src="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180928213640447-1543672220.png" alt=""></p>
-<p>&nbsp;</p>
-<p>　　3、使用xml配置文件</p>
-<p>　　　　<img src="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180928213956638-382258084.png" alt=""></p>
-<p>　　　　加载配置文件就可以执行定时任务了，图为两秒执行一次。</p>
-<p>&nbsp;</p>
-<p><strong>二、邮件发送</strong></p>
-<p>　　1、Java mail发送邮件</p>
-<p>　　　　1) Maven项目引入java mail坐标，也可以手动安装</p>
-<div class="cnblogs_code"><br><pre><span style="color: #0000ff;">package</span><span style="color: #000000;"> com.shsxt.service;<br><br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> org.apache.commons.lang3.StringUtils;<br><br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> javax.activation.DataHandler;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> javax.activation.DataSource;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> javax.activation.FileDataSource;<br></span><span style="color: #0000ff;">import</span> javax.mail.<em><span style="color: #000000;">;<br></span><span style="color: #0000ff;">import</span> javax.mail.internet.</em><span style="color: #000000;">;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> java.io.File;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> java.io.UnsupportedEncodingException;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> java.nio.charset.Charset;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> java.util.Properties;<br><br></span><span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> MailService {<br><br>    </span><span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> mail(String fromUser, String[] receivers, String setSubject, String content, String[] files) {<br>        </span><span style="color: #008000;">//</span><span style="color: #008000;"> 判断参数是否为空</span><br>        <span style="color: #0000ff;">if</span> (!<span style="color: #000000;">judgment(fromUser, receivers, setSubject, content)){<br>            </span><span style="color: #0000ff;">return</span><span style="color: #000000;">;<br>        }<br>        </span><span style="color: #008000;">//</span><span style="color: #008000;"> 获取session</span><br>        Session session =<span style="color: #000000;"> init(fromUser);<br>        Message message </span>= <span style="color: #0000ff;">new</span><span style="color: #000000;"> MimeMessage(session);<br>        </span><span style="color: #008000;">//</span><span style="color: #008000;"> 发送人</span><br><span style="color: #000000;">        sender(fromUser, message);<br>​        </span><span style="color: #008000;">//</span><span style="color: #008000;"> 收件人</span><br><span style="color: #000000;">        recipients(receivers, message);<br>​        </span><span style="color: #008000;">//</span><span style="color: #008000;"> 主题</span><br><span style="color: #000000;">        subject(message,setSubject);<br>​        </span><span style="color: #008000;">//</span><span style="color: #008000;"> 设置html和附件</span><br>​        Multipart multipart = <span style="color: #0000ff;">new</span><span style="color: #000000;"> MimeMultipart();<br>​        </span><span style="color: #008000;">//</span><span style="color: #008000;"> html内容</span><br><span style="color: #000000;">        Content(content, multipart);<br>​        </span><span style="color: #008000;">//</span><span style="color: #008000;"> 判断是否有附件</span><br>​        <span style="color: #0000ff;">if</span> (<span style="color: #0000ff;">null</span> != files &amp;&amp; files.length &gt; 0<span style="color: #000000;">) {<br>​            </span><span style="color: #008000;">//</span><span style="color: #008000;"> 上传附件</span><br><span style="color: #000000;">            fileUp(files, multipart);<br>​        }<br>​        settingContext(message, multipart);<br>​        </span><span style="color: #008000;">//</span><span style="color: #008000;"> 发送</span><br><span style="color: #000000;">        send(message);<br>​    }<br><br>    </span><span style="color: #008000;">//</span><span style="color: #008000;"> 8、发送</span><br>    <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> send(Message message) {<br>        </span><span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br>            Transport.send(message);<br>        } </span><span style="color: #0000ff;">catch</span><span style="color: #000000;"> (MessagingException e) {<br>            e.printStackTrace();<br>        }<br>    }<br><br>    </span><span style="color: #008000;">//</span><span style="color: #008000;"> 7、设置上下文</span><br>    <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> settingContext(Message message, Multipart multipart) {<br>        </span><span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br>            message.setContent(multipart);<br>        } </span><span style="color: #0000ff;">catch</span><span style="color: #000000;"> (MessagingException e) {<br>            e.printStackTrace();<br>        }<br>    }<br><br>    </span><span style="color: #008000;">//</span><span style="color: #008000;"> 6、设置主题</span><br>    <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> subject(Message message,String setSubject) {<br>        </span><span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br>            message.setSubject(setSubject);<br>        } </span><span style="color: #0000ff;">catch</span><span style="color: #000000;"> (MessagingException e) {<br>            e.printStackTrace();<br>        }<br>    }<br><br>    </span><span style="color: #008000;">//</span><span style="color: #008000;"> 5、上传附件</span><br>    <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> fileUp(String[] files, Multipart multipart) {<br>        </span><span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br>            </span><span style="color: #0000ff;">for</span><span style="color: #000000;"> (String filePath : files) {<br>                BodyPart file </span>= <span style="color: #0000ff;">new</span><span style="color: #000000;"> MimeBodyPart();<br>                File temp </span>= <span style="color: #0000ff;">new</span><span style="color: #000000;"> File(filePath);<br>                file.setDataHandler(</span><span style="color: #0000ff;">new</span> DataHandler(<span style="color: #0000ff;">new</span> FileDataSource(<span style="color: #0000ff;">new</span><span style="color: #000000;"> File(filePath))));<br>                file.setFileName(MimeUtility.encodeText(temp.getName()));<br>                multipart.addBodyPart(file);<br>            }<br>        } </span><span style="color: #0000ff;">catch</span><span style="color: #000000;"> (Exception e) {<br>            e.printStackTrace();<br>        }<br>    }<br><br>    </span><span style="color: #008000;">//</span><span style="color: #008000;"> 4、设置html内容</span><br>    <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> Content(String content, Multipart multipart) {<br>        </span><span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br>            BodyPart html </span>= <span style="color: #0000ff;">new</span><span style="color: #000000;"> MimeBodyPart();<br>            html.setContent(content, </span>“text/html;charset=utf-8”<span style="color: #000000;">);<br>            multipart.addBodyPart(html);<br>        } </span><span style="color: #0000ff;">catch</span><span style="color: #000000;"> (MessagingException e) {<br>            e.printStackTrace();<br>        }<br>    }<br><br>    </span><span style="color: #008000;">//</span><span style="color: #008000;"> 3、设置收件人</span><br>    <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> recipients(String[] receivers, Message message) {<br>        </span><span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br>            Address[] addresses </span>= <span style="color: #0000ff;">new</span><span style="color: #000000;"> InternetAddress[receivers.length];<br>            </span><span style="color: #0000ff;">for</span> (<span style="color: #0000ff;">int</span> i = 0; i &lt; addresses.length; i++<span style="color: #000000;">) {<br>                addresses[i] </span>= <span style="color: #0000ff;">new</span><span style="color: #000000;"> InternetAddress(receivers[i]);<br>            }<br>            message.setRecipients(Message.RecipientType.TO, addresses);<br>        } </span><span style="color: #0000ff;">catch</span><span style="color: #000000;"> (MessagingException e) {<br>            e.printStackTrace();<br>        }<br>    }<br><br>    </span><span style="color: #008000;">//</span><span style="color: #008000;"> 2、设置发送人</span><br>    <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> sender(String fromUser, Message message) {<br>        </span><span style="color: #0000ff;">try</span><span style="color: #000000;"> {<br>            Address from </span>= <span style="color: #0000ff;">new</span><span style="color: #000000;"> InternetAddress(fromUser);<br>            message.setFrom(from);<br>        } </span><span style="color: #0000ff;">catch</span><span style="color: #000000;"> (Exception e) {<br>            e.printStackTrace();<br>        }<br>    }<br><br>    </span><span style="color: #008000;">//</span><span style="color: #008000;"> 1、初始化</span><br>    <span style="color: #0000ff;">private</span><span style="color: #000000;"> Session init(String fromUser) {<br>        Properties properties </span>= <span style="color: #0000ff;">new</span><span style="color: #000000;"> Properties();<br>        </span><span style="color: #008000;">//</span><span style="color: #008000;"> 邮箱服务器主机</span><br>        properties.put(“mail.smtp.host”, “smtp.163.com”<span style="color: #000000;">);<br>        properties.put(</span>“mail.smtp.auth”, “true”<span style="color: #000000;">);<br>        properties.put(</span>“mail.smtp.port”, 25<span style="color: #000000;">);<br><br>        Session session </span>= Session.getDefaultInstance(properties, <span style="color: #0000ff;">new</span><span style="color: #000000;"> Authenticator() {<br>            @Override<br>            </span><span style="color: #0000ff;">protected</span><span style="color: #000000;"> PasswordAuthentication getPasswordAuthentication() {<br>                </span><span style="color: #0000ff;">return</span> <span style="color: #0000ff;">new</span> PasswordAuthentication(“<a href="mailto:15657262398@163.com" target="_blank" rel="noopener">15657262398@163.com</a>“, “d140120”<span style="color: #000000;">);<br>            }<br>        });<br>        </span><span style="color: #0000ff;">return</span><span style="color: #000000;"> session;<br>    }<br><br>    </span><span style="color: #008000;">//</span><span style="color: #008000;"> 0、判断参数是否为空</span><br>    <span style="color: #0000ff;">private</span> <span style="color: #0000ff;">boolean</span><span style="color: #000000;"> judgment(String fromUser, String[] receivers, String setSubject, String content) {<br>        </span><span style="color: #0000ff;">boolean</span> flag = <span style="color: #0000ff;">true</span><span style="color: #000000;">;<br>        </span><span style="color: #0000ff;">if</span> (StringUtils.isBlank(fromUser) || StringUtils.isAnyBlank(receivers) || StringUtils.isBlank(setSubject) ||<span style="color: #000000;"> StringUtils.isBlank(content)) {<br>            flag </span>= <span style="color: #0000ff;">false</span><span style="color: #000000;">;<br>        }<br>        </span><span style="color: #0000ff;">return</span><span style="color: #000000;"> flag;<br>    }<br><br>}</span></pre><br></div>
-
-<p>&nbsp;</p>
-<p>　　2、spring环境下发送邮件</p>
-<p>　　　　XML配置</p>
-<div class="cnblogs_code"><br><pre><span style="color: #0000ff;">&lt;?</span><span style="color: #ff00ff;">xml version=”1.0” encoding=”UTF-8”</span><span style="color: #0000ff;">?&gt;</span><br><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">beans </span><span style="color: #ff0000;">xmlns</span><span style="color: #0000ff;">=”<a href="http://www.springframework.org/schema/beans&quot;" target="_blank" rel="noopener">http://www.springframework.org/schema/beans&quot;</a></span><span style="color: #ff0000;"><br>       xmlns:xsi</span><span style="color: #0000ff;">=”<a href="http://www.w3.org/2001/XMLSchema-instance&quot;" target="_blank" rel="noopener">http://www.w3.org/2001/XMLSchema-instance&quot;</a></span><span style="color: #ff0000;"><br>       xmlns:context</span><span style="color: #0000ff;">=”<a href="http://www.springframework.org/schema/context&quot;" target="_blank" rel="noopener">http://www.springframework.org/schema/context&quot;</a></span><span style="color: #ff0000;"><br>       xsi:schemaLocation</span><span style="color: #0000ff;">=”<a href="http://www.springframework.org/schema/beans" target="_blank" rel="noopener">http://www.springframework.org/schema/beans</a><br>        <a href="http://www.springframework.org/schema/beans/spring-beans.xsd" target="_blank" rel="noopener">http://www.springframework.org/schema/beans/spring-beans.xsd</a><br>       <a href="http://www.springframework.org/schema/context" target="_blank" rel="noopener">http://www.springframework.org/schema/context</a><br>        <a href="http://www.springframework.org/schema/context/spring-context.xsd&quot;" target="_blank" rel="noopener">http://www.springframework.org/schema/context/spring-context.xsd&quot;</a></span><span style="color: #0000ff;">&gt;</span><br><br>    <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">context:component-scan </span><span style="color: #ff0000;">base-package</span><span style="color: #0000ff;">=”com.mail”</span><span style="color: #0000ff;">/&gt;</span><br><br>    <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">bean </span><span style="color: #ff0000;">id</span><span style="color: #0000ff;">=”mailSender”</span><span style="color: #ff0000;"> class</span><span style="color: #0000ff;">=”org.springframework.mail.javamail.JavaMailSenderImpl”</span><span style="color: #0000ff;">&gt;</span><br>        <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">property </span><span style="color: #ff0000;">name</span><span style="color: #0000ff;">=”host”</span><span style="color: #ff0000;"> value</span><span style="color: #0000ff;">=”smtp.163.com”</span><span style="color: #0000ff;">/&gt;</span><span style="color: #008000;">&lt;!–</span><span style="color: #008000;">发送email的邮件服务器主机名</span><span style="color: #008000;">–&gt;</span><br>        <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">property </span><span style="color: #ff0000;">name</span><span style="color: #0000ff;">=”username”</span><span style="color: #ff0000;"> value</span><span style="color: #0000ff;">=”<a href="mailto:test@163.com" target="_blank" rel="noopener">test@163.com</a>“</span><span style="color: #0000ff;">/&gt;</span><span style="color: #008000;">&lt;!–</span><span style="color: #008000;">用户名</span><span style="color: #008000;">–&gt;</span><br>        <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">property </span><span style="color: #ff0000;">name</span><span style="color: #0000ff;">=”password”</span><span style="color: #ff0000;"> value</span><span style="color: #0000ff;">=”test”</span><span style="color: #0000ff;">/&gt;</span><span style="color: #008000;">&lt;!–</span><span style="color: #008000;">授权码</span><span style="color: #008000;">–&gt;</span><br>    <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">bean</span><span style="color: #0000ff;">&gt;</span><br>    <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">bean </span><span style="color: #ff0000;">id</span><span style="color: #0000ff;">=”simpleMailMessage”</span><span style="color: #ff0000;"> class</span><span style="color: #0000ff;">=”org.springframework.mail.SimpleMailMessage”</span><span style="color: #0000ff;">&gt;</span><br>        <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">property </span><span style="color: #ff0000;">name</span><span style="color: #0000ff;">=”subject”</span><span style="color: #ff0000;"> value</span><span style="color: #0000ff;">=”hello mail”</span><span style="color: #0000ff;">/&gt;</span><br>        <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">property </span><span style="color: #ff0000;">name</span><span style="color: #0000ff;">=”from”</span><span style="color: #ff0000;"> value</span><span style="color: #0000ff;">=”<a href="mailto:15657262398@163.com" target="_blank" rel="noopener">15657262398@163.com</a>“</span><span style="color: #0000ff;">/&gt;</span><br>    <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">bean</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">beans</span><span style="color: #0000ff;">&gt;</span></pre><br></div>
-
-<p>　　　　装配和使用邮件发送器</p>
-<div class="cnblogs_code"><br><pre><span style="color: #0000ff;">package</span><span style="color: #000000;"> com.mail;<br><br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> org.springframework.mail.MailSender;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> org.springframework.mail.SimpleMailMessage;<br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> org.springframework.stereotype.Service;<br><br></span><span style="color: #0000ff;">import</span><span style="color: #000000;"> javax.annotation.Resource;<br>@Service<br></span><span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span> OrderManagerImpl <span style="color: #0000ff;">implements</span><span style="color: #000000;"> OrderManager {<br><br>    @Resource<br>    </span><span style="color: #0000ff;">private</span><span style="color: #000000;"> MailSender mailSender;<br>    @Resource<br>    </span><span style="color: #0000ff;">private</span><span style="color: #000000;"> SimpleMailMessage simpleMailMessage;<br><br>    @Override<br>    </span><span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> placeOrder() {<br>        SimpleMailMessage msg</span>=<span style="color: #0000ff;">new</span> SimpleMailMessage(<span style="color: #0000ff;">this</span><span style="color: #000000;">.simpleMailMessage);<br>        msg.setTo(</span>“<a href="mailto:test@163.com" target="_blank" rel="noopener">test@163.com</a>“<span style="color: #000000;">);<br>        msg.setText(</span>“hello”<span style="color: #000000;">);<br>        </span><span style="color: #0000ff;">this</span><span style="color: #000000;">.mailSender.send(msg);<br>    }<br>}</span></pre><br></div>
-
-<p>&nbsp;</p>
+        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>​    数据库大类分为关系型数据库和非关系型数据库，关系型数据库有Mysql、Oracle、Sql Server等，非关系型数据库有MongoDB、Redis等。</p>
+<p>​    <strong>关系型数据库中的映射关系主要有：</strong></p>
+<p>​    一对一：比如一个人对应一个身份证号码</p>
+<p>​    一对多（多对一）：父亲对孩子，一个父亲可以多个孩子，而一个孩子只会有一个父亲</p>
+<p>​    多对多：一个学生可以选择多门课程，而一门课程可以给多个学生选择</p>
+<p>​    </p>
+<h1 id="处理映射关系"><a href="#处理映射关系" class="headerlink" title="处理映射关系"></a>处理映射关系</h1><p>如何处理这些关系映射？</p>
+<p>​    一对一：在一个数据表中添加另一个表的主键作为外键</p>
+<p>​    一对多：建立一个中间表</p>
+<p>​    多对多：拆分成两个一对多</p>
+<p><strong>在mybatis环境中实现</strong></p>
+<p>​    因为我们实体类中的字段最好是固定不变的，所以当需要用到另外一张表的字段时新建一个类来对应，我们把它们放到DTO层，专门用来装这些组合的不完整的数据实体。</p>
+<p><strong>1、一对一</strong></p>
+<p>新建一个实体类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserCardDto</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> User user;</span><br><span class="line">    <span class="keyword">private</span> Card card;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> User <span class="title">getUser</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> user;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUser</span><span class="params">(User user)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.user = user;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Card <span class="title">getCard</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> card;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setCard</span><span class="params">(Card card)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.card = card;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"UserCardDto&#123;"</span> +</span><br><span class="line">                <span class="string">"user="</span> + user +</span><br><span class="line">                <span class="string">", card="</span> + card +</span><br><span class="line">                <span class="string">'&#125;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在mapper.xml中编写sql</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--一对一--&gt;</span><br><span class="line">    &lt;resultMap id="user_card_map" type="userCardDto"&gt;</span><br><span class="line">    	&lt;!--property：实体类中成员变量名--&gt;</span><br><span class="line">        &lt;!--变量类型（别名）--&gt;</span><br><span class="line">        &lt;association property="user" javaType="user"&gt;</span><br><span class="line">            &lt;id column="userId" property="userId"/&gt;</span><br><span class="line">            &lt;result column="userName" property="userName"/&gt;</span><br><span class="line">            &lt;result column="userPwd" property="userPwd"/&gt;</span><br><span class="line">            &lt;result column="nickName" property="userNick"/&gt;</span><br><span class="line">            &lt;result column="card_id" property="cardId"/&gt;</span><br><span class="line">        &lt;/association&gt;</span><br><span class="line">        &lt;association property="card" javaType="card"&gt;</span><br><span class="line">            &lt;id column="id" property="id"/&gt;</span><br><span class="line">            &lt;result column="card_num" property="cardNum"/&gt;</span><br><span class="line">        &lt;/association&gt;</span><br><span class="line">    &lt;/resultMap&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;select id="queryCardUserById" parameterType="int" resultMap="user_card_map"&gt;</span><br><span class="line">        <span class="keyword">select</span> u.userName,u.nickName,c.card_num</span><br><span class="line">        <span class="keyword">from</span> <span class="keyword">user</span> u </span><br><span class="line">        <span class="keyword">left</span> <span class="keyword">join</span> card c </span><br><span class="line">        <span class="keyword">on</span> u.card_id=c.id </span><br><span class="line">        <span class="keyword">where</span> u.userId=#&#123;userId&#125;</span><br><span class="line">    &lt;/<span class="keyword">select</span>&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>2、一对多</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserCardAccountDto</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> User user;</span><br><span class="line">    <span class="keyword">private</span> Card card;</span><br><span class="line">    <span class="keyword">private</span> List&lt;Account&gt; accounts;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> User <span class="title">getUser</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> user;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUser</span><span class="params">(User user)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.user = user;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Card <span class="title">getCard</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> card;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setCard</span><span class="params">(Card card)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.card = card;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Account&gt; <span class="title">getAccounts</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> accounts;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAccounts</span><span class="params">(List&lt;Account&gt; accounts)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.accounts = accounts;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"UserCardAccountDto&#123;"</span> +</span><br><span class="line">                <span class="string">"user="</span> + user +</span><br><span class="line">                <span class="string">", card="</span> + card +</span><br><span class="line">                <span class="string">", accounts="</span> + accounts +</span><br><span class="line">                <span class="string">'&#125;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;resultMap id="user_card_acc_map" extends="user_card_map" type="userCardAccountDto"&gt;</span><br><span class="line">        &lt;!--property:字段名--&gt;&lt;!--ofType:集合中元素的类型--&gt;</span><br><span class="line">        &lt;collection property="accounts" ofType="account"&gt;</span><br><span class="line">            &lt;id column="id" property="id"/&gt;</span><br><span class="line">            &lt;result column="aname" property="aname"/&gt;</span><br><span class="line">            &lt;result column="type" property="type"/&gt;</span><br><span class="line">            &lt;result column="money" property="money"/&gt;</span><br><span class="line">            &lt;result column="userId" property="userId"/&gt;</span><br><span class="line">            &lt;result column="create_time" property="create_time"/&gt;</span><br><span class="line">            &lt;result column="update_time" property="update_time"/&gt;</span><br><span class="line">            &lt;result column="remark" property="remark"/&gt;</span><br><span class="line">        &lt;/collection&gt;</span><br><span class="line">    &lt;/resultMap&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;select id="queryUserCardAccountById" parameterType="int" resultMap="user_card_acc_map"&gt;</span><br><span class="line">        <span class="keyword">select</span></span><br><span class="line">        u.userId,u.userName,u.userPwd,u.userNick,u.card_id,</span><br><span class="line">        c.id,c.card_num,</span><br><span class="line">        a.id,a.aname,a.type,a.money,a.remark,a.create_time,a.update_time</span><br><span class="line">        <span class="keyword">from</span> <span class="keyword">user</span> u</span><br><span class="line">        <span class="keyword">left</span> <span class="keyword">join</span> card c <span class="keyword">on</span> u.card_id=c.id</span><br><span class="line">        <span class="keyword">left</span> <span class="keyword">join</span> <span class="keyword">account</span> a <span class="keyword">on</span> u.userId=a.userId</span><br><span class="line">        <span class="keyword">where</span> u.userId=#&#123;userId&#125;</span><br><span class="line">    &lt;/<span class="keyword">select</span>&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>查询出来的结果天然去重</strong></p>
 
       
     </div>
@@ -536,8 +528,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/dlh1234okok.github.io/2018/10/04/Spring-整合JDBC-事务-远程方法调用RMI/" rel="next" title="Spring-整合JDBC-事务-远程方法调用RMI">
-                <i class="fa fa-chevron-left"></i> Spring-整合JDBC-事务-远程方法调用RMI
+              <a href="/dlh1234okok.github.io/2018/10/09/Mybatis学习-2/" rel="next" title="Mybatis学习(2)-CRUD操作..">
+                <i class="fa fa-chevron-left"></i> Mybatis学习(2)-CRUD操作..
               </a>
             
           </div>
@@ -546,8 +538,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/dlh1234okok.github.io/2018/10/04/Spring-AOP/" rel="prev" title="Spring-AOP">
-                Spring-AOP <i class="fa fa-chevron-right"></i>
+              <a href="/dlh1234okok.github.io/2018/10/10/Mybatis学习-4/" rel="prev" title="Mybatis学习(4)-缓存">
+                Mybatis学习(4)-缓存 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -638,8 +630,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -701,6 +702,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#处理映射关系"><span class="nav-number">2.</span> <span class="nav-text">处理映射关系</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
