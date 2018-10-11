@@ -91,8 +91,8 @@
 <meta property="og:image" content="http://pg0l2q23d.bkt.clouddn.com/%E4%B8%80%E7%BA%A7%E7%BC%93%E5%AD%98.PNG">
 <meta property="og:image" content="http://pg0l2q23d.bkt.clouddn.com/%E4%B8%80%E7%BA%A7%E7%BC%93%E5%AD%982.PNG">
 <meta property="og:image" content="http://pg0l2q23d.bkt.clouddn.com/%E4%BA%8C%E7%BA%A7%E7%BC%93%E5%AD%981.PNG">
-<meta property="og:image" content="c:/Users/Administrator/AppData/Roaming/Typora/typora-user-images/1539176510629.png">
-<meta property="og:updated_time" content="2018-10-10T13:18:04.197Z">
+<meta property="og:image" content="http://pg0l2q23d.bkt.clouddn.com/%E4%BA%8C%E7%BA%A7%E7%BC%93%E5%AD%982.PNG">
+<meta property="og:updated_time" content="2018-10-11T02:06:49.524Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mybatis学习(4)-缓存">
 <meta name="twitter:description" content="简介​    缓存在数据库查询中就是将查询出来的数据存到内存或者磁盘中，以便下次再进行同样查询操作的时候可以直接读取。相比于到数据库中重新查询，从内存或磁盘中读取数据更加快速。 ​    正如大多数持久层框架一样，mybatis同样提供了一级缓存和二级缓存 ​    1、一级缓存：基于PerpetualCache的HashMap本地缓存，其存储作用域为Session，当Session flush或">
@@ -463,7 +463,7 @@
 <p>​    1、在mybatis配置文件中全局开启二级缓存（位置在properties标签下面）<img src="http://pg0l2q23d.bkt.clouddn.com/%E4%BA%8C%E7%BA%A7%E7%BC%93%E5%AD%981.PNG" alt=""></p>
 <p>​    2、在需要的Mapper.xml映射文件中加入二级缓存<cache></cache></p>
 <p>至此已经开启了二级缓存，<strong>映射语句文件中所有的select语句将会被缓存</strong></p>
-<p>测试结果：<img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1539176510629.png" alt=""></p>
+<p>测试结果：<img src="http://pg0l2q23d.bkt.clouddn.com/%E4%BA%8C%E7%BA%A7%E7%BC%93%E5%AD%982.PNG" alt=""></p>
 <p>​    发现也只执行了一遍sql查询，“Cache Hit Ratio”缓存命中率，说明第二次查询是从缓存中读取。</p>
 <p><strong>补充说明：</strong></p>
 <p>​    1、映射语句文件中所有的insert、update、delete语句都会刷新缓存。</p>
