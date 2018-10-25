@@ -6,7 +6,7 @@
   <link href="/dlh1234okok.github.io/atom.xml" rel="self"/>
   
   <link href="http://www.dlhblog.online/"/>
-  <updated>2018-10-22T13:47:04.195Z</updated>
+  <updated>2018-10-25T12:14:27.187Z</updated>
   <id>http://www.dlhblog.online/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>redis简介和安装</title>
+    <link href="http://www.dlhblog.online/2018/10/25/redis-1/"/>
+    <id>http://www.dlhblog.online/2018/10/25/redis-1/</id>
+    <published>2018-10-25T11:35:16.000Z</published>
+    <updated>2018-10-25T12:14:27.187Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>​    Redis 是一个开源（BSD许可）的，内存中的数据结构存储系统，它可以用作数据库、缓存和消息中间件。 它支持多种类型的数据结构，如 字符串（strings）， 散列（hashes）， 列表（lists）， 集合（sets）， 有序集合（sorted sets） 与范围查询， bitmaps， hyperloglogs 和 地理空间（geospatial） 索引半径查询。 Redis 内置了 复制（replication），LUA脚本（Lua scripting）， LRU驱动事件（LRU eviction），事务（transactions） 和不同级别的 磁盘持久化（persistence）， 并通过 Redis哨兵（Sentinel）和自动 分区（Cluster）提供高可用性（high availability）。    ——<a href="http://www.redis.cn/" target="_blank" rel="noopener">http://www.redis.cn/</a></p><h2 id="小结："><a href="#小结：" class="headerlink" title="小结："></a>小结：</h2><ol><li><p>Redis 是把数据存放在内存当中， 所以它的运行速度会非常快</p></li><li><p>Redis 具有多种数据存储结构</p></li><li><p>Redis 具有持久化的功能</p></li><li><p>Redis 上的数据可以设置过期</p></li><li><p>Redis 支持集群， 而且可以自动切换</p></li><li><p>跨平台 支持多种语言客户端 </p></li></ol><p>   Redis 用途：<br>   ​    缓存（StackOverFlow）， 数据库(微博)， 消息中间件（队列， 微博） </p><h1 id="Redis安装"><a href="#Redis安装" class="headerlink" title="Redis安装"></a>Redis安装</h1><p>环境：centerOS 6.7 虚拟机</p><p>redis版本：5.0</p><p> 1、通过xshell建立连接，使用wget命令下载对应的节点资源</p><pre><code>wget http://download.redis.io/releases/redis-5.0.0.tar.gz</code></pre><p>​    或者去官网下载，使用xftp导入</p><p>2、安装gcc环境</p><p>​    yum install gcc</p><p>3、解压redis压缩文件</p><p>​    tar zxf redis-5.0.0.tar.gz </p><p>4、进入解压后的文件夹</p><p>​    make -编译</p><p>​    完成~</p><h1 id="启动redis服务"><a href="#启动redis服务" class="headerlink" title="启动redis服务"></a>启动redis服务</h1><p>进入src目录</p><p>./redis-server &amp;</p><p>在后面加上&amp;在启动服务后可以继续别的操作，否则以当前窗口启动无法进行其他操作。</p><p><img src="http://pg0l2q23d.bkt.clouddn.com/redis01.bmp" alt=""></p><p>出现以上界面表示服务启动成功</p><p>启动客户端</p><p>./redis-cli</p><p><img src="http://pg0l2q23d.bkt.clouddn.com/redis02.bmp" alt=""></p><p>启动成功就可以在里面愉快地敲命令了！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot; title=&quot;介绍&quot;&gt;&lt;/a&gt;介绍&lt;/h1&gt;&lt;p&gt;​    Redis 是一个开源（BSD许可）的，内存中的数据结构存储系统，它可以用作数据库、缓存和消息中间件。 它支持多种类型的数据结构，
+      
+    
+    </summary>
+    
+      <category term="redis" scheme="http://www.dlhblog.online/categories/redis/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Crm项目-权限模块</title>
@@ -458,29 +481,6 @@
     </summary>
     
       <category term="webSocket" scheme="http://www.dlhblog.online/categories/webSocket/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>JS原生Ajax</title>
-    <link href="http://www.dlhblog.online/2018/10/04/JS%E5%8E%9F%E7%94%9FAjax/"/>
-    <id>http://www.dlhblog.online/2018/10/04/JS原生Ajax/</id>
-    <published>2018-10-04T10:45:25.000Z</published>
-    <updated>2018-10-04T10:52:16.708Z</updated>
-    
-    <content type="html"><![CDATA[<item><br><br>一、XMLHTTPRequest<br><br>　　Ajax技术核心是XMLHTTPRequest对象（简称XHR），是由微软首先引入的一个特性，其他浏览器提供商后来都提供了相同的实现。在XHR出现之前，Ajax式的通信必须借助一些手段来实现，大多数是使用隐藏的框架或内嵌框架。<br><br>　　Ajax，是Asynchronout JavaScript+XML的简写。这种技术能够向服务器请求额外的数据而无需卸载/刷新页面，会带来更好的用户体验。<br><br>　　1、支持原生XHR对象的浏览器创建XHR对象可以直接实例化XMLHTTPRequest。<br><br>　　　　<img src="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180905003920647-1826035439.png" alt=""><br><br>　　2、在使用XHR对象时，先必须调用<strong>open()</strong>方法，它接收三个参数：要发送的请求类型（get/post）、请求的URL和表示是否异步(async)。open()方法并不会真正发送请求，而只是启动一个请求以备发送。<br><br>　　3、通过<strong>send()</strong>方法进行发送请求，send()方法接受一个参数，作为请求主体发送的数据。如果不需要必须填null。执行send()方法后请求就会发送到服务器上。<br><br>　　4、请求发送到服务端收到响应后，响应的数据会自动填充XHR对象的属性，一共有四个属性：<br><br>　　　　<img src="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180905004456221-1111928088.png" alt=""><br><br>&nbsp;<br><br>　　5、接受响应之后，第一步检查status属性，以确定响应已经成功返回，有如下的状态代码：<br><br>　　　　<img src="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180905004653948-1534573078.png" alt=""><br><br>　　6、判断http状态值以确定响应是否成功返回<br><br>　　　　<img src="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180905004847155-333519007.png" alt=""><br><br>　　7、当使用异步调用的时候，检测<strong>readyState</strong>属性，每当readyState属性改变时，触发<strong>readyStatechange</strong>事件。这个属性共有五个值：<br><br>　　　　<img src="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180905005202926-990213462.png" alt=""><br><br>　　　　<img src="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180905005318012-2003994204.png" alt=""><br><br>&nbsp;<br><br>&nbsp;二、GET与POST<br><br>　　1、GET请求<br><br>　　　　通过URL后的问号给服务器传递键值对数据，服务器接收到返回响应数据。特殊字符传参产生的问题可以使用<strong>encodeURIComponent()</strong>进行编码处理，中文字符的返回及传参，可以将页面保存和设置为utf-8即可，AJAX返回的数据为UTF-8。<br><br>　　2、POST请求<br><br>　　　　通过发送POST请求的数据，不会跟在URL后面，而是通过send()方法向服务器提交数据<br><br>　　　　　　<img src="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180905005923385-1376951188.png" alt=""><br><br>&nbsp;<br><br>　　　　向服务器发送POST请求由于解析机制的原因，需要进行特别的处理。因为POST请求和Web表单提交是不同的的，需要使用XHR来模仿表单提交。<br><br>　　　　　　<img src="https://img2018.cnblogs.com/blog/1467494/201809/1467494-20180905010106749-1235012049.png" alt=""><br><br>　　　　从性能上来讲POST请求比GET请求消耗更多一些，用相同数据比较，GET请求最多比POST请求快两倍<br><br>&nbsp;<br><br>三、封装Ajax<br><br><div class="cnblogs_code"><br><pre>&lt;script type=”text/javascript”&gt;<br><span style="color: #0000ff;">var</span> obj=<span style="color: #000000;">{<br>    url:</span>“user”<span style="color: #000000;">,<br>    method:</span>“post”<span style="color: #000000;">,<br>    data:{name:</span>“zs”,age:18<span style="color: #000000;">},<br>    async:</span><span style="color: #0000ff;">true</span><span style="color: #000000;">,<br>    success:</span><span style="color: #0000ff;">function</span><span style="color: #000000;">(result){<br>        console.log(result);<br>        console.log(JSON.parse(result))<br>    },<br>    error:</span><span style="color: #0000ff;">function</span><span style="color: #000000;">(result){<br>        console.log(result);<br>    }<br>}<br>ajax(obj)<br><br></span><span style="color: #0000ff;">function</span><span style="color: #000000;"> ajax(obj){<br>​    </span><span style="color: #008000;">//</span><span style="color: #008000;">得到XMLHTTPRequest对象</span><br>​    <span style="color: #0000ff;">var</span> xhr=<span style="color: #0000ff;">new</span><span style="color: #000000;"> XMLHttpRequest();<br>​    </span><span style="color: #008000;">//</span><span style="color: #008000;">将参数格式化</span><br>​    obj.data=<span style="color: #000000;">params(obj.data);<br>​    </span><span style="color: #008000;">//</span><span style="color: #008000;">判断请求方式</span><br>​    <span style="color: #0000ff;">if</span>(obj.method.toUpperCase()==”GET”<span style="color: #000000;">){<br>​        obj.url</span>+=(obj.url.indexOf(“?”)==-1)?”?”+obj.data:”&amp;”+<span style="color: #000000;">obj.data;<br>​        </span><span style="color: #008000;">//</span><span style="color: #008000;">open()方法：请求方式/请求路径/是否异步</span><br><span style="color: #000000;">        xhr.open(obj.method,obj.url,obj.async);<br>​        </span><span style="color: #008000;">//</span><span style="color: #008000;">发送请求</span><br>​        xhr.send(<span style="color: #0000ff;">null</span><span style="color: #000000;">);<br>​    }</span><span style="color: #0000ff;">else</span>{ <span style="color: #008000;">//</span><span style="color: #008000;"> POST请求</span><br><span style="color: #000000;">        xhr.open(obj.method,obj.url,obj.async);<br>​        </span><span style="color: #008000;">//</span><span style="color: #008000;">模拟表单提交</span><br>​        xhr.setRequestHeader(“Content-Type”,”application/x-www-form-urlencode”<span style="color: #000000;">);<br>​        </span><span style="color: #008000;">//</span><span style="color: #008000;">发送请求</span><br><span style="color: #000000;">        xhr.send(obj.data);<br>​    }<br>​    </span><span style="color: #008000;">//</span><span style="color: #008000;">判断是否是异步请求</span><br>​    <span style="color: #0000ff;">if</span>(obj.async){ <span style="color: #008000;">//</span><span style="color: #008000;">异步请求</span><br>​        <span style="color: #008000;">//</span><span style="color: #008000;">判断响应是否完全响应</span><br>​        xhr.onreadystatechange=<span style="color: #0000ff;">function</span><span style="color: #000000;">(){<br>​            </span><span style="color: #0000ff;">if</span>(xhr.readyState==4<span style="color: #000000;">){<br>​                callback();<br>​            }<br>​        }<br>​    }</span><span style="color: #0000ff;">else</span><span style="color: #000000;">{<br>​        callback();<br>​    }<br><br>    </span><span style="color: #008000;">//</span><span style="color: #008000;">回调函数</span><br>    <span style="color: #0000ff;">function</span><span style="color: #000000;"> callback(){<br>        </span><span style="color: #0000ff;">if</span>(xhr.status==200<span style="color: #000000;">){<br>            </span><span style="color: #008000;">//</span><span style="color: #008000;">回调函数</span><br><span style="color: #000000;">            obj.success(xhr.responseText);<br>​        }</span><span style="color: #0000ff;">else</span><span style="color: #000000;">{<br>​            obj.error(</span>“请求失败！错误状态码”+xhr.status+”,错误原因”+<span style="color: #000000;">xhr.statusText);<br>​        }<br>​    }<br>}<br></span><span style="color: #008000;">/<em></em></span><span style="color: #008000;"><br> <em> 将json格式的字符串转换成普通的参数拼接<br>    </em></span><span style="color: #008000;">/</span><br>    <span style="color: #0000ff;">function</span><span style="color: #000000;"> params(data){<br>    </span><span style="color: #0000ff;">var</span> arr=<span style="color: #000000;">[];<br>    </span><span style="color: #0000ff;">if</span>(data!=<span style="color: #0000ff;">null</span> &amp;&amp; data !=””<span style="color: #000000;">){<br>    ​    </span><span style="color: #0000ff;">for</span>(<span style="color: #0000ff;">var</span> d <span style="color: #0000ff;">in</span><span style="color: #000000;"> data){<br>    ​        console.log(d</span>+” “+<span style="color: #000000;">data[d]);<br>    ​        </span><span style="color: #0000ff;">var</span> name=<span style="color: #000000;">encodeURIComponent(d);<br>    ​        </span><span style="color: #0000ff;">var</span> value=<span style="color: #000000;">encodeURIComponent(data[d]);<br><br>            arr.push(name</span>+”=”+<span style="color: #000000;">value);<br>        }<br>        </span><span style="color: #0000ff;">var</span> param=arr.join(“&amp;”<span style="color: #000000;">);<br>        </span><span style="color: #0000ff;">return</span><span style="color: #000000;"> param;<br>    }<br>    </span><span style="color: #0000ff;">return</span> <span style="color: #0000ff;">null</span><span style="color: #000000;">;<br>    }<br>    </span>&lt;/script&gt;</pre><br>    </div><br><br>&nbsp;<br><br>　　&nbsp;同步：<br><br>　　　　提交请求–&gt;等待服务器处理–&gt;处理完毕返回这个期间客户端浏览器不能干的事，当前只能做一件事。<br><br>　　异步：<br><br>　　　　请求通过事件触发–&gt;服务器处理（这时浏览器仍然可以做其他事情）–&gt;处理完毕。可以同时做多件事情<br><br>&nbsp;<br><br>四、JQuery封装的AJax<br><br>　　$.ajax(){}<br><br>　　$.get(){}<br><br>　　$.getJson(){}<br><br>　　$.post(){}<br></item>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;item&gt;&lt;br&gt;&lt;br&gt;一、XMLHTTPRequest&lt;br&gt;&lt;br&gt;　　Ajax技术核心是XMLHTTPRequest对象（简称XHR），是由微软首先引入的一个特性，其他浏览器提供商后来都提供了相同的实现。在XHR出现之前，Ajax式的通信必须借助一些手段来实现，大多数是
-      
-    
-    </summary>
-    
-      <category term="JavaWeb" scheme="http://www.dlhblog.online/categories/JavaWeb/"/>
     
     
   </entry>
