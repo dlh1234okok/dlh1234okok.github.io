@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/dlh1234okok.github.io/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/dlh1234okok.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/dlh1234okok.github.io/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/dlh1234okok.github.io/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/dlh1234okok.github.io/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/dlh1234okok.github.io/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/dlh1234okok.github.io/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/dlh1234okok.github.io/atom.xml" title="这夜景" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="对于 Redis,其提供了不同级别的持久化操作:​    1、RDB 持久化可以在指定的时间间隔内生成数据集的时间点快照​    2、AOF 持久化记录服务器执行的所有写操作命令， 并在服务器启动时， 通过重新执行这些命令来还原数据集。 AOF 文件中的命令全部以 Redis 协议的格式来保存， 新命令会被追加到文件的末尾。 Redis 还可以在后台对 AOF 文件进行重写（rewrite）， 使">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis持久化">
+<meta property="og:url" content="http://www.dlhblog.online/2018/10/27/Redis持久化/index.html">
+<meta property="og:site_name" content="这夜景">
+<meta property="og:description" content="对于 Redis,其提供了不同级别的持久化操作:​    1、RDB 持久化可以在指定的时间间隔内生成数据集的时间点快照​    2、AOF 持久化记录服务器执行的所有写操作命令， 并在服务器启动时， 通过重新执行这些命令来还原数据集。 AOF 文件中的命令全部以 Redis 协议的格式来保存， 新命令会被追加到文件的末尾。 Redis 还可以在后台对 AOF 文件进行重写（rewrite）， 使">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://pg0l2q23d.bkt.clouddn.com/redis%E6%8C%81%E4%B9%85%E5%8C%961.jpg">
+<meta property="og:image" content="http://pg0l2q23d.bkt.clouddn.com/redis%E6%8C%81%E4%B9%85%E5%8C%962.jpg">
+<meta property="og:image" content="http://pg0l2q23d.bkt.clouddn.com/redis%E6%8C%81%E4%B9%85%E5%8C%963.jpg">
+<meta property="og:updated_time" content="2018-10-27T08:05:24.366Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Redis持久化">
+<meta name="twitter:description" content="对于 Redis,其提供了不同级别的持久化操作:​    1、RDB 持久化可以在指定的时间间隔内生成数据集的时间点快照​    2、AOF 持久化记录服务器执行的所有写操作命令， 并在服务器启动时， 通过重新执行这些命令来还原数据集。 AOF 文件中的命令全部以 Redis 协议的格式来保存， 新命令会被追加到文件的末尾。 Redis 还可以在后台对 AOF 文件进行重写（rewrite）， 使">
+<meta name="twitter:image" content="http://pg0l2q23d.bkt.clouddn.com/redis%E6%8C%81%E4%B9%85%E5%8C%961.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/dlh1234okok.github.io/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.dlhblog.online/2018/10/27/Redis持久化/"/>
+
+
+
+
+
+  <title>Redis持久化 | 这夜景</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/dlh1234okok.github.io/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">这夜景</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">blog</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/dlh1234okok.github.io/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/dlh1234okok.github.io/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/dlh1234okok.github.io/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/dlh1234okok.github.io/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            日程表
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/dlh1234okok.github.io/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/dlh1234okok.github.io/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.dlhblog.online/dlh1234okok.github.io/2018/10/27/Redis持久化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="li-hong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://pg0l2q23d.bkt.clouddn.com/background.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="这夜景">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Redis持久化</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-27T15:39:12+08:00">
+                2018-10-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/dlh1234okok.github.io/categories/redis/" itemprop="url" rel="index">
+                    <span itemprop="name">redis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/dlh1234okok.github.io/2018/10/27/Redis持久化/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/dlh1234okok.github.io/2018/10/27/Redis持久化/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+		  
+		  
+			<span class="post-meta-divider">|</span>
+			<span id="busuanzi_value_page_pv"></span>次阅读
+			
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.8k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>对于 Redis,其提供了不同级别的持久化操作:<br>​    1、RDB 持久化可以在指定的时间间隔内生成数据集的时间点快照<br>​    2、AOF 持久化记录服务器执行的所有写操作命令， 并在服务器启动时， 通过重新执行这些命令来还原数据集。 AOF 文件中的命令全部以 Redis 协议的格式来保存， 新命令会被追加到文件的末尾。 Redis 还可以在后台对 AOF 文件进行重写（rewrite）， 使得 AOF文件的体积不会超出保存数据集状态所需的实际大小。</p>
+<p>​    3、Redis 还可以同时使用 AOF 持久化和 RDB 持久化。在这种情况下， 当 Redis 重<br>启时,它会优先使用 AOF 文件来还原数据集,因为 AOF 文件保存的数据集通常比 RDB<br>文件所保存的数据集更完整。<br>​    4、持久化功能当然也可以进行关闭操作， 让数据仅在服务器运行时存在</p>
+<h1 id="RDB-持久化操作（快照-SnapShot-方式）"><a href="#RDB-持久化操作（快照-SnapShot-方式）" class="headerlink" title="RDB 持久化操作（快照 SnapShot 方式）"></a>RDB 持久化操作（快照 SnapShot 方式）</h1><p>​    在默认情况下， Redis 将数据库快照保存在名字为 dump.rdb 的二进制文件中。当然， 这里可以通过修改redis.conf 配置文件来对数据存储条件进行定义， 规定在“ N 秒内数据集至少有 M 个改动”这一条件被满足时,自动保存一次数据集。 也可以通过调用 save 或 bgsave ,手动让 Redis 进行数据集保存操作 </p>
+<p><img src="http://pg0l2q23d.bkt.clouddn.com/redis%E6%8C%81%E4%B9%85%E5%8C%961.jpg" alt=""></p>
+<h2 id="Save-Bgsave-手动方式保存数据"><a href="#Save-Bgsave-手动方式保存数据" class="headerlink" title="Save |Bgsave 手动方式保存数据"></a>Save |Bgsave 手动方式保存数据</h2><p>通过 save 操作 ， 当前 io 操作被阻塞， 当 save 保存执行完毕才会进行后续 io 操作 </p>
+<p><img src="http://pg0l2q23d.bkt.clouddn.com/redis%E6%8C%81%E4%B9%85%E5%8C%962.jpg" alt=""></p>
+<p>save 操作执行成功后可以看到 dump.rdb 文件(在 root/usr/redis-4.0.9-master/src 目录下) </p>
+<p><img src="http://pg0l2q23d.bkt.clouddn.com/redis%E6%8C%81%E4%B9%85%E5%8C%963.jpg" alt=""></p>
+<h2 id="快照运行方式"><a href="#快照运行方式" class="headerlink" title="快照运行方式"></a>快照运行方式</h2><p>当 Redis 需要保存 dump.rdb 文件时， 服务器执行以下操作：</p>
+<ol>
+<li>Redis 调用 fork() ， 同时拥有父进程和子进程。</li>
+<li>子进程将数据集写入到一个临时 RDB 文件中。</li>
+<li>当子进程完成对新 RDB 文件的写入时， Redis 用新 RDB 文件替换原来的 RDB 文件， 并删除<br>旧的 RDB 文件。<br>RDB 优缺点</li>
+</ol>
+<p><em>优点</em>:</p>
+<ol>
+<li>RDB 是一个非常紧凑（compact） 的文件， 它保存了 Redis 在某个时间点上的数据集。 该文件<br>适合用于进行备份 。 比如说， 可以在最近的 24 小时内， 每小时备份一次 RDB 文件， 并且在每<br>个月的每一天， 也备份一个 RDB 文件。 这样的话， 即使遇上问题， 也可以随时将数据集还原到<br>不同的版本。</li>
+<li>RDB 非常适用于灾难恢复（disaster recovery） ： 它只有一个文件， 并且内容都非常紧凑，<br>可以（在加密后） 将它传送到别的数据中心</li>
+<li>RDB 可以最大化 Redis 的性能： 父进程在保存 RDB 文件时唯一要做的就是 fork 出一个子进<br>程， 然后这个子进程就会处理接下来的所有保存工作， 父进程无须执行任何磁盘 I/O 操作。</li>
+<li>RDB 在恢复大数据集时的速度比 AOF 的恢复速度要快</li>
+</ol>
+<p><em>缺点</em>:</p>
+<ol>
+<li>如果想要做到数据实时备份级别， 此时使用 rdb 快照进行备份可能会出现数据无法备份完整情况，<br>比如在数据备份完毕下次备份操作发起前， 服务器由于某种原因意外宕机， 此时采用 rdb 就无法<br>对当前情况做的实时响应处理</li>
+<li>RDB 需要经常 fork 子进程来保存数据集到硬盘上,当数据集比较大的时候,fork 的过程是非常<br>耗时的,可能会导致Redis在一些毫秒级内不能响应客户端的请求.如果数据集巨大并且CPU性能<br>不是很好的情况下,这种情况会持续 1 秒,AOF 也需要 fork,但是你可以调节重写日志文件的频率<br>来提高数据集的耐久度. </li>
+</ol>
+<h1 id="AOF-只追加操作的文件"><a href="#AOF-只追加操作的文件" class="headerlink" title="AOF 只追加操作的文件"></a>AOF 只追加操作的文件</h1><p>​    RDB 需要经常 fork 子进程来保存数据集到硬盘上,当数据集比较大的时候,fork 的过程是非常耗时的,可能会导致 Redis 在一些毫秒级内不能响应客户端的请求.如果数据集巨大并且 CPU 性能不是很好的情况下,这种情况会持续 1 秒,AOF 也需要 fork,但是你可以调节重写日志文件的频率来提高数据集的耐久度.</p>
+<p><code>appendonly yes</code></p>
+<p>​    从现在开始， 每当 Redis 执行一个改变数据集的命令时（比如 SET） ， 这个命令就会被追加到 AOF 文件的末尾。 这样的话， 当 Redis 重新启时， 程序就可以通过重新执行AOF 文件中的命令来达到重建数据集的目的。</p>
+<p><em>日志重写</em></p>
+<p>​    因为 AOF 的运作方式是不断地将命令追加到文件的末尾， 所以随着写入命令的不断增加，AOF 文件的体积也会变得越来越大。 举个例子， 如果你对一个计数器调用了 100 次INCR ， 那么仅仅是为了保存这个计数器的当前值， AOF 文件就需要使用 100 条记录（entry） 。 然而在实际上， 只使用一条 SET 命令已经足以保存计数器的当前值了， 其余 99 条记录实际上都是多余的。</p>
+<p>​    为了处理这种情况， Redis 支持一种有趣的特性： 可以在不打断服务客户端的情况下， 对AOF 文件进行重建（rebuild） 。 执行 BGREWRITEAOF 命令， Redis 将生成一个新的AOF 文件， 这个文件包含重建当前数据集所需的最少命令。 Redis 2.2 需要自己手动执行 BGREWRITEAOF 命令； Redis 2.4 则可以自动触发 AOF 重写。 参考:<br><a href="http://www.redis.cn/topics/persistence.html" target="_blank" rel="noopener">http://www.redis.cn/topics/persistence.html</a> </p>
+<p>AOF重写文件配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"># 是否开启 AOF， 默认关闭（no）</span><br><span class="line">appendonly yes</span><br><span class="line"></span><br><span class="line"># 指定 AOF 文件名</span><br><span class="line">appendfilename appendonly.aof</span><br><span class="line"></span><br><span class="line"># Redis 支持三种不同的刷写模式：</span><br><span class="line"># appendfsync always #每次收到写命令就立即强制写入磁盘， 是最有保证的完全的持久化， 但速度也是最慢的， 一般不推荐使用。</span><br><span class="line">appendfsync everysec #每秒钟强制写入磁盘一次， 在性能和持久化方面做了很好的折中， 是受推荐的方式。</span><br><span class="line"># appendfsync no #完全依赖 OS 的写入， 一般为 30 秒左右一次， 性能最好但是持久化最没有保证， 不被推荐。</span><br><span class="line">#在日志重写时， 不进行命令追加操作， 而只是将其放在缓冲区里， 避免与命令的追加造成</span><br><span class="line">DISK IO 上的冲突。</span><br><span class="line">#设置为 yes 表示 rewrite 期间对新写操作不 fsync,暂时存在内存中,等 rewrite 完成后再写入， 默认为no</span><br><span class="line">no-appendfsync-on-rewrite no</span><br><span class="line"></span><br><span class="line">#当前 AOF 文件大小是上次日志重写得到 AOF 文件大小的二倍时， 自动启动新的日志重写过程。</span><br><span class="line">auto-aof-rewrite-percentage 100</span><br><span class="line"></span><br><span class="line">#当前 AOF 文件启动新的日志重写过程的最小值， 避免刚刚启动 Reids 时由于文件尺寸较小导致频繁的重写。</span><br><span class="line">auto-aof-rewrite-min-size 64mb</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>我就试试~</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://pg0l2q23d.bkt.clouddn.com/mm_facetoface_collect_qrcode_1538620279859.png" alt="li-hong 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+	<div>
+		
+			<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">
+            -------------本文结束
+            <i class="fa fa-paw"></i>
+            感谢您的阅读-------------
+        </div>
+    
+</div>
+
+
+
+		
+	</div>
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/dlh1234okok.github.io/2018/10/27/Redis哨兵机制/" rel="next" title="Redis哨兵机制(主备切换)">
+                <i class="fa fa-chevron-left"></i> Redis哨兵机制(主备切换)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/dlh1234okok.github.io/2018/10/27/Redis客户端/" rel="prev" title="Redis-JAVA客户端">
+                Redis-JAVA客户端 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+	<div onclick="showGitment()" id="gitment_title" class="gitment_title">显示 Gitment 评论</div>
+	<div id="container" style="display:none"></div>
+	<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+		<script src="https://billts.site/js/gitment.js"></script>
+	<script>
+		const myTheme = {
+		render(state, instance) {
+		const container = document.createElement('div');
+		container.lang = "en-US";
+		container.className = 'gitment-container gitment-root-container';
+		container.appendChild(instance.renderHeader(state, instance));
+		container.appendChild(instance.renderEditor(state, instance));
+		container.appendChild(instance.renderComments(state, instance));
+		container.appendChild(instance.renderFooter(state, instance));
+		return container;
+		}
+	}
+	function showGitment() {
+		$("#gitment_title").attr("style", "display:none");
+		$("#container").attr("style", "").addClass("gitment_container");
+		var gitment = new Gitment({
+		id: window.location.pathname,
+		theme: myTheme,
+		owner: 'dlhblog',
+		repo: 'dlh1234okok.github.io',
+		oauth: {
+		client_id: '3d327d2bf6e29622b4fd',
+		client_secret: '4d1303f0b50a089e4d6559cea1595c7cb95e3379'
+		}
+		});
+		gitment.render('container');
+	}
+</script>
+
+
+  
+  
+  
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://pg0l2q23d.bkt.clouddn.com/background.jpg"
+                alt="li-hong" />
+            
+              <p class="site-author-name" itemprop="name">li-hong</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/dlh1234okok.github.io/archives/">
+              
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/dlh1234okok.github.io/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/dlh1234okok.github.io/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#RDB-持久化操作（快照-SnapShot-方式）"><span class="nav-number">1.</span> <span class="nav-text">RDB 持久化操作（快照 SnapShot 方式）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Save-Bgsave-手动方式保存数据"><span class="nav-number">1.1.</span> <span class="nav-text">Save |Bgsave 手动方式保存数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#快照运行方式"><span class="nav-number">1.2.</span> <span class="nav-text">快照运行方式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AOF-只追加操作的文件"><span class="nav-number">2.</span> <span class="nav-text">AOF 只追加操作的文件</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">li-hong</span>
+
+  
+</div>
+
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访问量:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站只有37.3k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/dlh1234okok.github.io/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/dlh1234okok.github.io/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/dlh1234okok.github.io/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/dlh1234okok.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/dlh1234okok.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/dlh1234okok.github.io/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/dlh1234okok.github.io/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/dlh1234okok.github.io/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/dlh1234okok.github.io/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/dlh1234okok.github.io/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/dlh1234okok.github.io/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/dlh1234okok.github.io/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/dlh1234okok.github.io/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+   
+   
+   
+   
+   <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+   <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+   
+       <script type="text/javascript">
+           function ShowGitment(){
+               document.getElementById("gitment-display-button").style.display = "none";
+               document.getElementById("gitment-container").style.display = "block";
+               var gitment = new Gitment({
+                   id: document.location.href, 
+                   owner: '',
+                   repo: '',
+                   oauth: {
+                       client_id: '',
+                       client_secret: '',
+                   }});
+               gitment.render('gitment-container');
+           }
+       </script>
+   
+
+
+
+
+
+
+   
+   
+   
+   
+   <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+   <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+   
+       <script type="text/javascript">
+           function ShowGitment(){
+               document.getElementById("gitment-display-button").style.display = "none";
+               document.getElementById("gitment-container").style.display = "block";
+               var gitment = new Gitment({
+                   id: document.location.href, 
+                   owner: '',
+                   repo: '',
+                   oauth: {
+                       client_id: '',
+                       client_secret: '',
+                   }});
+               gitment.render('gitment-container');
+           }
+       </script>
+   
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/dlh1234okok.github.io/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

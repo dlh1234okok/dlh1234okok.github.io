@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/dlh1234okok.github.io/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/dlh1234okok.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/dlh1234okok.github.io/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/dlh1234okok.github.io/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/dlh1234okok.github.io/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/dlh1234okok.github.io/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/dlh1234okok.github.io/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/dlh1234okok.github.io/atom.xml" title="这夜景" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="key 相关指令​    exists key 检测指定 key 是否存在， 返回 1 表示存在， 0 不存在​    del key1 key2 …… keyN 删除给定 key,返回删除 key 的数目， 0 表示给定 key 都不存在​    type key 返回给定 key 值的类型。 返回 none 表示 key 不存在,string 字符类型， list 链表类型 set 无序集合类">
+<meta property="og:type" content="article">
+<meta property="og:title" content="redis(2)-五种数据类型">
+<meta property="og:url" content="http://www.dlhblog.online/2018/10/27/redis-2/index.html">
+<meta property="og:site_name" content="这夜景">
+<meta property="og:description" content="key 相关指令​    exists key 检测指定 key 是否存在， 返回 1 表示存在， 0 不存在​    del key1 key2 …… keyN 删除给定 key,返回删除 key 的数目， 0 表示给定 key 都不存在​    type key 返回给定 key 值的类型。 返回 none 表示 key 不存在,string 字符类型， list 链表类型 set 无序集合类">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-10-27T01:40:13.415Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="redis(2)-五种数据类型">
+<meta name="twitter:description" content="key 相关指令​    exists key 检测指定 key 是否存在， 返回 1 表示存在， 0 不存在​    del key1 key2 …… keyN 删除给定 key,返回删除 key 的数目， 0 表示给定 key 都不存在​    type key 返回给定 key 值的类型。 返回 none 表示 key 不存在,string 字符类型， list 链表类型 set 无序集合类">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/dlh1234okok.github.io/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.dlhblog.online/2018/10/27/redis-2/"/>
+
+
+
+
+
+  <title>redis(2)-五种数据类型 | 这夜景</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/dlh1234okok.github.io/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">这夜景</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">blog</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/dlh1234okok.github.io/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/dlh1234okok.github.io/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/dlh1234okok.github.io/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/dlh1234okok.github.io/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            日程表
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/dlh1234okok.github.io/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/dlh1234okok.github.io/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.dlhblog.online/dlh1234okok.github.io/2018/10/27/redis-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="li-hong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://pg0l2q23d.bkt.clouddn.com/background.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="这夜景">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">redis(2)-五种数据类型</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-27T08:46:41+08:00">
+                2018-10-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/dlh1234okok.github.io/categories/redis/" itemprop="url" rel="index">
+                    <span itemprop="name">redis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/dlh1234okok.github.io/2018/10/27/redis-2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/dlh1234okok.github.io/2018/10/27/redis-2/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+		  
+		  
+			<span class="post-meta-divider">|</span>
+			<span id="busuanzi_value_page_pv"></span>次阅读
+			
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  15
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="key-相关指令"><a href="#key-相关指令" class="headerlink" title="key 相关指令"></a>key 相关指令</h1><p>​    <strong>exists</strong> key 检测指定 key 是否存在， 返回 1 表示存在， 0 不存在<br>​    <strong>del</strong> key1 key2 …… keyN 删除给定 key,返回删除 key 的数目， 0 表示给定 key 都不存在<br>​    <strong>type</strong> key 返回给定 key 值的类型。 返回 none 表示 key 不存在,string 字符类型， list 链表类型 set 无序集合类型……<br>​    <strong>keys</strong> pattern 返回匹配指定模式的所有 key<br>​    <strong>randomkey</strong> 返回从当前数据库中随机选择的一个 key,如果当前数据库是空的， 返回空串<br>​    <strong>rename</strong> oldkey newkey 重命名一个 key,如果 newkey 存在， 将会被覆盖， 返回1 表示成功，0 失败。 可能是 oldkey 不存在或者和 newkey 相同。<br>​    <strong>renamenx</strong> oldkey newkey 同上， 但是如果 newkey 存在返回失败。<br>​    <strong>expire</strong> key seconds 为 key 指定过期时间， 单位是秒。 返回 1 成功， 0 表示key 已经设置超过过期时间或者不存在。<br>​    <strong>ttl</strong> key 返回设置过过期时间 key 的剩余过期秒数。 -1 表示 key 不存在或者未设置过期时间。<br>​    <strong>select</strong> db-index 通过索引选择数据库， 默认连接的数据库是 0,默认数据库数是16 个。 返回 1表示成功， 0 失败。<br>​    <strong>move</strong> key db-index 将 key 从当前数据库移动到指定数据库。 返回 1 表示成功。0 表示 key不存在或者已经在指定数据库中。 </p>
+<h1 id="五种基本数据类型"><a href="#五种基本数据类型" class="headerlink" title="五种基本数据类型"></a>五种基本数据类型</h1><p>redis 提供五种数据类型： string,hash,list,set 及sorted set</p>
+<h2 id="String-类型"><a href="#String-类型" class="headerlink" title="String 类型"></a>String 类型</h2><p>string 是最基本的类型， 而且 string 类型是二进制安全的。 意思是 redis 的<br>string 可以包含任何数据。 比如 jpg 图片或者序列化的对象。 从内部实现来看其实<br>string 可以看作 byte 组， 最大上限是 1G 字节。 1G=1024MB</p>
+<h3 id="string-类型数据操作指令简介"><a href="#string-类型数据操作指令简介" class="headerlink" title="string 类型数据操作指令简介"></a>string 类型数据操作指令简介</h3><p>​    <strong>set</strong> key value 设置 key 对应 string 类型的值， 返回 1 表示成功， 0 失败。<br>​    <strong>setnx</strong> key value 如果 key 不存在， 设置 key 对应 string 类型的值。 如果key 已经存在， 返回 0。<br>​    <strong>get</strong> key 获取 key 对应的 string 值,如果 key 不存在返回 nil<br>​    <strong>getset</strong> key value 先获取 key 的值，再设置 key 的值。如果 key 不存在返回 nil。<br>​    <strong>mget</strong> key1 key2 ……keyN 一次获取多个 key 的值， 如果对应 key 不存在，则对应返回 nil。<br>​    <strong>mset</strong> key1 value1 ……keyN valueN 一次设置多个 key 的值， 成功返回 1表示所有的值都设置了， 失败返回0 表示没有任何值被设置。<br>​    <strong>msetnx</strong> key1 value1 ……keyN valueN 一次设置多个 key 的值， 但是不会覆盖已经存在的 key</p>
+<p>​    <strong>incr</strong> key 对 key 的值做++操作， 并返回新的值。 注意 incr 一个不是 int 的value 会返回错误， incr 一个不存在的 key， 则设置 key 值为 1。<br>​    <strong>decr</strong> key 对 key 的值做–操作， decr 一个不存在 key， 则设置 key 值为-1。<strong>**<br>​    </strong>incrby<strong> key integer 对 key 加上指定值 ， key 不存在时候会设置 key， 并认为原来的 value 是 0。<br>​    </strong>decrby** key integer 对 key 减去指定值。 decrby 完全是为了可读性， 我们完全可以通过 incrby 一个负值来实现同样效果， 反之一样</p>
+<h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><p>​    String 是最常用的一种数据类型， 普通的 key/value 存储都可以归为此类， value 其实不仅是 String,也可以是数字： 比如想知道什么时候封锁一个 IP 地址(访问超过几次)。<strong>INCRBY</strong> 命令让这些变得很容易， 通过原子递增保持计数。 </p>
+<h2 id="Hash-类型"><a href="#Hash-类型" class="headerlink" title="Hash 类型"></a>Hash 类型</h2><h3 id="Hash-类型数据操作指令"><a href="#Hash-类型数据操作指令" class="headerlink" title="Hash 类型数据操作指令"></a>Hash 类型数据操作指令</h3><p>​    <strong>hset</strong> key field value 设置 hash field 为指定值， 如果 key 不存在， 则创建<br>​    <strong>hget</strong> key field 获取指定的 hash field。<br>​    <strong>hmget</strong> key filed1….fieldN 获取全部指定的 hash filed。<br>​    <strong>hmset</strong> key filed1 value1 ……filedN valueN 同时设置hash的多个 field。<br>​    <strong>hincrby</strong> key field integer 将指定的 hash filed 加上指定值。 成功返回 hash filed 变更后的值。<br>​    <strong>hexists</strong> key field 检测指定 field 是否存在。<br>​    <strong>hdel</strong> key field 删除指定的 hash field。<br>​    <strong>hlen</strong> key 返回指定 hash 的 field 数量<br>​    <strong>hkeys</strong> key 返回 hash 的所有 field。<br>​    <strong>hvals</strong> key 返回 hash 的所有 value。<br>​    <strong>hgetall</strong> key 返回 hash 的所有 filed 和 value。</p>
+<h3 id="应用场景-1"><a href="#应用场景-1" class="headerlink" title="应用场景"></a>应用场景</h3><p>​    我们简单举个实例来描述下 Hash 的应用场景， 比如我们要存储一个用户信息对象数据， 包含以下信息：用户 ID， 为查找的 key，存储的 value 用户对象包含姓名 name， 年龄 age， 生日 birthday 等信息，如果用普通的 key/value 结构来存储， 主要有以下 2 种存储方式：<br>​    <strong>第一种方式</strong>将用户ID作为查找key,把其他信息封装成一个对象以序列化的方式存储，如： set u001 “李三,18,20010101” 这种方式的缺点是， 增加了序列化/反序列化的开销， 并且在需要修改其中一项信息时， 需要把整个对象取回， 并且修改操作需要对并发进行保护， 引入 CAS 等复杂问题。<br>​    <strong>第二种方法</strong>是这个用户信息对象有多少成员就存成多少个 key-value 对儿， 用用户 ID+对应属性的名称作为唯一标识来取得对应属性的值，如： mset user:001:name “李三” user:001:age 18 user:001:birthday “20010101”虽然省去了序列化开销和并发问题， 但是用户 ID 为重复存储， 如果存在大量这样的数据， 内存浪费还是非常可观的。那么 Redis 提供的 Hash 很好的解决了这个问题， Redis 的 Hash 实际是内部存储的Value 为一个 HashMap，并提供了直接存取这个 Map 成员的接口，如： hmset user:001 name “李三” age 18 birthday “20010101” 也就是说， Key 仍然是用户 ID,value 是一个 Map， 这个 Map 的 key 是成员的属性名， value 是属性值，这样对数据的修改和存取都可以直接通过其内部 Map 的 Key(Redis 里称内部 Map 的 key 为 field), 也就是通过key(用户 ID) + field(属性标签) 操作对应属性数据了， 既不需要重复存储数据， 也不会带来序列化和并发修改控制的问题。 很好的解决了问题。这里同时需要注意， Redis 提供了接口(hgetall)可以直接取到全部的属性数据,但是如果内部 Map 的成员很多， 那么涉及到遍历整个内部 Map 的操作， 由于 Redis 单线程模型的缘故， 这个遍历操作可能会比较耗时， 而另其它客户端的请求完全不响应， 这点需要格外注意。</p>
+<p><strong>实现方式</strong>：<br>​    上面已经说到 Redis Hash 对应 Value 内部实际就是一个 HashMap， 实际这里会有2 种不同实现， 这个 Hash的成员比较少时 Redis 为了节省内存会采用类似一维数组的方式来紧凑存储， 而不会采用真正的 HashMap 结构， 对应的 value redisObject 的encoding 为 zipmap,当成员数量增大时会自动转成真正的 HashMap。 </p>
+<h2 id="List-类型"><a href="#List-类型" class="headerlink" title="List 类型"></a>List 类型</h2><h3 id="List-类型数据操作指令简介"><a href="#List-类型数据操作指令简介" class="headerlink" title="List 类型数据操作指令简介"></a>List 类型数据操作指令简介</h3><p>​    <strong>lpush</strong> key string 在 key 对应 list 的头部添加字符串元素， 返回 1 表示成功， 0表示 key 存在且不是 list 类型。<br>​    <strong>rpush</strong> key string 在 key 对应 list 的尾部添加字符串元素。<br>​    <strong>llen</strong> key 返回 key 对应 list 的长度， 如果 key 不存在返回 0， 如果 key 对应类型不是 list 返回错误。<br>​    <strong>lrange</strong> key start end 返回指定区间内的元素， 下标从 0 开始， 负值表示从后面计算， -1 表示倒数第一个元素 ， key 不存在返回空列表。<br>​    <strong>ltrim</strong> key start end 截取 list 指定区间内元素， 成功返回 1， key 不存在返回错误。<br>​    <strong>lset</strong> key indexvalue 设置 list 中指定下标的元素值， 成功返回 1， key 或者下标不存在返回错误。<br>​    <strong>lrem</strong> key count value 从 List 的头部 （ count 正数） 或尾部 （ count 负数）删除一定数量 （ count） 匹配 value 的元素， 返回删除的元素数量。 count 为 0时候删除全部。<br>​    <strong>lpop</strong> key 从 list 的头部删除并返回删除元素。 如果 key 对应 list 不存在或者是空返回 nil， 如果 key 对应值不是 list 返回错误。<br>​    <strong>rpop</strong> key 从 list 的尾部删除并返回删除元素。<br>​    <strong>blpop</strong> key1 ……keyN timeout 从左到右扫描， 返回对第一个非空 list 进行lpop 操作并返回， 比如 blpop list1 list2 list3 0 ,如果 list 不存在list2,list3 都是非空则对 list2 做 lpop 并返回从 list2 中删除的元素。 如果所有的 list 都是空或不存在， 则会阻塞 timeout 秒， timeout 为 0 表示一直阻塞。当阻塞时， 如果有 client 对 key1…keyN 中的任意 key 进行 push 操作， 则第一在这个 key 上被阻塞的 client 会立即返回。 如果超时发生， 则返回 nil。 有点像unix 的 select 或者 poll。</p>
+<p>​    <strong>brpop</strong> 同 blpop， 一个是从头部删除一个是从尾部删除</p>
+<h3 id="应用场景-2"><a href="#应用场景-2" class="headerlink" title="应用场景"></a>应用场景</h3><p>​    Redis list 的应用场景非常多， 也是 Redis 最重要的数据结构之一。<br>​    我们可以轻松地实现最新消息排行等功能。<br>​    Lists 的另一个应用就是队列， 可以利用 Lists 的 PUSH 操作， 将任务存在 List 中，然后工作线程再用 POP 操作将任务取出进行执行。</p>
+<p><strong>实现方式</strong>：<br>​    Redis list 的实现为一个双向链表， 即可以支持反向查找和遍历， 更方便操作， 不过带来了部分额外的内存开销， Redis 内部的很多实现， 包括发送缓冲队列等也都是用的这个数据结构。 </p>
+<h2 id="Set-类型"><a href="#Set-类型" class="headerlink" title="Set 类型"></a>Set 类型</h2><p>​    是无序集合， 最大可以包含(2 的 32 次方-1)个元素。 set 的是通过 hashtable 实现的， 所以添加， 删除， 查找的复杂度都是 O(1)。 hash table 会随着添加或者删除自动的调整大小。 需要注意的是调整 hashtable 大小时候需要同步（获取写锁）会阻塞其他读写操作。 可能不久后就会改用跳表（ skip list） 来实现。 跳表已经在 sortedsets 中使用了。 关于 set 集合类型除了基本的添加删除操作， 其它有用的操作还包含集合的取并集(union)， 交集(intersection)， 差集(difference)。通过这些操作可以很容易的实现 SNS 中的好友推荐和 blog 的 tag 功能</p>
+<h3 id="set-类型数据操作指令简介"><a href="#set-类型数据操作指令简介" class="headerlink" title="set 类型数据操作指令简介"></a>set 类型数据操作指令简介</h3><p>​    <strong>sadd</strong> key member 添加一个 string 元素到 key 对应 set 集合中， 成功返回 1,如果元素以及在集合中则返回 0， key 对应的 set 不存在则返回错误。<br>​    <strong>srem</strong> key member 从 key 对应 set 中移除指定元素， 成功返回 1， 如果 member在集合中不存在或者 key 不存在返回 0， 如果 key 对应的不是 set 类型的值返回错误。<br>​    <strong>spop</strong> key 删除并返回 key 对应 set 中随机的一个元素,如果 set 是空或者 key不存在返回 nil。<br>​    <strong>srandmember</strong> key 同 spop， 随机取 set 中的一个元素， 但是不删除元素。<br>​    <strong>smove</strong> srckey dstkey member 从 srckey 对应 set 中移除 member 并添加到dstkey 对应 set 中， 整个操作是原子的。 成功返回 1,如果 member 在 srckey 中不存在返回 0， 如果 key 不是 set 类型返回错误。<br>​    <strong>Scard</strong> key 返回 set 的元素个数， 如果 set 是空或者 key 不存在返回 0。<br>​    <strong>sismember</strong> key member 判断 member 是否在 set 中， 存在返回 1， 0 表示不存在或者 key 不存在。<br>​    <strong>sinter</strong> key1 key2 …… keyN 返回所有给定 key 的交集。<br>​    <strong>sinterstore</strong> dstkey key1 ……. keyN 返回所有给定 key 的交集， 并保存交集存到 dstkey 下。<br>​    <strong>sunion</strong> key1 key2 …… keyN 返回所有给定 key 的并集。<br>​    <strong>sunionstore</strong> dstkey key1 ……keyN 返回所有给定 key 的并集， 并保存并集到 dstkey 下。<br>​    <strong>sdiff</strong> key1 key2 ……keyN 返回所有给定 key 的差集。<br>​    <strong>sdiffstore</strong> dstkey key1 ……keyN 返回所有给定 key 的差集， 并保存差集到 dstkey 下。<br>​    <strong>smembers</strong> key 返回 key 对应 set 的所有元素， 结果是无序的。</p>
+<h3 id="应用场景-3"><a href="#应用场景-3" class="headerlink" title="应用场景"></a>应用场景</h3><p>​    Redis set 对外提供的功能与 list 类似是一个列表的功能， 特殊之处在于 set 是可以自动排重的， 当你需要存储一个列表数据， 又不希望出现重复数据时， set 是一个很好的选择， 并且 set 提供了判断某个成员是否在一个 set 集合内的重要接口， 这个也是 list所不能提供的。<br>​    比如在微博应用中， 每个人的好友存在一个集合（set） 中， 这样求两个人的共同好友的操作， 可能就只需要用求交集命令即可。 （新浪微博关注共同好友）</p>
+<p>​    Redis 还为集合提供了求交集、 并集、 差集等操作。<br><strong>实现方式：</strong><br>​    set 的内部实现是一个 value 永远为 null 的 HashMap， 实际就是通过计算 hash的方式来快速排重的， 这也是 set 能提供判断一个成员是否在集合内的原因。 </p>
+<h2 id="Sorted-Set-类型"><a href="#Sorted-Set-类型" class="headerlink" title="Sorted Set 类型"></a>Sorted Set 类型</h2><p>​    Sorted Set 是有序集合， 它在 set 的基础上增加了一个顺序属性， 这一属性在添加修改元素的时候可以指定， 每次指定后， 会自动重新按新的值调整顺序。 可以理解了有两列的 mysql 表， 一列存 value， 一列存顺序。 操作中 key 理解为sorted set 的名字， 最多包含 2&gt;32-1 个元素 。</p>
+<h3 id="Sorted-Set-类型数据操作指令简介"><a href="#Sorted-Set-类型数据操作指令简介" class="headerlink" title="Sorted Set 类型数据操作指令简介"></a>Sorted Set 类型数据操作指令简介</h3><p>​    <strong>zadd</strong> key score member 添加元素到集合， 元素在集合中存在则更新对应 score。<br>​    <strong>zrem</strong> key member 删除指定元素， 1 表示成功， 如果元素不存在返回 0。<br>​    <strong>zincrby</strong> key incrmember 增加对应 member 的 score 值， 然后移动元素并保持 skip list 保持有序。 返回更新后的 score 值。<br>​    <strong>zrank</strong> key member 返回指定元素在集合中的排名（下标）， 集合中元素是按 score从小到大排序的。<br>​    <strong>zrevrankkey</strong> member 同上,但是集合中元素是按 score 从大到小排序。<br>​    <strong>zrange</strong> key start end 类似 lrange 操作从集合中去指定区间的元素。 返回的是有序结果<br>​    <strong>zrevrange</strong> key start end 同上， 返回结果是按 score 逆序的。<br>​    <strong>zrangebyscore</strong> key min max 返回集合中 score 在给定区间的元素。<br>​    <strong>zcount</strong> key min max 返回集合中 score 在给定区间的数量。<br>​    <strong>zcard</strong> key 返回集合中元素个数。<br>​    <strong>zscore</strong> key element 返回给定元素对应的 score</p>
+<h3 id="应用场景-4"><a href="#应用场景-4" class="headerlink" title="应用场景"></a>应用场景</h3><p>​    以某个条件为权重， 比如按顶的次数排序.<strong>ZREVRANGE</strong> 命令可以用来按照得分来获取前 100 名的用户， <strong>ZRANK</strong> 可以用来获取用户排名， 非常直接而且操作容易。<br>​    <strong>Redis sorted set</strong> 的使用场景与 set 类似， 区别是 set 不是自动有序的， 而 sorted set 可以通过用户额外提供一个<strong>优先级(score)</strong>的参数来为成员排序， 并且是插入有序的，即自动排序。<br>​    比如:twitter 的 public timeline 可以以发表时间作为 <strong>score</strong> 来存储， 这样获取时就是自动按时间排好序的。<br>​    比如:全班同学成绩的 <strong>SortedSets</strong>， <strong>value</strong> 可以是同学的学号， 而 <strong>score</strong> 就可以是其考试得分， 这样数据插入集合的， 就已经进行了天然的排序。<br>​    比如网易云音乐排行榜实现；<br>​    另外还可以用 <strong>Sorted Sets</strong> 来做带权重的队列， 比如普通消息的 <strong>score</strong> 为 1， 重要消息的 <strong>score</strong> 为 2， 然后工作线程可以选择按 <strong>score</strong> 的倒序来获取工作任务。 让重要的任务优先执行。<br>需要精准设定过期时间的应用<br>​    比如你可以把上面说到的 <strong>sorted set</strong> 的 <strong>score</strong> 值设置成过期时间的时间戳， 那么就可以简单地通过过期时间排序， 定时清除过期数据了， 不仅是清除 Redis 中的过期数据，你完全可以把 Redis 里这个过期时间当成是对数据库中数据的索引， 用 Redis 来找出哪些数据需要过期删除， 然后再精准地从数据库中删除相应的记录。 </p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>我就试试~</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://pg0l2q23d.bkt.clouddn.com/mm_facetoface_collect_qrcode_1538620279859.png" alt="li-hong 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+	<div>
+		
+			<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">
+            -------------本文结束
+            <i class="fa fa-paw"></i>
+            感谢您的阅读-------------
+        </div>
+    
+</div>
+
+
+
+		
+	</div>
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/dlh1234okok.github.io/2018/10/25/redis-1/" rel="next" title="redis简介和安装">
+                <i class="fa fa-chevron-left"></i> redis简介和安装
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/dlh1234okok.github.io/2018/10/27/Redis搭建主从复用-读写分离/" rel="prev" title="Redis搭建主从复用-读写分离">
+                Redis搭建主从复用-读写分离 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+	<div onclick="showGitment()" id="gitment_title" class="gitment_title">显示 Gitment 评论</div>
+	<div id="container" style="display:none"></div>
+	<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+		<script src="https://billts.site/js/gitment.js"></script>
+	<script>
+		const myTheme = {
+		render(state, instance) {
+		const container = document.createElement('div');
+		container.lang = "en-US";
+		container.className = 'gitment-container gitment-root-container';
+		container.appendChild(instance.renderHeader(state, instance));
+		container.appendChild(instance.renderEditor(state, instance));
+		container.appendChild(instance.renderComments(state, instance));
+		container.appendChild(instance.renderFooter(state, instance));
+		return container;
+		}
+	}
+	function showGitment() {
+		$("#gitment_title").attr("style", "display:none");
+		$("#container").attr("style", "").addClass("gitment_container");
+		var gitment = new Gitment({
+		id: window.location.pathname,
+		theme: myTheme,
+		owner: 'dlhblog',
+		repo: 'dlh1234okok.github.io',
+		oauth: {
+		client_id: '3d327d2bf6e29622b4fd',
+		client_secret: '4d1303f0b50a089e4d6559cea1595c7cb95e3379'
+		}
+		});
+		gitment.render('container');
+	}
+</script>
+
+
+  
+  
+  
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://pg0l2q23d.bkt.clouddn.com/background.jpg"
+                alt="li-hong" />
+            
+              <p class="site-author-name" itemprop="name">li-hong</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/dlh1234okok.github.io/archives/">
+              
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/dlh1234okok.github.io/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/dlh1234okok.github.io/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#key-相关指令"><span class="nav-number">1.</span> <span class="nav-text">key 相关指令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#五种基本数据类型"><span class="nav-number">2.</span> <span class="nav-text">五种基本数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#String-类型"><span class="nav-number">2.1.</span> <span class="nav-text">String 类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#string-类型数据操作指令简介"><span class="nav-number">2.1.1.</span> <span class="nav-text">string 类型数据操作指令简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用场景"><span class="nav-number">2.1.2.</span> <span class="nav-text">应用场景</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hash-类型"><span class="nav-number">2.2.</span> <span class="nav-text">Hash 类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hash-类型数据操作指令"><span class="nav-number">2.2.1.</span> <span class="nav-text">Hash 类型数据操作指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用场景-1"><span class="nav-number">2.2.2.</span> <span class="nav-text">应用场景</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#List-类型"><span class="nav-number">2.3.</span> <span class="nav-text">List 类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#List-类型数据操作指令简介"><span class="nav-number">2.3.1.</span> <span class="nav-text">List 类型数据操作指令简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用场景-2"><span class="nav-number">2.3.2.</span> <span class="nav-text">应用场景</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Set-类型"><span class="nav-number">2.4.</span> <span class="nav-text">Set 类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#set-类型数据操作指令简介"><span class="nav-number">2.4.1.</span> <span class="nav-text">set 类型数据操作指令简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用场景-3"><span class="nav-number">2.4.2.</span> <span class="nav-text">应用场景</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sorted-Set-类型"><span class="nav-number">2.5.</span> <span class="nav-text">Sorted Set 类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Sorted-Set-类型数据操作指令简介"><span class="nav-number">2.5.1.</span> <span class="nav-text">Sorted Set 类型数据操作指令简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用场景-4"><span class="nav-number">2.5.2.</span> <span class="nav-text">应用场景</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">li-hong</span>
+
+  
+</div>
+
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访问量:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站只有37.3k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/dlh1234okok.github.io/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/dlh1234okok.github.io/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/dlh1234okok.github.io/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/dlh1234okok.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/dlh1234okok.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/dlh1234okok.github.io/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/dlh1234okok.github.io/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/dlh1234okok.github.io/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/dlh1234okok.github.io/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/dlh1234okok.github.io/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/dlh1234okok.github.io/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/dlh1234okok.github.io/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/dlh1234okok.github.io/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+   
+   
+   
+   
+   <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+   <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+   
+       <script type="text/javascript">
+           function ShowGitment(){
+               document.getElementById("gitment-display-button").style.display = "none";
+               document.getElementById("gitment-container").style.display = "block";
+               var gitment = new Gitment({
+                   id: document.location.href, 
+                   owner: '',
+                   repo: '',
+                   oauth: {
+                       client_id: '',
+                       client_secret: '',
+                   }});
+               gitment.render('gitment-container');
+           }
+       </script>
+   
+
+
+
+
+
+
+   
+   
+   
+   
+   <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+   <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+   
+       <script type="text/javascript">
+           function ShowGitment(){
+               document.getElementById("gitment-display-button").style.display = "none";
+               document.getElementById("gitment-container").style.display = "block";
+               var gitment = new Gitment({
+                   id: document.location.href, 
+                   owner: '',
+                   repo: '',
+                   oauth: {
+                       client_id: '',
+                       client_secret: '',
+                   }});
+               gitment.render('gitment-container');
+           }
+       </script>
+   
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/dlh1234okok.github.io/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
