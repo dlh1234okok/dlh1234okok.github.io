@@ -89,7 +89,12 @@
 <meta property="og:description" content="Linux目录结构  bin  存放二进制可执行文件(ls,cat,mkdir等)                                                            boot  存放用于系统引导时使用的各种文件 dev 用于存放设备文件 etc  存放系统配置文件 home 存放所有用户文件的根目录 lib  存放跟文件系统中的程序运行所需要的共享库及内核模块">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://pg0l2q23d.bkt.clouddn.com/l1.jpg">
-<meta property="og:updated_time" content="2018-10-29T12:06:49.036Z">
+<meta property="og:image" content="http://pg0l2q23d.bkt.clouddn.com/hosts.jpg">
+<meta property="og:image" content="http://pg0l2q23d.bkt.clouddn.com/hosts2.jpg">
+<meta property="og:image" content="http://pg0l2q23d.bkt.clouddn.com/%E7%8E%AF%E5%A2%831.png">
+<meta property="og:image" content="http://pg0l2q23d.bkt.clouddn.com/%E7%8E%AF%E5%A2%832.png">
+<meta property="og:image" content="http://pg0l2q23d.bkt.clouddn.com/%E6%9C%8D%E5%8A%A11.png">
+<meta property="og:updated_time" content="2018-10-30T08:56:00.347Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux常用命令">
 <meta name="twitter:description" content="Linux目录结构  bin  存放二进制可执行文件(ls,cat,mkdir等)                                                            boot  存放用于系统引导时使用的各种文件 dev 用于存放设备文件 etc  存放系统配置文件 home 存放所有用户文件的根目录 lib  存放跟文件系统中的程序运行所需要的共享库及内核模块">
@@ -408,7 +413,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.3k
+                  2k
                 </span>
               
 
@@ -424,7 +429,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4
+                  7
                 </span>
               
             </div>
@@ -564,9 +569,61 @@
 </li>
 <li>-r 显示路由信息，路由表</li>
 <li> -e 显示扩展信息，例如uid等</li>
-<li> -s 按各个协议进行统计</li>
+<li>-s 按各个协议进行统计</li>
 <li> -c 每隔一个固定时间，执行该netstat命令。</li>
 </ul>
+<h1 id="系统配置"><a href="#系统配置" class="headerlink" title="系统配置"></a>系统配置</h1><p><strong>修改主机名</strong></p>
+<p>​    vim /etc/sysconfig/network    重启机器后才能生效</p>
+<p>​    <img src="http://pg0l2q23d.bkt.clouddn.com/hosts.jpg" alt=""></p>
+<p><strong>DNS配置</strong></p>
+<p>​    hosts文件的作用相当于DNS，提供IP地址hostname的对应,可在这个文件里添加映射。域名解析</p>
+<p>​    vi /etc/hosts<img src="http://pg0l2q23d.bkt.clouddn.com/hosts2.jpg" alt=""></p>
+<p><strong>DNS服务器地址文件</strong>：/etc/resolv.conf</p>
+<h1 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h1><p>Linux系统的环境变量是在<strong>/etc/profile</strong>文件里配置。</p>
+<p>​    首先考虑一个问题，问什么我们先前敲的yum, service,date,useradd等等，可以直接使用，系统怎么知道这些命令对应的程序是放在哪里的呢？</p>
+<p>​    这是由于无论是windows系统还是linux系统，都有一个叫做path的系统环境变量，当我们在敲命令时，系统会到path对应的目录下寻找，找到的话就会执行，找不到就会报没有这个命令。如下图：</p>
+<p><img src="http://pg0l2q23d.bkt.clouddn.com/%E7%8E%AF%E5%A2%831.png" alt=""></p>
+<p>我们可以查看一下，系统一共在哪些目录里寻找命令对应的程序。</p>
+<p>命令：echo $path</p>
+<p><img src="http://pg0l2q23d.bkt.clouddn.com/%E7%8E%AF%E5%A2%832.png" alt=""></p>
+<p>​    </p>
+<h1 id="服务操作"><a href="#服务操作" class="headerlink" title="服务操作"></a>服务操作</h1><p><strong>列出所有服务</strong>：chkconfig</p>
+<p><img src="http://pg0l2q23d.bkt.clouddn.com/%E6%9C%8D%E5%8A%A11.png" alt=""></p>
+<p>各数字代表的系统初始化级别含义：</p>
+<p>​        0：停机状态</p>
+<p>　　1：单用户模式，root账户进行操作</p>
+<p>　　2：多用户，不能使用net file system，一般很少用</p>
+<p>　　3：完全多用户，一部分启动，一部分不启动，命令行界面</p>
+<p>　　4：未使用、未定义的保留模式</p>
+<p>　　5：图形化，3级别中启动的进程都启动，并且会启动一部分图形界面进程。</p>
+<p>　　6：停止所有进程，卸载文件系统，重新启动(reboot)</p>
+<p>　　这些级别中1、2、4很少用，相对而言0、3、5、6用的会较多。3级别和5级别除了桌面相关的进程外没有什么区别。为了减少资源占用，推荐都用3级别</p>
+<p>注意 ：linux默认级别为3，不要把initdefault 设置为0 和 6 </p>
+<h1 id="服务操作-1"><a href="#服务操作-1" class="headerlink" title="服务操作"></a>服务操作</h1><p><strong>service</strong> 服务名 start/stop/status/restart</p>
+<p><strong>关闭防火墙</strong> ：service iptables start/stop/status</p>
+<p><strong>服务初执行等级更改</strong>：    chkconfig –level 2345 name  off|on</p>
+<p>​    若不加级别，默认是2345级别</p>
+<p>​    命令：chkconfig name on|off</p>
+<h1 id="进程操作"><a href="#进程操作" class="headerlink" title="进程操作"></a>进程操作</h1><p>查看所有进程：    <strong>ps</strong>  -aux</p>
+<p>​    -a 列出所有</p>
+<p>​       -u 列出用户</p>
+<p>​       -x 详细列出，如cpu、内存等</p>
+<p>​    - e </p>
+<p>​     -f</p>
+<p>命令： <strong>ps</strong>  - ef  |  <strong>grep</strong> ssh</p>
+<p> 查看所有进程里CMD是ssh 的进程信息</p>
+<p>杀死进程： <strong>kill</strong> pid </p>
+<p><strong>-9</strong>：强制杀死</p>
+<p>ps 命令先查出对应程序的PID或PPID ，然后杀死掉进程</p>
+<h1 id="其他常用命令"><a href="#其他常用命令" class="headerlink" title="其他常用命令"></a>其他常用命令</h1><p>wget用法:wget [option] 网址  -O  指定下载保存的路径</p>
+<p><strong>tar</strong> </p>
+<p>​       -z    gzip进行解压或压缩，带.gz需要加，压缩出来.gz也需要加</p>
+<p>​       -x    解压</p>
+<p>​       -c    压缩</p>
+<p>​       -f    目标文件，压缩文件新命名或解压文件名</p>
+<p>​       -v   解压缩过程信息打印</p>
+<p><strong>解压命令</strong>：tar  -zvxf  xxxx.tar.gz</p>
+<p><strong>压缩命令</strong>：tar -zcf 压缩包命名 压缩目标</p>
 
       
     </div>
@@ -811,7 +868,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux目录结构"><span class="nav-number">1.</span> <span class="nav-text">Linux目录结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#目录操作"><span class="nav-number">2.</span> <span class="nav-text">目录操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文件操作"><span class="nav-number">3.</span> <span class="nav-text">文件操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文本编辑"><span class="nav-number">4.</span> <span class="nav-text">文本编辑</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文件传输"><span class="nav-number">5.</span> <span class="nav-text">文件传输</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#网络指令"><span class="nav-number">6.</span> <span class="nav-text">网络指令</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux目录结构"><span class="nav-number">1.</span> <span class="nav-text">Linux目录结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#目录操作"><span class="nav-number">2.</span> <span class="nav-text">目录操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文件操作"><span class="nav-number">3.</span> <span class="nav-text">文件操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文本编辑"><span class="nav-number">4.</span> <span class="nav-text">文本编辑</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文件传输"><span class="nav-number">5.</span> <span class="nav-text">文件传输</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#网络指令"><span class="nav-number">6.</span> <span class="nav-text">网络指令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#系统配置"><span class="nav-number">7.</span> <span class="nav-text">系统配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#环境变量"><span class="nav-number">8.</span> <span class="nav-text">环境变量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#服务操作"><span class="nav-number">9.</span> <span class="nav-text">服务操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#服务操作-1"><span class="nav-number">10.</span> <span class="nav-text">服务操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进程操作"><span class="nav-number">11.</span> <span class="nav-text">进程操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他常用命令"><span class="nav-number">12.</span> <span class="nav-text">其他常用命令</span></a></li></ol></div>
             
 
           </div>
@@ -852,7 +909,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站只有38.9k字</span>
+  <span class="post-count">博客全站只有39.6k字</span>
 </div>
         
 
