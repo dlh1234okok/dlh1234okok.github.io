@@ -94,7 +94,7 @@
 <meta property="og:image" content="http://pg0l2q23d.bkt.clouddn.com/nginx4.jpg">
 <meta property="og:image" content="http://pg0l2q23d.bkt.clouddn.com/nginx5.jpg">
 <meta property="og:image" content="http://pg0l2q23d.bkt.clouddn.com/nginx6.jpg">
-<meta property="og:updated_time" content="2018-10-31T00:41:40.634Z">
+<meta property="og:updated_time" content="2018-10-31T01:42:12.320Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Nginx简单配置">
 <meta name="twitter:description" content="什么是 Nginx？ ​    Nginx 是一款轻量级的 Web 服务器/反向代理服务器及电子邮件（IMAP/POP3）代理服务器。由俄罗斯的程序设计师Igor Sysoev 所开发，其特点是占有内存少， 并发能力强， nginx 的并发能力确实在同类型的网页服务器中表现非常好。 ​    2004 年 10 月 4 日 第一个公开版本 0.1.0 发布。其将源代码以类 BSD 许可证的形式发布">
@@ -462,26 +462,26 @@
 <li><p>apache 相对于 nginx 的优点：</p>
 <p>​    Rewrite 重写 ，比 nginx 的 rewrite 强大模块超多，基本想到的都可以找到少 bug ， nginx 的 bug 相对较多。（出身好起步高）</p>
 </li>
-<li><p>Nginx 配置简洁, Apache 复杂 </p>
+<li><p>Nginx 配置简洁, Apache 复杂</p>
 </li>
 </ol>
-<h1 id="安装Nginx"><a href="#安装Nginx" class="headerlink" title="安装Nginx"></a>安装Nginx</h1><h2 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h2><p>依赖 gcc openssl-devel pcre-devel zlib-devel<br>安装： yum -y install gcc openssl-devel pcre-devel zlib-devel </p>
+<h1 id="安装Nginx"><a href="#安装Nginx" class="headerlink" title="安装Nginx"></a>安装Nginx</h1><h2 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h2><p>依赖 gcc openssl-devel pcre-devel zlib-devel<br>安装： yum -y install gcc openssl-devel pcre-devel zlib-devel</p>
 <p><img src="http://pg0l2q23d.bkt.clouddn.com/nginx1.jpg" alt=""></p>
-<h2 id="解压文件"><a href="#解压文件" class="headerlink" title="解压文件"></a>解压文件</h2><p>解压： tar -zxvf nginx-1.8.1.tar.gz </p>
+<h2 id="解压文件"><a href="#解压文件" class="headerlink" title="解压文件"></a>解压文件</h2><p>解压： tar -zxvf nginx-1.8.1.tar.gz</p>
 <p><img src="http://pg0l2q23d.bkt.clouddn.com/nginx2.jpg" alt=""></p>
 <h2 id="configure-配置"><a href="#configure-配置" class="headerlink" title="configure 配置"></a>configure 配置</h2><p>进入解压后的源码目录，然后执行 configure 命令进行配置<br>./configure –prefix=/usr/soft/nginx (设置编译后的文件目录)</p>
 <p><img src="http://pg0l2q23d.bkt.clouddn.com/nginx3.jpg" alt=""></p>
-<h2 id="编译并安装"><a href="#编译并安装" class="headerlink" title="编译并安装"></a>编译并安装</h2><p>make &amp;&amp; make install </p>
+<h2 id="编译并安装"><a href="#编译并安装" class="headerlink" title="编译并安装"></a>编译并安装</h2><p>make &amp;&amp; make install</p>
 <p><img src="http://pg0l2q23d.bkt.clouddn.com/nginx4.jpg" alt=""></p>
-<p>安装好后，会在/usr/soft 下生成 nginx 目录(这是我编译前指定的)，<br>这个目录就是 nginx 的软件了。 </p>
+<p>安装好后，会在/usr/soft 下生成 nginx 目录(这是我编译前指定的)，<br>这个目录就是 nginx 的软件了。</p>
 <p><img src="http://pg0l2q23d.bkt.clouddn.com/nginx5.jpg" alt=""></p>
-<h1 id="nginx-命令"><a href="#nginx-命令" class="headerlink" title="nginx 命令"></a>nginx 命令</h1><p>启动命令 ： nginx_home/sbin/nginx </p>
-<p>启动后，访问虚拟机的 80 端口，可查看到以下界面 </p>
+<h1 id="nginx-命令"><a href="#nginx-命令" class="headerlink" title="nginx 命令"></a>nginx 命令</h1><p>启动命令 ： nginx_home/sbin/nginx</p>
+<p>启动后，访问虚拟机的 80 端口，可查看到以下界面</p>
 <p><img src="http://pg0l2q23d.bkt.clouddn.com/nginx6.jpg" alt=""></p>
-<p>Nginx 默认监听 80 端口，当出现以上信息，说明安装启动成功 </p>
+<p>Nginx 默认监听 80 端口，当出现以上信息，说明安装启动成功</p>
 <p>一旦 nginx 启动，就可以通过调用带有-s 参数的可执行文件来控制它。<br>使用语法： nginx -s 信号</p>
-<p>信号可以是下列之一：<br>​    stop - 快速关机<br>​    quit - 优雅的关机<br>​    reload - 重新加载配置文件<br>​    reopen - 重新打开日志文件<br>例如，要停止 nginx 进程并等待工作进程完成当前请求的服务，可以执<br>行以下命令： nginx -s quit </p>
-<h1 id="Nginx-配置"><a href="#Nginx-配置" class="headerlink" title="Nginx 配置"></a>Nginx 配置</h1><h2 id="nginx-默认配置详解"><a href="#nginx-默认配置详解" class="headerlink" title="nginx 默认配置详解"></a>nginx 默认配置详解</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">#进程数，建议设置和 CPU 个数一样或 2 倍</span><br><span class="line">worker_processes 2;</span><br><span class="line"></span><br><span class="line">#日志级别</span><br><span class="line">error_log logs/error.log warning;(默认 error 级别)</span><br><span class="line"></span><br><span class="line">nginx 启动后的 pid 存放位置</span><br><span class="line"></span><br><span class="line">#pid logs/nginx.pid;</span><br><span class="line">events &#123;</span><br><span class="line">	#配置每个进程的连接数，总的连接数= worker_processes * worker_connections</span><br><span class="line">	#根据物理内存大小来配置，默认 1024</span><br><span class="line">	worker_connections 10240;</span><br><span class="line">&#125;</span><br><span class="line">http &#123;</span><br><span class="line">	include mime.types;</span><br><span class="line">	default_type application/octet-stream;</span><br><span class="line">	sendfile on;</span><br><span class="line">	#连接超时时间，单位秒</span><br><span class="line">	keepalive_timeout 65;</span><br><span class="line">	server &#123;</span><br><span class="line">		listen 80;</span><br><span class="line">		server_name localhost</span><br><span class="line">		#默认请求</span><br><span class="line">		location / &#123;</span><br><span class="line">			root html; #定义服务器的默认网站根目录位置</span><br><span class="line">			index index.php index.html index.htm; #定义首页索引文件的名称</span><br><span class="line">		&#125; </span><br><span class="line">		#定义错误提示页面</span><br><span class="line">		error_page 500 502 503 504 /50x.html;</span><br><span class="line">		location = /50x.html &#123;</span><br><span class="line">			root html;</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>信号可以是下列之一：<br>​    stop - 快速关机<br>​    quit - 优雅的关机<br>​    reload - 重新加载配置文件<br>​    reopen - 重新打开日志文件<br>例如，要停止 nginx 进程并等待工作进程完成当前请求的服务，可以执<br>行以下命令： nginx -s quit</p>
+<h1 id="Nginx-配置"><a href="#Nginx-配置" class="headerlink" title="Nginx 配置"></a>Nginx 配置</h1><h2 id="nginx-默认配置详解"><a href="#nginx-默认配置详解" class="headerlink" title="nginx 默认配置详解"></a>nginx 默认配置详解</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">#进程数，建议设置和 CPU 个数一样或 2 倍</span><br><span class="line">worker_processes 2;</span><br><span class="line"></span><br><span class="line">#日志级别</span><br><span class="line">error_log logs/error.log warning;(默认 error 级别)</span><br><span class="line"></span><br><span class="line">nginx 启动后的 pid 存放位置</span><br><span class="line"></span><br><span class="line">#pid logs/nginx.pid;</span><br><span class="line">events &#123;</span><br><span class="line">	#配置每个进程的连接数，总的连接数= worker_processes * worker_connections</span><br><span class="line">	#根据物理内存大小来配置，默认 1024</span><br><span class="line">	worker_connections 10240;</span><br><span class="line">&#125;</span><br><span class="line">http &#123;</span><br><span class="line">	include mime.types;</span><br><span class="line">	default_type application/octet-stream;</span><br><span class="line">	sendfile on;</span><br><span class="line">	#连接超时时间，单位秒</span><br><span class="line">	keepalive_timeout 65;</span><br><span class="line">	server &#123;</span><br><span class="line">		listen 80;</span><br><span class="line">		server_name localhost</span><br><span class="line">		#默认请求</span><br><span class="line">		location / &#123;</span><br><span class="line">			root html; #定义服务器的默认网站根目录位置</span><br><span class="line">			index index.php index.html index.htm; #定义首页索引文件的名称</span><br><span class="line">		&#125;</span><br><span class="line">		#定义错误提示页面</span><br><span class="line">		error_page 500 502 503 504 /50x.html;</span><br><span class="line">		location = /50x.html &#123;</span><br><span class="line">			root html;</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="负载均衡配置："><a href="#负载均衡配置：" class="headerlink" title="负载均衡配置："></a>负载均衡配置：</h2><p>nginx 支持以下负载均衡机制（或方法）：</p>
 <ul>
 <li>循环 - 对应用程序服务器的请求以循环方式分发，</li>
@@ -490,7 +490,7 @@
 </ul>
 <h2 id="默认负载平衡配置"><a href="#默认负载平衡配置" class="headerlink" title="默认负载平衡配置"></a>默认负载平衡配置</h2><p>使用 nginx 进行负载平衡的最简单配置可能如下所示：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">http &#123;</span><br><span class="line">	upstream ss&#123;</span><br><span class="line">		server srv1.example.com;</span><br><span class="line">		server srv2.example.com;</span><br><span class="line">		server srv3.example.com;</span><br><span class="line">	&#125;</span><br><span class="line">	server &#123;</span><br><span class="line">		listen 80;</span><br><span class="line">		server_name localhost;</span><br><span class="line">		location / &#123;</span><br><span class="line">			proxy_pass http://ss;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>​    在上面的示例中，在 srv1-srv3 上运行相同应用程序的 3 个实例。如果没有专门配置负载均衡方法，则默认为循环法。所有请求都被 代理到服务器组 ss，并且 nginx 应用 HTTP 负载平衡来分发请求。 </p>
+<p>​    在上面的示例中，在 srv1-srv3 上运行相同应用程序的 3 个实例。如果没有专门配置负载均衡方法，则默认为循环法。所有请求都被 代理到服务器组 ss，并且 nginx 应用 HTTP 负载平衡来分发请求。</p>
 
       
     </div>
@@ -564,6 +564,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/dlh1234okok.github.io/2018/10/31/test/" rel="prev" title="test">
+                test <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -682,7 +686,7 @@
               
                 <a href="/dlh1234okok.github.io/archives/">
               
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
