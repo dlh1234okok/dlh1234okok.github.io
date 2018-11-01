@@ -81,17 +81,23 @@
 
 
 
-<meta name="description" content="key 相关指令​    exists key 检测指定 key 是否存在， 返回 1 表示存在， 0 不存在​    del key1 key2 …… keyN 删除给定 key,返回删除 key 的数目， 0 表示给定 key 都不存在​    type key 返回给定 key 值的类型。 返回 none 表示 key 不存在,string 字符类型， list 链表类型 set 无序集合类">
+<meta name="description" content="Hadoop 是分布式的系统架构，是 Apache 基金会顶级金牌项目  Hadoop组成分布式存储系统 HDFS （ Hadoop Distributed File System ）  分布式存储系统 提供了 高可靠性、高扩展性和高吞吐率的数据存储服务   分布式计算框架 MapReduce  分布式计算框架（计算向数据移动） 具有 易于编程、高容错性和高扩展性等优点。   分布式资源管理框架">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Redis-五种数据类型">
-<meta property="og:url" content="http://www.dlhblog.online/2018/10/27/redis-2/index.html">
+<meta property="og:title" content="Hadoop-HDFS">
+<meta property="og:url" content="http://www.dlhblog.online/2018/11/01/Hadoop-HDFS/index.html">
 <meta property="og:site_name" content="这夜景">
-<meta property="og:description" content="key 相关指令​    exists key 检测指定 key 是否存在， 返回 1 表示存在， 0 不存在​    del key1 key2 …… keyN 删除给定 key,返回删除 key 的数目， 0 表示给定 key 都不存在​    type key 返回给定 key 值的类型。 返回 none 表示 key 不存在,string 字符类型， list 链表类型 set 无序集合类">
+<meta property="og:description" content="Hadoop 是分布式的系统架构，是 Apache 基金会顶级金牌项目  Hadoop组成分布式存储系统 HDFS （ Hadoop Distributed File System ）  分布式存储系统 提供了 高可靠性、高扩展性和高吞吐率的数据存储服务   分布式计算框架 MapReduce  分布式计算框架（计算向数据移动） 具有 易于编程、高容错性和高扩展性等优点。   分布式资源管理框架">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-27T08:27:05.198Z">
+<meta property="og:image" content="http://www.dlhblog.online/dlh1234okok.github.io/2018/11/01/Hadoop-HDFS/1.jpg">
+<meta property="og:image" content="http://www.dlhblog.online/dlh1234okok.github.io/2018/11/01/Hadoop-HDFS/2.jpg">
+<meta property="og:image" content="http://www.dlhblog.online/dlh1234okok.github.io/2018/11/01/Hadoop-HDFS/3.jpg">
+<meta property="og:image" content="http://www.dlhblog.online/dlh1234okok.github.io/2018/11/01/Hadoop-HDFS/4.jpg">
+<meta property="og:image" content="http://www.dlhblog.online/dlh1234okok.github.io/2018/11/01/Hadoop-HDFS/5.jpg">
+<meta property="og:updated_time" content="2018-11-01T14:15:52.841Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Redis-五种数据类型">
-<meta name="twitter:description" content="key 相关指令​    exists key 检测指定 key 是否存在， 返回 1 表示存在， 0 不存在​    del key1 key2 …… keyN 删除给定 key,返回删除 key 的数目， 0 表示给定 key 都不存在​    type key 返回给定 key 值的类型。 返回 none 表示 key 不存在,string 字符类型， list 链表类型 set 无序集合类">
+<meta name="twitter:title" content="Hadoop-HDFS">
+<meta name="twitter:description" content="Hadoop 是分布式的系统架构，是 Apache 基金会顶级金牌项目  Hadoop组成分布式存储系统 HDFS （ Hadoop Distributed File System ）  分布式存储系统 提供了 高可靠性、高扩展性和高吞吐率的数据存储服务   分布式计算框架 MapReduce  分布式计算框架（计算向数据移动） 具有 易于编程、高容错性和高扩展性等优点。   分布式资源管理框架">
+<meta name="twitter:image" content="http://www.dlhblog.online/dlh1234okok.github.io/2018/11/01/Hadoop-HDFS/1.jpg">
 
 
 
@@ -121,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://www.dlhblog.online/2018/10/27/redis-2/"/>
+  <link rel="canonical" href="http://www.dlhblog.online/2018/11/01/Hadoop-HDFS/"/>
 
 
 
 
 
-  <title>Redis-五种数据类型 | 这夜景</title>
+  <title>Hadoop-HDFS | 这夜景</title>
   
 
 
@@ -308,7 +314,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.dlhblog.online/dlh1234okok.github.io/2018/10/27/redis-2/">
+    <link itemprop="mainEntityOfPage" href="http://www.dlhblog.online/dlh1234okok.github.io/2018/11/01/Hadoop-HDFS/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="li-hong">
@@ -325,7 +331,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Redis-五种数据类型</h1>
+          <h1 class="post-title" itemprop="name headline">Hadoop-HDFS</h1>
         
 
         <div class="post-meta">
@@ -337,8 +343,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-27T08:46:41+08:00">
-                2018-10-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-01T20:42:05+08:00">
+                2018-11-01
               </time>
             
 
@@ -360,8 +366,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/dlh1234okok.github.io/categories/redis/" itemprop="url" rel="index">
-                    <span itemprop="name">redis</span>
+                  <a href="/dlh1234okok.github.io/categories/Hadoop/" itemprop="url" rel="index">
+                    <span itemprop="name">Hadoop</span>
                   </a>
                 </span>
 
@@ -378,8 +384,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/dlh1234okok.github.io/2018/10/27/redis-2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/dlh1234okok.github.io/2018/10/27/redis-2/" itemprop="commentsCount"></span>
+                <a href="/dlh1234okok.github.io/2018/11/01/Hadoop-HDFS/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/dlh1234okok.github.io/2018/11/01/Hadoop-HDFS/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -406,7 +412,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  4k
+                  1.9k
                 </span>
               
 
@@ -422,7 +428,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  15
+                  7
                 </span>
               
             </div>
@@ -443,26 +449,187 @@
       
 
       
-        <h1 id="key-相关指令"><a href="#key-相关指令" class="headerlink" title="key 相关指令"></a>key 相关指令</h1><p>​    <strong>exists</strong> key 检测指定 key 是否存在， 返回 1 表示存在， 0 不存在<br>​    <strong>del</strong> key1 key2 …… keyN 删除给定 key,返回删除 key 的数目， 0 表示给定 key 都不存在<br>​    <strong>type</strong> key 返回给定 key 值的类型。 返回 none 表示 key 不存在,string 字符类型， list 链表类型 set 无序集合类型……<br>​    <strong>keys</strong> pattern 返回匹配指定模式的所有 key<br>​    <strong>randomkey</strong> 返回从当前数据库中随机选择的一个 key,如果当前数据库是空的， 返回空串<br>​    <strong>rename</strong> oldkey newkey 重命名一个 key,如果 newkey 存在， 将会被覆盖， 返回1 表示成功，0 失败。 可能是 oldkey 不存在或者和 newkey 相同。<br>​    <strong>renamenx</strong> oldkey newkey 同上， 但是如果 newkey 存在返回失败。<br>​    <strong>expire</strong> key seconds 为 key 指定过期时间， 单位是秒。 返回 1 成功， 0 表示key 已经设置超过过期时间或者不存在。<br>​    <strong>ttl</strong> key 返回设置过过期时间 key 的剩余过期秒数。 -1 表示 key 不存在或者未设置过期时间。<br>​    <strong>select</strong> db-index 通过索引选择数据库， 默认连接的数据库是 0,默认数据库数是16 个。 返回 1表示成功， 0 失败。<br>​    <strong>move</strong> key db-index 将 key 从当前数据库移动到指定数据库。 返回 1 表示成功。0 表示 key不存在或者已经在指定数据库中。 </p>
-<h1 id="五种基本数据类型"><a href="#五种基本数据类型" class="headerlink" title="五种基本数据类型"></a>五种基本数据类型</h1><p>redis 提供五种数据类型： string,hash,list,set 及sorted set</p>
-<h2 id="String-类型"><a href="#String-类型" class="headerlink" title="String 类型"></a>String 类型</h2><p>string 是最基本的类型， 而且 string 类型是二进制安全的。 意思是 redis 的<br>string 可以包含任何数据。 比如 jpg 图片或者序列化的对象。 从内部实现来看其实<br>string 可以看作 byte 组， 最大上限是 1G 字节。 1G=1024MB</p>
-<h3 id="string-类型数据操作指令简介"><a href="#string-类型数据操作指令简介" class="headerlink" title="string 类型数据操作指令简介"></a>string 类型数据操作指令简介</h3><p>​    <strong>set</strong> key value 设置 key 对应 string 类型的值， 返回 1 表示成功， 0 失败。<br>​    <strong>setnx</strong> key value 如果 key 不存在， 设置 key 对应 string 类型的值。 如果key 已经存在， 返回 0。<br>​    <strong>get</strong> key 获取 key 对应的 string 值,如果 key 不存在返回 nil<br>​    <strong>getset</strong> key value 先获取 key 的值，再设置 key 的值。如果 key 不存在返回 nil。<br>​    <strong>mget</strong> key1 key2 ……keyN 一次获取多个 key 的值， 如果对应 key 不存在，则对应返回 nil。<br>​    <strong>mset</strong> key1 value1 ……keyN valueN 一次设置多个 key 的值， 成功返回 1表示所有的值都设置了， 失败返回0 表示没有任何值被设置。<br>​    <strong>msetnx</strong> key1 value1 ……keyN valueN 一次设置多个 key 的值， 但是不会覆盖已经存在的 key</p>
-<p>​    <strong>incr</strong> key 对 key 的值做++操作， 并返回新的值。 注意 incr 一个不是 int 的value 会返回错误， incr 一个不存在的 key， 则设置 key 值为 1。<br>​    <strong>decr</strong> key 对 key 的值做–操作， decr 一个不存在 key， 则设置 key 值为-1。<strong>**<br>​    </strong>incrby<strong> key integer 对 key 加上指定值 ， key 不存在时候会设置 key， 并认为原来的 value 是 0。<br>​    </strong>decrby** key integer 对 key 减去指定值。 decrby 完全是为了可读性， 我们完全可以通过 incrby 一个负值来实现同样效果， 反之一样</p>
-<h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><p>​    String 是最常用的一种数据类型， 普通的 key/value 存储都可以归为此类， value 其实不仅是 String,也可以是数字： 比如想知道什么时候封锁一个 IP 地址(访问超过几次)。<strong>INCRBY</strong> 命令让这些变得很容易， 通过原子递增保持计数。 </p>
-<h2 id="Hash-类型"><a href="#Hash-类型" class="headerlink" title="Hash 类型"></a>Hash 类型</h2><h3 id="Hash-类型数据操作指令"><a href="#Hash-类型数据操作指令" class="headerlink" title="Hash 类型数据操作指令"></a>Hash 类型数据操作指令</h3><p>​    <strong>hset</strong> key field value 设置 hash field 为指定值， 如果 key 不存在， 则创建<br>​    <strong>hget</strong> key field 获取指定的 hash field。<br>​    <strong>hmget</strong> key filed1….fieldN 获取全部指定的 hash filed。<br>​    <strong>hmset</strong> key filed1 value1 ……filedN valueN 同时设置hash的多个 field。<br>​    <strong>hincrby</strong> key field integer 将指定的 hash filed 加上指定值。 成功返回 hash filed 变更后的值。<br>​    <strong>hexists</strong> key field 检测指定 field 是否存在。<br>​    <strong>hdel</strong> key field 删除指定的 hash field。<br>​    <strong>hlen</strong> key 返回指定 hash 的 field 数量<br>​    <strong>hkeys</strong> key 返回 hash 的所有 field。<br>​    <strong>hvals</strong> key 返回 hash 的所有 value。<br>​    <strong>hgetall</strong> key 返回 hash 的所有 filed 和 value。</p>
-<h3 id="应用场景-1"><a href="#应用场景-1" class="headerlink" title="应用场景"></a>应用场景</h3><p>​    我们简单举个实例来描述下 Hash 的应用场景， 比如我们要存储一个用户信息对象数据， 包含以下信息：用户 ID， 为查找的 key，存储的 value 用户对象包含姓名 name， 年龄 age， 生日 birthday 等信息，如果用普通的 key/value 结构来存储， 主要有以下 2 种存储方式：<br>​    <strong>第一种方式</strong>将用户ID作为查找key,把其他信息封装成一个对象以序列化的方式存储，如： set u001 “李三,18,20010101” 这种方式的缺点是， 增加了序列化/反序列化的开销， 并且在需要修改其中一项信息时， 需要把整个对象取回， 并且修改操作需要对并发进行保护， 引入 CAS 等复杂问题。<br>​    <strong>第二种方法</strong>是这个用户信息对象有多少成员就存成多少个 key-value 对儿， 用用户 ID+对应属性的名称作为唯一标识来取得对应属性的值，如： mset user:001:name “李三” user:001:age 18 user:001:birthday “20010101”虽然省去了序列化开销和并发问题， 但是用户 ID 为重复存储， 如果存在大量这样的数据， 内存浪费还是非常可观的。那么 Redis 提供的 Hash 很好的解决了这个问题， Redis 的 Hash 实际是内部存储的Value 为一个 HashMap，并提供了直接存取这个 Map 成员的接口，如： hmset user:001 name “李三” age 18 birthday “20010101” 也就是说， Key 仍然是用户 ID,value 是一个 Map， 这个 Map 的 key 是成员的属性名， value 是属性值，这样对数据的修改和存取都可以直接通过其内部 Map 的 Key(Redis 里称内部 Map 的 key 为 field), 也就是通过key(用户 ID) + field(属性标签) 操作对应属性数据了， 既不需要重复存储数据， 也不会带来序列化和并发修改控制的问题。 很好的解决了问题。这里同时需要注意， Redis 提供了接口(hgetall)可以直接取到全部的属性数据,但是如果内部 Map 的成员很多， 那么涉及到遍历整个内部 Map 的操作， 由于 Redis 单线程模型的缘故， 这个遍历操作可能会比较耗时， 而另其它客户端的请求完全不响应， 这点需要格外注意。</p>
-<p><strong>实现方式</strong>：<br>​    上面已经说到 Redis Hash 对应 Value 内部实际就是一个 HashMap， 实际这里会有2 种不同实现， 这个 Hash的成员比较少时 Redis 为了节省内存会采用类似一维数组的方式来紧凑存储， 而不会采用真正的 HashMap 结构， 对应的 value redisObject 的encoding 为 zipmap,当成员数量增大时会自动转成真正的 HashMap。 </p>
-<h2 id="List-类型"><a href="#List-类型" class="headerlink" title="List 类型"></a>List 类型</h2><h3 id="List-类型数据操作指令简介"><a href="#List-类型数据操作指令简介" class="headerlink" title="List 类型数据操作指令简介"></a>List 类型数据操作指令简介</h3><p>​    <strong>lpush</strong> key string 在 key 对应 list 的头部添加字符串元素， 返回 1 表示成功， 0表示 key 存在且不是 list 类型。<br>​    <strong>rpush</strong> key string 在 key 对应 list 的尾部添加字符串元素。<br>​    <strong>llen</strong> key 返回 key 对应 list 的长度， 如果 key 不存在返回 0， 如果 key 对应类型不是 list 返回错误。<br>​    <strong>lrange</strong> key start end 返回指定区间内的元素， 下标从 0 开始， 负值表示从后面计算， -1 表示倒数第一个元素 ， key 不存在返回空列表。<br>​    <strong>ltrim</strong> key start end 截取 list 指定区间内元素， 成功返回 1， key 不存在返回错误。<br>​    <strong>lset</strong> key indexvalue 设置 list 中指定下标的元素值， 成功返回 1， key 或者下标不存在返回错误。<br>​    <strong>lrem</strong> key count value 从 List 的头部 （ count 正数） 或尾部 （ count 负数）删除一定数量 （ count） 匹配 value 的元素， 返回删除的元素数量。 count 为 0时候删除全部。<br>​    <strong>lpop</strong> key 从 list 的头部删除并返回删除元素。 如果 key 对应 list 不存在或者是空返回 nil， 如果 key 对应值不是 list 返回错误。<br>​    <strong>rpop</strong> key 从 list 的尾部删除并返回删除元素。<br>​    <strong>blpop</strong> key1 ……keyN timeout 从左到右扫描， 返回对第一个非空 list 进行lpop 操作并返回， 比如 blpop list1 list2 list3 0 ,如果 list 不存在list2,list3 都是非空则对 list2 做 lpop 并返回从 list2 中删除的元素。 如果所有的 list 都是空或不存在， 则会阻塞 timeout 秒， timeout 为 0 表示一直阻塞。当阻塞时， 如果有 client 对 key1…keyN 中的任意 key 进行 push 操作， 则第一在这个 key 上被阻塞的 client 会立即返回。 如果超时发生， 则返回 nil。 有点像unix 的 select 或者 poll。</p>
-<p>​    <strong>brpop</strong> 同 blpop， 一个是从头部删除一个是从尾部删除</p>
-<h3 id="应用场景-2"><a href="#应用场景-2" class="headerlink" title="应用场景"></a>应用场景</h3><p>​    Redis list 的应用场景非常多， 也是 Redis 最重要的数据结构之一。<br>​    我们可以轻松地实现最新消息排行等功能。<br>​    Lists 的另一个应用就是队列， 可以利用 Lists 的 PUSH 操作， 将任务存在 List 中，然后工作线程再用 POP 操作将任务取出进行执行。</p>
-<p><strong>实现方式</strong>：<br>​    Redis list 的实现为一个双向链表， 即可以支持反向查找和遍历， 更方便操作， 不过带来了部分额外的内存开销， Redis 内部的很多实现， 包括发送缓冲队列等也都是用的这个数据结构。 </p>
-<h2 id="Set-类型"><a href="#Set-类型" class="headerlink" title="Set 类型"></a>Set 类型</h2><p>​    是无序集合， 最大可以包含(2 的 32 次方-1)个元素。 set 的是通过 hashtable 实现的， 所以添加， 删除， 查找的复杂度都是 O(1)。 hash table 会随着添加或者删除自动的调整大小。 需要注意的是调整 hashtable 大小时候需要同步（获取写锁）会阻塞其他读写操作。 可能不久后就会改用跳表（ skip list） 来实现。 跳表已经在 sortedsets 中使用了。 关于 set 集合类型除了基本的添加删除操作， 其它有用的操作还包含集合的取并集(union)， 交集(intersection)， 差集(difference)。通过这些操作可以很容易的实现 SNS 中的好友推荐和 blog 的 tag 功能</p>
-<h3 id="set-类型数据操作指令简介"><a href="#set-类型数据操作指令简介" class="headerlink" title="set 类型数据操作指令简介"></a>set 类型数据操作指令简介</h3><p>​    <strong>sadd</strong> key member 添加一个 string 元素到 key 对应 set 集合中， 成功返回 1,如果元素以及在集合中则返回 0， key 对应的 set 不存在则返回错误。<br>​    <strong>srem</strong> key member 从 key 对应 set 中移除指定元素， 成功返回 1， 如果 member在集合中不存在或者 key 不存在返回 0， 如果 key 对应的不是 set 类型的值返回错误。<br>​    <strong>spop</strong> key 删除并返回 key 对应 set 中随机的一个元素,如果 set 是空或者 key不存在返回 nil。<br>​    <strong>srandmember</strong> key 同 spop， 随机取 set 中的一个元素， 但是不删除元素。<br>​    <strong>smove</strong> srckey dstkey member 从 srckey 对应 set 中移除 member 并添加到dstkey 对应 set 中， 整个操作是原子的。 成功返回 1,如果 member 在 srckey 中不存在返回 0， 如果 key 不是 set 类型返回错误。<br>​    <strong>Scard</strong> key 返回 set 的元素个数， 如果 set 是空或者 key 不存在返回 0。<br>​    <strong>sismember</strong> key member 判断 member 是否在 set 中， 存在返回 1， 0 表示不存在或者 key 不存在。<br>​    <strong>sinter</strong> key1 key2 …… keyN 返回所有给定 key 的交集。<br>​    <strong>sinterstore</strong> dstkey key1 ……. keyN 返回所有给定 key 的交集， 并保存交集存到 dstkey 下。<br>​    <strong>sunion</strong> key1 key2 …… keyN 返回所有给定 key 的并集。<br>​    <strong>sunionstore</strong> dstkey key1 ……keyN 返回所有给定 key 的并集， 并保存并集到 dstkey 下。<br>​    <strong>sdiff</strong> key1 key2 ……keyN 返回所有给定 key 的差集。<br>​    <strong>sdiffstore</strong> dstkey key1 ……keyN 返回所有给定 key 的差集， 并保存差集到 dstkey 下。<br>​    <strong>smembers</strong> key 返回 key 对应 set 的所有元素， 结果是无序的。</p>
-<h3 id="应用场景-3"><a href="#应用场景-3" class="headerlink" title="应用场景"></a>应用场景</h3><p>​    Redis set 对外提供的功能与 list 类似是一个列表的功能， 特殊之处在于 set 是可以自动排重的， 当你需要存储一个列表数据， 又不希望出现重复数据时， set 是一个很好的选择， 并且 set 提供了判断某个成员是否在一个 set 集合内的重要接口， 这个也是 list所不能提供的。<br>​    比如在微博应用中， 每个人的好友存在一个集合（set） 中， 这样求两个人的共同好友的操作， 可能就只需要用求交集命令即可。 （新浪微博关注共同好友）</p>
-<p>​    Redis 还为集合提供了求交集、 并集、 差集等操作。<br><strong>实现方式：</strong><br>​    set 的内部实现是一个 value 永远为 null 的 HashMap， 实际就是通过计算 hash的方式来快速排重的， 这也是 set 能提供判断一个成员是否在集合内的原因。 </p>
-<h2 id="Sorted-Set-类型"><a href="#Sorted-Set-类型" class="headerlink" title="Sorted Set 类型"></a>Sorted Set 类型</h2><p>​    Sorted Set 是有序集合， 它在 set 的基础上增加了一个顺序属性， 这一属性在添加修改元素的时候可以指定， 每次指定后， 会自动重新按新的值调整顺序。 可以理解了有两列的 mysql 表， 一列存 value， 一列存顺序。 操作中 key 理解为sorted set 的名字， 最多包含 2&gt;32-1 个元素 。</p>
-<h3 id="Sorted-Set-类型数据操作指令简介"><a href="#Sorted-Set-类型数据操作指令简介" class="headerlink" title="Sorted Set 类型数据操作指令简介"></a>Sorted Set 类型数据操作指令简介</h3><p>​    <strong>zadd</strong> key score member 添加元素到集合， 元素在集合中存在则更新对应 score。<br>​    <strong>zrem</strong> key member 删除指定元素， 1 表示成功， 如果元素不存在返回 0。<br>​    <strong>zincrby</strong> key incrmember 增加对应 member 的 score 值， 然后移动元素并保持 skip list 保持有序。 返回更新后的 score 值。<br>​    <strong>zrank</strong> key member 返回指定元素在集合中的排名（下标）， 集合中元素是按 score从小到大排序的。<br>​    <strong>zrevrankkey</strong> member 同上,但是集合中元素是按 score 从大到小排序。<br>​    <strong>zrange</strong> key start end 类似 lrange 操作从集合中去指定区间的元素。 返回的是有序结果<br>​    <strong>zrevrange</strong> key start end 同上， 返回结果是按 score 逆序的。<br>​    <strong>zrangebyscore</strong> key min max 返回集合中 score 在给定区间的元素。<br>​    <strong>zcount</strong> key min max 返回集合中 score 在给定区间的数量。<br>​    <strong>zcard</strong> key 返回集合中元素个数。<br>​    <strong>zscore</strong> key element 返回给定元素对应的 score</p>
-<h3 id="应用场景-4"><a href="#应用场景-4" class="headerlink" title="应用场景"></a>应用场景</h3><p>​    以某个条件为权重， 比如按顶的次数排序.<strong>ZREVRANGE</strong> 命令可以用来按照得分来获取前 100 名的用户， <strong>ZRANK</strong> 可以用来获取用户排名， 非常直接而且操作容易。<br>​    <strong>Redis sorted set</strong> 的使用场景与 set 类似， 区别是 set 不是自动有序的， 而 sorted set 可以通过用户额外提供一个<strong>优先级(score)</strong>的参数来为成员排序， 并且是插入有序的，即自动排序。<br>​    比如:twitter 的 public timeline 可以以发表时间作为 <strong>score</strong> 来存储， 这样获取时就是自动按时间排好序的。<br>​    比如:全班同学成绩的 <strong>SortedSets</strong>， <strong>value</strong> 可以是同学的学号， 而 <strong>score</strong> 就可以是其考试得分， 这样数据插入集合的， 就已经进行了天然的排序。<br>​    比如网易云音乐排行榜实现；<br>​    另外还可以用 <strong>Sorted Sets</strong> 来做带权重的队列， 比如普通消息的 <strong>score</strong> 为 1， 重要消息的 <strong>score</strong> 为 2， 然后工作线程可以选择按 <strong>score</strong> 的倒序来获取工作任务。 让重要的任务优先执行。<br>需要精准设定过期时间的应用<br>​    比如你可以把上面说到的 <strong>sorted set</strong> 的 <strong>score</strong> 值设置成过期时间的时间戳， 那么就可以简单地通过过期时间排序， 定时清除过期数据了， 不仅是清除 Redis 中的过期数据，你完全可以把 Redis 里这个过期时间当成是对数据库中数据的索引， 用 Redis 来找出哪些数据需要过期删除， 然后再精准地从数据库中删除相应的记录。 </p>
+        <p>Hadoop 是分布式的系统架构，是 Apache 基金会顶级金牌项目 </p>
+<h1 id="Hadoop组成"><a href="#Hadoop组成" class="headerlink" title="Hadoop组成"></a>Hadoop组成</h1><p><em>分布式存储系统 HDFS （ Hadoop Distributed File System ）</em></p>
+<ul>
+<li>分布式存储系统</li>
+<li>提供了 高可靠性、高扩展性和高吞吐率的数据存储服务 </li>
+</ul>
+<p><em>分布式计算框架 MapReduce</em></p>
+<ul>
+<li>分布式计算框架（计算向数据移动）</li>
+<li>具有 易于编程、高容错性和高扩展性等优点。 </li>
+</ul>
+<p><em>分布式资源管理框架 YARN（ Yet Another ResourceManagement）</em> </p>
+<ul>
+<li>负责集群资源的管理和调度 </li>
+</ul>
+<h1 id="分布式文件存储系统HDFS"><a href="#分布式文件存储系统HDFS" class="headerlink" title="分布式文件存储系统HDFS"></a>分布式文件存储系统HDFS</h1><p>​    分布式存储系统HDFS，主要解决大数据的存储问题。</p>
+<h2 id="HDFS架构图"><a href="#HDFS架构图" class="headerlink" title="HDFS架构图"></a>HDFS架构图</h2><p><img src="/dlh1234okok.github.io/2018/11/01/Hadoop-HDFS/1.jpg" alt=""></p>
+<h2 id="HDFS-数据存储单元（block）"><a href="#HDFS-数据存储单元（block）" class="headerlink" title="HDFS 数据存储单元（block）"></a>HDFS 数据存储单元（block）</h2><p><em>文件被切分成固定大小的数据块 block</em></p>
+<ul>
+<li>默认数据块大小为 128MB (hadoop2.x)，可自定义配置</li>
+<li>若文件大小不到 128MB ，则单独存成一个 block</li>
+</ul>
+<p><em>一个文件存储方式</em></p>
+<ul>
+<li>按大小被切分成若干个 block ，存储到不同节点上</li>
+<li>默认情况下每个 block 都有 3 个副本</li>
+</ul>
+<p>Block 大小和副本数通过 Client 端上传文件时设置，文件上传成功后副本数可以变更， Block Size 不可变更</p>
+<p> <img src="/dlh1234okok.github.io/2018/11/01/Hadoop-HDFS/2.jpg" alt=""></p>
+<p><strong>hdfs 存储模型：字节</strong></p>
+<ul>
+<li>文件线性切割成块（Block） :<strong>偏移量 offset</strong> （byte）</li>
+<li>Block 分散存储在集群节点中</li>
+<li>单一文件 Block 大小一致，文件与文件可以不一致</li>
+<li>Block 可以设置副本数，副本分散在不同节点中，副本数不要超过节点数量</li>
+<li>文件上传可以设置 Block 大小和副本数</li>
+<li>已上传的文件 Block 副本数可以调整，大小不变</li>
+<li>只支持一次写入多次读取，同一时刻只有一个写入者</li>
+<li>可以 append 追加数据 </li>
+</ul>
+<h2 id="NameNode-（简称NN）"><a href="#NameNode-（简称NN）" class="headerlink" title="NameNode （简称NN）"></a>NameNode （简称NN）</h2><h3 id="NameNode-主要功能"><a href="#NameNode-主要功能" class="headerlink" title="NameNode 主要功能"></a>NameNode 主要功能</h3><ul>
+<li>接受客户端的读/写服务</li>
+<li>收集 DataNode 汇报的 Block 列表信息 </li>
+</ul>
+<h3 id="基于内存存储-：-不会和磁盘发生交换"><a href="#基于内存存储-：-不会和磁盘发生交换" class="headerlink" title="基于内存存储 ： 不会和磁盘发生交换"></a>基于内存存储 ： 不会和磁盘发生交换</h3><ul>
+<li><strong>只存在内存中</strong></li>
+<li><strong>持久化</strong> </li>
+</ul>
+<h3 id="NameNode-保存-metadata-信息"><a href="#NameNode-保存-metadata-信息" class="headerlink" title="NameNode 保存 metadata 信息"></a>NameNode 保存 metadata 信息</h3><ul>
+<li>文件 owership(归属)和 permissions(权限)</li>
+<li>文件大小，时间</li>
+<li>（Block 列表： Block 偏移量），位置信息</li>
+<li>Block 保存在哪个 DataNode 信息（由 DataNode 启动时上报,不保存在磁盘） </li>
+</ul>
+<h3 id="NameNode-持久化"><a href="#NameNode-持久化" class="headerlink" title="NameNode 持久化"></a>NameNode 持久化</h3><ul>
+<li><strong>NameNode</strong> 的 metadate 信息在启动后会加载到内存</li>
+<li><strong>metadata</strong> 存储到磁盘文件名为”<strong>fsimage</strong>”</li>
+<li><strong>Block</strong> 的位置信息不会保存到 <strong>fsimage</strong></li>
+<li><strong>edits</strong> 记录对 <strong>metadata</strong> 的操作日志 </li>
+</ul>
+<p><strong>fsimage</strong> 保存了最新的元数据检查点,类似快照。</p>
+<ul>
+<li><p><strong>editslog</strong> 保存自最新检查点后的元信息变化， 从最新检查点后， hadoop 将对每个文件的操作都保存在edits 中。 客户端修改文件时候，先写到 editlog，成功后才更新内存中的metadata 信息。</p>
+<p><strong>Metadata = fsimage + editslog</strong> </p>
+</li>
+</ul>
+<h2 id="DataNode（DN）"><a href="#DataNode（DN）" class="headerlink" title="DataNode（DN）"></a>DataNode（DN）</h2><ul>
+<li>本地磁盘目录存储数据（Block），文件形式</li>
+<li>同时存储 Block 的元数据信息文件</li>
+<li>启动 DN 进程的时候会向 NameNode 汇报 block 信息</li>
+<li>通过向 NN 发送心跳保持与其联系（3 秒一次），如果 NN 10分钟没有收到 DN 的心跳，则认为其已经lost，并 copy 其上的 block 到其它 DN </li>
+</ul>
+<h2 id="SecondaryNameNode（SNN）"><a href="#SecondaryNameNode（SNN）" class="headerlink" title="SecondaryNameNode（SNN）"></a>SecondaryNameNode（SNN）</h2><p>​    <u>它的主要工作是帮助 NN 合并 edits log 文件，减少 NN 启动时间,它不是 NN 的备份（但可以做备份)。</u></p>
+<p>SNN 执行合并时间和机制</p>
+<ol>
+<li>根据配置文件设置的时间间隔 fs.checkpoint.period 默认 3600 秒。</li>
+<li>根据配置文件设置 edits log 大小 fs.checkpoint.size规定 edits 文件的最大值默认是 64MB </li>
+</ol>
+<h2 id="SecondaryNameNode-SNN-合并流程"><a href="#SecondaryNameNode-SNN-合并流程" class="headerlink" title="SecondaryNameNode SNN 合并流程"></a>SecondaryNameNode SNN 合并流程</h2><p><img src="/dlh1234okok.github.io/2018/11/01/Hadoop-HDFS/3.jpg" alt=""></p>
+<p>​    首先是 NN 中的 Fsimage 和 edits 文件通过网络拷贝，到达SNN 服务器中，拷贝的同时，用户的实时在操作数据，那么 NN中就会从新生成一个 edits 来记录用户的操作，而另一边的 SＮＮ将拷贝过来的 edits 和 fsimage 进行合并，合并之后就替换NN 中的 fsimage。之后 NN 根据 fsimage 进行操作（当然每隔一段时间就进行替换合并，循环）。当然新的 edits 与合并之后传输过来的 fsimage 会在下一次时间内又进行合并。 </p>
+<h2 id="Block-的副本放置策略"><a href="#Block-的副本放置策略" class="headerlink" title="Block 的副本放置策略"></a>Block 的副本放置策略</h2><ul>
+<li>第一个副本：放置在上传文件的 DN；如果是集群外提交，则随机挑选一台磁盘不太满， CPU 不太忙的节点。</li>
+<li>第二个副本：放置在于第一个副本不同的机架的节点上。</li>
+<li>第三个副本：与第二个副本相同机架的不同节点。</li>
+<li>更多副本：随机节点 </li>
+</ul>
+<h2 id="HDFS-读写流程"><a href="#HDFS-读写流程" class="headerlink" title="HDFS 读写流程"></a>HDFS 读写流程</h2><p><img src="/dlh1234okok.github.io/2018/11/01/Hadoop-HDFS/4.jpg" alt=""></p>
+<h3 id="HDFS-写流程"><a href="#HDFS-写流程" class="headerlink" title="HDFS 写流程"></a>HDFS 写流程</h3><p>Client：</p>
+<ol>
+<li><p>切分文件 Block</p>
+</li>
+<li><p>按 Block 线性和 NN 获取 DN 列表（副本数）</p>
+</li>
+<li><p>验证 DN 列表后以更小的单位(packet)流式传输数据</p>
+<p>​    各节点，两两通信确定可用</p>
+</li>
+<li><p>Block 传输结束后：</p>
+<p>​    DN 向 NN 汇报 Block 信息</p>
+<p>​    DN 向 Client 汇报完成</p>
+<p>​    Client 向 NN 汇报完成</p>
+</li>
+<li><p>获取下一个 Block 存放的 DN 列表</p>
+</li>
+<li><p>……………..</p>
+</li>
+<li><p>最终 Client 汇报完成</p>
+</li>
+<li><p>NN 会在写流程更新文件状态 </p>
+</li>
+</ol>
+<h3 id="读文件过程"><a href="#读文件过程" class="headerlink" title="读文件过程"></a>读文件过程</h3><p><img src="/dlh1234okok.github.io/2018/11/01/Hadoop-HDFS/5.jpg" alt=""></p>
+<p>Client：</p>
+<ol>
+<li>和 NN 获取一部分 Block 副本位置列表</li>
+<li>线性和 DN 获取 Block，最终合并为一个文件</li>
+<li>在 Block 副本列表中按距离择优选取 </li>
+</ol>
+<h2 id="HDFS-的优缺点"><a href="#HDFS-的优缺点" class="headerlink" title="HDFS 的优缺点"></a>HDFS 的优缺点</h2><h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul>
+<li><p>高容错性</p>
+<p>数据自动保存多个副本</p>
+<p>副本丢失后，自动恢复</p>
+</li>
+<li><p>适合批处理</p>
+<p>移动计算而非数据</p>
+<p>数据位置暴露给计算框架（Block 偏移量）</p>
+</li>
+<li><p>适合大数据处理</p>
+<p>GB 、 TB 、甚至 PB 级数据</p>
+<p>百万规模以上的文件数量</p>
+<p>10K+ 节点</p>
+</li>
+<li><p>可构建在廉价机器上</p>
+<p>通过多副本提高可靠性</p>
+<p>提供了容错和恢复机制 </p>
+</li>
+</ul>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ul>
+<li>低延迟高数据吞吐访问问题<br>比如支持秒级别反应，不支持毫秒级<br>延迟与高吞吐率问题（吞吐量大但有限制于其延迟）</li>
+<li>小文件存取<br>占用 NameNode 大量内存<br>寻道时间超过读取时间</li>
+<li>并发写入、文件随机修改<br>一个文件只能有一个写者<br>仅支持 append </li>
+</ul>
+<h1 id="Hadoop伪分布式搭建"><a href="#Hadoop伪分布式搭建" class="headerlink" title="Hadoop伪分布式搭建"></a>Hadoop伪分布式搭建</h1><ol>
+<li><p>jdk 安装，配置环境变量</p>
+<p>vi /etc/profile</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/opt/dlh/jdk1.7.0_75</span><br><span class="line">PATH=$PATH:$JAVA_HOME/bin</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>ssh 免密钥（本机）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t dsa -P &apos;&apos; -f ~/.ssh/id_dsa</span><br><span class="line">cat ~/.ssh/id_dsa.pub &gt;&gt; ~/.ssh/authorized_keys</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>上传 hadoop.tar.gz 到服务器</p>
+<p>解压部署包 到/opt/dlh 目录下</p>
+<p>vi /etc/profile</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export HADOOP_PREFIX=/opt/dlh/hadoop-2.6.5</span><br><span class="line">PATH=$PATH:$JAVA_HOME/bin:$HADOOP_PREFIX/bin:$HADOOP_PREFIX/sbin</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>/opt/dlh/hadoop-2.6.5/etc/hadoop 目录</p>
+<p>hadoop-env.sh</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">JAVA_HOME=/opt/dlh/jdk1.7.0_75</span><br></pre></td></tr></table></figure>
+<p>core-site.xml</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;property&gt;</span><br><span class="line">	&lt;name&gt;fs.defaultFS&lt;/name&gt;</span><br><span class="line">	&lt;value&gt;hdfs://192.168.32.222:9000&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">	&lt;name&gt;hadoop.tmp.dir&lt;/name&gt;</span><br><span class="line">	&lt;value&gt;/var/dlh/hadoop/local&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br></pre></td></tr></table></figure>
+<p>hdfs-site.xml</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;property&gt;</span><br><span class="line">	&lt;name&gt;dfs.replication&lt;/name&gt;</span><br><span class="line">	&lt;value&gt;1&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">	&lt;name&gt;dfs.namenode.secondary.http-address&lt;/name&gt;</span><br><span class="line">	&lt;value&gt;192.168.32.222:50090&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br></pre></td></tr></table></figure>
+<p>vi slaves（datanode 节点）<br>192.168.32.222</p>
+</li>
+<li><p>格式化 hdfs namenode -format</p>
+</li>
+<li><p>启动 start-dfs.sh</p>
+</li>
+<li><p>查看服务进程启动了么？ jps<br>SecondaryNameNode<br>NameNode<br>DataNode<br>Jps</p>
+</li>
+<li><p>访问 192.168.32.222:50070<br>确保防火墙关闭（service iptables stop）</p>
+</li>
+<li><p>hdfs dfs -mkdir /user</p>
+</li>
+<li><p>hdfs dfs -ls /user</p>
+</li>
+<li><p>hdfs dfs 命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hdfs dfs -put fileName[本地文件名] PATH【hdfs 的文件路径】</span><br><span class="line">hdfs dfs -du [-s][-h]URI[URI ...] 显示文件(夹)大小.</span><br><span class="line">hdfs dfs -mkdir[-p] &lt;paths&gt; 创建</span><br><span class="line">hdfs dfs -rm -r /myhadoop1.0 删除</span><br><span class="line">hdfs dfs -cp [-f][-p|-p[topax]]URI[URI...]&lt;dest&gt;复制文件(夹)，可以覆盖，可以保留原有权限信息</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>产生 100000 条数据测试：<br>for i in <code>seq 100000</code>;do echo “hello hadoop$i” &gt;&gt; test.txt;done </p>
+</li>
+</ol>
 
       
     </div>
@@ -527,8 +694,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/dlh1234okok.github.io/2018/10/25/redis-1/" rel="next" title="Redis简介和安装">
-                <i class="fa fa-chevron-left"></i> Redis简介和安装
+              <a href="/dlh1234okok.github.io/2018/10/30/Nginx配置/" rel="next" title="Nginx配置">
+                <i class="fa fa-chevron-left"></i> Nginx配置
               </a>
             
           </div>
@@ -536,10 +703,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/dlh1234okok.github.io/2018/10/27/Redis搭建主从复用-读写分离/" rel="prev" title="Redis搭建主从复用-读写分离">
-                Redis搭建主从复用-读写分离 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -711,7 +874,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#key-相关指令"><span class="nav-number">1.</span> <span class="nav-text">key 相关指令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#五种基本数据类型"><span class="nav-number">2.</span> <span class="nav-text">五种基本数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#String-类型"><span class="nav-number">2.1.</span> <span class="nav-text">String 类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#string-类型数据操作指令简介"><span class="nav-number">2.1.1.</span> <span class="nav-text">string 类型数据操作指令简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用场景"><span class="nav-number">2.1.2.</span> <span class="nav-text">应用场景</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hash-类型"><span class="nav-number">2.2.</span> <span class="nav-text">Hash 类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hash-类型数据操作指令"><span class="nav-number">2.2.1.</span> <span class="nav-text">Hash 类型数据操作指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用场景-1"><span class="nav-number">2.2.2.</span> <span class="nav-text">应用场景</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#List-类型"><span class="nav-number">2.3.</span> <span class="nav-text">List 类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#List-类型数据操作指令简介"><span class="nav-number">2.3.1.</span> <span class="nav-text">List 类型数据操作指令简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用场景-2"><span class="nav-number">2.3.2.</span> <span class="nav-text">应用场景</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Set-类型"><span class="nav-number">2.4.</span> <span class="nav-text">Set 类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#set-类型数据操作指令简介"><span class="nav-number">2.4.1.</span> <span class="nav-text">set 类型数据操作指令简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用场景-3"><span class="nav-number">2.4.2.</span> <span class="nav-text">应用场景</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sorted-Set-类型"><span class="nav-number">2.5.</span> <span class="nav-text">Sorted Set 类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Sorted-Set-类型数据操作指令简介"><span class="nav-number">2.5.1.</span> <span class="nav-text">Sorted Set 类型数据操作指令简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用场景-4"><span class="nav-number">2.5.2.</span> <span class="nav-text">应用场景</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Hadoop组成"><span class="nav-number">1.</span> <span class="nav-text">Hadoop组成</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分布式文件存储系统HDFS"><span class="nav-number">2.</span> <span class="nav-text">分布式文件存储系统HDFS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HDFS架构图"><span class="nav-number">2.1.</span> <span class="nav-text">HDFS架构图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HDFS-数据存储单元（block）"><span class="nav-number">2.2.</span> <span class="nav-text">HDFS 数据存储单元（block）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NameNode-（简称NN）"><span class="nav-number">2.3.</span> <span class="nav-text">NameNode （简称NN）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#NameNode-主要功能"><span class="nav-number">2.3.1.</span> <span class="nav-text">NameNode 主要功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于内存存储-：-不会和磁盘发生交换"><span class="nav-number">2.3.2.</span> <span class="nav-text">基于内存存储 ： 不会和磁盘发生交换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NameNode-保存-metadata-信息"><span class="nav-number">2.3.3.</span> <span class="nav-text">NameNode 保存 metadata 信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NameNode-持久化"><span class="nav-number">2.3.4.</span> <span class="nav-text">NameNode 持久化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DataNode（DN）"><span class="nav-number">2.4.</span> <span class="nav-text">DataNode（DN）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SecondaryNameNode（SNN）"><span class="nav-number">2.5.</span> <span class="nav-text">SecondaryNameNode（SNN）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SecondaryNameNode-SNN-合并流程"><span class="nav-number">2.6.</span> <span class="nav-text">SecondaryNameNode SNN 合并流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Block-的副本放置策略"><span class="nav-number">2.7.</span> <span class="nav-text">Block 的副本放置策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HDFS-读写流程"><span class="nav-number">2.8.</span> <span class="nav-text">HDFS 读写流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HDFS-写流程"><span class="nav-number">2.8.1.</span> <span class="nav-text">HDFS 写流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#读文件过程"><span class="nav-number">2.8.2.</span> <span class="nav-text">读文件过程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HDFS-的优缺点"><span class="nav-number">2.9.</span> <span class="nav-text">HDFS 的优缺点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#优点"><span class="nav-number">2.9.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缺点"><span class="nav-number">2.9.2.</span> <span class="nav-text">缺点</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hadoop伪分布式搭建"><span class="nav-number">3.</span> <span class="nav-text">Hadoop伪分布式搭建</span></a></li></ol></div>
             
 
           </div>
