@@ -317,4 +317,12 @@
     <url>%2Fdlh1234okok.github.io%2F2018%2F10%2F03%2Fhello-hexo%2F</url>
     <content type="text"><![CDATA[​ 花了一天半时间终于把这个博客建好了，中间遇到了很多坑，网上搜了大量资源，略有不足，以后想到了再改改漂亮吧。 ​ 我转了几篇之前在博客园的博客到这里，都是一篇篇从html转为markdown转换来的，但是发现好多文章的图片无法正常显示，暂时也没有更好的办法，作罢，不过以后我都会在这里更新。 ​ 贴一下我看的各位博主写的教程链接，方便以后出现问题可以解决。 ​ 1、这是我看的第一篇，初次接触给我帮助很大 ​ https://blog.csdn.net/dgut_guangdian/article/details/79326107 ​ 2、这几篇修改了next主题样式，添加了些好玩的东西 ​ https://blog.csdn.net/zhy421202048/article/details/77877580 ​ https://blog.csdn.net/w_ngzeqi/article/details/73863543 ​ https://blog.csdn.net/csdnSR/article/details/78300820 ​ https://www.jianshu.com/p/3a05351a37dc ​ ​ 3、在添加gitment评论时对我有帮助的（但我好像至今无法使用…） ​ https://www.cnblogs.com/pangguoming/p/8094815.html ​ https://www.jianshu.com/p/57afa4844aaa]]></content>
   </entry>
+  <entry>
+    <title><![CDATA[面向对象-继承]]></title>
+    <url>%2Fdlh1234okok.github.io%2F2018%2F09%2F03%2F%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E7%BB%A7%E6%89%BF%2F</url>
+    <content type="text"><![CDATA[1、继承的作用： 通过继承 将多个类中的相同的内容摘取出来 变成一个新的类 让其他类和当前新的类产生关系 达到代码复用性的目的，可以更好的维护类和类之间的关系 2、如何继承 Class A extend B A是B的子类(派生类) B是A的父类(超类/基类) 3、继承的注意事项： 继承在java中只支持单继承，一个子类只能有一个父类，但是一个父类可以有多个子类 子类继承父类，重写父类的方法，子类可以获得父类的部分功能。 子类不能从父类继承的：private修饰的方法、final修饰的方法、父类构造器 父类static修饰的方法子类可以继承但不能重写 4、子类创建对象时会导致父类加载，先调用父类的构造器 5、子类继承父类时不能继承父类的构造器，但是可以调用父类的构造器 如果没有默认的空构造，要调用父类的有参构造，就必须用关键字super显式地编写调用父类构造器的语句，并配备参数列表 因为会先调用父类的构造器，所以运行的结果是： 证明-4； 6、子类重写父类方法，默认情况下会调用子类重写的方法。子类对象调用父类原来的方法，可以通过super.调用 7、因为java只支持单继承，所以当A继承B不能满足需求时，较好的方法是B继承C，多层继承。 以上是一个多层继承简单的例子，学生继承人的特征，并有自己新的特征，坏学生继承学生，有相同的day方法，但有不同的表现。 多层继承较好地解决了前面继承无法满足的要求，但是继承链过长容易导致代码不易维护，后期功能拓展很麻烦。 8.当一个类没有显式地继承一个类时，默认会隐式地继承Object类 以上代码可以Person类的父类其实就是Object，在Person类中可以使用Object的资源和方法，如toString方法 9、继承的重写 子类重写父类要遵守以下规则： （1）方法名/形参列表相同 （2）子类的返回值类型/抛出异常 小于等于 父类 （3）子类的修饰符权限 大于等于 父类 检验重写：@Override注解 如果加上该注解没有出错就是重写了父类的方法，否则就没有重写]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+  </entry>
 </search>
