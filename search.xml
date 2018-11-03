@@ -313,6 +313,14 @@
       </categories>
   </entry>
   <entry>
+    <title><![CDATA[无意识递归]]></title>
+    <url>%2Fdlh1234okok.github.io%2F2018%2F10%2F03%2F%E6%97%A0%E6%84%8F%E8%AF%86%E9%80%92%E5%BD%92%2F</url>
+    <content type="text"><![CDATA[​ 在java中，所有类如果没有显式的继承一个类，那么它将隐式继承Object类。在开发中，我们常常重写toString方法，但是使用不当将造成无意识递归，让我们来看看下面的栗子（来自Thinking in Java） 12345678910111213141516171819202122public class InfiniteRecursion &#123; @Override public String toString() &#123; // this代表当前类对象 return "InfiniteRecursion address:"+ this + "\n"; &#125; public static void main(String[] args)&#123; List&lt;InfiniteRecursion&gt; list = new ArrayList&lt;&gt;(); // 存入10个InfiniteRecursion对象 for (int i = 0; i &lt; 10 ; i++) &#123; list.add(new InfiniteRecursion()); &#125; // 遍历集合 for (InfiniteRecursion infiniteRecursion:list)&#123; // 在println方法中打印，将调用toString方法 System.out.println(infiniteRecursion); &#125; &#125;&#125; ​ 我们知道this代表当前对象，但是在这里将它返回时，”InfiniteRecursion address:”字符串发现后面的this不是一个String类型，它会尝试将this转换为String类型，然后就会调用this的toString方法，然而当前类重写了toString方法，将造成递归，且没有出口，抛出异常java.lang.StackOverflowError栈内存溢出。 解决： 我们只需要在重写的toString方法中调用父类Object的toString方法 12345678910111213141516171819public class InfiniteRecursion &#123; @Override public String toString() &#123; return "InfiniteRecursion address:"+ super.toString() + "\n"; &#125; public static void main(String[] args)&#123; List&lt;InfiniteRecursion&gt; list = new ArrayList&lt;&gt;(); for (int i = 0; i &lt; 10 ; i++) &#123; list.add(new InfiniteRecursion()); &#125; // 遍历集合 for (InfiniteRecursion infiniteRecursion:list)&#123; System.out.println(infiniteRecursion); &#125; &#125;&#125; Object中的toString方法为 123public String toString() &#123; return getClass().getName() + "@" + Integer.toHexString(hashCode());&#125; 返回的是该类的全限定名+@+十六进制的哈希码 所以打印出来该类对象的地址值为 com.mani.InfiniteRecursion@2f0e140b]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[Hello Hexo]]></title>
     <url>%2Fdlh1234okok.github.io%2F2018%2F10%2F03%2Fhello-hexo%2F</url>
     <content type="text"><![CDATA[​ 花了一天半时间终于把这个博客建好了，中间遇到了很多坑，网上搜了大量资源，略有不足，以后想到了再改改漂亮吧。 ​ 我转了几篇之前在博客园的博客到这里，都是一篇篇从html转为markdown转换来的，但是发现好多文章的图片无法正常显示，暂时也没有更好的办法，作罢，不过以后我都会在这里更新。 ​ 贴一下我看的各位博主写的教程链接，方便以后出现问题可以解决。 ​ 1、这是我看的第一篇，初次接触给我帮助很大 ​ https://blog.csdn.net/dgut_guangdian/article/details/79326107 ​ 2、这几篇修改了next主题样式，添加了些好玩的东西 ​ https://blog.csdn.net/zhy421202048/article/details/77877580 ​ https://blog.csdn.net/w_ngzeqi/article/details/73863543 ​ https://blog.csdn.net/csdnSR/article/details/78300820 ​ https://www.jianshu.com/p/3a05351a37dc ​ ​ 3、在添加gitment评论时对我有帮助的（但我好像至今无法使用…） ​ https://www.cnblogs.com/pangguoming/p/8094815.html ​ https://www.jianshu.com/p/57afa4844aaa]]></content>
