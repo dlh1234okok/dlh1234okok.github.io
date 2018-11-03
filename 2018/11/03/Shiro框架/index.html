@@ -81,32 +81,25 @@
 
 
 
-<meta name="description" content="​    访问网站时为了提高响应速度，从内存中获取热点数据比从数据库中获取要快很多，Redis是一个很好的Cache工具，大型网站的热点数据往往巨大，此时一台Redis服务器内存无法满足，需要集合多台Redis，但只有一台主机，其他都是从服务器，实现读写分离。 ​    但是，万一主机宕机或中断了怎么办。 ​    Redis哨兵机制，对服务器进行监视，当主机‘挂’了的时候，它会从其他服务器中重新">
+<meta name="description" content="简介​    Apache Shiro是一个强大易用的Java安全框架，提供了认证、授权、加密和会话管理功能，相比于Spring Security，Shiro的功能可能并没有那么强大，但是使用相对于更加轻便。 ​    Shiro可以非常容易的开发出足够好的应用，其不仅可以用在JavaSE环境，也可以用在JavaEE环境。Shiro可以帮助我们完成：认证、授权、加密、会话管理、与Web集成、缓存等">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Redis哨兵机制(主备切换)">
-<meta property="og:url" content="http://www.dlhblog.online/2018/10/27/Redis哨兵机制/index.html">
+<meta property="og:title" content="Shiro框架-开始">
+<meta property="og:url" content="http://www.dlhblog.online/2018/11/03/Shiro框架/index.html">
 <meta property="og:site_name" content="这夜景">
-<meta property="og:description" content="​    访问网站时为了提高响应速度，从内存中获取热点数据比从数据库中获取要快很多，Redis是一个很好的Cache工具，大型网站的热点数据往往巨大，此时一台Redis服务器内存无法满足，需要集合多台Redis，但只有一台主机，其他都是从服务器，实现读写分离。 ​    但是，万一主机宕机或中断了怎么办。 ​    Redis哨兵机制，对服务器进行监视，当主机‘挂’了的时候，它会从其他服务器中重新">
+<meta property="og:description" content="简介​    Apache Shiro是一个强大易用的Java安全框架，提供了认证、授权、加密和会话管理功能，相比于Spring Security，Shiro的功能可能并没有那么强大，但是使用相对于更加轻便。 ​    Shiro可以非常容易的开发出足够好的应用，其不仅可以用在JavaSE环境，也可以用在JavaEE环境。Shiro可以帮助我们完成：认证、授权、加密、会话管理、与Web集成、缓存等">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://pg0l2q23d.bkt.clouddn.com/%E4%B8%BB%E5%A4%87%E5%88%87%E6%8D%A2%E4%B8%BB1.jpg">
-<meta property="og:image" content="http://pg0l2q23d.bkt.clouddn.com/%E4%B8%BB%E5%A4%87%E5%88%87%E6%8D%A2%E4%B8%BB2.jpg">
-<meta property="og:image" content="http://pg0l2q23d.bkt.clouddn.com/%E4%B8%BB%E5%A4%87%E5%88%87%E6%8D%A2%E4%B8%BB3.jpg">
-<meta property="og:image" content="http://pg0l2q23d.bkt.clouddn.com/%E4%B8%BB%E5%A4%87%E5%88%87%E6%8D%A2%E4%B8%BB4.jpg">
-<meta property="og:image" content="http://pg0l2q23d.bkt.clouddn.com/%E4%B8%BB%E5%A4%87%E5%88%87%E6%8D%A2%E4%B8%BB5.jpg">
-<meta property="og:image" content="http://pg0l2q23d.bkt.clouddn.com/%E4%BB%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E5%93%A8%E5%85%B51.jpg">
-<meta property="og:image" content="http://pg0l2q23d.bkt.clouddn.com/%E5%93%A8%E5%85%B5%E6%96%87%E4%BB%B6%E9%85%8D%E7%BD%AE1.jpg">
-<meta property="og:image" content="http://pg0l2q23d.bkt.clouddn.com/%E5%93%A8%E5%85%B5%E6%96%87%E4%BB%B6%E9%85%8D%E7%BD%AE2.jpg">
-<meta property="og:image" content="http://pg0l2q23d.bkt.clouddn.com/%E4%BB%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E5%93%A8%E5%85%B51.jpg">
-<meta property="og:image" content="http://pg0l2q23d.bkt.clouddn.com/%E5%93%A8%E5%85%B5%E6%96%87%E4%BB%B6%E9%85%8D%E7%BD%AE3.jpg">
-<meta property="og:image" content="http://pg0l2q23d.bkt.clouddn.com/%E5%93%A8%E5%85%B5%E6%96%87%E4%BB%B6%E9%85%8D%E7%BD%AE4.jpg">
-<meta property="og:image" content="http://pg0l2q23d.bkt.clouddn.com/%E5%93%A8%E5%85%B5%E5%90%AF%E5%8A%A8.jpg">
-<meta property="og:image" content="http://pg0l2q23d.bkt.clouddn.com/6381%E6%88%90%E4%B8%BAmaster.jpg">
-<meta property="og:image" content="http://pg0l2q23d.bkt.clouddn.com/master-slave.jpg">
-<meta property="og:updated_time" content="2018-10-27T07:37:29.180Z">
+<meta property="og:image" content="http://www.dlhblog.online/dlh1234okok.github.io/2018/11/03/Shiro框架/1.jpg">
+<meta property="og:image" content="http://www.dlhblog.online/dlh1234okok.github.io/2018/11/03/Shiro框架/2.jpg">
+<meta property="og:image" content="http://www.dlhblog.online/dlh1234okok.github.io/2018/11/03/Shiro框架/3.jpg">
+<meta property="og:image" content="http://www.dlhblog.online/dlh1234okok.github.io/2018/11/03/Shiro框架/4.jpg">
+<meta property="og:image" content="http://www.dlhblog.online/dlh1234okok.github.io/2018/11/03/Shiro框架/5.jpg">
+<meta property="og:image" content="http://www.dlhblog.online/dlh1234okok.github.io/2018/11/03/Shiro框架/6.jpg">
+<meta property="og:image" content="http://www.dlhblog.online/dlh1234okok.github.io/2018/11/03/Shiro框架/7.jpg">
+<meta property="og:updated_time" content="2018-11-03T09:01:52.299Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Redis哨兵机制(主备切换)">
-<meta name="twitter:description" content="​    访问网站时为了提高响应速度，从内存中获取热点数据比从数据库中获取要快很多，Redis是一个很好的Cache工具，大型网站的热点数据往往巨大，此时一台Redis服务器内存无法满足，需要集合多台Redis，但只有一台主机，其他都是从服务器，实现读写分离。 ​    但是，万一主机宕机或中断了怎么办。 ​    Redis哨兵机制，对服务器进行监视，当主机‘挂’了的时候，它会从其他服务器中重新">
-<meta name="twitter:image" content="http://pg0l2q23d.bkt.clouddn.com/%E4%B8%BB%E5%A4%87%E5%88%87%E6%8D%A2%E4%B8%BB1.jpg">
+<meta name="twitter:title" content="Shiro框架-开始">
+<meta name="twitter:description" content="简介​    Apache Shiro是一个强大易用的Java安全框架，提供了认证、授权、加密和会话管理功能，相比于Spring Security，Shiro的功能可能并没有那么强大，但是使用相对于更加轻便。 ​    Shiro可以非常容易的开发出足够好的应用，其不仅可以用在JavaSE环境，也可以用在JavaEE环境。Shiro可以帮助我们完成：认证、授权、加密、会话管理、与Web集成、缓存等">
+<meta name="twitter:image" content="http://www.dlhblog.online/dlh1234okok.github.io/2018/11/03/Shiro框架/1.jpg">
 
 
 
@@ -136,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://www.dlhblog.online/2018/10/27/Redis哨兵机制/"/>
+  <link rel="canonical" href="http://www.dlhblog.online/2018/11/03/Shiro框架/"/>
 
 
 
 
 
-  <title>Redis哨兵机制(主备切换) | 这夜景</title>
+  <title>Shiro框架-开始 | 这夜景</title>
   
 
 
@@ -323,7 +316,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.dlhblog.online/dlh1234okok.github.io/2018/10/27/Redis哨兵机制/">
+    <link itemprop="mainEntityOfPage" href="http://www.dlhblog.online/dlh1234okok.github.io/2018/11/03/Shiro框架/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="li-hong">
@@ -340,7 +333,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Redis哨兵机制(主备切换)</h1>
+          <h1 class="post-title" itemprop="name headline">Shiro框架-开始</h1>
         
 
         <div class="post-meta">
@@ -352,8 +345,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-27T12:42:34+08:00">
-                2018-10-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-03T15:33:55+08:00">
+                2018-11-03
               </time>
             
 
@@ -375,8 +368,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/dlh1234okok.github.io/categories/redis/" itemprop="url" rel="index">
-                    <span itemprop="name">redis</span>
+                  <a href="/dlh1234okok.github.io/categories/Shiro/" itemprop="url" rel="index">
+                    <span itemprop="name">Shiro</span>
                   </a>
                 </span>
 
@@ -393,8 +386,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/dlh1234okok.github.io/2018/10/27/Redis哨兵机制/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/dlh1234okok.github.io/2018/10/27/Redis哨兵机制/" itemprop="commentsCount"></span>
+                <a href="/dlh1234okok.github.io/2018/11/03/Shiro框架/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/dlh1234okok.github.io/2018/11/03/Shiro框架/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -421,7 +414,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  432
+                  1.4k
                 </span>
               
 
@@ -437,7 +430,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  5
                 </span>
               
             </div>
@@ -458,37 +451,52 @@
       
 
       
-        <p>​    访问网站时为了提高响应速度，从内存中获取热点数据比从数据库中获取要快很多，Redis是一个很好的Cache工具，大型网站的热点数据往往巨大，此时一台Redis服务器内存无法满足，需要集合多台Redis，但只有一台主机，其他都是从服务器，实现读写分离。</p>
-<p>​    但是，万一主机宕机或中断了怎么办。</p>
-<p>​    Redis哨兵机制，对服务器进行监视，当主机‘挂’了的时候，它会从其他服务器中重新拥立一个新的主机，赋予可执行功能。当‘挂’掉的主机再重新启动后，就不再是主机了。</p>
-<h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><p>这里是单台服务器不同端口模拟3台服务器（1主2从）</p>
-<h2 id="节点准备"><a href="#节点准备" class="headerlink" title="节点准备"></a>节点准备</h2><p>127.0.0.1  6379（master-主节点）</p>
-<p>127.0.0.1  6380（slave-从节点1）</p>
-<p>127.0.0.1  6381（slave-从节点2）</p>
-<h2 id="主节点redis-conf配置"><a href="#主节点redis-conf配置" class="headerlink" title="主节点redis.conf配置"></a>主节点redis.conf配置</h2><p>设置端口 ， daemonize,密码， 连接主节点密码， requirepass 禁用 bind 等 基本配置 </p>
-<p><img src="http://pg0l2q23d.bkt.clouddn.com/%E4%B8%BB%E5%A4%87%E5%88%87%E6%8D%A2%E4%B8%BB1.jpg" alt=""></p>
-<p><img src="http://pg0l2q23d.bkt.clouddn.com/%E4%B8%BB%E5%A4%87%E5%88%87%E6%8D%A2%E4%B8%BB2.jpg" alt=""></p>
-<p><img src="http://pg0l2q23d.bkt.clouddn.com/%E4%B8%BB%E5%A4%87%E5%88%87%E6%8D%A2%E4%B8%BB3.jpg" alt=""></p>
-<p><img src="http://pg0l2q23d.bkt.clouddn.com/%E4%B8%BB%E5%A4%87%E5%88%87%E6%8D%A2%E4%B8%BB4.jpg" alt=""></p>
-<p><img src="http://pg0l2q23d.bkt.clouddn.com/%E4%B8%BB%E5%A4%87%E5%88%87%E6%8D%A2%E4%B8%BB5.jpg" alt=""></p>
-<h2 id="从节点redis-conf配置"><a href="#从节点redis-conf配置" class="headerlink" title="从节点redis.conf配置"></a>从节点redis.conf配置</h2><p>从节点配置和主节点基本类似，相比多一个配置</p>
-<p><img src="http://pg0l2q23d.bkt.clouddn.com/%E4%BB%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E5%93%A8%E5%85%B51.jpg" alt=""></p>
-<h2 id="sentinel-conf哨兵文件配置"><a href="#sentinel-conf哨兵文件配置" class="headerlink" title="sentinel.conf哨兵文件配置"></a>sentinel.conf哨兵文件配置</h2><p><img src="http://pg0l2q23d.bkt.clouddn.com/%E5%93%A8%E5%85%B5%E6%96%87%E4%BB%B6%E9%85%8D%E7%BD%AE1.jpg" alt=""></p>
-<p><img src="http://pg0l2q23d.bkt.clouddn.com/%E5%93%A8%E5%85%B5%E6%96%87%E4%BB%B6%E9%85%8D%E7%BD%AE2.jpg" alt=""></p>
-<p><img src="http://pg0l2q23d.bkt.clouddn.com/%E4%BB%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E5%93%A8%E5%85%B51.jpg" alt=""></p>
-<p>​                所有哨兵起先监视主机端口</p>
-<p>​                为了方便快速看到效果，设置哨兵执行时效</p>
-<p><img src="http://pg0l2q23d.bkt.clouddn.com/%E5%93%A8%E5%85%B5%E6%96%87%E4%BB%B6%E9%85%8D%E7%BD%AE3.jpg" alt=""></p>
-<p><img src="http://pg0l2q23d.bkt.clouddn.com/%E5%93%A8%E5%85%B5%E6%96%87%E4%BB%B6%E9%85%8D%E7%BD%AE4.jpg" alt=""></p>
-<h1 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h1><p>开启所有三个服务和所有哨兵</p>
-<p><img src="http://pg0l2q23d.bkt.clouddn.com/%E5%93%A8%E5%85%B5%E5%90%AF%E5%8A%A8.jpg" alt=""></p>
-<p>将主服务kill掉</p>
-<p>结果发现端口号为6381的从服务成功谋朝篡位为主服务</p>
-<p><img src="http://pg0l2q23d.bkt.clouddn.com/6381%E6%88%90%E4%B8%BAmaster.jpg" alt=""></p>
-<p>再次启动原本为主服务的6379</p>
-<p><img src="http://pg0l2q23d.bkt.clouddn.com/master-slave.jpg" alt=""></p>
-<p>只能乖乖当6381的奴隶了吧~</p>
-<p>这里的一切均为本机127.0.0.1测试，如果需要连接局域网，可以改为本机ip地址</p>
+        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>​    Apache Shiro是一个强大易用的<strong>Java安全框架</strong>，提供了认证、授权、加密和会话管理功能，相比于Spring Security，Shiro的功能可能并没有那么强大，但是使用相对于更加轻便。</p>
+<p>​    Shiro可以非常容易的开发出足够好的应用，其不仅可以用在JavaSE环境，也可以用在JavaEE环境。Shiro可以帮助我们完成：认证、授权、加密、会话管理、与Web集成、缓存等。</p>
+<p><strong>Authentication</strong>：身份认证/登录，验证用户是不是拥有相应的身份；</p>
+<p><strong>Authorization</strong>：授权，即权限验证，验证某个已认证的用户是否拥有某个权限；即判断用户是否能做事情，常见的如：验证某个用户是否拥有某个角色。或者细粒度的验证某个用户对某个资源是否具有某个权限；</p>
+<p>Session Manager：会话管理，即用户登录后就是一次会话，在没有退出之前，它的所有信息都在会话中；会话可以是普通JavaSE环境的，也可以是如Web环境的；</p>
+<p>Cryptography：加密，保护数据的安全性，如密码加密存储到数据库，而不是明文存储；</p>
+<p>Web Support：Web支持，可以非常容易的集成到Web环境；</p>
+<p>Caching：缓存，比如用户登录后，其用户信息、拥有的角色/权限不必每次去查，这样可以提高效率；</p>
+<p>Concurrency：shiro支持多线程应用的并发验证，即如在一个线程中开启另一个线程，能把权限自动传播过去；</p>
+<p>Testing：提供测试支持；</p>
+<p>Run As：允许一个用户假装为另一个用户（如果他们允许）的身份进行访问；</p>
+<p>Remember Me：记住我，这个是非常常见的功能，即一次登录后，下次再来的话不用登录了。</p>
+<h1 id="核心概念"><a href="#核心概念" class="headerlink" title="核心概念"></a>核心概念</h1><h2 id="Subject"><a href="#Subject" class="headerlink" title="Subject"></a>Subject</h2><p>​    subject在这里其基本意思是“当前操作用户”，但是在安全领域中，subject即可以是人，也可以是第三方进程，网络爬虫，机器人…在Shiro集成的环境中在代码的任何地方可以轻松的获取Shiro Subject。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Subject subject = SecurityUtils.getSubject();</span><br></pre></td></tr></table></figure>
+<p>​    一旦获得Subject，你就可以立即获得你希望用Shiro为当前用户做的90%的事情，如登录、登出、访问会话、执行授权检查等。</p>
+<h2 id="SecurityManager"><a href="#SecurityManager" class="headerlink" title="SecurityManager"></a>SecurityManager</h2><p>​    Subject的“幕后”推手是SecurityManager。Subject代表了当前用户的安全操作，SecurityManager则管理所有用户的安全操作。它是Shiro框架的核心，充当“保护伞”，引用了多个内部嵌套安全组件，它们形成了对象图。但是，一旦SecurityManager及其内部对象图配置好，它就会退居幕后。</p>
+<h2 id="Realm"><a href="#Realm" class="headerlink" title="Realm"></a>Realm</h2><p>​    Realm充当了Shiro与应用安全数据间的“<strong>桥梁</strong>”或者“<strong>连接器</strong>”。也就是说，当切实与像用户帐户这类安全相关数据进行交互，执行认证（登录）和授权（访问控制）时，Shiro会从应用配置的Realm中查找很多内容。</p>
+<p>​    从这个意义上讲，Realm实质上是一个安全相关的DAO：它封装了数据源的连接细节，并在需要时将相关数据提供给Shiro。当配置Shiro时，你必须至少指定一个Realm，用于认证和（或）授权。配置多个Realm是可以的，但是至少需要一个。</p>
+<p>​    Realm 可以理解为读取用户信息、角色及权限的 DAO，就是说SecurityManager要验证用户身份与权限，那么它需要从Realm获取相应的信息进行比较以确定用户身份是否合法；可以把Realm看成DataSource，即安全数据源。</p>
+<h1 id="第一个Shiro应用"><a href="#第一个Shiro应用" class="headerlink" title="第一个Shiro应用"></a>第一个Shiro应用</h1><h2 id="配置依赖"><a href="#配置依赖" class="headerlink" title="配置依赖"></a>配置依赖</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.shiro<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>shiro-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.4.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="添加shiro-realm-ini配置文件"><a href="#添加shiro-realm-ini配置文件" class="headerlink" title="添加shiro-realm.ini配置文件"></a>添加shiro-realm.ini配置文件</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#指定自定义realm的位置（在后面）</span></span><br><span class="line"><span class="attr">myRealm</span>= com.mani.MyRealm</span><br><span class="line"><span class="comment">#指定securityManager的realm实现</span></span><br><span class="line">securityManager.realms=$myRealm</span><br></pre></td></tr></table></figure>
+<h2 id="创建SecurityManagerFactory"><a href="#创建SecurityManagerFactory" class="headerlink" title="创建SecurityManagerFactory"></a>创建SecurityManagerFactory</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 加载配置文件，创建工厂</span></span><br><span class="line">Factory&lt;SecurityManager&gt; factory = <span class="keyword">new</span> IniSecurityManagerFactory(<span class="string">"classpath:shiro.ini"</span>);</span><br></pre></td></tr></table></figure>
+<p>这里以面向接口的方式来接收工厂对象</p>
+<h2 id="通过工厂获取securityManager对象"><a href="#通过工厂获取securityManager对象" class="headerlink" title="通过工厂获取securityManager对象"></a>通过工厂获取securityManager对象</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">securityManager = factory.getInstance();</span><br></pre></td></tr></table></figure>
+<h2 id="绑定securityManager"><a href="#绑定securityManager" class="headerlink" title="绑定securityManager"></a>绑定securityManager</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 设置到运行环境中</span></span><br><span class="line">SecurityUtils.setSecurityManager(securityManager);</span><br></pre></td></tr></table></figure>
+<h2 id="创建Subject实例"><a href="#创建Subject实例" class="headerlink" title="创建Subject实例"></a>创建Subject实例</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Subject subject = SecurityUtils.getSubject();</span><br></pre></td></tr></table></figure>
+<p>至此我们Shiro的核心Subject，SecurityManager和Realm都已经拥有了，这里我自定义一个Realm</p>
+<h2 id="模拟用户登录认证操作"><a href="#模拟用户登录认证操作" class="headerlink" title="模拟用户登录认证操作"></a>模拟用户登录认证操作</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testAuthenticate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Subject subject = SecurityUtils.getSubject();</span><br><span class="line">    <span class="comment">// 判断当前用户未认证</span></span><br><span class="line">    <span class="keyword">if</span> (!subject.isAuthenticated()) &#123;</span><br><span class="line">        <span class="comment">// token中的参数相当于用户登录传入的账户和密码</span></span><br><span class="line">        UsernamePasswordToken token = <span class="keyword">new</span> UsernamePasswordToken(<span class="string">"zhangsan"</span>, <span class="string">"666"</span>);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 登录</span></span><br><span class="line">            subject.login(token);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 输出认证信息：true或false</span></span><br><span class="line">        System.out.println(subject.isAuthenticated());</span><br><span class="line">        <span class="comment">// 登出</span></span><br><span class="line">        subject.logout();</span><br><span class="line">        System.out.println(subject.isAuthenticated());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="自定义Realm"><a href="#自定义Realm" class="headerlink" title="自定义Realm"></a>自定义Realm</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyRealm</span> <span class="keyword">extends</span> <span class="title">AuthorizingRealm</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"MyRealm"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> AuthorizationInfo <span class="title">doGetAuthorizationInfo</span><span class="params">(PrincipalCollection principals)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> AuthenticationInfo <span class="title">doGetAuthenticationInfo</span><span class="params">(AuthenticationToken token)</span> <span class="keyword">throws</span> AuthenticationException </span>&#123;</span><br><span class="line">        <span class="comment">// 获取传入的用户名</span></span><br><span class="line">        String name = (String) token.getPrincipal();</span><br><span class="line">        <span class="comment">// 模拟数据库，真的用户名</span></span><br><span class="line">        String trueName = <span class="string">"zhangsan"</span>;</span><br><span class="line">        <span class="keyword">if</span> (!trueName.equals(name))&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 数据库中的密码</span></span><br><span class="line">        String passWord = <span class="string">"666"</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// info对象表示realm登录比对信息</span></span><br><span class="line">        SimpleAuthenticationInfo info = <span class="keyword">new</span> SimpleAuthenticationInfo(name,passWord,getName());</span><br><span class="line">        <span class="keyword">return</span> info;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果：<img src="/dlh1234okok.github.io/2018/11/03/Shiro框架/1.jpg" alt=""></p>
+<h2 id="认证解析"><a href="#认证解析" class="headerlink" title="认证解析"></a>认证解析</h2><p>​    在登录login方法处打上一个断点，进入方法-&gt;</p>
+<p>​    <u>Subject subject = securityManager.login(this, token);</u></p>
+<p>​    发现调用了SecurityManager的login方法，并将subject和token传入，再进入这个方法-&gt;</p>
+<p><img src="/dlh1234okok.github.io/2018/11/03/Shiro框架/2.jpg" alt=""></p>
+<p>​    进行认证操作-&gt;</p>
+<p><img src="/dlh1234okok.github.io/2018/11/03/Shiro框架/3.jpg" alt=""></p>
+<p>​    securityManger将认证操作托管给了一个认证器-&gt;</p>
+<p><img src="/dlh1234okok.github.io/2018/11/03/Shiro框架/4.jpg" alt=""></p>
+<p>​    在这里才真正开始认证-&gt;</p>
+<p><img src="/dlh1234okok.github.io/2018/11/03/Shiro框架/5.jpg" alt=""></p>
+<p>​    因为只有一个realm-&gt;</p>
+<p><img src="/dlh1234okok.github.io/2018/11/03/Shiro框架/6.jpg" alt=""></p>
+<p>​    从字面上的看出在这里它要获取AuthenticationInfo对象-&gt;</p>
+<p><img src="/dlh1234okok.github.io/2018/11/03/Shiro框架/7.jpg" alt=""></p>
+<p>​    不出意外跳到了我们的自定义realm中，将AuthenticationInfo返回-&gt;&gt;&gt;</p>
+<p>​    基本上这一次认证就完成了</p>
 
       
     </div>
@@ -553,8 +561,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/dlh1234okok.github.io/2018/10/27/Redis搭建主从复用-读写分离/" rel="next" title="Redis搭建主从复用-读写分离">
-                <i class="fa fa-chevron-left"></i> Redis搭建主从复用-读写分离
+              <a href="/dlh1234okok.github.io/2018/11/02/Lucene了解和简单使用/" rel="next" title="Lucene了解和简单使用">
+                <i class="fa fa-chevron-left"></i> Lucene了解和简单使用
               </a>
             
           </div>
@@ -562,10 +570,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/dlh1234okok.github.io/2018/10/27/Redis持久化/" rel="prev" title="Redis持久化">
-                Redis持久化 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -737,7 +741,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#准备"><span class="nav-number">1.</span> <span class="nav-text">准备</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#节点准备"><span class="nav-number">1.1.</span> <span class="nav-text">节点准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主节点redis-conf配置"><span class="nav-number">1.2.</span> <span class="nav-text">主节点redis.conf配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从节点redis-conf配置"><span class="nav-number">1.3.</span> <span class="nav-text">从节点redis.conf配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sentinel-conf哨兵文件配置"><span class="nav-number">1.4.</span> <span class="nav-text">sentinel.conf哨兵文件配置</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#测试"><span class="nav-number">2.</span> <span class="nav-text">测试</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#核心概念"><span class="nav-number">2.</span> <span class="nav-text">核心概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Subject"><span class="nav-number">2.1.</span> <span class="nav-text">Subject</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SecurityManager"><span class="nav-number">2.2.</span> <span class="nav-text">SecurityManager</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Realm"><span class="nav-number">2.3.</span> <span class="nav-text">Realm</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第一个Shiro应用"><span class="nav-number">3.</span> <span class="nav-text">第一个Shiro应用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#配置依赖"><span class="nav-number">3.1.</span> <span class="nav-text">配置依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加shiro-realm-ini配置文件"><span class="nav-number">3.2.</span> <span class="nav-text">添加shiro-realm.ini配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建SecurityManagerFactory"><span class="nav-number">3.3.</span> <span class="nav-text">创建SecurityManagerFactory</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通过工厂获取securityManager对象"><span class="nav-number">3.4.</span> <span class="nav-text">通过工厂获取securityManager对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#绑定securityManager"><span class="nav-number">3.5.</span> <span class="nav-text">绑定securityManager</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建Subject实例"><span class="nav-number">3.6.</span> <span class="nav-text">创建Subject实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模拟用户登录认证操作"><span class="nav-number">3.7.</span> <span class="nav-text">模拟用户登录认证操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义Realm"><span class="nav-number">3.8.</span> <span class="nav-text">自定义Realm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#认证解析"><span class="nav-number">3.9.</span> <span class="nav-text">认证解析</span></a></li></ol></li></ol></div>
             
 
           </div>
