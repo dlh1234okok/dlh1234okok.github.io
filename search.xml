@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[SSM整合Dubbo]]></title>
+    <url>%2Fdlh1234okok.github.io%2F2018%2F11%2F07%2FSSM%E6%95%B4%E5%90%88Dubbo%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[Dubbo配置zookeeper注册中心]]></title>
+    <url>%2Fdlh1234okok.github.io%2F2018%2F11%2F07%2FDubbo%E9%85%8D%E7%BD%AEzookeeper%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%2F</url>
+    <content type="text"><![CDATA[windows 下Zookeeper 配置与启动（单机模式）下载并解压http://mirrors.hust.edu.cn/apache/zookeeper/zookeeper-3.4.13/zookeeper-3.4.13.tar.gz 准备zoo.cfg文件/zookeeper-3.4.13/conf目录下将zoo_sample.cfg文件拷贝复制一份为zoo.cfg 添加数据存储目录dataDir和日志存储目录dataLogDir 启动服务器bin/zkServer.cmd 客户端连接bin/zkCli.cmd 节点查看命令：ls / Dubbo 应用配置1&lt;dubbo:registry address="zookeeper://127.0.0.1:2181"&gt;&lt;/dubbo:registry&gt; 添加坐标 12345678910&lt;dependency&gt; &lt;groupId&gt;org.apache.zookeeper&lt;/groupId&gt; &lt;artifactId&gt;zookeeper&lt;/artifactId&gt; &lt;version&gt;3.3.3&lt;/version&gt;&lt;/dependency&gt;&lt;dependency&gt; &lt;groupId&gt;com.github.sgroschupf&lt;/groupId&gt; &lt;artifactId&gt;zkclient&lt;/artifactId&gt; &lt;version&gt;0.1&lt;/version&gt;&lt;/dependency&gt; Linux下Zookeeper 配置与启动下载zookeeper 解压缩 准备zoo.conf配置文件进入到conf目录下 配置zoo.cfg文件添加数据和日志存放目录 启动服务进入bin目录下 1./zkServer.sh start 启动客户端1./zkCli.sh Dubbo注册中心配置1&lt;dubbo:registry address="zookeeper://192.168.32.223:2181" /&gt; 地址填写虚拟机ip地址 测试运行zookeeper服务端，将服务发布 运行zookeeper客户端，ls /命令查询根节点下所有节点 在进入到dubbo节点下可以看到我们发布的服务接口 进入发布的服务，可以看到我们服务提供方和消费方相关信息]]></content>
+      <categories>
+        <category>分布式应用</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[问题汇总]]></title>
+    <url>%2Fdlh1234okok.github.io%2F2018%2F11%2F07%2F%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB%2F</url>
+    <content type="text"><![CDATA[IOC是什么,有哪些优点?IOC是Spring框架的核心技术，控制反转和依赖注入 控制反转 应用程序创建对象的过程交给外部容器IOC来创建 未使用Spring框架的IOC之前，创建对象为： UserService userService = new UserService(); 使用控制反转之后： ​ 可以在XML文件中配置bean标签，或者使用扫描机制，配合注解（@Component，@Service，@Repository，@Controller），在Spring上下文启动时就会将这些对象创建完毕。 依赖注入（装配） 依赖注入其实就是给属性赋值，没有使用IOC之前，Controller层如果需要调用Service层，则需要手动赋值 userService = new UserService(); 使用了IOC之后，在‘控制反转’过程中，已经通过XML配置或是扫描注解配置将该对象创建完毕，所以只需要加上@Resource或是@AutoWired注解即可完成对属性的赋值操作 IOC具体实现内部原理 XML解析，反射，单例，工厂设计模式 优点 降低组件之间的耦合，提高程序的灵活性和可维护性，代码的侵入性较低。 缺点 创建对象的步骤变复杂了，并且通过反射创建对象，使得效率相对于手动创建对象低一些 Aop实现方式与应用场景 面向切面编程，Aop实现的关键是Aop在运行时动态创建Aop代理。 Aop代理分为静态代理和动态代理。 静态代理是使用Spring框架提供的命令进行编译，在编译阶段生成Aop代理类，因此也成为编译时增强 动态代理借助JDK动态代理和CGLib动态代理，在程序运行过程中动态创建代理对象 代理对象的方法=被代理对象的方法+增强的处理 核心思想：将应用程序中的业务逻辑和对其支持的通用服务进行分离 在大量方法需要进行同一增强或修改时适合使用Aop 权限控制、日志收集、事务管理、非法资源控制等]]></content>
+      <categories>
+        <category>面试相关</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[分布式应用-RMI简单实现]]></title>
     <url>%2Fdlh1234okok.github.io%2F2018%2F11%2F06%2F%E5%88%86%E5%B8%83%E5%BC%8F%E5%BA%94%E7%94%A8-rmi%2F</url>
     <content type="text"><![CDATA[单体应用​ 一个单体应用程序，通俗来说就是应用程序的全部功能被一起打包作为单个单元或应用程序。 这个单元可以是JAR、WAR、EAR，或其他一些归档格式，但其全部集成在一个单一的单元。 例如在线购物网站通常会包括客户、产品、目录、结帐等功能。 另一个例子是如下的movieplex。这样的应用程序通常由节目预订、添加/删除的电影、票房收入、电影起租点和其他功能组成。在单体应用程序的情况下，所有这些功能的实现和打包在一起作为一个应用程序。（来自百科） 特点 dao service controller ui页面 全部体现到一个war文件中 功能升级复杂 扩展功能相对麻烦 不能按需扩展 代码重复性较大 service服务代码重复性较大 部署简单 技术迭代 复杂度变高 后期维护复杂(涉及技术复杂度较高) 分布式应用分布式应用程序是指：应用程序分布在不同计算机上，通过网络来共同完成一项任务。通常为服务器/客户端模式。 建立分布式应用主要设计以下几种技术： 客户机/服务器体系结构； 远程过程调用（RPC）； 分布式计算环境（DCE）； 分布式组件对象模型（DCOM）； 通用对象请求代理体系结构（COBRA）； 企业 Intranet Applet； Java 分布式对象模型。 RMI:远程方法调用简单实现 第一步：定义一个借口，必须继承remote 123public interface IRmiService extends Remote &#123; public String say() throws RemoteException;&#125; 第二步：编写一个实现类即服务端，继承 UnicastRemoteObject 实现 IRmiService 接口 12345678910public class RmiService extends UnicastRemoteObject implements IRmiService &#123; public RmiService() throws RemoteException &#123; super(); &#125; public String say() throws RemoteException &#123; String content = "Woo! So beautiful butterfly!"; System.out.println("RMI Server say: " + content); return content; &#125; &#125; 第三步：发布服务 1234567891011121314151617181920public class RmiPublish &#123; public RmiPublish() &#123; try &#123; IRmiService rmiService = new RmiService(); // 发布的接口 LocateRegistry.createRegistry(8888); // 绑定地址 Naming.bind("rmi://localhost:8888/rmiService", rmiService); &#125; catch (RemoteException e) &#123; e.printStackTrace(); &#125; catch (MalformedURLException e) &#123; e.printStackTrace(); &#125; catch (AlreadyBoundException e) &#123; e.printStackTrace(); &#125; &#125; public static void main(String[] args) &#123; new RmiPublish(); &#125;&#125; 第四步：客户端调用 123456789101112131415public class RmiClient &#123; public static void main(String[] args) &#123; try &#123; IRmiService rmiService = (IRmiService) Naming.lookup("rmi://localhost:8888/rmiService"); String content = rmiService.say(); System.out.println("RMI Client Got Say Content: " + content); &#125; catch (MalformedURLException e) &#123; e.printStackTrace(); &#125; catch (RemoteException e) &#123; e.printStackTrace(); &#125; catch (NotBoundException e) &#123; e.printStackTrace(); &#125; &#125;&#125;]]></content>
