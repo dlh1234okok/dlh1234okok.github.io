@@ -88,19 +88,19 @@
 <meta property="og:site_name" content="这夜景">
 <meta property="og:description" content="​    Redis 支持主从复用。 数据可以从主服务器向任意数量的从服务器上同步， 同步使用的是发布/订阅机制。 Mater Slave 的模式， 从 Slave 向 Master 发起 SYNC 命令。可以是 1 Master 多 Slave， 可以分层， Slave 下可以再接 Slave， 可扩展成树状结构。因为没有两台电脑， 所以只能在一台机器上搭建两个 Redis 服务端。这里使用单机">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://pg0l2q23d.bkt.clouddn.com/%E4%B8%BB%E4%BB%8E%E5%88%86%E7%A6%BB%E6%96%87%E4%BB%B6%E5%A4%B9.jpg">
-<meta property="og:image" content="http://pg0l2q23d.bkt.clouddn.com/%E4%B8%BB%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE.jpg">
-<meta property="og:image" content="http://pg0l2q23d.bkt.clouddn.com/%E4%BB%8E%E6%9C%8D%E5%8A%A1%E5%99%A82.jpg">
-<meta property="og:image" content="http://pg0l2q23d.bkt.clouddn.com/%E4%BB%8E%E6%9C%8D%E5%8A%A1%E5%99%A81.jpg">
-<meta property="og:image" content="http://pg0l2q23d.bkt.clouddn.com/%E4%B8%BBreplication.jpg">
-<meta property="og:image" content="http://pg0l2q23d.bkt.clouddn.com/%E4%BB%8Ereplication.jpg">
-<meta property="og:image" content="http://pg0l2q23d.bkt.clouddn.com/%E4%B8%BB%E6%B5%8B%E8%AF%95.jpg">
-<meta property="og:image" content="http://pg0l2q23d.bkt.clouddn.com/%E4%BB%8E%E6%B5%8B%E8%AF%95.jpg">
-<meta property="og:updated_time" content="2018-10-27T04:40:59.086Z">
+<meta property="og:image" content="http://www.dlhblog.online/dlh1234okok.github.io/2018/10/27/Redis搭建主从复用-读写分离/主从分离文件夹.jpg">
+<meta property="og:image" content="http://www.dlhblog.online/dlh1234okok.github.io/2018/10/27/Redis搭建主从复用-读写分离/主服务器配置.jpg">
+<meta property="og:image" content="http://www.dlhblog.online/dlh1234okok.github.io/2018/10/27/Redis搭建主从复用-读写分离/从服务器2.jpg">
+<meta property="og:image" content="http://www.dlhblog.online/dlh1234okok.github.io/2018/10/27/Redis搭建主从复用-读写分离/从服务器1.jpg">
+<meta property="og:image" content="http://www.dlhblog.online/dlh1234okok.github.io/2018/10/27/Redis搭建主从复用-读写分离/主replication.jpg">
+<meta property="og:image" content="http://www.dlhblog.online/dlh1234okok.github.io/2018/10/27/Redis搭建主从复用-读写分离/从replication.jpg">
+<meta property="og:image" content="http://www.dlhblog.online/dlh1234okok.github.io/2018/10/27/Redis搭建主从复用-读写分离/主测试.jpg">
+<meta property="og:image" content="http://www.dlhblog.online/dlh1234okok.github.io/2018/10/27/Redis搭建主从复用-读写分离/从测试.jpg">
+<meta property="og:updated_time" content="2018-11-12T08:29:30.078Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redis搭建主从复用-读写分离">
 <meta name="twitter:description" content="​    Redis 支持主从复用。 数据可以从主服务器向任意数量的从服务器上同步， 同步使用的是发布/订阅机制。 Mater Slave 的模式， 从 Slave 向 Master 发起 SYNC 命令。可以是 1 Master 多 Slave， 可以分层， Slave 下可以再接 Slave， 可扩展成树状结构。因为没有两台电脑， 所以只能在一台机器上搭建两个 Redis 服务端。这里使用单机">
-<meta name="twitter:image" content="http://pg0l2q23d.bkt.clouddn.com/%E4%B8%BB%E4%BB%8E%E5%88%86%E7%A6%BB%E6%96%87%E4%BB%B6%E5%A4%B9.jpg">
+<meta name="twitter:image" content="http://www.dlhblog.online/dlh1234okok.github.io/2018/10/27/Redis搭建主从复用-读写分离/主从分离文件夹.jpg">
 
 
 
@@ -456,13 +456,13 @@
 <p>​    由于之前redis5.0版本配置文件有些不同，选择了降低版本使用了4.0.9版本</p>
 <h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><p>将编译后的redis主文件夹复制两份，一份为master（主），一份slave（从），复制的命令为</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp -rf redis-4.0.9 redis-4.0.9-slave</span><br></pre></td></tr></table></figure>
-<p><img src="http://pg0l2q23d.bkt.clouddn.com/%E4%B8%BB%E4%BB%8E%E5%88%86%E7%A6%BB%E6%96%87%E4%BB%B6%E5%A4%B9.jpg" alt=""></p>
+<p><img src="/dlh1234okok.github.io/2018/10/27/Redis搭建主从复用-读写分离/主从分离文件夹.jpg" alt=""></p>
 <p>​        我们主要操作master和slave</p>
 <h1 id="修改主服务器配置"><a href="#修改主服务器配置" class="headerlink" title="修改主服务器配置"></a>修改主服务器配置</h1><p>进入master目录，vim 编辑 redis.conf文件</p>
-<p><img src="http://pg0l2q23d.bkt.clouddn.com/%E4%B8%BB%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE.jpg" alt=""></p>
+<p><img src="/dlh1234okok.github.io/2018/10/27/Redis搭建主从复用-读写分离/主服务器配置.jpg" alt=""></p>
 <p>修改完成后：wq保存并退出</p>
-<h1 id="修改从服务器配置"><a href="#修改从服务器配置" class="headerlink" title="修改从服务器配置"></a>修改从服务器配置</h1><p><img src="http://pg0l2q23d.bkt.clouddn.com/%E4%BB%8E%E6%9C%8D%E5%8A%A1%E5%99%A82.jpg" alt=""></p>
-<p>添加设置作为谁的从服务器<img src="http://pg0l2q23d.bkt.clouddn.com/%E4%BB%8E%E6%9C%8D%E5%8A%A1%E5%99%A81.jpg" alt=""></p>
+<h1 id="修改从服务器配置"><a href="#修改从服务器配置" class="headerlink" title="修改从服务器配置"></a>修改从服务器配置</h1><p><img src="/dlh1234okok.github.io/2018/10/27/Redis搭建主从复用-读写分离/从服务器2.jpg" alt=""></p>
+<p>添加设置作为谁的从服务器<img src="/dlh1234okok.github.io/2018/10/27/Redis搭建主从复用-读写分离/从服务器1.jpg" alt=""></p>
 <h1 id="启动服务器"><a href="#启动服务器" class="headerlink" title="启动服务器"></a>启动服务器</h1><p>先启动主服务master，到src目录下</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./redis-server ../redis.conf &amp;  ---以配置文件启动 ‘&amp;’---在后台运行</span><br></pre></td></tr></table></figure>
 <p>然后启动从服务slave</p>
@@ -471,14 +471,14 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./redis-cli -p 6380</span><br></pre></td></tr></table></figure>
 <p>启动后输入<code>info replication</code>查看当前服务器状态</p>
 <p>主服务器</p>
-<p><img src="http://pg0l2q23d.bkt.clouddn.com/%E4%B8%BBreplication.jpg" alt=""></p>
+<p><img src="/dlh1234okok.github.io/2018/10/27/Redis搭建主从复用-读写分离/主replication.jpg" alt=""></p>
 <p>从服务器</p>
-<p><img src="http://pg0l2q23d.bkt.clouddn.com/%E4%BB%8Ereplication.jpg" alt=""></p>
+<p><img src="/dlh1234okok.github.io/2018/10/27/Redis搭建主从复用-读写分离/从replication.jpg" alt=""></p>
 <p>​                看到这些信息基本配置好了，接下来进行测试</p>
 <h1 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h1><p>主服务器 可读可写 ，我们添加一条数据，测试从服务器是否能读到</p>
-<p><img src="http://pg0l2q23d.bkt.clouddn.com/%E4%B8%BB%E6%B5%8B%E8%AF%95.jpg" alt=""></p>
+<p><img src="/dlh1234okok.github.io/2018/10/27/Redis搭建主从复用-读写分离/主测试.jpg" alt=""></p>
 <p>从服务器只有可读权限，关注它能否读取到主服务刚才写入的数据</p>
-<p><img src="http://pg0l2q23d.bkt.clouddn.com/%E4%BB%8E%E6%B5%8B%E8%AF%95.jpg" alt=""></p>
+<p><img src="/dlh1234okok.github.io/2018/10/27/Redis搭建主从复用-读写分离/从测试.jpg" alt=""></p>
 <p>测试发现无法写入，可以读取主服务写入的数据 ，成功。</p>
 <p>下一章是配置哨兵机制~</p>
 

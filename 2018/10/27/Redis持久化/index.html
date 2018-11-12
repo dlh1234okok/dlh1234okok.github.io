@@ -88,14 +88,14 @@
 <meta property="og:site_name" content="这夜景">
 <meta property="og:description" content="对于 Redis,其提供了不同级别的持久化操作:​    1、RDB 持久化可以在指定的时间间隔内生成数据集的时间点快照​    2、AOF 持久化记录服务器执行的所有写操作命令， 并在服务器启动时， 通过重新执行这些命令来还原数据集。 AOF 文件中的命令全部以 Redis 协议的格式来保存， 新命令会被追加到文件的末尾。 Redis 还可以在后台对 AOF 文件进行重写（rewrite）， 使">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://pg0l2q23d.bkt.clouddn.com/redis%E6%8C%81%E4%B9%85%E5%8C%961.jpg">
-<meta property="og:image" content="http://pg0l2q23d.bkt.clouddn.com/redis%E6%8C%81%E4%B9%85%E5%8C%962.jpg">
-<meta property="og:image" content="http://pg0l2q23d.bkt.clouddn.com/redis%E6%8C%81%E4%B9%85%E5%8C%963.jpg">
-<meta property="og:updated_time" content="2018-10-27T08:05:24.366Z">
+<meta property="og:image" content="http://www.dlhblog.online/dlh1234okok.github.io/2018/10/27/Redis持久化/redis持久化1.jpg">
+<meta property="og:image" content="http://www.dlhblog.online/dlh1234okok.github.io/2018/10/27/Redis持久化/redis持久化2.jpg">
+<meta property="og:image" content="http://www.dlhblog.online/dlh1234okok.github.io/2018/10/27/Redis持久化/redis持久化3.jpg">
+<meta property="og:updated_time" content="2018-11-12T08:38:57.990Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redis持久化">
 <meta name="twitter:description" content="对于 Redis,其提供了不同级别的持久化操作:​    1、RDB 持久化可以在指定的时间间隔内生成数据集的时间点快照​    2、AOF 持久化记录服务器执行的所有写操作命令， 并在服务器启动时， 通过重新执行这些命令来还原数据集。 AOF 文件中的命令全部以 Redis 协议的格式来保存， 新命令会被追加到文件的末尾。 Redis 还可以在后台对 AOF 文件进行重写（rewrite）， 使">
-<meta name="twitter:image" content="http://pg0l2q23d.bkt.clouddn.com/redis%E6%8C%81%E4%B9%85%E5%8C%961.jpg">
+<meta name="twitter:image" content="http://www.dlhblog.online/dlh1234okok.github.io/2018/10/27/Redis持久化/redis持久化1.jpg">
 
 
 
@@ -450,16 +450,16 @@
         <p>对于 Redis,其提供了不同级别的持久化操作:<br>​    1、RDB 持久化可以在指定的时间间隔内生成数据集的时间点快照<br>​    2、AOF 持久化记录服务器执行的所有写操作命令， 并在服务器启动时， 通过重新执行这些命令来还原数据集。 AOF 文件中的命令全部以 Redis 协议的格式来保存， 新命令会被追加到文件的末尾。 Redis 还可以在后台对 AOF 文件进行重写（rewrite）， 使得 AOF文件的体积不会超出保存数据集状态所需的实际大小。</p>
 <p>​    3、Redis 还可以同时使用 AOF 持久化和 RDB 持久化。在这种情况下， 当 Redis 重<br>启时,它会优先使用 AOF 文件来还原数据集,因为 AOF 文件保存的数据集通常比 RDB<br>文件所保存的数据集更完整。<br>​    4、持久化功能当然也可以进行关闭操作， 让数据仅在服务器运行时存在</p>
 <h1 id="RDB-持久化操作（快照-SnapShot-方式）"><a href="#RDB-持久化操作（快照-SnapShot-方式）" class="headerlink" title="RDB 持久化操作（快照 SnapShot 方式）"></a>RDB 持久化操作（快照 SnapShot 方式）</h1><p>​    在默认情况下， Redis 将数据库快照保存在名字为 dump.rdb 的二进制文件中。当然， 这里可以通过修改redis.conf 配置文件来对数据存储条件进行定义， 规定在“ N 秒内数据集至少有 M 个改动”这一条件被满足时,自动保存一次数据集。 也可以通过调用 save 或 bgsave ,手动让 Redis 进行数据集保存操作 </p>
-<p><img src="http://pg0l2q23d.bkt.clouddn.com/redis%E6%8C%81%E4%B9%85%E5%8C%961.jpg" alt=""></p>
+<p><img src="/dlh1234okok.github.io/2018/10/27/Redis持久化/redis持久化1.jpg" alt=""></p>
 <h2 id="Save-Bgsave-手动方式保存数据"><a href="#Save-Bgsave-手动方式保存数据" class="headerlink" title="Save |Bgsave 手动方式保存数据"></a>Save |Bgsave 手动方式保存数据</h2><p>通过 save 操作 ， 当前 io 操作被阻塞， 当 save 保存执行完毕才会进行后续 io 操作 </p>
-<p><img src="http://pg0l2q23d.bkt.clouddn.com/redis%E6%8C%81%E4%B9%85%E5%8C%962.jpg" alt=""></p>
+<p><img src="/dlh1234okok.github.io/2018/10/27/Redis持久化/redis持久化2.jpg" alt=""></p>
 <p>save 操作执行成功后可以看到 dump.rdb 文件(在 root/usr/redis-4.0.9-master/src 目录下) </p>
-<p><img src="http://pg0l2q23d.bkt.clouddn.com/redis%E6%8C%81%E4%B9%85%E5%8C%963.jpg" alt=""></p>
+<p><img src="/dlh1234okok.github.io/2018/10/27/Redis持久化/redis持久化3.jpg" alt=""></p>
 <h2 id="快照运行方式"><a href="#快照运行方式" class="headerlink" title="快照运行方式"></a>快照运行方式</h2><p>当 Redis 需要保存 dump.rdb 文件时， 服务器执行以下操作：</p>
 <ol>
 <li>Redis 调用 fork() ， 同时拥有父进程和子进程。</li>
 <li>子进程将数据集写入到一个临时 RDB 文件中。</li>
-<li>当子进程完成对新 RDB 文件的写入时， Redis 用新 RDB 文件替换原来的 RDB 文件， 并删除<br>旧的 RDB 文件。<br>RDB 优缺点</li>
+<li>当子进程完成对新 RDB 文件的写入时， Redis 用新 RDB 文件替换原来的 RDB 文件， 并删除<br> 旧的 RDB 文件。<br> RDB 优缺点</li>
 </ol>
 <p><em>优点</em>:</p>
 <ol>
