@@ -88,10 +88,12 @@
 <meta property="og:site_name" content="这夜景">
 <meta property="og:description" content="IOC是什么,有哪些优点?IOC是Spring框架的核心技术，控制反转和依赖注入  控制反转  应用程序创建对象的过程交给外部容器IOC来创建 未使用Spring框架的IOC之前，创建对象为： UserService userService = new UserService(); 使用控制反转之后： ​    可以在XML文件中配置bean标签，或者使用扫描机制，配合注解（@Component，">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-07T11:22:19.021Z">
+<meta property="og:image" content="http://www.dlhblog.online/dlh1234okok.github.io/2018/11/07/问题汇总/SpringMVC工作流程.jpg">
+<meta property="og:updated_time" content="2018-11-12T12:08:31.559Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="问题汇总">
 <meta name="twitter:description" content="IOC是什么,有哪些优点?IOC是Spring框架的核心技术，控制反转和依赖注入  控制反转  应用程序创建对象的过程交给外部容器IOC来创建 未使用Spring框架的IOC之前，创建对象为： UserService userService = new UserService(); 使用控制反转之后： ​    可以在XML文件中配置bean标签，或者使用扫描机制，配合注解（@Component，">
+<meta name="twitter:image" content="http://www.dlhblog.online/dlh1234okok.github.io/2018/11/07/问题汇总/SpringMVC工作流程.jpg">
 
 
 
@@ -406,7 +408,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  533
+                  808
                 </span>
               
 
@@ -422,7 +424,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -484,6 +486,22 @@
 </ul>
 <p>在大量方法需要进行同一增强或修改时适合使用Aop</p>
 <p>权限控制、日志收集、事务管理、非法资源控制等</p>
+<h1 id="SpringMVC工作流程"><a href="#SpringMVC工作流程" class="headerlink" title="SpringMVC工作流程"></a>SpringMVC工作流程</h1><p><img src="/dlh1234okok.github.io/2018/11/07/问题汇总/SpringMVC工作流程.jpg" alt=""></p>
+<ol>
+<li>dispatcherServlet前端控制器捕获用户发送的请求，解析URL获取资源标识URI</li>
+<li>HandlerMapping处理器映射器根据URI找到对应的处理器对象及其拦截器，返回HandlerExecutionChain</li>
+<li>根据Handler对象找到合适的HandlerAdpater处理适配器，将调用拦截器的preHandler()方法</li>
+<li>根据HandlerAdpater调用和合适的Handler（Controller）</li>
+<li>执行完Controller方法返回ModelAndView对象</li>
+<li>HandlerAdpater将ModelAndView对象返回给dispatcherServlet</li>
+<li>dispatcherServlet将ModelAndView传给ViewReslover视图解析器</li>
+<li>Viewreslover解析返回具体的View给dispatcherServlet</li>
+<li>dispatcherServlet对View进行渲染视图响应给用户</li>
+</ol>
+<h1 id="web会话跟踪技术"><a href="#web会话跟踪技术" class="headerlink" title="web会话跟踪技术"></a>web会话跟踪技术</h1><p>http协议是无状态协议，即协议对于事务没有记忆，为了保持客户端与服务器的一次会话连接</p>
+<p>在客户端第一次请求服务器时，server内部会产生一个唯一的sessionId，随着响应携带到客户端，由cookie存储sessionId到浏览器的内存中。</p>
+<p>session 存在于服务器，用于保存用户的敏感信息</p>
+<p>cookie存在于客户端浏览器，数据量小，用户存放临时的敏感度低的信息</p>
 
       
     </div>
@@ -732,7 +750,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#IOC是什么-有哪些优点"><span class="nav-number">1.</span> <span class="nav-text">IOC是什么,有哪些优点?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Aop实现方式与应用场景"><span class="nav-number">2.</span> <span class="nav-text">Aop实现方式与应用场景</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#IOC是什么-有哪些优点"><span class="nav-number">1.</span> <span class="nav-text">IOC是什么,有哪些优点?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Aop实现方式与应用场景"><span class="nav-number">2.</span> <span class="nav-text">Aop实现方式与应用场景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SpringMVC工作流程"><span class="nav-number">3.</span> <span class="nav-text">SpringMVC工作流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web会话跟踪技术"><span class="nav-number">4.</span> <span class="nav-text">web会话跟踪技术</span></a></li></ol></div>
             
 
           </div>
@@ -773,7 +791,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站只有55.2k字</span>
+  <span class="post-count">博客全站只有55.4k字</span>
 </div>
         
 
