@@ -6,7 +6,7 @@
   <link href="/dlh1234okok.github.io/atom.xml" rel="self"/>
   
   <link href="http://www.dlhblog.online/"/>
-  <updated>2018-11-20T04:48:07.498Z</updated>
+  <updated>2018-11-20T05:14:16.967Z</updated>
   <id>http://www.dlhblog.online/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Aop+自定义注解+Redis实现缓存</title>
+    <link href="http://www.dlhblog.online/2018/11/20/Aop-%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B3%A8%E8%A7%A3-Redis%E5%AE%9E%E7%8E%B0%E7%BC%93%E5%AD%98/"/>
+    <id>http://www.dlhblog.online/2018/11/20/Aop-自定义注解-Redis实现缓存/</id>
+    <published>2018-11-20T05:02:09.000Z</published>
+    <updated>2018-11-20T05:14:16.967Z</updated>
+    
+    <content type="html"><![CDATA[<p>​    相比于从数据库中查询，从缓存中读取数据无疑更加快速，当用户发送相同的请求时使用缓存，既可以减少数据库的压力，又可以加快查询速度。</p><p>首先先讲一下在Java代码中加入redis缓存的步骤</p><ol><li>准备一个key，key不可重复，常与参数相结合，这样可以通过判断用户是发送的请求参数是否改变。</li><li>通过key从缓存中查询数据，有缓存则直接将缓存数据返回。</li><li>redis服务器中没有缓存，则从数据库中查询，再将结果以该key为键存入缓存，返回。</li></ol><p>我们往往在很多地方需要使用到缓存，每次都要写上这些步骤无益于我们的代码复用。</p><p>​    所以我在这里引入了Aop面向切面编程，通过拦截自定义注解（在需要添加缓存的方法上添加），拦截后查询或添加缓存。</p><h1 id="准备自定义注解"><a href="#准备自定义注解" class="headerlink" title="准备自定义注解"></a>准备自定义注解</h1><p>代码。。。待加载。。。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;​    相比于从数据库中查询，从缓存中读取数据无疑更加快速，当用户发送相同的请求时使用缓存，既可以减少数据库的压力，又可以加快查询速度。&lt;/p&gt;
+&lt;p&gt;首先先讲一下在Java代码中加入redis缓存的步骤&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;准备一个key，key不可重复，常与参数
+      
+    
+    </summary>
+    
+      <category term="项目经验" scheme="http://www.dlhblog.online/categories/%E9%A1%B9%E7%9B%AE%E7%BB%8F%E9%AA%8C/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>登录限制页面回退实现</title>
@@ -452,29 +478,6 @@
       
       
         &lt;h1 id=&quot;key-相关指令&quot;&gt;&lt;a href=&quot;#key-相关指令&quot; class=&quot;headerlink&quot; title=&quot;key 相关指令&quot;&gt;&lt;/a&gt;key 相关指令&lt;/h1&gt;&lt;p&gt;​    &lt;strong&gt;exists&lt;/strong&gt; key 检测指定 key 是否存在
-      
-    
-    </summary>
-    
-      <category term="redis" scheme="http://www.dlhblog.online/categories/redis/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Redis简介和安装</title>
-    <link href="http://www.dlhblog.online/2018/10/25/redis-1/"/>
-    <id>http://www.dlhblog.online/2018/10/25/redis-1/</id>
-    <published>2018-10-25T11:35:16.000Z</published>
-    <updated>2018-11-12T08:23:04.400Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>​    Redis 是一个开源（BSD许可）的，内存中的数据结构存储系统，它可以用作数据库、缓存和消息中间件。 它支持多种类型的数据结构，如 字符串（strings）， 散列（hashes）， 列表（lists）， 集合（sets）， 有序集合（sorted sets） 与范围查询， bitmaps， hyperloglogs 和 地理空间（geospatial） 索引半径查询。 Redis 内置了 复制（replication），LUA脚本（Lua scripting）， LRU驱动事件（LRU eviction），事务（transactions） 和不同级别的 磁盘持久化（persistence）， 并通过 Redis哨兵（Sentinel）和自动 分区（Cluster）提供高可用性（high availability）。    ——<a href="http://www.redis.cn/" target="_blank" rel="noopener">http://www.redis.cn/</a></p><h2 id="小结："><a href="#小结：" class="headerlink" title="小结："></a>小结：</h2><ol><li><p>Redis 是把数据存放在内存当中， 所以它的运行速度会非常快</p></li><li><p>Redis 具有多种数据存储结构</p></li><li><p>Redis 具有持久化的功能</p></li><li><p>Redis 上的数据可以设置过期</p></li><li><p>Redis 支持集群， 而且可以自动切换</p></li><li><p>跨平台 支持多种语言客户端 </p></li></ol><p>   Redis 用途：<br>   ​    缓存（StackOverFlow）， 数据库(微博)， 消息中间件（队列， 微博） </p><h1 id="Redis安装"><a href="#Redis安装" class="headerlink" title="Redis安装"></a>Redis安装</h1><p>环境：centerOS 6.7 虚拟机</p><p>redis版本：5.0</p><p> 1、通过xshell建立连接，使用wget命令下载对应的节点资源</p><pre><code>wget http://download.redis.io/releases/redis-5.0.0.tar.gz</code></pre><p>​    或者去官网下载，使用xftp导入</p><p>2、安装gcc环境</p><p>​    yum install gcc</p><p>3、解压redis压缩文件</p><p>​    tar zxf redis-5.0.0.tar.gz </p><p>4、进入解压后的文件夹</p><p>​    make -编译</p><p>​    完成~</p><h1 id="启动redis服务"><a href="#启动redis服务" class="headerlink" title="启动redis服务"></a>启动redis服务</h1><p>进入src目录</p><p>./redis-server &amp;</p><p>在后面加上&amp;在启动服务后可以继续别的操作，否则以当前窗口启动无法进行其他操作。</p><p><img src="/dlh1234okok.github.io/2018/10/25/redis-1/redis01.bmp" alt=""></p><p>出现以上界面表示服务启动成功</p><p>启动客户端</p><p>./redis-cli</p><p><img src="/dlh1234okok.github.io/2018/10/25/redis-1/redis02.bmp" alt=""></p><p>启动成功就可以在里面愉快地敲命令了！</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot; title=&quot;介绍&quot;&gt;&lt;/a&gt;介绍&lt;/h1&gt;&lt;p&gt;​    Redis 是一个开源（BSD许可）的，内存中的数据结构存储系统，它可以用作数据库、缓存和消息中间件。 它支持多种类型的数据结构，
       
     
     </summary>

@@ -81,13 +81,17 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="这夜景">
-<meta property="og:url" content="http://www.dlhblog.online/categories/项目经验/index.html">
+<meta name="description" content="​    相比于从数据库中查询，从缓存中读取数据无疑更加快速，当用户发送相同的请求时使用缓存，既可以减少数据库的压力，又可以加快查询速度。 首先先讲一下在Java代码中加入redis缓存的步骤  准备一个key，key不可重复，常与参数相结合，这样可以通过判断用户是发送的请求参数是否改变。 通过key从缓存中查询数据，有缓存则直接将缓存数据返回。 redis服务器中没有缓存，则从数据库中查询，再将">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Aop+自定义注解+Redis实现缓存">
+<meta property="og:url" content="http://www.dlhblog.online/2018/11/20/Aop-自定义注解-Redis实现缓存/index.html">
 <meta property="og:site_name" content="这夜景">
+<meta property="og:description" content="​    相比于从数据库中查询，从缓存中读取数据无疑更加快速，当用户发送相同的请求时使用缓存，既可以减少数据库的压力，又可以加快查询速度。 首先先讲一下在Java代码中加入redis缓存的步骤  准备一个key，key不可重复，常与参数相结合，这样可以通过判断用户是发送的请求参数是否改变。 通过key从缓存中查询数据，有缓存则直接将缓存数据返回。 redis服务器中没有缓存，则从数据库中查询，再将">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-11-20T05:14:16.967Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="这夜景">
+<meta name="twitter:title" content="Aop+自定义注解+Redis实现缓存">
+<meta name="twitter:description" content="​    相比于从数据库中查询，从缓存中读取数据无疑更加快速，当用户发送相同的请求时使用缓存，既可以减少数据库的压力，又可以加快查询速度。 首先先讲一下在Java代码中加入redis缓存的步骤  准备一个key，key不可重复，常与参数相结合，这样可以通过判断用户是发送的请求参数是否改变。 通过key从缓存中查询数据，有缓存则直接将缓存数据返回。 redis服务器中没有缓存，则从数据库中查询，再将">
 
 
 
@@ -117,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://www.dlhblog.online/categories/项目经验/"/>
+  <link rel="canonical" href="http://www.dlhblog.online/2018/11/20/Aop-自定义注解-Redis实现缓存/"/>
 
 
 
 
 
-  <title>分类: 项目经验 | 这夜景</title>
+  <title>Aop+自定义注解+Redis实现缓存 | 这夜景</title>
   
 
 
@@ -142,7 +146,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -290,111 +294,258 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block category">
-
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>项目经验<small>分类</small>
-        </h1>
-      </div>
-
-      
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.dlhblog.online/dlh1234okok.github.io/2018/11/20/Aop-自定义注解-Redis实现缓存/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="li-hong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://f2.topitme.com/2/53/46/1127458459b9146532l.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="这夜景">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/dlh1234okok.github.io/2018/11/20/Aop-自定义注解-Redis实现缓存/" itemprop="url">
-              
-                <span itemprop="name">Aop+自定义注解+Redis实现缓存</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">Aop+自定义注解+Redis实现缓存</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-11-20T13:02:09+08:00"
-              content="2018-11-20" >
-          11-20
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-20T13:02:09+08:00">
+                2018-11-20
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/dlh1234okok.github.io/categories/项目经验/" itemprop="url" rel="index">
+                    <span itemprop="name">项目经验</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/dlh1234okok.github.io/2018/11/20/Aop-自定义注解-Redis实现缓存/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/dlh1234okok.github.io/2018/11/20/Aop-自定义注解-Redis实现缓存/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+		  
+		  
+			<span class="post-meta-divider">|</span>
+			<span id="busuanzi_value_page_pv"></span>次阅读
+			
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  268
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/dlh1234okok.github.io/2018/11/19/登录限制页面回退实现/" itemprop="url">
-              
-                <span itemprop="name">登录限制页面回退实现</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-11-19T23:32:44+08:00"
-              content="2018-11-19" >
-          11-19
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/dlh1234okok.github.io/2018/10/22/Crm项目权限模块/" itemprop="url">
-              
-                <span itemprop="name">Crm项目-权限管理模块</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-10-22T20:29:05+08:00"
-              content="2018-10-22" >
-          10-22
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+        <p>​    相比于从数据库中查询，从缓存中读取数据无疑更加快速，当用户发送相同的请求时使用缓存，既可以减少数据库的压力，又可以加快查询速度。</p>
+<p>首先先讲一下在Java代码中加入redis缓存的步骤</p>
+<ol>
+<li>准备一个key，key不可重复，常与参数相结合，这样可以通过判断用户是发送的请求参数是否改变。</li>
+<li>通过key从缓存中查询数据，有缓存则直接将缓存数据返回。</li>
+<li>redis服务器中没有缓存，则从数据库中查询，再将结果以该key为键存入缓存，返回。</li>
+</ol>
+<p>我们往往在很多地方需要使用到缓存，每次都要写上这些步骤无益于我们的代码复用。</p>
+<p>​    所以我在这里引入了Aop面向切面编程，通过拦截自定义注解（在需要添加缓存的方法上添加），拦截后查询或添加缓存。</p>
+<h1 id="准备自定义注解"><a href="#准备自定义注解" class="headerlink" title="准备自定义注解"></a>准备自定义注解</h1><p>代码。。。待加载。。。</p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>我就试试~</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://pg0l2q23d.bkt.clouddn.com/mm_facetoface_collect_qrcode_1538620279859.png" alt="li-hong 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+	<div>
+		
+			<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">
+            -------------本文结束
+            <i class="fa fa-paw"></i>
+            感谢您的阅读-------------
+        </div>
+    
+</div>
+
+
+
+		
+	</div>
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/dlh1234okok.github.io/2018/11/19/登录限制页面回退实现/" rel="next" title="登录限制页面回退实现">
+                <i class="fa fa-chevron-left"></i> 登录限制页面回退实现
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -402,6 +553,44 @@
 
 
           
+
+  
+	<div onclick="showGitment()" id="gitment_title" class="gitment_title">显示 Gitment 评论</div>
+	<div id="container" style="display:none"></div>
+	<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+		<script src="https://billts.site/js/gitment.js"></script>
+	<script>
+		const myTheme = {
+		render(state, instance) {
+		const container = document.createElement('div');
+		container.lang = "en-US";
+		container.className = 'gitment-container gitment-root-container';
+		container.appendChild(instance.renderHeader(state, instance));
+		container.appendChild(instance.renderEditor(state, instance));
+		container.appendChild(instance.renderComments(state, instance));
+		container.appendChild(instance.renderFooter(state, instance));
+		return container;
+		}
+	}
+	function showGitment() {
+		$("#gitment_title").attr("style", "display:none");
+		$("#container").attr("style", "").addClass("gitment_container");
+		var gitment = new Gitment({
+		id: window.location.pathname,
+		theme: myTheme,
+		owner: 'dlhblog',
+		repo: 'dlh1234okok.github.io',
+		oauth: {
+		client_id: '3d327d2bf6e29622b4fd',
+		client_secret: '4d1303f0b50a089e4d6559cea1595c7cb95e3379'
+		}
+		});
+		gitment.render('container');
+	}
+</script>
+
+
+  
   
   
   
@@ -426,8 +615,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -489,6 +687,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#准备自定义注解"><span class="nav-number">1.</span> <span class="nav-text">准备自定义注解</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -629,6 +843,10 @@
 
 
   
+  <script type="text/javascript" src="/dlh1234okok.github.io/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/dlh1234okok.github.io/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
