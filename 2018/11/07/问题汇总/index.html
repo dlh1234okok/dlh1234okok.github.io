@@ -89,7 +89,7 @@
 <meta property="og:description" content="IOC是什么,有哪些优点?IOC是Spring框架的核心技术，控制反转和依赖注入  控制反转  应用程序创建对象的过程交给外部容器IOC来创建 未使用Spring框架的IOC之前，创建对象为： UserService userService = new UserService(); 使用控制反转之后： ​    可以在XML文件中配置bean标签，或者使用扫描机制，配合注解（@Component，">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.dlhblog.online/dlh1234okok.github.io/2018/11/07/问题汇总/SpringMVC工作流程.jpg">
-<meta property="og:updated_time" content="2018-11-12T12:08:31.559Z">
+<meta property="og:updated_time" content="2018-11-19T11:00:55.059Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="问题汇总">
 <meta name="twitter:description" content="IOC是什么,有哪些优点?IOC是Spring框架的核心技术，控制反转和依赖注入  控制反转  应用程序创建对象的过程交给外部容器IOC来创建 未使用Spring框架的IOC之前，创建对象为： UserService userService = new UserService(); 使用控制反转之后： ​    可以在XML文件中配置bean标签，或者使用扫描机制，配合注解（@Component，">
@@ -408,7 +408,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  808
+                  1k
                 </span>
               
 
@@ -424,7 +424,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  3
                 </span>
               
             </div>
@@ -502,6 +502,32 @@
 <p>在客户端第一次请求服务器时，server内部会产生一个唯一的sessionId，随着响应携带到客户端，由cookie存储sessionId到浏览器的内存中。</p>
 <p>session 存在于服务器，用于保存用户的敏感信息</p>
 <p>cookie存在于客户端浏览器，数据量小，用户存放临时的敏感度低的信息</p>
+<h1 id="、equals和hashCode"><a href="#、equals和hashCode" class="headerlink" title="==、equals和hashCode"></a>==、equals和hashCode</h1><ul>
+<li>==</li>
+</ul>
+<p>基本数据类型==比较的是值</p>
+<p>非基本数据类型==比较的是对象引用的地址</p>
+<ul>
+<li>equals</li>
+</ul>
+<p>equals比较的是对象的地址值</p>
+<p>重写之后可以比较对象内容，比如String重写了equals方法，先比较地址，相等直接返回true，不相等再比较内容</p>
+<ul>
+<li>重写equals，不重写hashCode</li>
+</ul>
+<p>equals相等，hashCode不相等（不同对象地址）</p>
+<p>hashCode相等，equals相等（同一对象地址）</p>
+<ul>
+<li>重写hashCode，不重写equals</li>
+</ul>
+<p>hashCode相等，equals不相等（不同对象地址）</p>
+<p>equals相等，hashCode相等（同一对象地址）</p>
+<ul>
+<li>重写hashCode和equals</li>
+</ul>
+<p>equals相等，hashCode相等（不同对象地址）</p>
+<p>重写equals均采用先比较地址对象地址，再比较对象内容</p>
+<p>重写hashCode为Object.hash(参数)</p>
 
       
     </div>
@@ -697,7 +723,7 @@
               
                 <a href="/dlh1234okok.github.io/archives/">
               
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">48</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -750,7 +776,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#IOC是什么-有哪些优点"><span class="nav-number">1.</span> <span class="nav-text">IOC是什么,有哪些优点?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Aop实现方式与应用场景"><span class="nav-number">2.</span> <span class="nav-text">Aop实现方式与应用场景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SpringMVC工作流程"><span class="nav-number">3.</span> <span class="nav-text">SpringMVC工作流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web会话跟踪技术"><span class="nav-number">4.</span> <span class="nav-text">web会话跟踪技术</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#IOC是什么-有哪些优点"><span class="nav-number">1.</span> <span class="nav-text">IOC是什么,有哪些优点?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Aop实现方式与应用场景"><span class="nav-number">2.</span> <span class="nav-text">Aop实现方式与应用场景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SpringMVC工作流程"><span class="nav-number">3.</span> <span class="nav-text">SpringMVC工作流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web会话跟踪技术"><span class="nav-number">4.</span> <span class="nav-text">web会话跟踪技术</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#、equals和hashCode"><span class="nav-number">5.</span> <span class="nav-text">==、equals和hashCode</span></a></li></ol></div>
             
 
           </div>
@@ -791,7 +817,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站只有55.4k字</span>
+  <span class="post-count">博客全站只有56.1k字</span>
 </div>
         
 
