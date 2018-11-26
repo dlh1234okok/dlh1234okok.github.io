@@ -6,7 +6,7 @@
   <link href="/dlh1234okok.github.io/atom.xml" rel="self"/>
   
   <link href="http://www.dlhblog.online/"/>
-  <updated>2018-11-23T12:52:02.200Z</updated>
+  <updated>2018-11-25T15:14:34.342Z</updated>
   <id>http://www.dlhblog.online/</id>
   
   <author>
@@ -15,6 +15,54 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>RabbitMq消息路由规则-direct</title>
+    <link href="http://www.dlhblog.online/2018/11/25/RabbitMq%E6%B6%88%E6%81%AF%E8%B7%AF%E7%94%B1%E8%A7%84%E5%88%99/"/>
+    <id>http://www.dlhblog.online/2018/11/25/RabbitMq消息路由规则/</id>
+    <published>2018-11-25T15:08:29.000Z</published>
+    <updated>2018-11-25T15:14:34.342Z</updated>
+    
+    <content type="html"><![CDATA[<p>​    我们可以针对不同的消息，在对消息进行消费时，通过exchange types以及Routing key设置规则，便可以将不同消息路由到不同的队列然后交给不同消费者进行消费。</p><p><img src="/dlh1234okok.github.io/2018/11/25/RabbitMq消息路由规则/1.jpg" alt=""></p><p>从图中可以看出：</p><ol><li>生产者产生消息投给交换机</li><li>交换机投送消息时的Exchange Types 为direct类型</li><li>消息通过定义的Routing Key 被路由到指定的队列进行后续消费</li></ol><h1 id="Sender"><a href="#Sender" class="headerlink" title="Sender"></a>Sender</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;​    我们可以针对不同的消息，在对消息进行消费时，通过exchange types以及Routing key设置规则，便可以将不同消息路由到不同的队列然后交给不同消费者进行消费。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/dlh1234okok.github.io/2018/
+      
+    
+    </summary>
+    
+      <category term="RabbitMq" scheme="http://www.dlhblog.online/categories/RabbitMq/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>RabbitMq消息发布与订阅-fanout</title>
+    <link href="http://www.dlhblog.online/2018/11/25/RabbitMq%E6%B6%88%E6%81%AF%E5%8F%91%E5%B8%83%E4%B8%8E%E8%AE%A2%E9%98%85/"/>
+    <id>http://www.dlhblog.online/2018/11/25/RabbitMq消息发布与订阅/</id>
+    <published>2018-11-25T14:48:58.000Z</published>
+    <updated>2018-11-25T15:07:08.366Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>​    对于微信公众号，相信每个人都订阅过， 当公众号发送新的消息后，对于订阅过该公众号的所有用户均可以收到消息，这个场景大家都能明白，同样对于RabbitMq 消息的处理也支持这种消息处理， 当生产者把消息投送出去后，不同的消费者均可以对该消息进行消费，而不是消息被一个消费者消费后就立即从队列中删除，对于这种消息处理，我们通常称之为消息的发布与订阅模式，凡是消费者订阅了该消息，均能够收到对应消息进行处理，比较常见的如用户注册操作。模型图如下: </p></blockquote><p><img src="/dlh1234okok.github.io/2018/11/25/RabbitMq消息发布与订阅/1.jpg" alt=""></p><p>从图中看到:</p><ol><li>消息产生后不是直接投送到队列中，而是将消息先投送给 Exchange 交换机，然后消息经过 Exchange 交换机投递到相关队列</li><li>多个消费者消费的不再是同一个队列，而是每个消费者消费属于自己的队列。 </li></ol><h1 id="publish-subscribe"><a href="#publish-subscribe" class="headerlink" title="publish/subscribe"></a>publish/subscribe</h1><h2 id="fanout"><a href="#fanout" class="headerlink" title="fanout"></a>fanout</h2><h2 id="Sender-将消息发送到交换机"><a href="#Sender-将消息发送到交换机" class="headerlink" title="Sender(将消息发送到交换机)"></a>Sender(将消息发送到交换机)</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Sender</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String EXCHANGE_NAME = <span class="string">"fanout"</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取连接</span></span><br><span class="line">        Connection connection = ConnectionUtil.getConnection();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 创建通道</span></span><br><span class="line">        Channel channel = connection.createChannel();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 声明交换机</span></span><br><span class="line">        channel.exchangeDeclare(EXCHANGE_NAME, BuiltinExchangeType.FANOUT);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">50</span>; i++) &#123;</span><br><span class="line">            String msg = <span class="string">"消息-&gt;"</span> + i;</span><br><span class="line">            channel.basicPublish(EXCHANGE_NAME, <span class="string">""</span>, <span class="keyword">null</span>, msg.getBytes(StandardCharsets.UTF_8));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 关闭资源</span></span><br><span class="line">        ConnectionUtil.closeResources(connection, channel);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="Receiver（从交换机中分发为两个队列）"><a href="#Receiver（从交换机中分发为两个队列）" class="headerlink" title="Receiver（从交换机中分发为两个队列）"></a>Receiver（从交换机中分发为两个队列）</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Receiver01</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String EXCHANGE_NAME = <span class="string">"fanout"</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String QUEUE_NAME = <span class="string">"queue01"</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="comment">// 获取连接</span></span><br><span class="line">        Connection connection = ConnectionUtil.getConnection();</span><br><span class="line">        <span class="comment">// 创建通道</span></span><br><span class="line">        Channel channel = connection.createChannel();</span><br><span class="line">        <span class="comment">// 声明交换机</span></span><br><span class="line">        channel.exchangeDeclare(EXCHANGE_NAME, BuiltinExchangeType.FANOUT);</span><br><span class="line">        <span class="comment">// 声明队列</span></span><br><span class="line">        channel.queueDeclare(QUEUE_NAME, <span class="keyword">false</span>, <span class="keyword">false</span>, <span class="keyword">false</span>, <span class="keyword">null</span>);</span><br><span class="line">        <span class="comment">// 绑定队列到交换机</span></span><br><span class="line">        channel.queueBind(QUEUE_NAME, EXCHANGE_NAME, <span class="string">""</span>);</span><br><span class="line">        <span class="comment">// 获取consumer</span></span><br><span class="line">        Consumer consumer = <span class="keyword">new</span> DefaultConsumer(channel) &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleDelivery</span><span class="params">(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, <span class="keyword">byte</span>[] body)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">                String msg = <span class="keyword">new</span> String(body, StandardCharsets.UTF_8);</span><br><span class="line">                System.out.println(<span class="string">"queue01-"</span> + msg);</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">                &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="comment">// 消费</span></span><br><span class="line">        channel.basicConsume(QUEUE_NAME, <span class="keyword">true</span>, consumer);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Receiver02</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String EXCHANGE_NAME = <span class="string">"fanout"</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String QUEUE_NAME = <span class="string">"queue02"</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="comment">// 获取连接</span></span><br><span class="line">        Connection connection = ConnectionUtil.getConnection();</span><br><span class="line">        <span class="comment">// 创建通道</span></span><br><span class="line">        Channel channel = connection.createChannel();</span><br><span class="line">        <span class="comment">// 声明交换机</span></span><br><span class="line">        channel.exchangeDeclare(EXCHANGE_NAME, BuiltinExchangeType.FANOUT);</span><br><span class="line">        <span class="comment">// 声明队列</span></span><br><span class="line">        channel.queueDeclare(QUEUE_NAME, <span class="keyword">false</span>, <span class="keyword">false</span>, <span class="keyword">false</span>, <span class="keyword">null</span>);</span><br><span class="line">        <span class="comment">// 绑定队列到交换机</span></span><br><span class="line">        channel.queueBind(QUEUE_NAME, EXCHANGE_NAME, <span class="string">""</span>);</span><br><span class="line">        <span class="comment">// 获取消费者</span></span><br><span class="line">        Consumer consumer = <span class="keyword">new</span> DefaultConsumer(channel) &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleDelivery</span><span class="params">(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, <span class="keyword">byte</span>[] body)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">                String msg = <span class="keyword">new</span> String(body, StandardCharsets.UTF_8);</span><br><span class="line">                System.out.println(<span class="string">"queue02-"</span> + msg);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="comment">// 消费</span></span><br><span class="line">        channel.basicConsume(QUEUE_NAME, <span class="keyword">true</span>, consumer);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p><img src="/dlh1234okok.github.io/2018/11/25/RabbitMq消息发布与订阅/2.bmp" alt=""></p><p><img src="/dlh1234okok.github.io/2018/11/25/RabbitMq消息发布与订阅/3.bmp" alt=""></p><p>两个消费者都能收到同样的消息</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;​    对于微信公众号，相信每个人都订阅过， 当公众号发送新的消息后，对于订阅过该公众号的所有用户均可以收到消息，这个场景大家都能明白，同样对于RabbitMq 消息的处理也支持这种消息处理， 当生产者把消息投送出去后，不同的消费者均可以对该消息
+      
+    
+    </summary>
+    
+      <category term="RabbitMq" scheme="http://www.dlhblog.online/categories/RabbitMq/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>RabbitMq初体验</title>
@@ -432,53 +480,6 @@
       
       
         &lt;p&gt;对于 Redis,其提供了不同级别的持久化操作:&lt;br&gt;​    1、RDB 持久化可以在指定的时间间隔内生成数据集的时间点快照&lt;br&gt;​    2、AOF 持久化记录服务器执行的所有写操作命令， 并在服务器启动时， 通过重新执行这些命令来还原数据集。 AOF 文件中的命令
-      
-    
-    </summary>
-    
-      <category term="redis" scheme="http://www.dlhblog.online/categories/redis/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Redis哨兵机制(主备切换)</title>
-    <link href="http://www.dlhblog.online/2018/10/27/Redis%E5%93%A8%E5%85%B5%E6%9C%BA%E5%88%B6/"/>
-    <id>http://www.dlhblog.online/2018/10/27/Redis哨兵机制/</id>
-    <published>2018-10-27T04:42:34.000Z</published>
-    <updated>2018-11-12T08:37:02.672Z</updated>
-    
-    <content type="html"><![CDATA[<p>​    访问网站时为了提高响应速度，从内存中获取热点数据比从数据库中获取要快很多，Redis是一个很好的Cache工具，大型网站的热点数据往往巨大，此时一台Redis服务器内存无法满足，需要集合多台Redis，但只有一台主机，其他都是从服务器，实现读写分离。</p><p>​    但是，万一主机宕机或中断了怎么办。</p><p>​    Redis哨兵机制，对服务器进行监视，当主机‘挂’了的时候，它会从其他服务器中重新拥立一个新的主机，赋予可执行功能。当‘挂’掉的主机再重新启动后，就不再是主机了。</p><h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><p>这里是单台服务器不同端口模拟3台服务器（1主2从）</p><h2 id="节点准备"><a href="#节点准备" class="headerlink" title="节点准备"></a>节点准备</h2><p>127.0.0.1  6379（master-主节点）</p><p>127.0.0.1  6380（slave-从节点1）</p><p>127.0.0.1  6381（slave-从节点2）</p><h2 id="主节点redis-conf配置"><a href="#主节点redis-conf配置" class="headerlink" title="主节点redis.conf配置"></a>主节点redis.conf配置</h2><p>设置端口 ， daemonize,密码， 连接主节点密码， requirepass 禁用 bind 等 基本配置 </p><p><img src="/dlh1234okok.github.io/2018/10/27/Redis哨兵机制/主备切换主1.jpg" alt=""></p><p><img src="/dlh1234okok.github.io/2018/10/27/Redis哨兵机制/主备切换主2.jpg" alt=""></p><p><img src="/dlh1234okok.github.io/2018/10/27/Redis哨兵机制/主备切换主3.jpg" alt=""></p><p><img src="/dlh1234okok.github.io/2018/10/27/Redis哨兵机制/主备切换主4.jpg" alt=""></p><p><img src="/dlh1234okok.github.io/2018/10/27/Redis哨兵机制/主备切换主5.jpg" alt=""></p><h2 id="从节点redis-conf配置"><a href="#从节点redis-conf配置" class="headerlink" title="从节点redis.conf配置"></a>从节点redis.conf配置</h2><p>从节点配置和主节点基本类似，相比多一个配置</p><p><img src="/dlh1234okok.github.io/2018/10/27/Redis哨兵机制/从服务器配置哨兵1.jpg" alt=""></p><h2 id="sentinel-conf哨兵文件配置"><a href="#sentinel-conf哨兵文件配置" class="headerlink" title="sentinel.conf哨兵文件配置"></a>sentinel.conf哨兵文件配置</h2><p><img src="/dlh1234okok.github.io/2018/10/27/Redis哨兵机制/哨兵文件配置1.jpg" alt=""></p><p><img src="/dlh1234okok.github.io/2018/10/27/Redis哨兵机制/哨兵文件配置2.jpg" alt=""></p><p><img src="/dlh1234okok.github.io/2018/10/27/Redis哨兵机制/从服务器配置哨兵1.jpg" alt=""></p><p>​                所有哨兵起先监视主机端口</p><p>​                为了方便快速看到效果，设置哨兵执行时效</p><p><img src="/dlh1234okok.github.io/2018/10/27/Redis哨兵机制/哨兵文件配置3.jpg" alt=""></p><p><img src="/dlh1234okok.github.io/2018/10/27/Redis哨兵机制/哨兵文件配置4.jpg" alt=""></p><h1 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h1><p>开启所有三个服务和所有哨兵</p><p><img src="/dlh1234okok.github.io/2018/10/27/Redis哨兵机制/哨兵启动.jpg" alt=""></p><p>将主服务kill掉</p><p>结果发现端口号为6381的从服务成功成为主服务</p><p><img src="/dlh1234okok.github.io/2018/10/27/Redis哨兵机制/6381成为master.jpg" alt=""></p><p>再次启动原本为主服务的6379</p><p><img src="/dlh1234okok.github.io/2018/10/27/Redis哨兵机制/master-slave.jpg" alt=""></p><p>只能乖乖当6381的奴隶了吧~</p><p>这里的一切均为本机127.0.0.1测试，如果需要连接局域网，可以改为本机ip地址</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;​    访问网站时为了提高响应速度，从内存中获取热点数据比从数据库中获取要快很多，Redis是一个很好的Cache工具，大型网站的热点数据往往巨大，此时一台Redis服务器内存无法满足，需要集合多台Redis，但只有一台主机，其他都是从服务器，实现读写分离。&lt;/p&gt;
-&lt;p
-      
-    
-    </summary>
-    
-      <category term="redis" scheme="http://www.dlhblog.online/categories/redis/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Redis搭建主从复用-读写分离</title>
-    <link href="http://www.dlhblog.online/2018/10/27/Redis%E6%90%AD%E5%BB%BA%E4%B8%BB%E4%BB%8E%E5%A4%8D%E7%94%A8-%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB/"/>
-    <id>http://www.dlhblog.online/2018/10/27/Redis搭建主从复用-读写分离/</id>
-    <published>2018-10-27T01:41:12.000Z</published>
-    <updated>2018-11-12T08:29:30.078Z</updated>
-    
-    <content type="html"><![CDATA[<p>​    Redis 支持主从复用。 数据可以从主服务器向任意数量的从服务器上同步， 同步使用的是发布/订阅机制。 Mater Slave 的模式， 从 Slave 向 Master 发起 SYNC 命令。可以是 1 Master 多 Slave， 可以分层， Slave 下可以再接 Slave， 可扩展成树状结构。因为没有两台电脑， 所以只能在一台机器上搭建两个 Redis 服务端。这里使用单机来模拟 redis 主从服务器 ， 实现读写分离配置 。</p><p>​    由于之前redis5.0版本配置文件有些不同，选择了降低版本使用了4.0.9版本</p><h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><p>将编译后的redis主文件夹复制两份，一份为master（主），一份slave（从），复制的命令为</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp -rf redis-4.0.9 redis-4.0.9-slave</span><br></pre></td></tr></table></figure><p><img src="/dlh1234okok.github.io/2018/10/27/Redis搭建主从复用-读写分离/主从分离文件夹.jpg" alt=""></p><p>​        我们主要操作master和slave</p><h1 id="修改主服务器配置"><a href="#修改主服务器配置" class="headerlink" title="修改主服务器配置"></a>修改主服务器配置</h1><p>进入master目录，vim 编辑 redis.conf文件</p><p><img src="/dlh1234okok.github.io/2018/10/27/Redis搭建主从复用-读写分离/主服务器配置.jpg" alt=""></p><p>修改完成后：wq保存并退出</p><h1 id="修改从服务器配置"><a href="#修改从服务器配置" class="headerlink" title="修改从服务器配置"></a>修改从服务器配置</h1><p><img src="/dlh1234okok.github.io/2018/10/27/Redis搭建主从复用-读写分离/从服务器2.jpg" alt=""></p><p>添加设置作为谁的从服务器<img src="/dlh1234okok.github.io/2018/10/27/Redis搭建主从复用-读写分离/从服务器1.jpg" alt=""></p><h1 id="启动服务器"><a href="#启动服务器" class="headerlink" title="启动服务器"></a>启动服务器</h1><p>先启动主服务master，到src目录下</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./redis-server ../redis.conf &amp;  ---以配置文件启动 ‘&amp;’---在后台运行</span><br></pre></td></tr></table></figure><p>然后启动从服务slave</p><h1 id="启动客户端"><a href="#启动客户端" class="headerlink" title="启动客户端"></a>启动客户端</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./redis-cli</span><br></pre></td></tr></table></figure><p>从服务器需要以指定端口启动</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./redis-cli -p 6380</span><br></pre></td></tr></table></figure><p>启动后输入<code>info replication</code>查看当前服务器状态</p><p>主服务器</p><p><img src="/dlh1234okok.github.io/2018/10/27/Redis搭建主从复用-读写分离/主replication.jpg" alt=""></p><p>从服务器</p><p><img src="/dlh1234okok.github.io/2018/10/27/Redis搭建主从复用-读写分离/从replication.jpg" alt=""></p><p>​                看到这些信息基本配置好了，接下来进行测试</p><h1 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h1><p>主服务器 可读可写 ，我们添加一条数据，测试从服务器是否能读到</p><p><img src="/dlh1234okok.github.io/2018/10/27/Redis搭建主从复用-读写分离/主测试.jpg" alt=""></p><p>从服务器只有可读权限，关注它能否读取到主服务刚才写入的数据</p><p><img src="/dlh1234okok.github.io/2018/10/27/Redis搭建主从复用-读写分离/从测试.jpg" alt=""></p><p>测试发现无法写入，可以读取主服务写入的数据 ，成功。</p><p>下一章是配置哨兵机制~</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;​    Redis 支持主从复用。 数据可以从主服务器向任意数量的从服务器上同步， 同步使用的是发布/订阅机制。 Mater Slave 的模式， 从 Slave 向 Master 发起 SYNC 命令。可以是 1 Master 多 Slave， 可以分层， Slave 
       
     
     </summary>
