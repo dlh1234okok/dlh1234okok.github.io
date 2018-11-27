@@ -89,7 +89,7 @@
 <meta property="og:description" content="IOC是什么,有哪些优点?IOC是Spring框架的核心技术，控制反转和依赖注入  控制反转 应用程序创建对象的过程交给外部容器IOC来创建 未使用Spring框架的IOC之前，创建对象为： UserService userService = new UserService(); 使用控制反转之后： ​    可以在XML文件中配置bean标签，或者使用扫描机制，配合注解（@Component，@">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.dlhblog.online/dlh1234okok.github.io/2018/11/07/问题汇总/SpringMVC工作流程.jpg">
-<meta property="og:updated_time" content="2018-11-21T13:03:13.620Z">
+<meta property="og:updated_time" content="2018-11-27T11:57:43.344Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="问题汇总">
 <meta name="twitter:description" content="IOC是什么,有哪些优点?IOC是Spring框架的核心技术，控制反转和依赖注入  控制反转 应用程序创建对象的过程交给外部容器IOC来创建 未使用Spring框架的IOC之前，创建对象为： UserService userService = new UserService(); 使用控制反转之后： ​    可以在XML文件中配置bean标签，或者使用扫描机制，配合注解（@Component，@">
@@ -408,7 +408,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.6k
+                  1.7k
                 </span>
               
 
@@ -424,7 +424,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  5
+                  6
                 </span>
               
             </div>
@@ -552,13 +552,13 @@
 </ul>
 <h1 id="redis缓存穿透和雪崩问题"><a href="#redis缓存穿透和雪崩问题" class="headerlink" title="redis缓存穿透和雪崩问题"></a>redis缓存穿透和雪崩问题</h1><ul>
 <li><p>缓存穿透</p>
-<p>​    在缓存中查询一个不存在的数据，没有查到将去数据库进行查询，没有查到不写入缓存。这将导致这个不存在的数据每次查找都要去数据库查，造成缓存穿透</p>
-</li>
-<li><p>缓存雪崩</p>
+<p>​    在一些恶意用户请求的行为，在缓存中查询一个不存在的数据，没有查到将去数据库进行查询，没有查到不写入缓存。这将导致这个不存在的数据每次查找都要去数据库查，造成缓存穿透</p>
+<p>解决方法：1、使用互斥锁排队；2、布隆过滤器；3、缓存空对象，将null变为一个值，设置较小的过期时间</p>
+<p>缓存雪崩</p>
 <p>​    redis服务器中大量key在同一时间失效，导致大量请求进入数据库导致连接异常</p>
+<p>解决方法：1、加锁排队；2、建立备份缓存，缓存A设置超时时间，缓存B不设置超时时间，先读缓存A，缓存A没有查缓存B，查到更新缓存A和缓存B；3、给key值设置超时时间时设置随机的时间，避免同时失效</p>
 </li>
 </ul>
-<p>。。解决将在明天写上</p>
 
       
     </div>
@@ -848,7 +848,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站只有62.1k字</span>
+  <span class="post-count">博客全站只有62.3k字</span>
 </div>
         
 
