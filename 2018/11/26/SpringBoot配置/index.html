@@ -90,7 +90,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.dlhblog.online/dlh1234okok.github.io/2018/11/26/SpringBoot配置/1.bmp">
 <meta property="og:image" content="http://www.dlhblog.online/dlh1234okok.github.io/2018/11/26/SpringBoot配置/2.bmp">
-<meta property="og:updated_time" content="2018-11-26T14:38:16.269Z">
+<meta property="og:updated_time" content="2018-11-28T06:10:20.550Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringBoot配置">
 <meta name="twitter:description" content="​    如果说Maven整合了Jar文件管理，SpringBoot就相当于整合了框架、中间件或一些第三方插件，它使用“约定大于配置”，即默认帮我们配好了大部分配置，借助SpringBoot我们可以快速创建web应用。这里不从头开始体现，只说明一些核心的常用的配置。  不得不说@SpringBootApplication@SpringBootApplication注解是SpringBoot的核心">
@@ -409,7 +409,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  557
+                  703
                 </span>
               
 
@@ -425,7 +425,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  3
                 </span>
               
             </div>
@@ -468,11 +468,17 @@
 <h1 id="日志配置"><a href="#日志配置" class="headerlink" title="日志配置"></a>日志配置</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 日志打印信息级别 debug</span><br><span class="line">logging.pattern.level=debug</span><br><span class="line"></span><br><span class="line"># 控制台日志输出格式</span><br><span class="line">logging.pattern.console=%d [%t] %-5p [%c] -%m%n</span><br><span class="line"></span><br><span class="line"># 指定文件输出路径</span><br><span class="line">logging.file=c:/java/test.log</span><br></pre></td></tr></table></figure>
 <h1 id="Jar包和War包的部署"><a href="#Jar包和War包的部署" class="headerlink" title="Jar包和War包的部署"></a>Jar包和War包的部署</h1><p>jar包相对来说比较简单，因为内置tomcat容器，我们甚至可以直接运行jar文件</p>
 <p>maven配置命令：<u>clean compile  package</u></p>
-<p>war包部署：</p>
+<p>jar包运行命令：<u>java  jar + jar包路径+名字</u></p>
+<p><strong>war包部署：</strong></p>
 <p>1、设置pom文件工程打包类型</p>
 <p><img src="/dlh1234okok.github.io/2018/11/26/SpringBoot配置/2.bmp" alt=""></p>
 <p>2、添加tomcat依赖并设置不运行</p>
-<p>…typora又炸了。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--设置内嵌tomcat不运行--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-tomcat<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>3、在启动类中添加入口给外部Tomcat，继承SpringBootServletInitializer，重写configure方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Springboot01Application</span> <span class="keyword">extends</span> <span class="title">SpringBootServletInitializer</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SpringApplication.run(Springboot01Application.class, args);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> SpringApplicationBuilder <span class="title">configure</span><span class="params">(SpringApplicationBuilder builder)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> builder.sources(Springboot01Application.class);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>war包打包命令：<u>clean  compile  package</u></p>
+<p>jar包和war包打包完成在编译后的target目录</p>
+<p>将war包放入tomcat的webapp目录下，运行startup.bat</p>
 
       
     </div>
@@ -546,6 +552,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/dlh1234okok.github.io/2018/11/28/SpringBoot文件上传/" rel="prev" title="SpringBoot文件上传">
+                SpringBoot文件上传 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -664,7 +674,7 @@
               
                 <a href="/dlh1234okok.github.io/archives/">
               
-                  <span class="site-state-item-count">55</span>
+                  <span class="site-state-item-count">56</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -758,7 +768,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站只有62.3k字</span>
+  <span class="post-count">博客全站只有62.8k字</span>
 </div>
         
 
