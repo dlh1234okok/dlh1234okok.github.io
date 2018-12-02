@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/dlh1234okok.github.io/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/dlh1234okok.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/dlh1234okok.github.io/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/dlh1234okok.github.io/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/dlh1234okok.github.io/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/dlh1234okok.github.io/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/dlh1234okok.github.io/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/dlh1234okok.github.io/atom.xml" title="这夜景" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="Lucene是什么​    Lucene 是一个开放源代码的全文检索引擎工具包，但它不是一个完整的全文检索引擎，而是一个全文检索引擎的架构，提供了完整的查询引擎和索引引擎，部分文本分析引擎。 说到底它是一个信息检索程序库，而不是应用产品。 因此它并不像百度或者 google 那样，拿来就能用，它只是提供了一种工具让你能实现这些产品。 Lucene 能做什么​    要回答这个问题，先要了解 luc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lucene全文检索">
+<meta property="og:url" content="http://www.dlhblog.online/2018/11/03/Lucene了解和简单使用/index.html">
+<meta property="og:site_name" content="这夜景">
+<meta property="og:description" content="Lucene是什么​    Lucene 是一个开放源代码的全文检索引擎工具包，但它不是一个完整的全文检索引擎，而是一个全文检索引擎的架构，提供了完整的查询引擎和索引引擎，部分文本分析引擎。 说到底它是一个信息检索程序库，而不是应用产品。 因此它并不像百度或者 google 那样，拿来就能用，它只是提供了一种工具让你能实现这些产品。 Lucene 能做什么​    要回答这个问题，先要了解 luc">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.dlhblog.online/dlh1234okok.github.io/2018/11/03/Lucene了解和简单使用/1.jpg">
+<meta property="og:image" content="http://www.dlhblog.online/dlh1234okok.github.io/2018/11/03/Lucene了解和简单使用/2.jpg">
+<meta property="og:image" content="http://www.dlhblog.online/dlh1234okok.github.io/2018/11/03/Lucene了解和简单使用/3.jpg">
+<meta property="og:image" content="http://www.dlhblog.online/dlh1234okok.github.io/2018/11/03/Lucene了解和简单使用/4.jpg">
+<meta property="og:image" content="http://www.dlhblog.online/dlh1234okok.github.io/2018/11/03/Lucene了解和简单使用/5.jpg">
+<meta property="og:image" content="http://www.dlhblog.online/dlh1234okok.github.io/2018/11/03/Lucene了解和简单使用/6.jpg">
+<meta property="og:updated_time" content="2018-11-29T15:13:46.849Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Lucene全文检索">
+<meta name="twitter:description" content="Lucene是什么​    Lucene 是一个开放源代码的全文检索引擎工具包，但它不是一个完整的全文检索引擎，而是一个全文检索引擎的架构，提供了完整的查询引擎和索引引擎，部分文本分析引擎。 说到底它是一个信息检索程序库，而不是应用产品。 因此它并不像百度或者 google 那样，拿来就能用，它只是提供了一种工具让你能实现这些产品。 Lucene 能做什么​    要回答这个问题，先要了解 luc">
+<meta name="twitter:image" content="http://www.dlhblog.online/dlh1234okok.github.io/2018/11/03/Lucene了解和简单使用/1.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/dlh1234okok.github.io/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.dlhblog.online/2018/11/03/Lucene了解和简单使用/"/>
+
+
+
+
+
+  <title>Lucene全文检索 | 这夜景</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/dlh1234okok.github.io/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">这夜景</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">blog</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/dlh1234okok.github.io/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/dlh1234okok.github.io/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/dlh1234okok.github.io/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/dlh1234okok.github.io/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            日程表
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/dlh1234okok.github.io/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/dlh1234okok.github.io/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.dlhblog.online/dlh1234okok.github.io/2018/11/03/Lucene了解和简单使用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="li-hong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://f2.topitme.com/2/53/46/1127458459b9146532l.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="这夜景">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Lucene全文检索</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-03T17:03:41+08:00">
+                2018-11-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/dlh1234okok.github.io/categories/大数据/" itemprop="url" rel="index">
+                    <span itemprop="name">大数据</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/dlh1234okok.github.io/2018/11/03/Lucene了解和简单使用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/dlh1234okok.github.io/2018/11/03/Lucene了解和简单使用/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+		  
+		  
+			<span class="post-meta-divider">|</span>
+			<span id="busuanzi_value_page_pv"></span>次阅读
+			
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.3k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Lucene是什么"><a href="#Lucene是什么" class="headerlink" title="Lucene是什么"></a>Lucene是什么</h1><p>​    Lucene 是一个开放源代码的全文检索引擎工具包，但它不是一个完整的全文检索引擎，而是一个全文检索引擎的架构，提供了完整的查询引擎和索引引擎，部分文本分析引擎。 说到底它是一个信息检索程序库，而不是应用产品。 因此它并不像百度或者 google 那样，拿来就能用，它只是提供了一种工具让你能实现这些产品。</p>
+<h1 id="Lucene-能做什么"><a href="#Lucene-能做什么" class="headerlink" title="Lucene 能做什么"></a>Lucene 能做什么</h1><p>​    要回答这个问题，先要了解 lucene 的本质。实际上 lucene 的功能很单一，说到底，就是我们给它若干个字符串，然后它为我们提供一个全文搜索服务， 最后告诉我们要搜索的关键词出现在哪里。知道了这个本质， 我们就可以发挥想象做任何符合这个条件的事情了。 比如我们可以把站内新闻都索引了，做个资料库；也可以把一个数据库表的若干个字段索引起来，那就不用再担心因为“%like%”而锁表了……</p>
+<h1 id="深入Lucene"><a href="#深入Lucene" class="headerlink" title="深入Lucene"></a>深入Lucene</h1><h2 id="为什么-lucene-这么快"><a href="#为什么-lucene-这么快" class="headerlink" title="为什么 lucene 这么快"></a>为什么 lucene 这么快</h2><ul>
+<li>倒排索引</li>
+<li>压缩算法</li>
+<li>二元搜索 </li>
+</ul>
+<h2 id="倒排序索引"><a href="#倒排序索引" class="headerlink" title="倒排序索引"></a>倒排序索引</h2><p>​    它是根据属性的值来查找记录。这种索引表中的每一项都包括一个属性值和具有该属性值的各记录的地址。由于不是由记录来确定属性值，而是由属性值来确定记录的位置，因而称为倒排索引(invertedindex)。 </p>
+<p><img src="/dlh1234okok.github.io/2018/11/03/Lucene了解和简单使用/1.jpg" alt=""></p>
+<h2 id="工作方式"><a href="#工作方式" class="headerlink" title="工作方式"></a>工作方式</h2><p>​    Lucene 提供的服务实际包含两部分：一入一出。所谓入是写入，即将你提供的源（本质是字符串）写入索引或者将其从索引中删除；所谓出是读出，即向用户提供全文搜索服务，让用户可以通过关键词定位源 </p>
+<h2 id="写入流程"><a href="#写入流程" class="headerlink" title="写入流程"></a>写入流程</h2><ol>
+<li>源字符串首先经过 analyzer 处理，包括：分词，分成一个个单词；去除 stopword（可选）。</li>
+<li>将源中需要的信息加入 Document 的各个 Field（信息域） 中，并把需要索引的 Field 索引起来，把需要存储的 Field 存储起来。</li>
+<li>将索引写入磁盘。 </li>
+</ol>
+<h2 id="读出流程"><a href="#读出流程" class="headerlink" title="读出流程"></a>读出流程</h2><ol>
+<li>用户提供搜索关键词，经过 analyzer 处理。</li>
+<li>对处理后的关键词搜索它的索引， 找出对应的 Document。</li>
+<li>用户根据需要从找到的 Document 中提取需要的 Field。 </li>
+</ol>
+<h2 id="Docement"><a href="#Docement" class="headerlink" title="Docement"></a>Docement</h2><p>​    用户提供的源是一条条记录，它们可以是文本文件、字符串或者数据库表的一条记录等等。一条记录经过索引之后，就是以一个Document 的形式存储在索引文件中的。用户进行搜索，也是以Document 列表的形式返回。 </p>
+<h2 id="Field"><a href="#Field" class="headerlink" title="Field"></a>Field</h2><p>​    一个 Document 可以包含多个信息域，例如一篇文章可以包含“标题”、“正文”、“最后修改时间”等信息域，这些信息域就是通过 Field在 Document 中存储的。Field 有两个属性可选：存储和索引。通过存储属性你可以控制是否对这个 Field 进行存储；通过索引属性你可以控制是否对该Field 进行索引。这看起来似乎有些废话，事实上对这两个属性的正确组合很重要。</p>
+<h2 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h2><p>文本倒排处理 :</p>
+<p><img src="/dlh1234okok.github.io/2018/11/03/Lucene了解和简单使用/2.jpg" alt=""></p>
+<p>Lucene 整体使用如图所示： </p>
+<p><img src="/dlh1234okok.github.io/2018/11/03/Lucene了解和简单使用/3.jpg" alt=""></p>
+<h1 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h1><p>配置Lucene依赖或者项目导入jar包</p>
+<h2 id="创建索引"><a href="#创建索引" class="headerlink" title="创建索引"></a>创建索引</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">createIndex</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">		<span class="comment">// 配置indexWriter</span></span><br><span class="line">		IndexWriterConfig config = <span class="keyword">new</span> IndexWriterConfig(Version.LUCENE_4_9, analyzer);</span><br><span class="line">		<span class="comment">// 指定索引写入时为CREATE_OR_APPEND模式</span></span><br><span class="line">		config.setOpenMode(IndexWriterConfig.OpenMode.CREATE_OR_APPEND);</span><br><span class="line">		<span class="comment">// 通过索引目录和配置信息，生成writer</span></span><br><span class="line">		IndexWriter writer = <span class="keyword">new</span> IndexWriter(directory, config);</span><br><span class="line">		<span class="comment">// 遍历读取文件目录dataDir里的所有文件</span></span><br><span class="line">		Collection&lt;File&gt; files = FileUtils.listFiles(<span class="keyword">new</span> File(dataDir), TrueFileFilter.INSTANCE,</span><br><span class="line">				TrueFileFilter.INSTANCE);</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> (File file : files) &#123;</span><br><span class="line">			<span class="comment">// 将一个文件的文件名和文件内容分别生成两个field信息域</span></span><br><span class="line">			Field fileNameField = <span class="keyword">new</span> StringField(<span class="string">"fileName"</span>, file.getName(), Field.Store.YES);</span><br><span class="line">			String context = FileUtils.readFileToString(file);</span><br><span class="line">			Field contentField = <span class="keyword">new</span> TextField(<span class="string">"content"</span>, context, Field.Store.YES);</span><br><span class="line">			<span class="comment">// 创建document，并添加两个信息域</span></span><br><span class="line">			Document document = <span class="keyword">new</span> Document();</span><br><span class="line">			document.add(fileNameField);</span><br><span class="line">			document.add(contentField);</span><br><span class="line">			<span class="comment">// 通过document通过writer写入到索引目录下</span></span><br><span class="line">			writer.addDocument(document);</span><br><span class="line">		&#125;</span><br><span class="line">		writer.close();</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="查询索引"><a href="#查询索引" class="headerlink" title="查询索引"></a>查询索引</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">search</span><span class="params">()</span> <span class="keyword">throws</span> IOException, ParseException </span>&#123;</span><br><span class="line">		<span class="comment">// 创建基础分词器</span></span><br><span class="line">		Analyzer analyzer = <span class="keyword">new</span> StandardAnalyzer(Version.LUCENE_4_9);</span><br><span class="line">		IndexReader indexReader = DirectoryReader.open(directory);</span><br><span class="line">		<span class="comment">// 通过indexReader创建一个索引搜索器</span></span><br><span class="line">		IndexSearcher searcher = <span class="keyword">new</span> IndexSearcher(indexReader);</span><br><span class="line">		<span class="comment">// 创建一个分析器并指定需要搜索的信息域和分词器</span></span><br><span class="line">		QueryParser queryParser = <span class="keyword">new</span> QueryParser(Version.LUCENE_4_9, <span class="string">"content"</span>, analyzer);</span><br><span class="line">		<span class="comment">// 生成一个query</span></span><br><span class="line">		Query query = queryParser.parse(<span class="string">"java"</span>);</span><br><span class="line">		<span class="comment">// 开始搜索，指定返回结果数量</span></span><br><span class="line">		TopDocs topDocs = searcher.search(query, <span class="number">10</span>);</span><br><span class="line">		ScoreDoc[] scoreDocs = topDocs.scoreDocs;</span><br><span class="line">		System.out.println(<span class="string">"命中数："</span> + topDocs.totalHits);</span><br><span class="line">		<span class="keyword">for</span> (ScoreDoc scoreDoc : scoreDocs) &#123;</span><br><span class="line">			<span class="comment">// 取得document的id</span></span><br><span class="line">			<span class="keyword">int</span> idDoc = scoreDoc.doc;</span><br><span class="line">			<span class="comment">// 通过id获取document</span></span><br><span class="line">			Document document = searcher.doc(idDoc);</span><br><span class="line">			System.out.println(<span class="string">"分数："</span> + scoreDoc.score);</span><br><span class="line">			System.out.println(<span class="string">"文件名："</span> + document.get(<span class="string">"fileName"</span>));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="其他功能"><a href="#其他功能" class="headerlink" title="其他功能"></a>其他功能</h1><h2 id="分词器"><a href="#分词器" class="headerlink" title="分词器"></a>分词器</h2><p>​    Lucene 自带的 StandardAnalyzer 分词器，只能对英语进行分词。在对中文进行分词的时候采用了一元分词，即每一个中文作为一个词，如“我是中国人”，则分词结果为“我”，“是”，“中”，“国”，“人”，可以看出分词效果很差。在这里推荐一个比较好用的中文分词器IKAnalyzer。 </p>
+<h2 id="停用词"><a href="#停用词" class="headerlink" title="停用词"></a>停用词</h2><p>​    停用词是指在信息检索中，为节省存储空间和提高搜索效率，在处理自然语言数据（或文本）之前或之后会自动过滤掉某些字或词，这些字或词即被称为 Stop Words（停用词）。 比如中文中“了”，“么”，“呢”，“的”等意义不大且在一篇文章中出现频率又很高的词，又比如英文的”for”,”in”,”it”,”a”,”or”等词。在使用 IKAnalyzer 分词器的时候，可以在 IKAnalyzer.cfg.xml里配置相关信息，如下图： </p>
+<p><img src="/dlh1234okok.github.io/2018/11/03/Lucene了解和简单使用/4.jpg" alt=""></p>
+<h2 id="高亮-Highlighter"><a href="#高亮-Highlighter" class="headerlink" title="高亮-Highlighter"></a>高亮-Highlighter</h2><p><img src="/dlh1234okok.github.io/2018/11/03/Lucene了解和简单使用/5.jpg" alt=""></p>
+<h1 id="Field属性详解"><a href="#Field属性详解" class="headerlink" title="Field属性详解"></a>Field属性详解</h1><p>​    Field 是文档中的域，包括 Field 名和 Field 值两部分，一个文档可以包括多个 Field， Document 只是 Field 的一个承载体， Field值即为要索引的内容，也是要搜索的内容。 </p>
+<ul>
+<li><p>是否分词(tokenized)</p>
+<p>​    是：作分词处理，即将 Field 值进行分词，分词的目的是为了索引。比如：商品名称、商品简介等，这些内容用户要输入关键字搜索，由于搜索的内容格式大、内容多需要分词后将语汇单元索引。</p>
+<p>​    否：不作分词处理，比如：商品 id、订单号、身份证号等</p>
+</li>
+<li><p>是否索引(indexed)</p>
+<p>​    是：进行索引。将 Field 分词后的词或整个 Field 值进行索引，索引的目的是为了搜索。比如：商品名称、商品简介分词后进行索引，订单号、身份证号不用分词但也要索引，这些将来都要作为查询条件。</p>
+<p>​    否：不索引。该域的内容无法搜索到，比如：商品 id、文件路径、图片路径等，不用作为查询条件的不用索引。</p>
+</li>
+<li><p>是否存储(stored)</p>
+<p>​    是：将 Field 值存储在文档中，存储在文档中的 Field 才可以从Document 中获取。比如：商品名称、订单号，凡是将来要从 Document 中获取的 Field都要存储。</p>
+<p>​    否：不存储 Field 值，不存储的 Field 无法通过 Document 获取，比如：商品简介，内容较大不用存储。如果要向用户展示商品简介可以从系统的关系数据库中获取商品简介。</p>
+</li>
+</ul>
+<p>如果需要商品描述，则根据搜索出的商品 ID 去数据库中查询，然后显示出商品描述信息即可。 </p>
+<h2 id="Field-常用类型"><a href="#Field-常用类型" class="headerlink" title="Field 常用类型"></a>Field 常用类型</h2><p>常用 的 Filed 类型，注意 Field 的属性，根据需求选择： </p>
+<p><img src="/dlh1234okok.github.io/2018/11/03/Lucene了解和简单使用/6.jpg" alt=""></p>
+<h2 id="栗子"><a href="#栗子" class="headerlink" title="栗子"></a>栗子</h2><ul>
+<li><p>图书 id：</p>
+<p>是否分词：不用分词，因为不会根据商品 id 来搜索商品</p>
+<p>是否索引：不索引，因为不需要根据图书 ID 进行搜索</p>
+<p>是否存储：要存储，因为查询结果页面需要使用 id 这个值</p>
+</li>
+<li><p>图书名称：</p>
+<p>是否分词：要分词，因为要将图书的名称内容分词索引，根据关键搜索图书名称抽取的词。</p>
+<p>是否索引：要索引。</p>
+<p>是否存储：要存储</p>
+</li>
+<li><p>图书价格：</p>
+<p>是否分词：要分词， lucene 对数字型的值只要有搜索需求的都要分词和索引，因为 lucene 对数字型的内容要特殊分词处理，本例子可能要根据价格范 围搜索，需要分词和索引。</p>
+<p>是否索引：要索引</p>
+<p>是否存储：要存储</p>
+</li>
+<li><p>图书图片地址：</p>
+<p>是否分词：不分词</p>
+<p>是否索引：不索引</p>
+<p>是否存储：要存储</p>
+</li>
+<li><p>图书描述：</p>
+<p>是否分词：要分词</p>
+<p>是否索引：要索引</p>
+<p>是否存储：因为图书描述内容量大，不在查询结果页面直接显示，不存储。 不存储是来不在 lucene 的索引文件中记录，节省 lucene的索引文件空间， 如果要在详情页面显示描述，思路： 从 lucene中取出图书的 id，根据图书的 id 查询关系数据库中 book 表得到描述信息。</p>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>我就试试~</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="https://s1.ax1x.com/2018/11/21/FCbZi8.md.jpg" alt="li-hong 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+	<div>
+		
+			<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">
+            -------------本文结束
+            <i class="fa fa-paw"></i>
+            感谢您的阅读-------------
+        </div>
+    
+</div>
+
+
+
+		
+	</div>
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/dlh1234okok.github.io/2018/11/03/Shiro框架/" rel="next" title="Shiro框架-开始">
+                <i class="fa fa-chevron-left"></i> Shiro框架-开始
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/dlh1234okok.github.io/2018/11/03/Shiro-密码散列加密/" rel="prev" title="Shiro-密码散列加密">
+                Shiro-密码散列加密 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+	<div onclick="showGitment()" id="gitment_title" class="gitment_title">显示 Gitment 评论</div>
+	<div id="container" style="display:none"></div>
+	<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+		<script src="https://billts.site/js/gitment.js"></script>
+	<script>
+		const myTheme = {
+		render(state, instance) {
+		const container = document.createElement('div');
+		container.lang = "en-US";
+		container.className = 'gitment-container gitment-root-container';
+		container.appendChild(instance.renderHeader(state, instance));
+		container.appendChild(instance.renderEditor(state, instance));
+		container.appendChild(instance.renderComments(state, instance));
+		container.appendChild(instance.renderFooter(state, instance));
+		return container;
+		}
+	}
+	function showGitment() {
+		$("#gitment_title").attr("style", "display:none");
+		$("#container").attr("style", "").addClass("gitment_container");
+		var gitment = new Gitment({
+		id: window.location.pathname,
+		theme: myTheme,
+		owner: 'dlhblog',
+		repo: 'dlh1234okok.github.io',
+		oauth: {
+		client_id: '3d327d2bf6e29622b4fd',
+		client_secret: '4d1303f0b50a089e4d6559cea1595c7cb95e3379'
+		}
+		});
+		gitment.render('container');
+	}
+</script>
+
+
+  
+  
+  
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://f2.topitme.com/2/53/46/1127458459b9146532l.jpg"
+                alt="li-hong" />
+            
+              <p class="site-author-name" itemprop="name">li-hong</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/dlh1234okok.github.io/archives/">
+              
+                  <span class="site-state-item-count">60</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/dlh1234okok.github.io/categories/index.html">
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/dlh1234okok.github.io/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Lucene是什么"><span class="nav-number">1.</span> <span class="nav-text">Lucene是什么</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lucene-能做什么"><span class="nav-number">2.</span> <span class="nav-text">Lucene 能做什么</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#深入Lucene"><span class="nav-number">3.</span> <span class="nav-text">深入Lucene</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么-lucene-这么快"><span class="nav-number">3.1.</span> <span class="nav-text">为什么 lucene 这么快</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#倒排序索引"><span class="nav-number">3.2.</span> <span class="nav-text">倒排序索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#工作方式"><span class="nav-number">3.3.</span> <span class="nav-text">工作方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写入流程"><span class="nav-number">3.4.</span> <span class="nav-text">写入流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#读出流程"><span class="nav-number">3.5.</span> <span class="nav-text">读出流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docement"><span class="nav-number">3.6.</span> <span class="nav-text">Docement</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Field"><span class="nav-number">3.7.</span> <span class="nav-text">Field</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现原理"><span class="nav-number">3.8.</span> <span class="nav-text">实现原理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#开始"><span class="nav-number">4.</span> <span class="nav-text">开始</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建索引"><span class="nav-number">4.1.</span> <span class="nav-text">创建索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查询索引"><span class="nav-number">4.2.</span> <span class="nav-text">查询索引</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他功能"><span class="nav-number">5.</span> <span class="nav-text">其他功能</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#分词器"><span class="nav-number">5.1.</span> <span class="nav-text">分词器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#停用词"><span class="nav-number">5.2.</span> <span class="nav-text">停用词</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高亮-Highlighter"><span class="nav-number">5.3.</span> <span class="nav-text">高亮-Highlighter</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Field属性详解"><span class="nav-number">6.</span> <span class="nav-text">Field属性详解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Field-常用类型"><span class="nav-number">6.1.</span> <span class="nav-text">Field 常用类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#栗子"><span class="nav-number">6.2.</span> <span class="nav-text">栗子</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">li-hong</span>
+
+  
+</div>
+
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访问量:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站只有64.8k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/dlh1234okok.github.io/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/dlh1234okok.github.io/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/dlh1234okok.github.io/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/dlh1234okok.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/dlh1234okok.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/dlh1234okok.github.io/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/dlh1234okok.github.io/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/dlh1234okok.github.io/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/dlh1234okok.github.io/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/dlh1234okok.github.io/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/dlh1234okok.github.io/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/dlh1234okok.github.io/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/dlh1234okok.github.io/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+   
+   
+   
+   
+   <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+   <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+   
+       <script type="text/javascript">
+           function ShowGitment(){
+               document.getElementById("gitment-display-button").style.display = "none";
+               document.getElementById("gitment-container").style.display = "block";
+               var gitment = new Gitment({
+                   id: document.location.href, 
+                   owner: '',
+                   repo: '',
+                   oauth: {
+                       client_id: '',
+                       client_secret: '',
+                   }});
+               gitment.render('gitment-container');
+           }
+       </script>
+   
+
+
+
+
+
+
+   
+   
+   
+   
+   <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+   <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+   
+       <script type="text/javascript">
+           function ShowGitment(){
+               document.getElementById("gitment-display-button").style.display = "none";
+               document.getElementById("gitment-container").style.display = "block";
+               var gitment = new Gitment({
+                   id: document.location.href, 
+                   owner: '',
+                   repo: '',
+                   oauth: {
+                       client_id: '',
+                       client_secret: '',
+                   }});
+               gitment.render('gitment-container');
+           }
+       </script>
+   
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/dlh1234okok.github.io/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
