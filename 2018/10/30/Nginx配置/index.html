@@ -88,18 +88,18 @@
 <meta property="og:site_name" content="这夜景">
 <meta property="og:description" content="什么是 Nginx？ ​    Nginx 是一款轻量级的 Web 服务器/反向代理服务器及电子邮件（IMAP/POP3）代理服务器。由俄罗斯的程序设计师Igor Sysoev 所开发，其特点是占有内存少， 并发能力强， nginx 的并发能力确实在同类型的网页服务器中表现非常好。 ​    2004 年 10 月 4 日 第一个公开版本 0.1.0 发布。其将源代码以类 BSD 许可证的形式发布">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://pg0l2q23d.bkt.clouddn.com/nginx1.jpg">
-<meta property="og:image" content="http://pg0l2q23d.bkt.clouddn.com/nginx2.jpg">
-<meta property="og:image" content="http://pg0l2q23d.bkt.clouddn.com/nginx3.jpg">
-<meta property="og:image" content="http://pg0l2q23d.bkt.clouddn.com/nginx4.jpg">
-<meta property="og:image" content="http://pg0l2q23d.bkt.clouddn.com/nginx5.jpg">
-<meta property="og:image" content="http://pg0l2q23d.bkt.clouddn.com/nginx6.jpg">
+<meta property="og:image" content="http://www.dlhblog.online/dlh1234okok.github.io/2018/10/30/Nginx配置/nginx1.jpg">
+<meta property="og:image" content="http://www.dlhblog.online/dlh1234okok.github.io/2018/10/30/Nginx配置/nginx2.jpg">
+<meta property="og:image" content="http://www.dlhblog.online/dlh1234okok.github.io/2018/10/30/Nginx配置/nginx3.jpg">
+<meta property="og:image" content="http://www.dlhblog.online/dlh1234okok.github.io/2018/10/30/Nginx配置/nginx4.jpg">
+<meta property="og:image" content="http://www.dlhblog.online/dlh1234okok.github.io/2018/10/30/Nginx配置/nginx5.jpg">
+<meta property="og:image" content="http://www.dlhblog.online/dlh1234okok.github.io/2018/10/30/Nginx配置/nginx6.jpg">
 <meta property="og:image" content="http://www.dlhblog.online/dlh1234okok.github.io/2018/10/30/Nginx配置/1.jpg">
-<meta property="og:updated_time" content="2018-11-03T05:12:09.065Z">
+<meta property="og:updated_time" content="2018-12-13T04:50:33.334Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Nginx配置">
 <meta name="twitter:description" content="什么是 Nginx？ ​    Nginx 是一款轻量级的 Web 服务器/反向代理服务器及电子邮件（IMAP/POP3）代理服务器。由俄罗斯的程序设计师Igor Sysoev 所开发，其特点是占有内存少， 并发能力强， nginx 的并发能力确实在同类型的网页服务器中表现非常好。 ​    2004 年 10 月 4 日 第一个公开版本 0.1.0 发布。其将源代码以类 BSD 许可证的形式发布">
-<meta name="twitter:image" content="http://pg0l2q23d.bkt.clouddn.com/nginx1.jpg">
+<meta name="twitter:image" content="http://www.dlhblog.online/dlh1234okok.github.io/2018/10/30/Nginx配置/nginx1.jpg">
 
 
 
@@ -467,18 +467,18 @@
 </li>
 </ol>
 <h1 id="安装Nginx"><a href="#安装Nginx" class="headerlink" title="安装Nginx"></a>安装Nginx</h1><h2 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h2><p>依赖 gcc openssl-devel pcre-devel zlib-devel<br>安装： yum -y install gcc openssl-devel pcre-devel zlib-devel</p>
-<p><img src="http://pg0l2q23d.bkt.clouddn.com/nginx1.jpg" alt=""></p>
+<p><img src="/dlh1234okok.github.io/2018/10/30/Nginx配置/nginx1.jpg" alt=""></p>
 <h2 id="解压文件"><a href="#解压文件" class="headerlink" title="解压文件"></a>解压文件</h2><p>解压： tar -zxvf nginx-1.8.1.tar.gz</p>
-<p><img src="http://pg0l2q23d.bkt.clouddn.com/nginx2.jpg" alt=""></p>
+<p><img src="/dlh1234okok.github.io/2018/10/30/Nginx配置/nginx2.jpg" alt=""></p>
 <h2 id="configure-配置"><a href="#configure-配置" class="headerlink" title="configure 配置"></a>configure 配置</h2><p>进入解压后的源码目录，然后执行 configure 命令进行配置<br>./configure –prefix=/usr/soft/nginx (设置编译后的文件目录)</p>
-<p><img src="http://pg0l2q23d.bkt.clouddn.com/nginx3.jpg" alt=""></p>
+<p><img src="/dlh1234okok.github.io/2018/10/30/Nginx配置/nginx3.jpg" alt=""></p>
 <h2 id="编译并安装"><a href="#编译并安装" class="headerlink" title="编译并安装"></a>编译并安装</h2><p>make &amp;&amp; make install</p>
-<p><img src="http://pg0l2q23d.bkt.clouddn.com/nginx4.jpg" alt=""></p>
+<p><img src="/dlh1234okok.github.io/2018/10/30/Nginx配置/nginx4.jpg" alt=""></p>
 <p>安装好后，会在/usr/soft 下生成 nginx 目录(这是我编译前指定的)，<br>这个目录就是 nginx 的软件了。</p>
-<p><img src="http://pg0l2q23d.bkt.clouddn.com/nginx5.jpg" alt=""></p>
+<p><img src="/dlh1234okok.github.io/2018/10/30/Nginx配置/nginx5.jpg" alt=""></p>
 <h1 id="nginx-命令"><a href="#nginx-命令" class="headerlink" title="nginx 命令"></a>nginx 命令</h1><p>启动命令 ： nginx_home/sbin/nginx</p>
 <p>启动后，访问虚拟机的 80 端口，可查看到以下界面</p>
-<p><img src="http://pg0l2q23d.bkt.clouddn.com/nginx6.jpg" alt=""></p>
+<p><img src="/dlh1234okok.github.io/2018/10/30/Nginx配置/nginx6.jpg" alt=""></p>
 <p>Nginx 默认监听 80 端口，当出现以上信息，说明安装启动成功</p>
 <p>一旦 nginx 启动，就可以通过调用带有-s 参数的可执行文件来控制它。<br>使用语法： nginx -s 信号</p>
 <p>信号可以是下列之一：<br>​    stop - 快速关机<br>​    quit - 优雅的关机<br>​    reload - 重新加载配置文件<br>​    reopen - 重新打开日志文件<br>例如，要停止 nginx 进程并等待工作进程完成当前请求的服务，可以执<br>行以下命令： nginx -s quit</p>
