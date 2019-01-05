@@ -88,7 +88,7 @@
 <meta property="og:site_name" content="这夜景">
 <meta property="og:description" content="SpringMVC处理全局异常1、使用SpringMVC提供的简单异常处理器SimpleMappingExceptionResolver 2、实现Spring的异常处理接口HandlerExceptionResolver定义自己的异常处理器 3、使用@ExceptionHandler 注解实现异常处理 全局异常处理方式一配置SimpleMappingExceptionResolver对象（配置se">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-02T02:48:30.967Z">
+<meta property="og:updated_time" content="2019-01-05T09:33:15.236Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringMVC-异常处理">
 <meta name="twitter:description" content="SpringMVC处理全局异常1、使用SpringMVC提供的简单异常处理器SimpleMappingExceptionResolver 2、实现Spring的异常处理接口HandlerExceptionResolver定义自己的异常处理器 3、使用@ExceptionHandler 注解实现异常处理 全局异常处理方式一配置SimpleMappingExceptionResolver对象（配置se">
@@ -447,7 +447,7 @@
 <p>2、实现Spring的异常处理接口HandlerExceptionResolver定义自己的异常处理器</p>
 <p>3、使用@ExceptionHandler 注解实现异常处理</p>
 <h1 id="全局异常处理方式一"><a href="#全局异常处理方式一" class="headerlink" title="全局异常处理方式一"></a>全局异常处理方式一</h1><p>配置SimpleMappingExceptionResolver对象（配置servlet-context配置文件）</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.springframework.web.servlet.handler.SimpleMappingExceptionResolver"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"defaultErrorView"</span> <span class="attr">value</span>=<span class="string">"error"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"exceptionAttribute"</span> <span class="attr">value</span>=<span class="string">"ex"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"exceptionMappings"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">props</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">"com.shsxt.exception.ParamException"</span>&gt;</span>param<span class="tag">&lt;/<span class="name">prop</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">props</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.springframework.web.servlet.handler.SimpleMappingExceptionResolver"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"defaultErrorView"</span> <span class="attr">value</span>=<span class="string">"error"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"exceptionAttribute"</span> <span class="attr">value</span>=<span class="string">"ex"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"exceptionMappings"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">props</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">"com.dlh.exception.ParamException"</span>&gt;</span>param<span class="tag">&lt;/<span class="name">prop</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">props</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>​    优点：集成简单，有良好的扩展性，对已有代码没有入侵性等</p>
 <p>​    缺点：该方法仅能获取到异常信息，若在出现异常时，对需要获取除异常以外的数据的情况不适用。</p>
 <h1 id="全局异常处理方式二"><a href="#全局异常处理方式二" class="headerlink" title="全局异常处理方式二"></a>全局异常处理方式二</h1><p>定义自己的异常处理器，实现HandlerExceptionResolver接口</p>
@@ -654,7 +654,7 @@
               
                 <a href="/dlh1234okok.github.io/archives/">
               
-                  <span class="site-state-item-count">64</span>
+                  <span class="site-state-item-count">60</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -748,7 +748,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站只有68.3k字</span>
+  <span class="post-count">博客全站只有60.6k字</span>
 </div>
         
 
