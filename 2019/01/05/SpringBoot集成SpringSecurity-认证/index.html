@@ -95,7 +95,7 @@
 <meta property="og:image" content="http://www.dlhblog.online/dlh1234okok.github.io/2019/01/05/SpringBoot集成SpringSecurity-认证/5.png">
 <meta property="og:image" content="http://www.dlhblog.online/dlh1234okok.github.io/2019/01/05/SpringBoot集成SpringSecurity-认证/6.png">
 <meta property="og:image" content="http://www.dlhblog.online/dlh1234okok.github.io/2019/01/05/SpringBoot集成SpringSecurity-认证/7.png">
-<meta property="og:updated_time" content="2019-01-05T09:19:40.828Z">
+<meta property="og:updated_time" content="2019-01-07T13:28:55.901Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringBoot集成SpringSecurity-认证">
 <meta name="twitter:description" content="​    SpringSecurity基于Spring环境可以实现我们项目中的权限控制（认证和授权），它主要利用我们Spring中的Aop来实现的，而且在SpringBoot环境下，配置也并没有以前那么复杂，本文主要以一个Demo的形式记录认证的功能。  码前准备数据库表结构​    在项目中，我们有关用户以及对应的权限相关的表不可或缺，我们这里暂时先创建三张表（用户表、角色表、用户角色表），每">
@@ -482,7 +482,7 @@
 <p>在我们的SecurityConfig配置类中重写configure(AuthenticationManagerBuilder auth)方法，将我们自定义认证类传入</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(AuthenticationManagerBuilder auth)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    auth.userDetailsService(userService).passwordEncoder(<span class="keyword">new</span> BCryptPasswordEncoder());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="自定义登录成功或失败处理"><a href="#自定义登录成功或失败处理" class="headerlink" title="自定义登录成功或失败处理"></a>自定义登录成功或失败处理</h1><p>我们前台往往可能会通过ajax发送请求等我们响应JSON数据，或是存一下session，我们总不能直接就给跳转了吧。</p>
-<h2 id="登录成功处理"><a href="#登录成功处理" class="headerlink" title="登录成功处理"></a>登录成功处理</h2><p>继承SavedRequestAwareAuthenticationSuccessHandler，重写onAuthenticationSuccess方法</p>
+<h2 id="登录成功处理"><a href="#登录成功处理" class="headerlink" title="登录成功处理"></a>登录成功处理</h2><p>继承SimpleUrlAuthenticationSuccessHandler或者它的子类SavedRequestAwareAuthenticationSuccessHandler，子类相比于父类，会将请求数据进行保存，比如我们在他需要请求后直接重定向到之前请求的地址，可以使用子类；重写onAuthenticationSuccess方法</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AuthenticationSuccessHandler</span> <span class="keyword">extends</span> <span class="title">SavedRequestAwareAuthenticationSuccessHandler</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    <span class="keyword">private</span> ObjectMapper objectMapper;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAuthenticationSuccess</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Authentication authentication)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        response.setContentType(<span class="string">"application/json;charset=UTF-8"</span>);</span><br><span class="line">        <span class="comment">// 将用户记录存到session</span></span><br><span class="line">        request.getSession().setAttribute(<span class="string">"user"</span>, authentication.getPrincipal());</span><br><span class="line">        response.getWriter().write(objectMapper.writeValueAsString(authentication));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="登录失败处理"><a href="#登录失败处理" class="headerlink" title="登录失败处理"></a>登录失败处理</h2><p>继承SimpleUrlAuthenticationFailureHandler，重写onAuthenticationFailure方法</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AuthenticationFailedHandler</span> <span class="keyword">extends</span> <span class="title">SimpleUrlAuthenticationFailureHandler</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    <span class="keyword">private</span> ObjectMapper objectMapper;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAuthenticationFailure</span><span class="params">(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception)</span> <span class="keyword">throws</span> IOException, ServletException </span>&#123;</span><br><span class="line">        response.setContentType(<span class="string">"application/json;charset=UTF-8"</span>);</span><br><span class="line">        response.getWriter().write(objectMapper.writeValueAsString(exception.getMessage()));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -490,10 +490,10 @@
 <p><img src="/dlh1234okok.github.io/2019/01/05/SpringBoot集成SpringSecurity-认证/5.png" alt=""></p>
 <p>进行登录，首先输入错误的密码</p>
 <p><img src="/dlh1234okok.github.io/2019/01/05/SpringBoot集成SpringSecurity-认证/6.png" alt=""></p>
-<p>这是把我们认证异常的信息返回了</p>
+<p>这是把我们认证异常的异常信息返回了</p>
 <p>进行正确登录</p>
 <p><img src="/dlh1234okok.github.io/2019/01/05/SpringBoot集成SpringSecurity-认证/7.png" alt=""></p>
-<p>这样前台可以根据authenticated字段来进行登录后的相关操作了</p>
+<p>这样前台可以根据authenticated字段或自定义需要返回的内容来进行认证后的相关操作了</p>
 
       
     </div>
@@ -779,7 +779,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站只有58.9k字</span>
+  <span class="post-count">博客全站只有59k字</span>
 </div>
         
 
